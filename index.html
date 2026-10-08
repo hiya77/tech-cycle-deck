@@ -1,0 +1,1876 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>산업별 기술주기 발표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 1600x900 고정 무대를 화면에 맞춰 축소. 흰 슬라이드 위에 단계·데이터마다 고유 색을 배정한 밝은 단일 테마. */
+:root{
+  --void:#E8ECF3;
+  --bg:#FFFFFF;
+  --surface:#F5F7FB;
+  --raise:#EDF1F7;
+  --line:#E3E8F0;
+  --line-2:#CBD3E0;
+  --ink:#0F1A2C;
+  --ink-2:#47546A;
+  --ink-3:#8792A6;
+  --accent:#2F6BFF;
+  --accent-ink:#2F6BFF;
+  --accent-soft:#E8EFFF;
+  --teal:#0E9E91;
+  --teal-soft:#E3F6F3;
+  --edit:#C77700;
+  --edit-soft:#FFF3DF;
+  --edit-line:#F0B04A;
+  --danger:#E5484D;
+  --c-coral:#F2545B;
+  --c-orange:#FF8A2B;
+  --c-violet:#7B5CFA;
+  --c-teal:#12A594;
+  --c-blue:#2F6BFF;
+  --c-sky:#1AA3E8;
+  --shadow:0 1px 2px rgba(15,26,44,.06),0 18px 50px rgba(15,26,44,.12);
+  --font-display:"Pretendard Variable","Pretendard","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"Pretendard Variable","Pretendard","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:light;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--void);color:var(--ink);font-family:var(--font-body);font-size:15px;margin:0;overflow:hidden;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- 앱 골격 ---------- */
+#app{height:100%;display:grid;grid-template-rows:auto 1fr auto auto;min-width:0}
+.topbar{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--bg);min-width:0}
+.brand{display:flex;flex-direction:column;min-width:0;flex:1}
+.brand b{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand span{font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mode-chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--raise);color:var(--ink-2);white-space:nowrap}
+body.editing .mode-chip{color:var(--edit);background:var(--edit-soft)}
+.tools{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 11px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--ink-2);cursor:pointer;white-space:nowrap;font-weight:500}
+.btn:hover{background:var(--raise);color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent-ink)}
+#btnEdit[aria-pressed="true"]{background:var(--edit-soft);color:var(--edit)}
+.btn.solid{background:var(--bg);border-color:var(--line-2);color:var(--ink)}
+.btn.danger{color:var(--danger)}
+.btn.small{height:30px;padding:0 10px;font-size:13px}
+
+.workspace{position:relative;display:flex;min-height:0;min-width:0}
+.viewport{position:relative;flex:1;min-width:0;display:grid;place-items:center;overflow:hidden;padding:20px}
+.stage-wrap{position:relative}
+.stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;background:var(--bg);box-shadow:var(--shadow);border-radius:14px;overflow:hidden}
+body.editing .stage{box-shadow:0 0 0 3px var(--edit-line),var(--shadow)}
+
+/* ---------- 하단 조작부 ---------- */
+.controls{display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
+.nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.nav-btn:disabled{opacity:.35;cursor:default}
+.nav-btn svg{width:18px;height:18px}
+.counter{font-family:var(--font-mono);font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.counter b{color:var(--ink);font-weight:600}
+.progress{display:flex;gap:3px;height:6px;min-width:0}
+.progress .seg{position:relative;height:100%;background:var(--raise);border-radius:3px;overflow:hidden;cursor:pointer;min-width:6px}
+.progress .seg i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--c-sky),var(--c-blue),var(--c-violet));background-size:var(--bw,100%) 100%;transition:width .35s ease}
+.timer{font-family:var(--font-mono);font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.timer.bad{color:var(--danger)}
+
+/* ---------- 대본 바 ---------- */
+.script-bar{border-top:1px solid var(--line);background:var(--bg);padding:12px 16px;max-height:24vh;overflow:auto}
+.script-head{display:flex;gap:12px;align-items:baseline;margin-bottom:6px;font-size:12px;color:var(--ink-3);font-weight:600}
+.script-text{font-size:17px;line-height:1.75;color:var(--ink);white-space:pre-line;max-width:72em;outline:none}
+body.editing .script-text{border:1px dashed var(--edit-line);border-radius:6px;padding:6px 8px}
+
+/* ---------- 서랍(메모·편집) ---------- */
+.drawer{width:380px;flex:none;border-left:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;min-height:0;min-width:0}
+.drawer-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.drawer-head h2{font-size:14px;font-weight:700;margin:0;flex:1}
+.drawer-body{overflow:auto;padding:14px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.notes-title{font-size:13px;color:var(--ink-3);font-weight:600}
+.notes-text{font-size:16px;line-height:1.7;white-space:pre-line;color:var(--ink)}
+.notes-next{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:12px}
+.tabs{display:flex;gap:2px;padding:8px 10px 0;border-bottom:1px solid var(--line)}
+.tab{border:0;background:none;padding:8px 10px;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;font-size:13px;font-weight:600}
+.tab[aria-selected="true"]{color:var(--edit);border-bottom-color:var(--edit)}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld>label,.fld-label{font-size:12px;color:var(--ink-3);font-weight:500}
+.fld input,.fld textarea,.fld select,.mini input{background:var(--surface);border:1px solid var(--line-2);border-radius:8px;padding:7px 9px;min-width:0;width:100%;box-sizing:border-box}
+.fld textarea{min-height:76px;resize:vertical;line-height:1.55}
+.fld input:focus,.fld textarea:focus,.fld select:focus,.mini input:focus{outline:none;border-color:var(--edit-line);background:var(--bg)}
+.group{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.group-title{font-size:12px;font-weight:700;color:var(--ink-2)}
+.rows{display:flex;flex-direction:column;gap:6px}
+.row{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr)) auto;gap:6px;align-items:end}
+.row .x{width:30px;height:34px;border:1px solid var(--line-2);background:var(--bg);color:var(--ink-3);border-radius:8px;cursor:pointer}
+.mini{display:flex;flex-direction:column;gap:3px;min-width:0}
+.mini span{font-size:11px;color:var(--ink-3)}
+.hint{font-size:12px;color:var(--ink-3);line-height:1.55}
+.img-prev{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.slide-list{display:flex;flex-direction:column;gap:4px;list-style:none;margin:0;padding:0}
+.slide-list li{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:6px 6px 6px 8px;border-radius:8px;border:1px solid transparent}
+.slide-list li.cur{border-color:var(--line-2);background:var(--surface)}
+.slide-list .n{font-family:var(--font-mono);font-size:12px;color:var(--ink-3)}
+.slide-list .t{font-size:13px;cursor:pointer;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slide-list .t small{display:block;color:var(--ink-3);font-family:var(--font-mono);font-size:11px}
+.slide-list .acts{display:flex;gap:2px}
+.icon-btn{width:28px;height:28px;display:grid;place-items:center;border:0;background:none;color:var(--ink-3);border-radius:6px;cursor:pointer}
+.icon-btn:hover{background:var(--raise);color:var(--ink)}
+.icon-btn.confirm{background:var(--danger);color:var(--bg)}
+.icon-btn svg{width:16px;height:16px}
+.json-box{font-family:var(--font-mono);font-size:11px;min-height:120px}
+.btn-row{display:flex;gap:6px;flex-wrap:wrap}
+.confirm-box{border:1px solid var(--danger);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:13px}
+
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-size:13px;max-width:min(560px,calc(100vw - 32px));z-index:50;box-shadow:var(--shadow)}
+
+/* ---------- 발표 모드 ---------- */
+body.presenting .topbar,body.presenting .drawer{display:none}
+body.presenting .viewport{padding:0;background:var(--bg)}
+body.presenting .stage{box-shadow:none;border-radius:0}
+body.presenting .controls{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:min(760px,calc(100vw - 32px));border:1px solid var(--line-2);border-radius:14px;opacity:0;transition:opacity .25s;z-index:20;box-sizing:border-box;box-shadow:var(--shadow)}
+body.presenting.show-ctrl .controls,body.presenting .controls:focus-within{opacity:1}
+body.presenting .script-bar{position:fixed;left:0;right:0;bottom:0;z-index:15;max-height:22vh}
+.exit-present{display:none}
+body.presenting .exit-present{display:inline-flex}
+
+/* ---------- 슬라이드 공통 ---------- */
+.slide{position:absolute;inset:0;padding:64px 96px 50px;display:flex;flex-direction:column;box-sizing:border-box;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .34s ease,transform .34s cubic-bezier(.2,.7,.2,1),visibility 0s linear .34s;background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--c-coral),var(--c-orange) 25%,var(--c-violet) 55%,var(--c-blue) 78%,var(--c-teal))}
+.slide.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .34s ease,transform .34s cubic-bezier(.2,.7,.2,1)}
+.slide.from-left{transform:translateX(-24px)}
+.s-head{display:flex;flex-direction:column;gap:16px;margin-bottom:38px}
+.eyebrow{display:flex;gap:14px;align-items:center;font-size:21px;color:var(--ink-3)}
+.eyebrow .no{font-family:var(--font-mono);font-weight:600;font-size:18px;color:var(--bg);background:var(--ink);border-radius:999px;padding:4px 12px;letter-spacing:.02em}
+.eyebrow [data-k]{font-weight:600;color:var(--ink-2)}
+.lead{font-family:var(--font-display);font-size:56px;line-height:1.22;font-weight:800;letter-spacing:-.035em;margin:0;max-width:1360px;text-wrap:balance;white-space:pre-line;color:var(--ink)}
+.s-body{flex:1;min-height:0;display:flex;flex-direction:column}
+.s-body.center{justify-content:center}
+.s-foot{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;border-top:1px solid var(--line);padding-top:14px;margin-top:22px;font-size:16px;line-height:1.5;color:var(--ink-3)}
+.s-foot .src{display:flex;flex-direction:column;gap:2px;min-width:0}
+.s-foot a{color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;word-break:break-all}
+.s-foot .pg{font-family:var(--font-mono);font-size:15px;white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:19px;line-height:1.35;padding:9px 16px;border-radius:10px;background:var(--surface);color:var(--ink-2);white-space:pre-line;font-weight:500}
+.tag.teal{color:var(--teal);background:var(--teal-soft)}
+.tag.warn{background:#FFF1F1;color:#B4232A}
+.tag.blue{background:var(--accent-soft);color:var(--accent)}
+.tag svg{width:22px;height:22px;flex:none}
+.body-text{font-size:28px;line-height:1.55;color:var(--ink-2);white-space:pre-line}
+.tint{background:color-mix(in srgb,var(--c) 9%,white)}
+
+/* 단계 표시(프래그먼트) */
+.frag{transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
+.slide:not(.show-all) .frag:not(.on){opacity:0;transform:translateY(14px)}
+.hl-item{transition:opacity .3s ease,color .3s ease,border-color .3s ease,background .3s ease}
+.slide.has-hl .hl-item:not(.hl){opacity:.32}
+.slide:not(.show-all) .frag.hl-item:not(.on){opacity:0}
+.slide.has-hl .band:not(.hl),.slide.has-hl .seg-hl:not(.hl){opacity:0}
+
+/* 편집 모드 */
+.edit-only{display:none!important}
+body.editing .edit-only{display:inline-flex!important}
+body.editing .slide [data-k]{outline:1.5px dashed var(--edit-line);outline-offset:4px;border-radius:3px;cursor:text}
+body.editing .slide [data-k]:focus{outline:2.5px solid var(--edit);background:var(--edit-soft)}
+.img-edit{position:absolute;top:14px;right:14px;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:10px;border:0;background:var(--edit);color:#fff;font-size:18px;font-weight:600;cursor:pointer;z-index:2}
+
+/* 1장 표지 */
+.cover{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;height:100%}
+.cover-l{display:flex;flex-direction:column;min-width:0;padding-top:6px}
+.cover-q{font-family:var(--font-display);font-size:64px;line-height:1.2;font-weight:800;letter-spacing:-.04em;margin:30px 0 0;text-wrap:balance;white-space:pre-line;background:linear-gradient(100deg,var(--ink) 40%,var(--c-blue) 75%,var(--c-violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+body.editing .cover-q{color:var(--ink);background:none}
+.cover-cases{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.cover-cases span{font-size:22px;font-weight:600;padding:8px 16px;border-radius:999px;white-space:pre-line}
+.cover-meta{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.cover-title{font-size:34px;font-weight:800;line-height:1.3;letter-spacing:-.02em;white-space:pre-line}
+.cover-sub{font-size:24px;color:var(--ink-2);white-space:pre-line}
+.cover-by{font-size:20px;color:var(--ink-3);margin-top:8px}
+.cover-r{display:grid;grid-template-rows:1fr 1fr auto;gap:18px;min-width:0;min-height:0}
+.fig{position:relative;margin:0;display:flex;flex-direction:column;gap:10px;min-height:0;flex:1}
+.fig .media{position:relative;flex:1;min-height:0;border-radius:18px;overflow:hidden;background:var(--surface);display:grid;place-items:center;color:var(--ink-3)}
+.fig .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.fig .media .fb{width:82%;height:82%;display:none}
+.fig .media.no-img .fb,.fig .media.img-fail .fb{display:block}
+.fig .media.img-fail img{display:none}
+.fig .media .chip-tag{position:absolute;left:16px;top:16px;font-size:17px;font-weight:700;color:#fff;padding:6px 12px;border-radius:999px;background:var(--c)}
+.fig figcaption{display:flex;justify-content:space-between;gap:16px;font-size:17px;color:var(--ink-2)}
+.fig figcaption .credit{color:var(--ink-3);text-align:right}
+.cover-note{font-size:16px;color:var(--ink-3);line-height:1.5;margin:0}
+
+/* 흐름도(2·4장) */
+.flow{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:22px;position:relative}
+.node{position:relative;display:flex;flex-direction:column;gap:12px;padding:28px 28px 30px;border-radius:20px;background:color-mix(in srgb,var(--c) 8%,white);border:1px solid color-mix(in srgb,var(--c) 22%,white)}
+.node::after{content:"";position:absolute;right:-17px;top:50%;width:12px;height:12px;border-top:3px solid var(--line-2);border-right:3px solid var(--line-2);transform:translateY(-50%) rotate(45deg);z-index:1}
+.node:last-child::after{display:none}
+.node .ic{width:52px;height:52px;color:var(--c);padding:10px;border-radius:14px;background:var(--bg);box-sizing:border-box;box-shadow:0 1px 2px rgba(15,26,44,.06)}
+.node .nk{font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--c)}
+.node .nl{font-size:35px;font-weight:800;line-height:1.22;letter-spacing:-.03em;white-space:pre-line;color:var(--ink)}
+.node .nd{font-size:23px;line-height:1.5;color:var(--ink-2);white-space:pre-line}
+.node.key{background:var(--c);border-color:var(--c)}
+.node.key .nl,.node.key .nd,.node.key .nk{color:#fff}
+.versus{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:36px;align-items:center;margin-top:auto;padding:30px 40px;border-radius:20px;background:var(--surface)}
+.versus .v{display:flex;flex-direction:column;gap:8px}
+.versus .vl{font-size:22px;font-weight:700;color:var(--ink-3)}
+.versus .vt{font-size:28px;line-height:1.45;color:var(--ink);white-space:pre-line;font-weight:500}
+.versus .v.key .vl{color:var(--c-blue)}
+.versus .neq{font-size:60px;font-weight:300;color:var(--c-coral);text-align:center;line-height:1}
+.versus .neq small{display:block;font-size:17px;color:var(--ink-3);margin-top:6px;white-space:pre-line;font-weight:600}
+.loop{margin-top:34px;position:relative}
+.loop svg{width:100%;height:110px;display:block;overflow:visible}
+.loop-label{position:absolute;left:50%;bottom:0;transform:translateX(-50%);background:var(--bg);padding:6px 20px;font-size:24px;font-weight:600;color:var(--c-coral);white-space:nowrap}
+
+/* 3장 S-곡선 */
+.split{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:64px;min-height:0;flex:1}
+.chart-box{position:relative;display:flex;flex-direction:column;gap:12px;min-height:0;min-width:0}
+.chart-title{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:22px;font-weight:700;color:var(--ink)}
+.chart-box svg{width:100%;flex:1;min-height:0;display:block;overflow:visible}
+.axis{stroke:var(--ink-3);stroke-width:2;fill:none}
+.axis-label{fill:var(--ink-2);font-size:20px;font-family:var(--font-body);font-weight:600}
+.tick{fill:var(--ink-3);font-size:17px;font-family:var(--font-mono)}
+.grid-line{stroke:var(--line);stroke-width:1}
+.curve{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.draw{stroke-dasharray:1;stroke-dashoffset:0}
+.slide.play .draw{animation:draw var(--dur,1.4s) cubic-bezier(.45,.1,.25,1) both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.band{opacity:0;transition:opacity .35s}
+.band.hl{opacity:.13}
+.band-label{font-size:19px;font-weight:700;font-family:var(--font-body);transition:opacity .3s}
+.seg-hl{fill:none;stroke-width:12;stroke-linecap:round;opacity:0;transition:opacity .35s}
+.seg-hl.hl{opacity:1}
+.limit{stroke:var(--c-coral);stroke-width:2.5;stroke-dasharray:9 8}
+.limit-label{fill:var(--c-coral);font-size:19px;font-weight:700}
+.phase-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;justify-content:center}
+.phase-list li{display:grid;grid-template-columns:52px 1fr;gap:4px 18px;padding:20px 24px;border-radius:18px;background:color-mix(in srgb,var(--c) 8%,white)}
+.phase-list .pn{font-family:var(--font-mono);font-size:18px;font-weight:600;color:#fff;background:var(--c);border-radius:12px;width:44px;height:44px;display:grid;place-items:center;grid-row:span 2}
+.phase-list .pt{font-size:31px;font-weight:800;color:var(--c);letter-spacing:-.02em}
+.phase-list .pd{font-size:23px;line-height:1.5;color:var(--ink-2);white-space:pre-line}
+
+/* 5장 타임라인 */
+.pt-dot{stroke:#fff;stroke-width:4;opacity:0}
+.pt-val{font-size:22px;font-family:var(--font-mono);font-weight:600;text-anchor:middle;opacity:0}
+.pt-bg{opacity:0}
+.slide.play .pt-dot,.slide.play .pt-val,.slide.play .pt-bg{animation:pop .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d)}
+.slide:not(.play) .pt-dot,.slide:not(.play) .pt-val,.slide:not(.play) .pt-bg,.slide.show-all .pt-dot,.slide.show-all .pt-val,.slide.show-all .pt-bg{opacity:1}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.side{display:flex;flex-direction:column;gap:22px;min-width:0}
+.big-num{display:flex;flex-direction:column;gap:6px;padding:26px 30px;border-radius:20px;background:var(--surface)}
+.big-num .bn-label{font-size:20px;color:var(--ink-2);font-weight:600}
+.big-num .bn{font-family:var(--font-mono);font-size:96px;line-height:1.05;font-weight:600;letter-spacing:-.05em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.big-num .bn .from{color:var(--c-teal)}
+.big-num .bn small{font-size:36px;color:var(--ink-3);margin-left:10px;letter-spacing:0;font-weight:500}
+.big-num .bn .arrow{color:var(--ink-3);font-weight:400;margin:0 14px}
+.big-num .bn .to{background:linear-gradient(90deg,var(--c-blue),var(--c-violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.legend{display:flex;align-items:center;gap:10px;font-size:18px;color:var(--ink-2);font-weight:500}
+.legend i{width:30px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--c-teal),var(--c-blue),var(--c-violet));display:inline-block}
+.mini-photo{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}
+.mini-photo .media{height:96px;border-radius:12px}
+.mini-photo figcaption{flex-direction:column;gap:2px;font-size:16px}
+.mini-photo figcaption .credit{text-align:left}
+
+/* 6장 사례 */
+.case{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:60px;flex:1;min-height:0}
+.case-card{display:flex;flex-direction:column;gap:18px;padding:0 0 30px;border-radius:20px;background:var(--surface);height:100%;box-sizing:border-box;overflow:hidden;position:relative}
+.case-card .photo{position:relative;height:210px;flex:none}
+.case-card .photo .fig{position:absolute;inset:0;gap:0}
+.case-card .photo .media{border-radius:0}
+.case-card .photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 18px 10px;background:linear-gradient(transparent,rgba(10,16,30,.62));color:#fff;font-size:15px}
+.case-card .photo figcaption .credit{color:rgba(255,255,255,.85)}
+.case-card .inner{display:flex;flex-direction:column;gap:16px;padding:0 36px;flex:1}
+.case-card .cc-org{font-size:20px;color:var(--ink-3);font-weight:600}
+.case-card .cc-title{font-size:38px;font-weight:800;letter-spacing:-.03em}
+.case-card .cc-date{display:flex;gap:14px;align-items:center;font-size:21px;color:var(--ink-2)}
+.case-card .cc-date b{font-family:var(--font-mono);font-weight:600;font-size:26px;color:#fff;background:var(--c-teal);padding:4px 12px;border-radius:10px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-size:21px;font-weight:600;padding:7px 16px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 11%,white)}
+.cc-cap{font-size:16px;color:var(--ink-3);margin-top:auto}
+.points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px}
+.points li{display:grid;grid-template-columns:22px 1fr;gap:16px;font-size:27px;line-height:1.5;color:var(--ink)}
+.points li::before{content:"";width:12px;height:12px;border-radius:4px;background:var(--c-teal);margin-top:15px}
+.points li span{white-space:pre-line}
+.caveat{margin-top:auto;display:flex;gap:16px;align-items:flex-start;padding:22px 26px;border-radius:16px;font-size:23px;line-height:1.5;color:#9A2A1F;background:#FFF2EE}
+.caveat svg{width:28px;height:28px;flex:none;color:var(--c-coral);margin-top:2px}
+.case-fig{height:100%}
+
+/* 7장 요인 */
+.factors{display:grid;grid-template-columns:minmax(0,1fr) 470px minmax(0,1fr);grid-template-rows:1fr 1fr;gap:20px 34px;flex:1;min-height:0}
+.ring{grid-column:2;grid-row:1/span 2;align-self:center}
+.ring svg{width:100%;height:auto;display:block;overflow:visible}
+.ring-node{stroke:#fff;stroke-width:4;transition:r .3s}
+.ring-text{fill:var(--ink-2);font-size:20px;font-family:var(--font-body);font-weight:700;text-anchor:middle;transition:fill .3s}
+.ring-text.hl{fill:var(--ink)}
+.ring-arc{fill:none;stroke:var(--line-2);stroke-width:2.5}
+.factor{display:flex;flex-direction:column;gap:8px;justify-content:center;padding:20px 26px;border-radius:18px;background:color-mix(in srgb,var(--c) 8%,white);min-width:0}
+.factor .fh{display:flex;gap:12px;align-items:center}
+.factor .fn{font-size:19px;font-weight:800;color:var(--c)}
+.factor .ic{width:42px;height:42px;color:var(--c);padding:8px;border-radius:12px;background:var(--bg);box-sizing:border-box}
+.factor .ft{font-size:27px;font-weight:700;line-height:1.36;letter-spacing:-.02em;white-space:pre-line}
+.factor .fl{font-size:19px;color:var(--ink-2);white-space:pre-line;font-weight:500}
+.analysis{display:inline-flex;align-self:flex-start}
+
+/* 8장 비교 */
+.scale{position:relative;margin:34px 0 0;height:230px}
+.scale-line{position:absolute;left:0;right:0;top:154px;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--c-sky),var(--c-blue) 40%,var(--c-violet) 70%,var(--c-teal))}
+.scale-end{position:absolute;top:182px;font-size:22px;font-weight:600;color:var(--ink-3)}
+.scale-end.r{right:0}
+.marker{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.marker .mk-box{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 26px;border-radius:16px;background:var(--c);color:#fff}
+.marker .mk-l{font-size:42px;font-weight:800;letter-spacing:-.02em}
+.marker .mk-t{font-size:20px;white-space:nowrap;font-weight:500;opacity:.92}
+.marker .mk-pin{width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--c);box-sizing:border-box;margin-top:4px}
+.scale-cap{font-size:19px;color:var(--ink-3);margin-top:10px}
+.scale-title{font-size:22px;font-weight:700;color:var(--ink-2)}
+.limits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:auto;padding:0}
+.limits li{list-style:none;font-size:23px;line-height:1.5;color:var(--ink);white-space:pre-line;padding:20px 24px;border-radius:16px;background:var(--surface)}
+.limits li b{display:block;font-family:var(--font-mono);font-weight:600;font-size:17px;color:var(--c-coral);margin-bottom:8px}
+.limits{margin-bottom:0}
+
+/* 9장 결론 */
+.concl{display:flex;flex-direction:column;flex:1;min-height:0}
+.concl .statement{font-family:var(--font-display);font-size:64px;line-height:1.24;font-weight:800;letter-spacing:-.04em;max-width:1380px;text-wrap:balance;white-space:pre-line;margin:28px 0 0}
+.takeaways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:48px;padding:0}
+.takeaways li{list-style:none;display:flex;flex-direction:column;gap:10px;padding:26px 30px;border-radius:20px;background:color-mix(in srgb,var(--c) 9%,white);font-size:30px;font-weight:600;line-height:1.42;white-space:pre-line}
+.takeaways li b{font-family:var(--font-mono);font-weight:600;font-size:19px;color:var(--c)}
+.refs{margin-top:auto;display:flex;flex-direction:column;gap:3px;font-size:15px;line-height:1.5;color:var(--ink-3);border-top:1px solid var(--line);padding-top:14px}
+.refs .rh{font-weight:700;font-size:14px;color:var(--ink-2);margin-bottom:2px}
+.refs a{color:var(--ink-2);word-break:break-all}
+
+/* 일반 텍스트 슬라이드 */
+.bullets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px;max-width:1300px}
+.bullets li{display:grid;grid-template-columns:24px 1fr;gap:16px;font-size:30px;line-height:1.5;color:var(--ink)}
+.bullets li::before{content:"";width:12px;height:12px;background:var(--c-blue);border-radius:4px;margin-top:16px}
+.bullets li span{white-space:pre-line}
+
+/* ---------- 반응형 ---------- */
+@media (max-width:900px){
+  .drawer{position:absolute;left:0;right:0;bottom:0;width:auto;height:60%;border-left:0;border-top:1px solid var(--line);z-index:12;box-shadow:0 -20px 40px rgba(15,26,44,.18)}
+  .btn .lbl{display:none}
+  .controls{grid-template-columns:auto 1fr auto;gap:10px}
+  .controls .progress{grid-column:1/-1;grid-row:1}
+  .timer{display:none}
+}
+@media (max-width:520px){
+  .brand span{display:none}
+  .mode-chip{display:none}
+  .viewport{padding:10px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .slide,.slide.is-active,.frag,.hl-item,.band,.seg-hl,.progress .seg i{transition:none!important}
+  .slide.play .draw,.slide.play .pt-dot,.slide.play .pt-val,.slide.play .pt-bg{animation:none!important;opacity:1}
+}
+
+/* ---------- 인쇄: 슬라이드 한 장씩 ---------- */
+@page{size:1600px 900px;margin:0}
+@media print{
+  html,body{height:auto;overflow:visible;background:#fff}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .topbar,.controls,.drawer,.script-bar,.toast,.edit-only{display:none!important}
+  #app{display:block}
+  .viewport{display:block;padding:0;overflow:visible}
+  .stage-wrap{width:auto!important;height:auto!important}
+  .stage{position:static;transform:none!important;width:1600px;height:auto;box-shadow:none!important;border-radius:0;overflow:visible;background:none}
+  .slide{position:relative;inset:auto;width:1600px;height:900px;opacity:1!important;visibility:visible!important;transform:none!important;page-break-after:always;break-after:page;transition:none}
+  .slide .frag{opacity:1!important;transform:none!important}
+  .slide .pt-dot,.slide .pt-val,.slide .pt-bg{opacity:1!important;animation:none!important}
+  .slide .draw{animation:none!important;stroke-dashoffset:0!important}
+  .slide.has-hl .hl-item:not(.hl){opacity:1}
+  body.editing .slide [data-k]{outline:none}
+}
+
+/* ---------- v3: 모션 ---------- */
+.rise{opacity:1}
+.slide.play .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 120ms)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.slide.play .s-head .eyebrow{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.slide.play .s-head .lead{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:.06s}
+.slide.play .fig .media img{animation:kenburns 12s ease-out both}
+@keyframes kenburns{from{transform:scale(1.1)}to{transform:scale(1)}}
+.slide.play .frag.on .draw{animation-name:draw2}
+@keyframes draw2{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.flowing{animation:dashflow 1.6s linear infinite}
+@keyframes dashflow{to{stroke-dashoffset:-36}}
+.traveler{fill:#fff;stroke:var(--c-blue);stroke-width:5;offset-distance:0%;opacity:0}
+.slide.play .traveler{animation:travel 2.6s cubic-bezier(.45,.1,.25,1) 1.2s both}
+@keyframes travel{0%{offset-distance:0%;opacity:0}8%{opacity:1}100%{offset-distance:100%;opacity:1}}
+.slide.has-hl .traveler{opacity:0!important;animation:none}
+.pulse{fill:none;stroke:var(--c-violet);stroke-width:3;transform-box:fill-box;transform-origin:center;animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{from{transform:scale(.6);opacity:1}to{transform:scale(2.2);opacity:0}}
+.area-fill{opacity:0}
+.slide.play .area-fill,.slide:not(.play) .area-fill{animation:fadein 1s ease .8s both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.cover-q{background-size:200% 100%}
+.slide.play .cover-q{animation:rise .8s cubic-bezier(.2,.7,.2,1) both,shimmer 6s ease-in-out 1s infinite alternate}
+@keyframes shimmer{from{background-position:0% 0}to{background-position:100% 0}}
+@media (prefers-reduced-motion:reduce){
+  .slide.play .rise,.slide.play .s-head .eyebrow,.slide.play .s-head .lead,.slide.play .fig .media img,.flowing,.pulse,.slide.play .cover-q,.slide.play .frag.on .draw{animation:none!important}
+  .slide.play .traveler{animation:none;opacity:0}
+}
+@media print{
+  .rise,.slide .s-head .eyebrow,.slide .s-head .lead{animation:none!important;opacity:1!important;transform:none!important}
+  .traveler,.pulse{display:none}
+}
+
+/* ---------- v3: 공통 보강 ---------- */
+.lead-sm{font-size:48px}
+.lec-thumb{position:relative;margin:0;display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:14px;background:var(--bg);border:1px solid var(--line);min-width:0}
+.lec-thumb img{width:100%;height:auto;display:block;border-radius:6px}
+.lec-thumb figcaption{display:flex;flex-direction:column;gap:2px;font-size:15px;color:var(--ink-3)}
+.lec-thumb figcaption b{font-weight:700;color:var(--ink-2)}
+.side-row{display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:center;margin-top:auto}
+.tip{margin:0;font-size:20px;line-height:1.5;color:var(--ink-2);font-weight:500;padding-left:16px;border-left:3px solid var(--c-coral)}
+.scurve-side{display:flex;flex-direction:column;gap:16px}
+.phase-list{gap:12px}
+.phase-list li{padding:14px 20px}
+.phase-list .pt{font-size:27px}
+.phase-list .pd{font-size:21px}
+.caveat.soft{background:var(--surface);color:var(--ink)}
+.caveat.soft svg{color:var(--c-violet)}
+
+/* 2장 질문 */
+.quote{margin:0;padding:26px 34px;border-radius:20px;background:var(--surface);position:relative}
+.quote::before{content:"“";position:absolute;left:18px;top:-18px;font-size:120px;line-height:1;font-weight:800;color:var(--c-blue);opacity:.25}
+.quote p{margin:0;font-size:26px;line-height:1.6;color:var(--ink);font-weight:500;white-space:pre-line}
+.quote cite{display:block;margin-top:10px;font-style:normal;font-size:17px;color:var(--ink-3);font-weight:600}
+.qa{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
+.qa-card{display:flex;flex-direction:column;gap:8px;padding:26px 28px;border-radius:20px;background:color-mix(in srgb,var(--c) 9%,white);border:2px solid transparent}
+.qa-card.hl{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,white)}
+.qa-n{font-family:var(--font-mono);font-weight:600;font-size:18px;color:#fff;background:var(--c);align-self:flex-start;padding:3px 12px;border-radius:999px}
+.qa-q{font-size:24px;color:var(--ink-2);font-weight:600}
+.qa-a{font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--c);line-height:1.15}
+.qa-note{font-size:19px;color:var(--ink-2)}
+
+/* 4장 흐름도 압축형 */
+.flow.compact .node{padding:22px 24px 22px;gap:8px}
+.flow.compact .node .nl{font-size:30px}
+.flow.compact .node .nd{font-size:20px}
+.flow.compact .node .ic{width:46px;height:46px}
+.loop-line{position:relative;margin:6px 0 0;height:54px}
+.loop-line svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.loop-line .loop-label{bottom:-6px;font-size:20px}
+.cycle-bottom{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:26px;margin-top:20px;flex:1;min-height:0;align-items:stretch}
+.findings{padding:22px 28px;border-radius:18px;background:color-mix(in srgb,var(--c-violet) 8%,white);display:flex;flex-direction:column;gap:10px}
+.findings b{font-size:20px;color:var(--c-violet);font-weight:800}
+.findings ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.findings li{font-size:22px;line-height:1.5;color:var(--ink);padding-left:22px;position:relative}
+.findings li::before{content:"";position:absolute;left:0;top:13px;width:9px;height:9px;border-radius:3px;background:var(--c-violet)}
+.cycle-bottom .lec-thumb{justify-content:center}
+
+/* 5장 두 S-곡선 */
+.curve-label{font-size:22px;font-weight:800;font-family:var(--font-body)}
+.note-label{font-size:19px;fill:var(--ink-2);font-weight:600;font-family:var(--font-body)}
+.ex-title{font-size:20px;font-weight:700;color:var(--ink-3)}
+.examples{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.examples li{display:grid;grid-template-columns:auto auto 1fr;align-items:center;gap:6px 16px;padding:18px 24px;border-radius:16px;background:var(--surface)}
+.ex-from{font-size:27px;font-weight:600;color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--c-coral);text-decoration-thickness:2px}
+.ex-arrow{font-size:28px;color:var(--c-violet);font-weight:700}
+.ex-to{font-size:30px;font-weight:800;color:var(--c-violet)}
+.examples small{grid-column:1/-1;font-size:18px;color:var(--ink-2)}
+
+/* 8장 기술 방식 전환 */
+.shift{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;flex:1;min-height:0}
+.stairs{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:end;height:100%}
+.stair{display:flex;flex-direction:column;gap:8px;padding:22px 22px 18px;border-radius:20px;background:color-mix(in srgb,var(--c) 9%,white);margin-bottom:calc(var(--k) * 70px);position:relative;border-top:5px solid var(--c)}
+.st-year{font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--c)}
+.st-name{font-size:32px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.st-text{font-size:19px;line-height:1.5;color:var(--ink-2);white-space:pre-line}
+.st-curve{width:100%;height:70px;overflow:visible;margin-top:4px}
+.shift-side{display:flex;flex-direction:column;gap:18px;min-height:0}
+.shift-photo{flex:1}
+.shift-photo .media{background:#fff;border:1px solid var(--line)}
+.shift-photo .media img{object-fit:contain}
+
+/* 9장 에페 */
+.efe{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:48px;flex:1;min-height:0}
+.efe-l{display:flex;flex-direction:column;gap:16px;min-height:0}
+.efe-photo{flex:1}
+.efe-photo .media{background:#fff;border:1px solid var(--line)}
+.efe-photo .media img{object-fit:contain}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0}
+.facts div{padding:12px 14px;border-radius:12px;background:var(--surface)}
+.facts dt{font-size:15px;font-weight:700;color:var(--ink-3)}
+.facts dd{margin:4px 0 0;font-size:18px;font-weight:600;line-height:1.4;color:var(--ink)}
+.efe-r{display:flex;flex-direction:column;gap:16px;min-width:0}
+.path{list-style:none;margin:0;padding:0 0 0 30px;display:flex;flex-direction:column;gap:14px;position:relative}
+.path::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:3px;border-radius:2px;background:linear-gradient(var(--c-orange),var(--c-violet),var(--c-teal))}
+.path li{position:relative;display:flex;flex-direction:column;gap:4px;padding:14px 20px;border-radius:14px;background:color-mix(in srgb,var(--c) 8%,white)}
+.path li::before{content:"";position:absolute;left:-29px;top:20px;width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid var(--c);box-sizing:border-box}
+.p-when{font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--c)}
+.p-what{font-size:23px;font-weight:600;line-height:1.45;color:var(--ink)}
+.pipe-note{margin:0;font-size:18px;color:var(--ink-2);line-height:1.5}
+.efe-r .caveat{margin-top:auto;padding:16px 20px;font-size:20px}
+.efe-r .tag{font-size:18px}
+
+/* 10장 요인 보강 */
+.factors .factor{padding:16px 22px}
+.factors .factor .ft{font-size:25px}
+.factors .factor .fl{font-size:18px}
+.strip{display:flex;align-items:center;gap:14px;margin-top:16px;padding:14px 22px;border-radius:14px;background:color-mix(in srgb,var(--c-blue) 8%,white);font-size:21px;font-weight:600;color:var(--ink)}
+.strip svg{width:30px;height:30px;color:var(--c-blue);flex:none}
+
+/* 11·12장 */
+.scale{height:210px;margin-top:22px}
+.scale-line{top:140px}
+.scale-end{top:166px}
+.limits li{padding:16px 20px;font-size:21px}
+.takeaways{grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:22px;margin-top:40px}
+.takeaways li{font-size:26px;padding:22px 26px}
+.concl .statement{font-size:60px}
+
+/* v3.1 레이아웃 보정 */
+.lec-overlay{position:absolute;left:96px;top:96px;width:250px;z-index:2}
+.lec-overlay .lec-thumb{padding:8px;box-shadow:0 10px 30px rgba(15,26,44,.12)}
+.lec-overlay .lec-thumb figcaption{font-size:13px}
+.slide.has-hl .lec-overlay{opacity:.25;transition:opacity .3s}
+.scurve-side .tip,.side .tip{margin-top:auto}
+.q-bottom{display:flex;flex-direction:column;gap:18px;margin-top:26px}
+.q-bottom .tag{align-self:flex-start}
+.roadmap{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.roadmap li{display:flex;flex-direction:column;gap:4px;padding:16px 20px;border-radius:16px;background:var(--surface);border-left:5px solid var(--c)}
+.roadmap .rm-n{font-family:var(--font-mono);font-size:16px;font-weight:600;color:var(--c)}
+.roadmap b{font-size:24px;font-weight:800;color:var(--ink)}
+.roadmap li>span:last-child{font-size:18px;color:var(--ink-2)}
+.findings li{font-size:21px}
+.efe-photo{flex:none;height:330px}
+.efe-l{gap:14px}
+.facts dd{font-size:17px}
+.scale{height:250px;margin-top:18px}
+.scale-line{top:168px}
+.scale-end{top:192px}
+.scale-cap{margin-top:4px}
+.slide.has-hl .lec-overlay{opacity:.6}
+.lec-overlay{width:270px}
+.scale{flex:none;height:230px}
+.scale-line{top:150px}
+.scale-end{top:172px;font-size:19px}
+.limits li{padding:14px 20px;font-size:20px}
+.efe-photo{height:300px}
+.path{gap:10px}
+.path li{padding:11px 18px}
+.p-what{font-size:21px}
+.efe-r{gap:12px}
+.efe-r .caveat{margin-top:0;padding:12px 18px;font-size:18px}
+.pipe-note{font-size:17px}
+.efe-r .tag{font-size:17px}
+.marker .mk-box{padding:10px 24px}
+.marker .mk-l{font-size:36px}
+.scale{height:196px;margin-top:12px}
+.scale-line{top:122px}
+.scale-end{top:142px}
+.scale-cap{margin:0}
+.limits{gap:18px;margin-top:14px}
+.limits li{padding:12px 18px;font-size:19px}
+.limits li b{margin-bottom:4px}
+.findings{gap:14px;padding:26px 32px}
+.findings ul{gap:16px}
+.findings li{font-size:23px}
+.findings li::before{top:14px}
+
+</style>
+</head><body>
+
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><b id="brandTitle"></b><span id="saveState">자동 저장 대기</span></div>
+    <span class="mode-chip" id="modeChip">보기 모드</span>
+    <nav class="tools" aria-label="발표 도구">
+      <button class="btn" id="btnEdit" aria-pressed="false" title="편집 모드 (E)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg><span class="lbl">편집 모드</span></button>
+      <button class="btn" id="btnScript" aria-pressed="false" title="발표 대본 (S)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h4"/></svg><span class="lbl">대본</span></button>
+      <button class="btn" id="btnNotes" aria-pressed="false" title="발표자 메모 (N)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M15 4v16"/><path d="M7.5 9h4M7.5 13h4"/></svg><span class="lbl">메모</span></button>
+      <button class="btn" id="btnPresent" title="발표 모드 (P)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/><path d="M10.5 8l3.5 2-3.5 2z"/></svg><span class="lbl">발표 모드</span></button>
+      <button class="btn" id="btnFull" title="전체 화면 (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="lbl">전체 화면</span></button>
+      <button class="btn" id="btnPrint" title="슬라이드 인쇄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5"/><rect x="3" y="8" width="18" height="9" rx="1.5"/><path d="M7 14h10v7H7z"/></svg><span class="lbl">인쇄</span></button>
+    </nav>
+  </header>
+
+  <main class="workspace">
+    <section class="viewport" id="viewport" aria-roledescription="슬라이드 화면">
+      <div class="stage-wrap" id="stageWrap"><div class="stage" id="stage"></div></div>
+    </section>
+    <aside class="drawer" id="notesPanel" hidden aria-label="발표자 메모">
+      <div class="drawer-head"><h2>발표자 메모</h2><button class="icon-btn" data-close="notes" title="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="drawer-body" id="notesBody"></div>
+    </aside>
+    <aside class="drawer" id="editPanel" hidden aria-label="편집 패널">
+      <div class="drawer-head"><h2>편집</h2><button class="icon-btn" data-close="edit" title="편집 모드 끝내기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="slide" aria-selected="true">이 슬라이드</button>
+        <button class="tab" role="tab" data-tab="deck" aria-selected="false">슬라이드 구성</button>
+        <button class="tab" role="tab" data-tab="file" aria-selected="false">저장·불러오기</button>
+      </div>
+      <div class="drawer-body" id="editBody"></div>
+    </aside>
+  </main>
+
+  <section class="script-bar" id="scriptBar" hidden aria-label="발표 대본">
+    <div class="script-head"><span id="scriptHead">발표 대본</span></div>
+    <div class="script-text" id="scriptText"></div>
+  </section>
+
+  <footer class="controls">
+    <button class="nav-btn" id="prev" title="이전 (←)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span class="counter" id="counter"></span>
+    <div class="progress" id="progress" aria-label="발표 진행률"></div>
+    <span class="timer" id="timer"></span>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="btn small exit-present" id="exitPresent">발표 끝내기</button>
+      <button class="nav-btn" id="next" title="다음 (→, Space)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </footer>
+</div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function(){
+"use strict";
+const STORE_KEY = "tech-cycle-deck.v3";
+const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
+const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
+const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
+const IMG_SAMSUNG_VNAND = SAM_BASE + "4.jpg?$ORIGIN_JPG$";
+const IMG_SAMSUNG_USB = SAM_BASE + "6.jpg?$ORIGIN_JPG$";
+const IMG_HANMI_EFE = "https://www.hanmi.co.kr/file/editor/1791367079321.jpg";
+const IMG_HANMI_RND = "https://www.hanmi.co.kr/images/main/img_tech_bg1.jpg?ver=1.0";
+const LECTURE = "제5강 강의자료";
+const URL_SAMSUNG = "https://semiconductor.samsung.com/kr/news-events/tech-blog/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/";
+const URL_HANMI = "https://www.hanmi.co.kr/science/pipeline/innovative-rnd-pipeline.hm";
+const URL_HANMI_EFE = "https://www.hanmi.co.kr/about/news-media/press/detail-5083.hm";
+const URL_LEE = "https://doi.org/10.1007/s00191-024-00847-9";
+const SRC_SAMSUNG = "삼성반도체 기술 블로그, 「[플래시메모리, 어디까지 알고 있니] 플래시메모리 No.1 역사의 시작」(2024.05.17)";
+const SRC_EFE = "한미약품 보도자료, 「GLP-1 비만신약 삼국지 대전 열린다…한미약품 '에페' 시판허가」(2026.10.07)";
+
+/* ================= 기본 데이터 ================= */
+const DEFAULT_DECK = {
+  version: 3,
+  meta: { deckTitle: "산업마다 기술주기의 길이가 다른 이유", presenter: "발표자 이름" },
+  slides: [
+    {
+      id: "s1", type: "cover", duration: 35,
+      title: "토론 문제 4번 · 팀 발표",
+      question: "왜 어떤 산업의 기술은 빠르게 바뀌고,\n어떤 산업은 변화가 느릴까?",
+      deckTitle: "산업마다 기술주기의 길이가 다른 이유",
+      subtitle: "기술적 불연속, 지배적 디자인, 점진적 개선을 중심으로",
+      presenter: "발표자 이름",
+      cases: ["사례 1 · 삼성전자 NAND 플래시", "사례 2 · 한미약품 비만 신약 '에페'"],
+      images: [
+        { src: IMG_SAMSUNG_VNAND, fallback: "chip", tag: "반도체", caption: "삼성전자가 2013년 세계 최초로 양산한 3D V낸드", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
+        { src: IMG_HANMI_EFE, fallback: "pharma", tag: "제약", caption: "한미약품 비만 신약 '에페' 패키지", credit: "사진: 한미약품 보도자료(2026.10.07) © Hanmi Pharm" }
+      ],
+      imageNote: "사진은 산업과 사례를 알아보기 위한 것이며 기술주기 길이의 근거가 아닙니다. 각 기업 공식 자료의 이미지를 출처와 함께 인용했습니다.",
+      sources: [],
+      script: "안녕하세요. 저희 팀은 제5강 토론 문제 4번을 맡았습니다. 질문은 이것입니다. 왜 어떤 산업의 기술은 빠르게 바뀌고, 어떤 산업은 변화가 느릴까요?\n수업에서 배운 S-곡선과 기술의 사이클로 이 질문에 답해 보겠습니다. 사례는 삼성전자의 낸드 플래시와, 바로 오늘 시판 허가 소식이 나온 한미약품의 비만 신약 '에페'입니다.",
+      notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· '오늘 범위는 제5강 32~43쪽 개념'이라고 먼저 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
+    },
+    {
+      id: "s2", type: "question", duration: 30,
+      title: "토론 문제 4번",
+      quote: "어떤 산업이 평균적인 산업의 기술주기에 비해 특히 짧은 기술주기를 가지고 있다고 생각하는가? 또 어떤 산업이 긴 주기를 가지고 있는가? 산업에서 기술주기의 길이에 영향을 주는 데에는 어떠한 요인들이 있다고 생각하는가?",
+      quoteSrc: "제5강 강의자료 43쪽, 토론 문제 4",
+      qs: [
+        { q: "짧은 기술주기 산업은?", a: "반도체 · IT", note: "사례: 삼성전자 NAND 플래시" },
+        { q: "긴 기술주기 산업은?", a: "제약", note: "사례: 한미약품 비만 신약 '에페'" },
+        { q: "주기의 길이를 정하는 요인은?", a: "기술 사이클의 네 단계", note: "S-곡선과 기술 사이클로 분석" }
+      ],
+      badge: "우리 팀의 답 · 수업 개념을 사례에 적용한 발표자 분석",
+      roadmap: [
+        { n: "03–06", t: "개념", d: "S-곡선 · 기술의 사이클" },
+        { n: "07–09", t: "사례", d: "삼성전자 · 한미약품" },
+        { n: "10–11", t: "분석", d: "요인과 우리 팀의 답" },
+        { n: "12", t: "결론", d: "세 가지 요점" }
+      ],
+      sources: [{ label: "출처: " + LECTURE + ", 43쪽 토론 문제", url: "" }],
+      script: "토론 문제 4번은 세 가지를 묻습니다. 짧은 기술주기를 가진 산업, 긴 주기를 가진 산업, 그리고 주기의 길이에 영향을 주는 요인입니다.\n저희 팀의 답을 먼저 말씀드리면, 짧은 쪽은 반도체와 IT, 긴 쪽은 제약입니다. 그리고 그 차이를 기술 사이클의 네 단계로 설명하겠습니다.",
+      notes: "· 방향키를 누를 때마다 질문 하나씩 답이 강조된다(3단계).\n· '이건 우리 팀의 분석'이라는 표시를 짚는다."
+    },
+    {
+      id: "s3", type: "flow", duration: 45,
+      title: "기술주기의 의미",
+      lead: "기술주기는 새 기술의 등장에서\n점진적 개선까지 이어지는 흐름이다",
+      steps: [
+        { label: "단속적 기술의\n출현", desc: "기존과 다른 지식에 기반한\n새 기술의 등장", icon: "break" },
+        { label: "배양기", desc: "디자인 경쟁과 대체,\n여러 디자인의 실험", icon: "branch" },
+        { label: "지배적 디자인의\n선택", desc: "여러 디자인 중\n하나가 정해짐", icon: "converge" },
+        { label: "점진적 개선의\n시기", desc: "지배적 디자인의 성숙", icon: "steps" }
+      ],
+      versus: [
+        { label: "제품 출시 간격", text: "새 제품이 시장에 나오는 간격" },
+        { label: "기술주기", text: "단속적 기술의 출현부터 지배적 디자인 이후\n점진적 개선까지의 흐름" }
+      ],
+      versusNote: "같은 말이\n아니다",
+      sources: [{ label: "출처: " + LECTURE + ", 39~40쪽(그림 3.11 기술의 사이클)의 용어를 따라 정리", url: "" }],
+      script: "먼저 기술주기가 무엇인지 정리하겠습니다. 강의자료 40쪽의 그림처럼, 기술주기는 단속적 기술이 나타나고, 여러 디자인이 경쟁하는 배양기를 거쳐, 지배적 디자인이 선택되고, 그 디자인이 점진적으로 개선되는 흐름입니다.\n여기서 주의할 점은 제품 출시 간격과 기술주기가 다르다는 것입니다. 새 제품이 자주 나와도 같은 사이클 안의 점진적 개선일 수 있습니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다.\n· 용어는 강의자료 그림 3.11(40쪽)의 표현을 그대로 썼다."
+    },
+    {
+      id: "s4", type: "scurve", duration: 55,
+      title: "기술 수준의 S-곡선",
+      lead: "초기에는 느리게, 중간에는 빠르게,\n한계에 가까워지면 다시 느리게",
+      chart: { title: "기술 성능의 S-곡선 (개념도)", xLabel: "노력", yLabel: "성능 수준", limitLabel: "기술의 한계", badge: "개념 그래프 · 수치 없음" },
+      phases: [
+        { name: "1단계", desc: "기술이 제대로 이해되지 않아\n성능이 천천히 향상된다" },
+        { name: "2단계", desc: "기술에 대한 이해가 늘면서\n성능 향상이 빨라진다" },
+        { name: "3단계", desc: "기술의 한계에 가까워지면\n성능 향상이 점점 늦춰진다" }
+      ],
+      lectureImg: { src: "LECTURE_IMG_32", caption: "강의자료 원본 · 그림 3.1 기술 성능의 S-curve", credit: LECTURE + " 32쪽" },
+      tip: "기술의 실제 한계가 어디인지 미리 알 수 있는 경우는 매우 드물다 (35쪽)",
+      sources: [{ label: "출처: " + LECTURE + ", 32쪽(그림 3.1)과 35쪽. 왼쪽 그래프는 같은 그림을 단계 설명용으로 다시 그린 것", url: "" }],
+      script: "기술의 성능이 어떻게 좋아지는지는 강의자료 32쪽의 S-곡선으로 설명할 수 있습니다. 가로축은 노력, 세로축은 성능 수준이고, 숫자가 없는 개념 그래프입니다.\n1단계에서는 기술이 아직 제대로 이해되지 않아 성능이 천천히 오릅니다. 2단계에서는 이해가 늘면서 성능 향상이 빨라집니다. 3단계에서는 기술의 한계에 가까워지면서 같은 노력을 들여도 향상 속도가 늦춰집니다.\n다만 35쪽에 나온 것처럼, 그 한계가 어디인지 미리 알기는 매우 어렵습니다.",
+      notes: "· 방향키 1·2·3번으로 단계가 강조된다.\n· 오른쪽 아래 작은 그림이 강의자료 원본이다."
+    },
+    {
+      id: "s5", type: "jump", duration: 50,
+      title: "단속적 기술과 새로운 S-곡선",
+      lead: "모든 기술이 한계에 도달하는 것은 아니다.\n새로운 불연속 기술로 대체될 수 있다",
+      chart: { oldLabel: "기존 기술", newLabel: "불연속 기술", xLabel: "노력 · 시간", yLabel: "성능", note: "초기에는 기존 기술보다 성능이 낮다" },
+      examples: [
+        { from: "탄소 복사", to: "사진 복사" },
+        { from: "비닐 레코드", to: "CD" },
+        { from: "마차", to: "자동차", note: "최초의 자동차는 마차보다 훨씬 느렸다" }
+      ],
+      insight: "신기술은 초기에 성과가 느리고 비용이 들기 때문에, 기업은 기존 기술에 계속 투자하는 쪽을 선호할 수 있다",
+      sources: [{ label: "출처: " + LECTURE + ", 33쪽 (예시와 설명은 강의자료 그대로)", url: "" }],
+      script: "그런데 33쪽에서 배운 것처럼, 모든 기술이 한계까지 가는 것은 아닙니다. 완전히 새로운 지식에 기반한 불연속 기술이 나타나 기존 기술을 대체할 수 있습니다. 탄소 복사가 사진 복사로, 비닐 레코드가 CD로 바뀐 것이 그 예입니다.\n재미있는 점은 새 기술이 처음에는 오히려 성능이 낮다는 것입니다. 최초의 자동차는 마차보다 훨씬 느렸습니다. 그래서 기업은 신기술로 바로 넘어가기를 꺼릴 수 있습니다. 이렇게 새 S-곡선이 얼마나 자주 나타나느냐가 기술주기의 길이와 이어집니다.",
+      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선이 아래에서 시작해 위로 올라간다.\n· 예시는 모두 강의자료 33쪽에 있는 것만 썼다."
+    },
+    {
+      id: "s6", type: "cycle", duration: 60,
+      title: "기술의 사이클 (Anderson & Tushman)",
+      lead: "배양기 → 지배적 디자인 → 점진적 개선, 그리고 다시 새 사이클",
+      nodes: [
+        { label: "단속적 기술의 출현", desc: "새로운 S-곡선의 시작", icon: "break" },
+        { label: "유동기 · 배양기", desc: "기술과 시장의 불확실성이 크고\n다양한 디자인을 실험", icon: "branch" },
+        { label: "지배적 디자인", desc: "시장 요구를 충족하는\n기능을 묶어서 제공", icon: "converge" },
+        { label: "구체기 · 점진적 개선", desc: "디자인과 제조 효율의\n점진적 개선에 집중", icon: "steps" }
+      ],
+      lectureImg: { src: "LECTURE_IMG_40", caption: "강의자료 원본 · 그림 3.11 기술의 사이클", credit: LECTURE + " 40쪽" },
+      findingsTitle: "Anderson & Tushman의 발견 (41쪽)",
+      findings: [
+        "지배적 디자인은 최첨단 기술이 아니었고, 시장의 요구를 충족하는 기능을 묶어서 제공했다",
+        "기업은 지배적 디자인과 관련된 역량 개발에 집중해야 한다",
+        "이 사이클은 기업이 단속적 기술을 인식하고 대응하는 데 어려움을 겪을 수 있는 이유를 부분적으로 설명한다"
+      ],
+      loopLabel: "결국 새로운 기술 불연속성으로 대체되며 다음 사이클이 시작된다 (39쪽)",
+      sources: [{ label: "출처: " + LECTURE + ", 39~41쪽 (그림 3.11 원본은 오른쪽 아래)", url: "" }],
+      script: "이제 기술의 사이클입니다. 39쪽에서 41쪽까지의 내용입니다.\n사이클은 단속적 기술의 출현으로 시작합니다. 그다음 유동기, 그림에서는 배양기라고 부르는 시기에는 기술과 시장의 불확실성이 크고 다양한 디자인이 실험됩니다.\n그러다 지배적 디자인이 선택됩니다. 41쪽에 따르면 지배적 디자인은 최첨단 기술이 아니라, 시장 요구를 충족하는 기능을 묶어서 제공한 디자인이었습니다.\n그 뒤 구체기에는 디자인과 제조 효율을 점진적으로 개선합니다. 그리고 결국 새로운 불연속 기술이 나타나면 다음 사이클이 시작됩니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타나고, 마지막에 아래 정리 영역이 나타난다.\n· '유동기=배양기', '구체기=점진적 개선의 시기'로 같은 단계라는 점을 짚는다."
+    },
+    {
+      id: "s7", type: "timeline", duration: 65,
+      title: "사례 1 · 삼성전자 반도체",
+      lead: "기술 개선의 흐름: 삼성 NAND 플래시 메모리",
+      chart: { title: "삼성 NAND 플래시 제품 용량 변화", xLabel: "연도", yLabel: "용량 (Gb, 로그 눈금)", legend: "NAND 플래시 제품 용량", unit: "Gb", scale: "log" },
+      points: [
+        { year: 1999, value: 1 }, { year: 2002, value: 2 }, { year: 2003, value: 4 },
+        { year: 2004, value: 8 }, { year: 2005, value: 16 }, { year: 2006, value: 32 }, { year: 2007, value: 64 }
+      ],
+      photo: { src: IMG_SAMSUNG_12, fallback: "none", caption: "삼성전자 1Gb(왼쪽)·2Gb(오른쪽) 낸드 플래시", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
+      bigLabel: "제품 용량 변화",
+      warn: "NAND 제품 용량 변화입니다 (단위 Gb, 기가비트).\n기술주기의 길이가 아닙니다.",
+      link: "수업 연결 · S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습",
+      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }],
+      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다.",
+      notes: "· 원문 표기는 Gb(기가비트). 1999년은 '1Gb 낸드 플래시 개발'로 적혀 있다.\n· 세로축은 로그 눈금이라 직선처럼 보이면 해마다 두 배라는 뜻이다."
+    },
+    {
+      id: "s8", type: "shift", duration: 45,
+      title: "사례 1 · 해석",
+      lead: "한계에 부딪힐 때마다 새로운 기술 방식으로 넘어갔다",
+      stages: [
+        { year: "기존 방식", name: "플로팅 게이트", text: "도체인 플로팅 게이트가\n데이터를 저장하던 방식" },
+        { year: "2006", name: "CTF 낸드", text: "플로팅 게이트 기술의 한계를 극복,\n세계 최초 40나노 32Gb 상용화" },
+        { year: "2013", name: "3D V낸드", text: "수직 구조로 미세화 기술의\n한계를 넘어 세계 최초 양산" }
+      ],
+      photo: { src: IMG_SAMSUNG_TECH, fallback: "none", caption: "플로팅 게이트 · CTF · 3D V낸드 기술 비교", credit: "그림: 삼성반도체 기술 블로그 © Samsung" },
+      insight: "발표자 해석 · 33쪽의 '새로운 불연속 기술로의 대체'처럼, 새 S-곡선이 짧은 간격으로 이어진 모습으로 볼 수 있다",
+      sources: [{ label: SRC_SAMSUNG + " (기술 설명과 연도는 원문 표현을 요약)", url: URL_SAMSUNG }],
+      script: "같은 블로그를 더 읽어 보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 '미세화 기술의 한계를 넘어선' 3D V낸드를 세계 최초로 양산했습니다.\n저희는 이것을 33쪽의 개념으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
+      notes: "· '한계를 극복', '한계를 넘어섰다'는 블로그 원문 표현이다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
+    },
+    {
+      id: "s9", type: "efe", duration: 70,
+      title: "사례 2 · 한미약품",
+      lead: "하나의 물질이 신약이 되기까지:\n한미약품 비만 신약 '에페'",
+      photo: { src: IMG_HANMI_EFE, fallback: "pharma", caption: "한미약품 비만 신약 '에페' 패키지", credit: "사진: 한미약품 보도자료 © Hanmi Pharm" },
+      facts: [
+        { k: "성분", v: "에페글레나타이드 (GLP-1 계열)" },
+        { k: "기반 기술", v: "자체 플랫폼 기술 '랩스커버리'" },
+        { k: "생산", v: "평택 바이오플랜트에서 원료부터 완제품까지" }
+      ],
+      path: [
+        { when: "먼저", what: "파트너사(사노피)가 당뇨병 치료제로 개발" },
+        { when: "이후", what: "권리가 한미약품으로 돌아옴, 비만 치료제로 개발을 이어감" },
+        { when: "2026.10.07", what: "국내 시판 허가 발표 · 국내 기업이 개발한 첫 GLP-1 비만 신약" }
+      ],
+      pipeline: "공식 파이프라인 페이지(2024.02 현재 표기)에서도 비만 · 대사를 첫 번째 질환군으로 소개",
+      insight: "발표자 해석 · 한 물질이 용도를 바꿔 가며 오랜 기간 개발되었다. 같은 플랫폼 기술을 계속 활용한 점은 29쪽의 핵심역량 강화 혁신과도 연결된다",
+      caveat: "한 기업, 한 제품의 사례로 제약산업 전체의 기술주기가 길다는 것을 입증할 수는 없습니다.",
+      sources: [{ label: SRC_EFE, url: URL_HANMI_EFE }, { label: "한미약품, 「혁신신약 파이프라인」(페이지 표기: 2024.02 현재)", url: URL_HANMI }],
+      script: "두 번째 사례는 한미약품입니다. 바로 오늘, 10월 7일에 한미약품이 비만 신약 '에페'의 시판 허가를 발표했습니다. 국내 기업이 개발한 첫 GLP-1 계열 비만 신약이라고 합니다.\n회사 보도자료를 보면 이 물질은 처음에 파트너사인 사노피가 당뇨병 치료제로 개발했고, 권리가 돌아온 뒤 한미약품이 비만 치료제로 개발을 이어 왔습니다. 그리고 회사의 자체 플랫폼 기술인 랩스커버리가 적용되었습니다.\n저희는 하나의 물질이 용도를 바꿔 가며 오랜 기간 개발되었다는 점에 주목했습니다. 또 같은 플랫폼 기술을 계속 활용했다는 점은 29쪽의 핵심역량 강화 혁신과도 연결됩니다. 다만 한 제품의 사례로 제약산업 전체를 증명할 수는 없습니다.",
+      notes: "· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다. 질문이 나오면 '수업 범위 밖이라 다루지 않았다'고 답한다.\n· 보도자료에는 사노피 개발 시작과 권리 반환 연도가 나오지 않아 연도를 쓰지 않았다.\n· 방향키를 누를 때마다 개발 경로가 하나씩 나타난다."
+    },
+    {
+      id: "s10", type: "factors", duration: 70,
+      title: "기술주기 길이에 영향을 주는 요인",
+      lead: "주기의 길이는 사이클의 각 단계가 얼마나 걸리느냐에 달려 있다",
+      badge: "수업 개념을 사례에 적용한 발표자 분석",
+      ring: ["단속적 기술의\n출현", "배양기 →\n지배적 디자인", "기술의 한계\n근접", "점진적 개선의\n시기"],
+      factors: [
+        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "33·39쪽 · 반도체: 새 방식이 짧은 간격으로 등장", icon: "break" },
+        { title: "지배적 디자인이 정해지기까지\n얼마나 걸리는가", link: "40·41쪽 · 배양기가 길수록 사이클도 길어짐", icon: "converge" },
+        { title: "기존 기술이 한계에\n얼마나 빨리 가까워지는가", link: "32·35쪽 · 시장·부품·보완 기술의 변화가 곡선 모양을 바꿈", icon: "ceiling" },
+        { title: "점진적 개선이\n얼마나 오래 이어지는가", link: "39쪽 · 제약: 한 물질의 개발이 오래 이어짐", icon: "steps" }
+      ],
+      strip: "S-곡선의 형태는 시장의 변화, 부품 기술의 변화, 보완 기술의 변화에 영향을 받는다 (35쪽)",
+      sources: [{ label: "개념 출처: " + LECTURE + ", 32~35쪽(S-곡선), 39~41쪽(기술의 사이클). 네 요인과 사례 연결은 발표자 분석", url: "" }],
+      script: "그렇다면 기술주기의 길이는 무엇이 정할까요? 여기서부터는 수업 개념을 사례에 적용한 저희 팀의 분석입니다.\n첫째, 새로운 단속적 기술이 얼마나 자주 나타나는가입니다. 반도체는 CTF, 3D 낸드처럼 새 방식이 짧은 간격으로 등장했습니다.\n둘째, 배양기를 거쳐 지배적 디자인이 정해지기까지 얼마나 걸리는가입니다. 이 시기가 길수록 사이클도 길어집니다.\n셋째, 기존 기술이 한계에 얼마나 빨리 가까워지는가입니다. 35쪽에 나온 것처럼 시장, 부품 기술, 보완 기술의 변화가 S-곡선의 모양을 바꿉니다.\n넷째, 점진적 개선이 얼마나 오래 이어지는가입니다. 제약은 에페처럼 한 물질의 개발이 오래 이어지는 모습을 보였습니다.",
+      notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 단계가 강조된다.\n· 사례 연결은 '보였다', '볼 수 있다' 정도로 말하고 단정하지 않는다."
+    },
+    {
+      id: "s11", type: "compare", duration: 45,
+      title: "우리 팀의 답과 자료의 한계",
+      lead: "반도체·IT는 짧은 편, 제약은 긴 편.\n단, 상대적 비교와 직접 측정은 구분해야 한다",
+      scaleTitle: "기술순환주기 (특허 인용 기반 지표) · 참고 논문의 상대 비교",
+      shortLabel: "짧은 편",
+      longLabel: "긴 편",
+      items: [
+        { label: "반도체 · IT", text: "상대적으로 짧은 편", pos: 0.22 },
+        { label: "제약", text: "상대적으로 긴 편", pos: 0.78 }
+      ],
+      caption: "특허 인용 기반 지표의 상대 비교이며, 강의자료의 기술 사이클 기간을 직접 측정한 수치가 아님. 위치는 순서만 나타냄.",
+      pavitt: "두 산업 모두 제2강 9쪽 Pavitt 분류의 '과학기반형'(컴퓨터, BIO)에 속한다. 같은 유형 안에서도 주기 길이가 다를 수 있다는 점이 흥미롭다",
+      limits: [
+        "논문의 기술순환주기는 특허 인용 기반 지표로, 수업의 기술 사이클과 측정 기준이 완전히 같지 않다",
+        "그래서 정확한 연수나 배수는 제시하지 않는다",
+        "삼성전자와 한미약품 사례는 산업 전체의 기술주기 길이를 직접 증명하지 않는다"
+      ],
+      sources: [{ label: "Lee, K. (2024). Economics of technology cycle time (TCT) and catch-up by latecomers. Journal of Evolutionary Economics, 34(2), 319–349. 산업 비교의 보조 자료", url: URL_LEE }, { label: "제2강 강의자료 9쪽, 산업별 기술혁신 패턴에 의한 산업 분류(Pavitt)", url: "" }],
+      script: "정리하면 저희 팀의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 참고 논문도 IT를 제약보다 기술순환주기가 상대적으로 짧은 사례로 제시합니다.\n다만 이 논문의 지표는 특허 인용을 바탕으로 해서 수업의 기술 사이클과 측정 기준이 같지 않습니다. 그래서 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
+      notes: "· 숫자를 묻는 질문이 나오면: 측정 기준이 달라 연수를 제시하지 않았다고 답한다.\n· 논문 본문의 IT·제약 비교 문장 쪽 번호를 발표 전에 확인해 둔다."
+    },
+    {
+      id: "s12", type: "conclusion", duration: 30,
+      title: "결론",
+      lead: "기술주기는 새 기술의 등장, 지배적 디자인, 점진적 개선의 흐름에 따라 달라진다.",
+      takeaways: [
+        "주기의 길이는 사이클의\n각 단계가 얼마나 걸리느냐에 달려 있다",
+        "반도체는 새 S-곡선이 빠르게 이어지고,\n제약은 한 기술의 개발이 오래 이어진다",
+        "제품 출시 주기와 기술주기는\n같은 말이 아니다"
+      ],
+      refs: [
+        { label: LECTURE + " 32~35쪽(기술의 S-Curves), 39~41쪽(기술의 사이클), 43쪽(토론 문제) · 제2강 강의자료 9쪽(Pavitt 분류)", url: "" },
+        { label: SRC_SAMSUNG, url: URL_SAMSUNG },
+        { label: SRC_EFE, url: URL_HANMI_EFE },
+        { label: "한미약품, 「혁신신약 파이프라인」, 2024.02 현재 기준", url: URL_HANMI },
+        { label: "Lee, K. (2024). Economics of technology cycle time (TCT) and catch-up by latecomers: Micro-, meso-, and macro-analyses and implications. Journal of Evolutionary Economics, 34(2), 319–349.", url: URL_LEE }
+      ],
+      sources: [],
+      script: "결론입니다. 기술주기의 길이는 단속적 기술이 얼마나 자주 나타나고, 지배적 디자인이 얼마나 빨리 정해지고, 점진적 개선이 얼마나 오래 이어지느냐에 달려 있습니다.\n반도체는 새로운 S-곡선이 빠르게 이어졌고, 제약은 한 기술의 개발이 오래 이어졌습니다. 그리고 제품 출시 주기와 기술주기는 같은 말이 아닙니다. 들어 주셔서 감사합니다.",
+      notes: "· 마지막 문장 후 2초 쉬고 질문을 받는다."
+    }
+  ]
+};
+
+/* ================= 유틸 ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const clone = o => JSON.parse(JSON.stringify(o));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const fmtTime = sec => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ":" + pad(sec % 60); };
+const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function getPath(obj, path) { return path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), obj); }
+function setPath(obj, path, val) {
+  const ks = path.split("."); let o = obj;
+  for (let i = 0; i < ks.length - 1; i++) { if (o[ks[i]] == null) o[ks[i]] = /^\d+$/.test(ks[i + 1]) ? [] : {}; o = o[ks[i]]; }
+  o[ks[ks.length - 1]] = val;
+}
+function safeUrl(u) { u = String(u || "").trim(); return /^(https?:|data:image\/|blob:)/i.test(u) ? u : ""; }
+let uidN = 0; const uid = () => "s" + Date.now().toString(36) + (uidN++);
+
+/* ================= 아이콘 ================= */
+const ICON = {
+  break: '<path d="M3 27c7 0 8-11 13-11"/><path d="M15 25c7 0 8-18 14-18"/>',
+  branch: '<path d="M6 28V17"/><path d="M6 17c0-6 10-4 10-11"/><path d="M6 17c0-6 20-3 20-11"/><path d="M6 17V6"/><circle cx="6" cy="5" r="1.6"/><circle cx="16" cy="5" r="1.6"/><circle cx="26" cy="5" r="1.6"/>',
+  converge: '<path d="M4 6l11 10M4 16h11M4 26l11-10"/><path d="M15 16h13"/><path d="M24 12l4 4-4 4"/>',
+  steps: '<path d="M4 27h6v-6h6v-6h6V9h6"/>',
+  ceiling: '<path d="M3 7h26" stroke-dasharray="3 3"/><path d="M3 28c9 0 10-17 26-18"/>',
+  info: '<circle cx="16" cy="16" r="12"/><path d="M16 14v8M16 10v.5"/>',
+  link: '<path d="M13 19l6-6"/><path d="M11 15l-3 3a4 4 0 0 0 6 6l3-3"/><path d="M21 17l3-3a4 4 0 0 0-6-6l-3 3"/>'
+};
+const icon = (name, cls = "ic") => `<svg class="${cls}" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name] || ""}</svg>`;
+const UI = {
+  up: '<path d="M6 15l6-6 6 6"/>', down: '<path d="M6 9l6 6 6-6"/>',
+  dup: '<rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M16 8V5H4v12h4"/>',
+  del: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>', plus: '<path d="M12 5v14M5 12h14"/>'
+};
+const uiIcon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${UI[n]}</svg>`;
+
+/* 자체 제작 산업 도식 */
+function chipArt() {
+  let p = "";
+  const L = 160, T = 70, S = 160; // die
+  for (let i = 0; i < 6; i++) {
+    const o = 28 + i * 21;
+    p += `<path d="M${L + o} ${T}v-18M${L + o} ${T + S}v18M${L} ${T + o}h-18M${L + S} ${T + o}h18"/>`;
+  }
+  const traces = [
+    `M${L + 28} ${T - 18}V30h-60v-10`, `M${L + 70} ${T - 18}V36h70V20`, `M${L + 133} ${T - 18}V44h120`,
+    `M${L - 18} ${T + 49}H90v60H40`, `M${L - 18} ${T + 112}H70v70`, `M${L + S + 18} ${T + 28}H400v-30h40`,
+    `M${L + S + 18} ${T + 91}H440`, `M${L + S + 18} ${T + 133}H380v80`, `M${L + 49} ${T + S + 18}V280h-90`, `M${L + 112} ${T + S + 18}V270h120`
+  ];
+  traces.forEach(d => p += `<path d="${d}" stroke-opacity=".55"/>`);
+  const vias = [[100, 20], [300, 20], [440, 44], [40, 179], [70, 252], [440, 68], [440, 161], [380, 283], [119, 280], [342, 270]];
+  vias.forEach(v => p += `<circle cx="${v[0]}" cy="${v[1]}" r="5" fill="var(--surface)"/>`);
+  return `<svg viewBox="0 0 480 300" fill="none" stroke="currentColor" stroke-width="2" aria-label="반도체 칩 도식(자체 제작)" role="img">${p}
+    <rect x="${L}" y="${T}" width="${S}" height="${S}" rx="10" fill="var(--bg)"/>
+    <rect x="${L + 26}" y="${T + 26}" width="${S - 52}" height="${S - 52}" rx="4" stroke="var(--accent)"/>
+    <path d="M${L + 26} ${T + 62}h${S - 52}M${L + 26} ${T + 98}h${S - 52}M${L + 62} ${T + 26}v${S - 52}M${L + 98} ${T + 26}v${S - 52}" stroke="var(--accent)" stroke-opacity=".5"/></svg>`;
+}
+function pharmaArt() {
+  const hex = (cx, cy, r) => { let d = ""; for (let i = 0; i < 6; i++) { const a = Math.PI / 3 * i + Math.PI / 6; d += (i ? "L" : "M") + (cx + r * Math.cos(a)).toFixed(1) + " " + (cy + r * Math.sin(a)).toFixed(1); } return `<path d="${d}Z"/>`; };
+  return `<svg viewBox="0 0 480 300" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="실험 플라스크와 분자 구조 도식(자체 제작)" role="img">
+    <path d="M196 40h64M206 40v78L148 236a14 14 0 0 0 12 20h136a14 14 0 0 0 12-20l-58-118V40"/>
+    <path d="M170 196h116" stroke="var(--accent)"/><path d="M164 214l-6 12a8 8 0 0 0 7 11h126a8 8 0 0 0 7-11l-6-12" stroke="var(--accent)" stroke-opacity=".5"/>
+    <circle cx="214" cy="170" r="5"/><circle cx="240" cy="150" r="3.5"/>
+    ${hex(356, 108, 30)}${hex(408, 138, 30)}<path d="M381 123l1 0"/><path d="M356 78V48M434 153l22 12M408 168v28" stroke-opacity=".7"/>
+    <circle cx="356" cy="44" r="5" fill="var(--surface)"/><circle cx="460" cy="168" r="5" fill="var(--surface)"/><circle cx="408" cy="200" r="5" fill="var(--surface)"/>
+    <g transform="rotate(-32 90 170)"><rect x="40" y="152" width="100" height="36" rx="18"/><path d="M90 152v36"/></g>
+  </svg>`;
+}
+const FALLBACK = { chip: chipArt, pharma: pharmaArt };
+
+/* ================= 상태 ================= */
+let deck, cur = 0, step = 0;
+const mode = { edit: false, present: false, script: false, notes: false, tab: "slide" };
+let storageOK = true;
+
+function validDeck(d) { return d && typeof d === "object" && Array.isArray(d.slides) && d.slides.length > 0 && d.slides.every(s => s && typeof s === "object" && s.type); }
+function load() {
+  try { const raw = localStorage.getItem(STORE_KEY); if (raw) { const d = JSON.parse(raw); if (validDeck(d)) return d; } }
+  catch (e) { storageOK = false; }
+  return clone(DEFAULT_DECK);
+}
+let saveTimer = null;
+function save() {
+  clearTimeout(saveTimer);
+  $("#saveState").textContent = "저장 중…";
+  saveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(deck));
+      const t = new Date();
+      $("#saveState").textContent = "자동 저장됨 · " + pad(t.getHours()) + ":" + pad(t.getMinutes()) + ":" + pad(t.getSeconds());
+    } catch (e) {
+      $("#saveState").textContent = "저장 안 됨";
+      toast("브라우저 저장 공간에 저장하지 못했습니다. 큰 이미지는 URL로 바꾸거나, JSON으로 내보내 보관하세요.");
+    }
+  }, 350);
+}
+let toastTimer;
+function toast(msg, ms = 4200) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, ms); }
+
+/* ================= 렌더링 ================= */
+const ed = (s, k, tag = "span", cls = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-k="${k}">${esc(getPath(s, k))}</${tag}>`;
+function steps(s) {
+  switch (s.type) {
+    case "flow": return Math.max(0, (s.steps || []).length - 1);
+    case "cycle": return (s.nodes || []).length;
+    case "scurve": return (s.phases || []).length;
+    case "factors": return (s.factors || []).length;
+    case "question": return (s.qs || []).length;
+    case "jump": return 1;
+    case "shift": return Math.max(0, (s.stages || []).length - 1);
+    case "efe": return Math.max(0, (s.path || []).length - 1);
+    default: return 0;
+  }
+}
+function head(s, i) {
+  return `<header class="s-head"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${s.lead != null ? ed(s, "lead", "h2", "lead") : ""}</header>`;
+}
+function foot(s, i) {
+  const src = (s.sources || []).filter(x => x && (x.label || x.url)).map(x => {
+    const u = safeUrl(x.url);
+    return `<span>${esc(x.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//, ""))}</a>` : ""}</span>`;
+  }).join("");
+  return `<footer class="s-foot"><div class="src">${src}</div><span class="pg">${pad(i + 1)} / ${pad(deck.slides.length)}</span></footer>`;
+}
+const COL = { break: "var(--c-coral)", branch: "var(--c-orange)", converge: "var(--c-violet)", steps: "var(--c-teal)", ceiling: "var(--c-blue)" };
+const PAL = ["var(--c-blue)", "var(--c-teal)", "var(--c-violet)", "var(--c-orange)", "var(--c-coral)", "var(--c-sky)"];
+const PHASE_COL = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
+const LECTURE_IMG = { LECTURE_IMG_32: "data:image/png;base64,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", LECTURE_IMG_40: "data:image/png;base64,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p1LkYYCtSqJ8y6Tzc9T+tBFKvUPTJNN8JVA8zxM8vumOlN3RExDt+QDe0YVRqJA8YpRNcTgk+f+RvFRBwdzmqn2JyOAxYBARkeEwKQjH7t/CMX/a4yVlH+Ywt/HGnT/7YtWQbqmU7th08ln6c2tkRL6maDPjR+Q40AvTu32Pf+b/oZrBe9VU/DO4NaYP2Ambkb+jTd188gFERG+xiRQZJDaRMj5sImXoREfqZ4gtVAFF8urYpENM8vfoNSxLlc9Ap+J3eJ0kFEgIegqv11YoqvMs5AmI8XHDazh8oFqYjHxGaV8XJ3i9DIaqm7kZrPI5oljljHbUjkWYxyMEW5XKgjVNxo1NpEhgHwwiHTBgGB8GDCKijGPAIIF9MIiIiIiIKMtiwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr0xUUjkZSKDUcaxpPKnu6eH8icRERERaafv6ybWYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd6YKCTyMpHBKONYUl4iIiIiIl24e3rIS++HNRhERERERKQ3rMEgIiIiIiK9YQ0GERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpCfB/DWhkJvxoMn8AAAAASUVORK5CYII=" };
+const resolveSrc = src => LECTURE_IMG[src] || src;
+function mixHex(stops, t) {
+  const seg = Math.min(stops.length - 2, Math.floor(t * (stops.length - 1)));
+  const lt = t * (stops.length - 1) - seg;
+  const h = x => [1, 3, 5].map(k => parseInt(x.slice(k, k + 2), 16));
+  const A = h(stops[seg]), B = h(stops[seg + 1]);
+  return "#" + A.map((v, k) => Math.round(v + (B[k] - v) * lt).toString(16).padStart(2, "0")).join("");
+}
+const rise = (i) => ` style="--i:${i}"`;
+function figure(s, key, cls = "", tag = "", color = "") {
+  const im = getPath(s, key) || {};
+  const u = safeUrl(resolveSrc(im.src));
+  const fb = FALLBACK[im.fallback] ? `<div class="fb">${FALLBACK[im.fallback]()}</div>` : "";
+  const media = u ? `<img src="${esc(u)}" alt="${esc(im.caption || "")}" referrerpolicy="no-referrer" onerror="var m=this.parentNode;m.classList.add('img-fail');if(!m.querySelector('.fb'))m.closest('figure').style.display='none'">` : "";
+  return `<figure class="fig ${cls}"><div class="media${u ? "" : " no-img"}">${media}${fb}${tag ? `<span class="chip-tag" style="--c:${color}">${esc(tag)}</span>` : ""}<button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></div>
+    <figcaption>${ed(s, key + ".caption")}${ed(s, key + ".credit", "span", "credit")}</figcaption></figure>`;
+}
+function lectureThumb(s, key) {
+  const im = getPath(s, key); if (!im) return "";
+  const u = safeUrl(resolveSrc(im.src)); if (!u) return "";
+  return `<figure class="lec-thumb"><img src="${esc(u)}" alt="${esc(im.caption)}"><figcaption>${ed(s, key + ".caption", "b")}${ed(s, key + ".credit")}</figcaption><button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></figure>`;
+}
+
+const R = {};
+R.cover = (s, i) => {
+  const cases = Array.isArray(s.cases) ? s.cases : [];
+  return `
+  <div class="cover">
+    <div class="cover-l">
+      <div class="eyebrow rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+      ${ed(s, "question", "h1", "cover-q rise").replace("<h1", `<h1 style="--i:1"`)}
+      <div class="cover-cases rise"${rise(2)}>${cases.map((c, k) => `<span class="tint" style="--c:${PAL[k % PAL.length]};color:${PAL[k % PAL.length]}" data-k="cases.${k}">${esc(c)}</span>`).join("")}</div>
+      <div class="cover-meta rise"${rise(3)}>${ed(s, "deckTitle", "div", "cover-title")}${ed(s, "subtitle", "div", "cover-sub")}${ed(s, "presenter", "div", "cover-by")}</div>
+    </div>
+    <div class="cover-r">
+      ${(s.images || []).map((im, k) => `<div class="rise" style="--i:${k + 1};display:flex;min-height:0">${figure(s, "images." + k, "", im.tag || "", PAL[k % PAL.length])}</div>`).join("")}
+      ${ed(s, "imageNote", "p", "cover-note")}
+    </div>
+  </div>`;
+};
+R.question = (s, i) => `<header class="s-head"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div></header>
+  <div class="s-body">
+    <blockquote class="quote rise"${rise(0)}>${ed(s, "quote", "p")}<cite>${ed(s, "quoteSrc")}</cite></blockquote>
+    <div class="qa">
+      ${(s.qs || []).map((q, k) => `<div class="qa-card hl-item rise" data-hl="${k + 1}" style="--i:${k + 1};--c:${[PAL[0], "var(--c-coral)", PAL[2]][k % 3]}">
+        <span class="qa-n">Q${k + 1}</span>${ed(s, `qs.${k}.q`, "span", "qa-q")}${ed(s, `qs.${k}.a`, "strong", "qa-a")}${ed(s, `qs.${k}.note`, "span", "qa-note")}</div>`).join("")}
+    </div>
+    <div class="q-bottom rise"${rise(4)}>
+      <span class="tag teal analysis">${icon("info")}${ed(s, "badge")}</span>
+      ${(s.roadmap || []).length ? `<ol class="roadmap">${s.roadmap.map((r, k) => `<li style="--c:${[PAL[0], "var(--c-coral)", PAL[2], PAL[1]][k % 4]}"><span class="rm-n" data-k="roadmap.${k}.n">${esc(r.n)}</span><b data-k="roadmap.${k}.t">${esc(r.t)}</b><span data-k="roadmap.${k}.d">${esc(r.d)}</span></li>`).join("")}</ol>` : ""}
+    </div>
+  </div>${foot(s, i)}`;
+const nodeHTML = (s, base, n, k, numbered) => {
+  const c = COL[n.icon] || PAL[k % PAL.length];
+  return `<div class="node frag${/지배적/.test(n.label) ? " key" : ""}" data-f="${k}" style="--c:${c}">
+      ${icon(n.icon || "steps")}${numbered ? `<span class="nk">STEP ${pad(k + 1)}</span>` : ""}
+      ${ed(s, `${base}.${k}.label`, "div", "nl")}${ed(s, `${base}.${k}.desc`, "div", "nd")}</div>`;
+};
+R.flow = (s, i) => `${head(s, i)}<div class="s-body">
+  <div class="flow" style="--n:${(s.steps || []).length}">
+    ${(s.steps || []).map((n, k) => nodeHTML(s, "steps", n, k, true)).join("")}
+  </div>
+  <div class="versus rise"${rise(2)}>
+    <div class="v">${ed(s, "versus.0.label", "span", "vl")}${ed(s, "versus.0.text", "span", "vt")}</div>
+    <div class="neq">≠${ed(s, "versusNote", "small")}</div>
+    <div class="v key">${ed(s, "versus.1.label", "span", "vl")}${ed(s, "versus.1.text", "span", "vt")}</div>
+  </div></div>${foot(s, i)}`;
+R.cycle = (s, i) => {
+  const n = (s.nodes || []).length || 1;
+  return `${head(s, i)}<div class="s-body">
+  <div class="flow compact" style="--n:${n}">
+    ${(s.nodes || []).map((nd, k) => nodeHTML(s, "nodes", nd, k, false)).join("")}
+  </div>
+  <div class="loop-line frag" data-f="${n}"><svg viewBox="0 0 1408 54" preserveAspectRatio="none" aria-hidden="true"><path class="flowing" d="M1230 2 V26 Q1230 44 1212 44 H196 Q178 44 178 26 V10" fill="none" style="stroke:var(--c-coral)" stroke-width="3" stroke-dasharray="9 9" vector-effect="non-scaling-stroke"/><path d="M170 14 L178 2 L186 14" fill="none" style="stroke:var(--c-coral)" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>${ed(s, "loopLabel", "span", "loop-label")}</div>
+  <div class="cycle-bottom frag" data-f="${n}">
+    <div class="findings"><b data-k="findingsTitle">${esc(s.findingsTitle)}</b><ul>${(s.findings || []).map((f, k) => `<li>${ed(s, `findings.${k}`)}</li>`).join("")}</ul></div>
+    ${lectureThumb(s, "lectureImg")}
+  </div></div>${foot(s, i)}`;
+};
+function sPath(f, px, py, a, b, n = 40) { let d = ""; for (let k = 0; k <= n; k++) { const x = a + (b - a) * k / n; d += (k ? "L" : "M") + px(x).toFixed(1) + " " + py(x).toFixed(1); } return d; }
+R.scurve = (s, i) => {
+  const W = 900, H = 520, L = 70, B = 450, Rr = 870, T = 40;
+  const f = x => 1 / (1 + Math.exp(-11 * (x - 0.52)));
+  const f0 = f(0), f1 = f(1);
+  const px = x => L + x * (Rr - L), py = x => B - ((f(x) - f0) / (f1 - f0)) * (B - T - 40) - 4;
+  const cuts = [0, 0.34, 0.68, 1];
+  const ph = (s.phases || []).slice(0, 3);
+  const c = s.chart || {};
+  const gid = "sg-" + esc(s.id);
+  const full = sPath(f, px, py, 0, 1);
+  return `${head(s, i)}<div class="s-body"><div class="split">
+    <div class="chart-box rise"${rise(0)}>
+      <div class="chart-title">${ed(s, "chart.title")}<span class="tag blue">${icon("info")}${ed(s, "chart.badge")}</span></div>
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.title)}: 수치 없는 개념 그래프">
+        <defs><linearGradient id="${gid}" x1="${L}" x2="${Rr}" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0" style="stop-color:${PHASE_COL[0]}"/><stop offset=".5" style="stop-color:${PHASE_COL[1]}"/><stop offset="1" style="stop-color:${PHASE_COL[2]}"/></linearGradient></defs>
+        ${ph.map((p, k) => `<rect class="band hl-item" data-hl="${k + 1}" x="${px(cuts[k])}" y="${T}" width="${px(cuts[k + 1]) - px(cuts[k])}" height="${B - T}" rx="10" style="fill:${PHASE_COL[k]}"/>
+          <text class="band-label" x="${(px(cuts[k]) + px(cuts[k + 1])) / 2}" y="${B + 34}" text-anchor="middle" style="fill:${PHASE_COL[k]}">${esc(p.name)}</text>`).join("")}
+        <line class="limit" x1="${L}" x2="${Rr}" y1="${T + 30}" y2="${T + 30}"/>
+        <text class="limit-label" x="${Rr}" y="${T + 16}" text-anchor="end">${esc(c.limitLabel)}</text>
+        <path class="curve draw" pathLength="1" d="${full}" style="--dur:1.6s;stroke:url(#${gid})"/>
+        ${ph.map((p, k) => `<path class="seg-hl hl-item" data-hl="${k + 1}" d="${sPath(f, px, py, cuts[k], cuts[k + 1])}" style="stroke:${PHASE_COL[k]}"/>`).join("")}
+        <circle class="traveler" r="11" style="offset-path:path('${full}')"/>
+        <path class="axis" d="M${L} ${T - 10}V${B}H${Rr + 10}"/>
+        <path class="axis" d="M${L - 7} ${T - 2}L${L} ${T - 14}L${L + 7} ${T - 2}M${Rr + 2} ${B - 7}L${Rr + 14} ${B}L${Rr + 2} ${B + 7}"/>
+        <text class="axis-label" x="${(L + Rr) / 2}" y="${H - 2}" text-anchor="middle">${esc(c.xLabel)}</text>
+        <text class="axis-label" transform="translate(${L - 24} ${(T + B) / 2}) rotate(-90)" text-anchor="middle">${esc(c.yLabel)}</text>
+      </svg>
+      <div class="lec-overlay">${lectureThumb(s, "lectureImg")}</div>
+    </div>
+    <div class="side">
+      <ol class="phase-list">${ph.map((p, k) => `<li class="hl-item rise" data-hl="${k + 1}" style="--i:${k + 1};--c:${PHASE_COL[k]}"><span class="pn">${pad(k + 1)}</span>${ed(s, `phases.${k}.name`, "span", "pt")}${ed(s, `phases.${k}.desc`, "span", "pd")}</li>`).join("")}</ol>
+      ${ed(s, "tip", "p", "tip rise").replace("<p", `<p style="--i:4"`)}
+    </div>
+  </div></div>${foot(s, i)}`;
+};
+R.jump = (s, i) => {
+  const W = 900, H = 520, L = 70, B = 450, Rr = 870, T = 30;
+  const c = s.chart || {};
+  const lg = (x, m, k) => 1 / (1 + Math.exp(-k * (x - m)));
+  const px = x => L + x * (Rr - L);
+  const oldY = x => B - 20 - lg(x, 0.3, 14) * 200;
+  const newY = x => B - 8 - lg(x, 0.72, 13) * 360;
+  const oldD = sPath(null, px, oldY, 0, 0.75), newD = sPath(null, px, newY, 0.38, 1);
+  const cross = 0.62;
+  return `${head(s, i)}<div class="s-body"><div class="split">
+    <div class="chart-box rise"${rise(0)}>
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="기존 기술과 불연속 기술의 두 S-곡선 개념도">
+        <path class="axis" d="M${L} ${T - 10}V${B}H${Rr + 10}"/>
+        <path class="axis" d="M${L - 7} ${T - 2}L${L} ${T - 14}L${L + 7} ${T - 2}M${Rr + 2} ${B - 7}L${Rr + 14} ${B}L${Rr + 2} ${B + 7}"/>
+        <g class="frag" data-f="0"><path class="curve draw" pathLength="1" d="${oldD}" style="--dur:1.2s;stroke:var(--c-orange)"/>
+          <text x="${px(0.75) + 12}" y="${oldY(0.75) + 6}" class="curve-label" style="fill:var(--c-orange)">${esc(c.oldLabel)}</text>
+          <line class="limit" x1="${px(0.45)}" x2="${px(0.8)}" y1="${oldY(0.75) - 14}" y2="${oldY(0.75) - 14}" style="stroke:var(--c-orange)"/></g>
+        <g class="frag" data-f="1"><path class="curve draw" pathLength="1" d="${newD}" style="--dur:1.4s;stroke:var(--c-violet)"/>
+          <text x="${px(1) - 4}" y="${newY(1) - 18}" class="curve-label" text-anchor="end" style="fill:var(--c-violet)">${esc(c.newLabel)}</text>
+          <circle cx="${px(0.38)}" cy="${newY(0.38)}" r="9" style="fill:var(--c-violet)"/>
+          <path d="M${px(0.38) + 14} ${newY(0.38) + 4} q60 40 150 34" fill="none" style="stroke:var(--ink-3)" stroke-width="2" stroke-dasharray="4 5"/>
+          <text x="${px(0.38) + 170}" y="${newY(0.38) + 46}" class="note-label">${esc(c.note)}</text>
+          <circle class="pulse" cx="${px(cross)}" cy="${newY(cross)}" r="14"/></g>
+        <text class="axis-label" x="${(L + Rr) / 2}" y="${H - 2}" text-anchor="middle">${esc(c.xLabel)}</text>
+        <text class="axis-label" transform="translate(${L - 24} ${(T + B) / 2}) rotate(-90)" text-anchor="middle">${esc(c.yLabel)}</text>
+      </svg>
+    </div>
+    <div class="side">
+      <div class="ex-title rise"${rise(1)}>강의자료 33쪽의 예</div>
+      <ul class="examples">${(s.examples || []).map((e, k) => `<li class="rise" style="--i:${k + 2}"><span class="ex-from" data-k="examples.${k}.from">${esc(e.from)}</span><span class="ex-arrow">→</span><span class="ex-to" data-k="examples.${k}.to">${esc(e.to)}</span>${e.note != null ? `<small data-k="examples.${k}.note">${esc(e.note)}</small>` : ""}</li>`).join("")}</ul>
+      <div class="caveat soft rise"${rise(5)}>${icon("info")}${ed(s, "insight")}</div>
+    </div>
+  </div></div>${foot(s, i)}`;
+};
+R.timeline = (s, i) => {
+  const c = s.chart || {};
+  const pts = (s.points || []).map(p => ({ year: +p.year, value: +p.value })).filter(p => isFinite(p.year) && isFinite(p.value) && p.value > 0).sort((a, b) => a.year - b.year);
+  const W = 940, H = 520, L = 84, Rr = 910, T = 56, B = 440;
+  const STOPS = ["#12A594", "#1AA3E8", "#2F6BFF", "#7B5CFA"];
+  const gid = "tg-" + esc(s.id);
+  let svg = "";
+  if (pts.length) {
+    const log = c.scale !== "linear";
+    const y0 = pts[0].year, y1 = pts[pts.length - 1].year;
+    const xs = y => L + 30 + ((y - y0) / Math.max(1, y1 - y0)) * (Rr - L - 60);
+    const vMax = Math.max(...pts.map(p => p.value)), vMin = Math.min(...pts.map(p => p.value));
+    let yt = [], ys;
+    if (log) {
+      const a = Math.floor(Math.log2(vMin)), b = Math.ceil(Math.log2(vMax));
+      const span = Math.max(1, b - a);
+      ys = v => B - ((Math.log2(v) - a) / span) * (B - T);
+      const every = span > 8 ? 2 : 1;
+      for (let e = a; e <= b; e += every) yt.push(Math.pow(2, e));
+    } else {
+      const raw = vMax / 4, mag = Math.pow(10, Math.floor(Math.log10(raw))), stepV = [1, 2, 2.5, 5, 10].map(m => m * mag).find(m => m >= raw);
+      const top = Math.ceil(vMax / stepV) * stepV;
+      ys = v => B - (v / top) * (B - T);
+      for (let v = 0; v <= top + 1e-9; v += stepV) yt.push(+v.toFixed(6));
+    }
+    const fmt = v => (v >= 1 ? (+v.toFixed(2)).toLocaleString("ko-KR") : String(+v.toPrecision(3)));
+    const d = pts.map((p, k) => (k ? "L" : "M") + xs(p.year).toFixed(1) + " " + ys(p.value).toFixed(1)).join("");
+    const area = d + `L${xs(y1).toFixed(1)} ${B}L${xs(y0).toFixed(1)} ${B}Z`;
+    const dur = 1.2 + pts.length * 0.12;
+    svg += `<defs><linearGradient id="${gid}" x1="${xs(y0)}" x2="${xs(y1)}" y1="0" y2="0" gradientUnits="userSpaceOnUse">${STOPS.map((c2, k) => `<stop offset="${k / (STOPS.length - 1)}" stop-color="${c2}"/>`).join("")}</linearGradient>
+      <linearGradient id="${gid}a" x1="0" x2="0" y1="${T}" y2="${B}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2F6BFF" stop-opacity=".18"/><stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/></linearGradient></defs>`;
+    svg += yt.map(v => `<line class="grid-line" x1="${L}" x2="${Rr}" y1="${ys(v)}" y2="${ys(v)}"/><text class="tick" x="${L - 12}" y="${ys(v) + 6}" text-anchor="end">${fmt(v)}</text>`).join("");
+    svg += `<path class="area-fill" d="${area}" fill="url(#${gid}a)"/>`;
+    svg += `<path class="axis" d="M${L} ${T - 16}V${B}H${Rr}"/>`;
+    const years = []; for (let y = y0; y <= y1; y++) years.push(y);
+    const showAll = years.length <= 12;
+    svg += years.map(y => { const has = pts.some(p => p.year === y); if (!has && !showAll) return ""; return `<text class="tick" x="${xs(y)}" y="${B + 30}" text-anchor="middle" ${has ? "" : 'opacity=".4"'}>${y}</text>`; }).join("");
+    svg += `<path class="curve draw" pathLength="1" d="${d}" style="--dur:${dur}s;stroke:url(#${gid})"/>`;
+    svg += pts.map((p, k) => {
+      const t = ((xs(p.year) - xs(y0)) / Math.max(1, xs(y1) - xs(y0))) * dur;
+      const col = mixHex(STOPS, pts.length > 1 ? k / (pts.length - 1) : 0);
+      const label = fmt(p.value), w = 26 + label.length * 14, x = xs(p.year), y = ys(p.value);
+      return `<circle class="pt-dot" cx="${x}" cy="${y}" r="10" fill="${col}" style="--d:${t.toFixed(2)}s"/>
+        <rect class="pt-bg" x="${x - w / 2}" y="${y - 52}" width="${w}" height="32" rx="16" fill="${col}" style="--d:${t.toFixed(2)}s"/>
+        <text class="pt-val" x="${x}" y="${y - 29}" fill="#fff" style="--d:${t.toFixed(2)}s" data-count="${p.value}" data-delay="${Math.round(t * 1000)}">${label}</text>`;
+    }).join("");
+    svg += `<text class="axis-label" x="${(L + Rr) / 2}" y="${H - 6}" text-anchor="middle">${esc(c.xLabel)}</text>`;
+    svg += `<text class="axis-label" x="${L - 4}" y="${T - 28}" text-anchor="start">${esc(c.yLabel)}</text>`;
+  } else {
+    svg = `<text class="axis-label" x="${W / 2}" y="${H / 2}" text-anchor="middle">편집 패널에서 데이터를 추가하세요</text>`;
+  }
+  const first = pts[0], last = pts[pts.length - 1];
+  const unit = esc(c.unit || "");
+  const hasPhoto = s.photo && (safeUrl(s.photo.src) || FALLBACK[s.photo.fallback]);
+  return `${head(s, i)}<div class="s-body"><div class="split">
+    <div class="chart-box rise"${rise(0)}>
+      <div class="chart-title">${ed(s, "chart.title")}<span class="legend"><i></i>${esc(c.legend)} (${unit})</span></div>
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.title)}">${svg}</svg>
+    </div>
+    <div class="side">
+      ${first ? `<div class="big-num rise"${rise(1)}><span class="bn-label">${ed(s, "bigLabel")} · ${first.year}–${last.year}</span>
+        <span class="bn"><span class="from">${first.value}</span><span class="arrow">→</span><span class="to" data-count="${last.value}" data-delay="200">${last.value}</span><small>${unit}</small></span></div>` : ""}
+      <div class="tag warn rise"${rise(2)}>${icon("info")}${ed(s, "warn")}</div>
+      <div class="tag teal rise"${rise(3)}>${icon("link")}${ed(s, "link")}</div>
+      ${hasPhoto ? `<div class="rise" style="--i:4">${figure(s, "photo", "mini-photo")}</div>` : ""}
+    </div>
+  </div></div>${foot(s, i)}`;
+};
+R.shift = (s, i) => {
+  const st = s.stages || [];
+  const cols = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
+  return `${head(s, i)}<div class="s-body"><div class="shift">
+    <div class="stairs">
+      ${st.map((x, k) => `<div class="stair frag" data-f="${k}" style="--c:${cols[k % cols.length]};--k:${k};--n:${st.length}">
+        <span class="st-year" data-k="stages.${k}.year">${esc(x.year)}</span>
+        <span class="st-name" data-k="stages.${k}.name">${esc(x.name)}</span>
+        <span class="st-text" data-k="stages.${k}.text">${esc(x.text)}</span>
+        <svg class="st-curve" viewBox="0 0 200 90" aria-hidden="true"><path class="curve draw" pathLength="1" d="M4 84 C70 84 70 8 196 6" style="--dur:.9s;stroke:${cols[k % cols.length]};stroke-width:5"/></svg>
+      </div>`).join("")}
+    </div>
+    <div class="shift-side">
+      ${figure(s, "photo", "shift-photo")}
+      <div class="tag teal frag" data-f="${Math.max(0, st.length - 1)}">${icon("info")}${ed(s, "insight")}</div>
+    </div>
+  </div></div>${foot(s, i)}`;
+};
+R.efe = (s, i) => `${head(s, i)}<div class="s-body"><div class="efe">
+    <div class="efe-l rise"${rise(0)}>
+      ${figure(s, "photo", "efe-photo", "2026.10.07 시판 허가 발표", "var(--c-teal)")}
+      <dl class="facts">${(s.facts || []).map((f, k) => `<div><dt data-k="facts.${k}.k">${esc(f.k)}</dt><dd data-k="facts.${k}.v">${esc(f.v)}</dd></div>`).join("")}</dl>
+    </div>
+    <div class="efe-r">
+      <ol class="path">${(s.path || []).map((p, k) => `<li class="frag" data-f="${k}" style="--c:${["var(--c-orange)", "var(--c-violet)", "var(--c-teal)"][k % 3]}"><span class="p-when" data-k="path.${k}.when">${esc(p.when)}</span><span class="p-what" data-k="path.${k}.what">${esc(p.what)}</span></li>`).join("")}</ol>
+      ${ed(s, "pipeline", "p", "pipe-note rise").replace("<p", `<p style="--i:3"`)}
+      <div class="tag teal rise"${rise(4)}>${icon("link")}${ed(s, "insight")}</div>
+      <div class="caveat rise"${rise(5)}>${icon("info")}${ed(s, "caveat")}</div>
+    </div>
+  </div></div>${foot(s, i)}`;
+R.case = (s, i) => R.text(s, i);
+R.factors = (s, i) => {
+  const fs = s.factors || [];
+  const ring = s.ring || [];
+  const cx = 210, cy = 210, r = 150;
+  const ang = [-135, -45, 135, 45];
+  const cyc = [0, 1, 3, 2];
+  const pos = ang.map(a => [cx + r * Math.cos(a * Math.PI / 180), cy + r * Math.sin(a * Math.PI / 180)]);
+  const colOf = k => COL[(fs[k] || {}).icon] || PAL[k % PAL.length];
+  const text = (t, x) => String(t || "").split("\n").map((ln, k) => `<tspan x="${x}" dy="${k ? 24 : 0}">${esc(ln)}</tspan>`).join("");
+  let arcs = "";
+  for (let k = 0; k < 4; k++) {
+    const a = ang[cyc[k]] + 16, b = ang[cyc[(k + 1) % 4]] - 16;
+    const aa = a * Math.PI / 180, bb = (b < a ? b + 360 : b) * Math.PI / 180;
+    arcs += `<path class="ring-arc flowing" d="M${cx + r * Math.cos(aa)} ${cy + r * Math.sin(aa)} A${r} ${r} 0 0 1 ${cx + r * Math.cos(bb)} ${cy + r * Math.sin(bb)}" stroke-dasharray="6 6" marker-end="url(#arr-${esc(s.id)})"/>`;
+  }
+  const ringSvg = `<svg viewBox="-70 -50 560 520" aria-label="기술 사이클 순환도">
+    <defs><marker id="arr-${esc(s.id)}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--line-2)"/></marker></defs>
+    <circle cx="${cx}" cy="${cy}" r="92" style="fill:var(--surface)"/>
+    ${arcs}
+    ${pos.map((p, k) => `<circle class="ring-node hl-item" data-hl="${k + 1}" cx="${p[0]}" cy="${p[1]}" r="16" style="fill:${colOf(k)}"/>`).join("")}
+    ${pos.map((p, k) => { const up = p[1] < cy; return `<text class="ring-text hl-item" data-hl="${k + 1}" x="${p[0]}" y="${up ? p[1] - 60 : p[1] + 52}">${text(ring[k], p[0])}</text>`; }).join("")}
+    <text x="${cx}" y="${cy - 2}" text-anchor="middle" style="fill:var(--ink)" font-size="22" font-weight="800">기술 사이클</text>
+    <text x="${cx}" y="${cy + 26}" text-anchor="middle" style="fill:var(--ink-3)" font-size="18" font-weight="600">+ S-곡선</text>
+  </svg>`;
+  const card = (k, side) => fs[k] ? `<div class="factor frag hl-item" data-f="${k + 1}" data-hl="${k + 1}" style="--c:${colOf(k)};grid-column:${side === "left" ? 1 : 3};grid-row:${k < 2 ? 1 : 2}">
+      <div class="fh">${icon(fs[k].icon || "steps")}<span class="fn">요인 ${k + 1}</span></div>
+      ${ed(s, `factors.${k}.title`, "div", "ft")}${ed(s, `factors.${k}.link`, "div", "fl")}</div>` : "";
+  return `<header class="s-head" style="margin-bottom:18px"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${ed(s, "lead", "h2", "lead lead-sm")}
+      <span class="tag teal analysis">${icon("info")}${ed(s, "badge")}</span></header>
+    <div class="s-body"><div class="factors">
+      ${card(0, "left")}${card(1, "right")}${card(2, "left")}${card(3, "right")}
+      <div class="ring rise"${rise(0)}>${ringSvg}</div>
+    </div>
+    <div class="strip rise"${rise(2)}>${icon("ceiling")}${ed(s, "strip")}</div></div>${foot(s, i)}`;
+};
+R.compare = (s, i) => `${head(s, i)}<div class="s-body">
+    ${ed(s, "scaleTitle", "div", "scale-title")}
+    <div class="scale">
+      <div class="scale-line"></div>
+      ${ed(s, "shortLabel", "span", "scale-end")}${ed(s, "longLabel", "span", "scale-end r")}
+      ${(s.items || []).map((it, k) => `<div class="marker rise" style="--i:${k + 1};--c:${[PAL[0], "var(--c-coral)"][k % 2]};left:${Math.min(90, Math.max(10, (+it.pos || 0) * 100))}%">
+        <div class="mk-box">${ed(s, `items.${k}.label`, "span", "mk-l")}${ed(s, `items.${k}.text`, "span", "mk-t")}</div><span class="mk-pin"></span></div>`).join("")}
+    </div>
+    ${ed(s, "caption", "p", "scale-cap")}
+    ${s.pavitt ? `<div class="tag blue rise" style="--i:3;margin-top:10px">${icon("link")}${ed(s, "pavitt")}</div>` : ""}
+    <ul class="limits">${(s.limits || []).map((l, k) => `<li class="rise" style="--i:${k + 4}"><b>한계 ${pad(k + 1)}</b>${ed(s, `limits.${k}`)}</li>`).join("")}</ul>
+  </div>${foot(s, i)}`;
+R.conclusion = (s, i) => `<div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+  <div class="concl">
+    ${ed(s, "lead", "h2", "statement rise").replace("<h2", `<h2 style="--i:0"`)}
+    <ul class="takeaways" style="--n:${(s.takeaways || []).length}">${(s.takeaways || []).map((t, k) => `<li class="rise" style="--i:${k + 1};--c:${[PAL[0], PAL[2], "var(--c-coral)", PAL[1]][k % 4]}"><b>${pad(k + 1)}</b>${ed(s, `takeaways.${k}`)}</li>`).join("")}</ul>
+    <div class="refs"><span class="rh">참고문헌</span>${(s.refs || []).map(r => { const u = safeUrl(r.url); return `<span>${esc(r.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//, ""))}</a>` : ""}</span>`; }).join("")}</div>
+  </div>`;
+R.text = (s, i) => `${head(s, i)}<div class="s-body" style="display:grid;grid-template-columns:${safeUrl((s.image || {}).src) ? "minmax(0,1.1fr) minmax(0,1fr)" : "1fr"};gap:56px">
+    <ul class="bullets">${(s.bullets || []).map((b, k) => `<li class="rise" style="--i:${k}">${ed(s, `bullets.${k}`)}</li>`).join("")}</ul>
+    ${safeUrl((s.image || {}).src) ? figure(s, "image") : `<div class="edit-only" style="align-self:start"><button class="img-edit" data-imgedit="image" style="position:static;display:inline-flex">이미지 넣기</button></div>`}
+  </div>${foot(s, i)}`;
+
+function slideHTML(s, i) {
+  const fn = R[s.type] || R.text;
+  return `<section class="slide" data-sid="${esc(s.id)}" aria-label="${i + 1}번 슬라이드">${fn(s, i)}</section>`;
+}
+
+const stage = $("#stage");
+function renderAll() {
+  stage.innerHTML = deck.slides.map(slideHTML).join("");
+  applyEditable();
+  show(cur, step, { instant: true });
+  $("#brandTitle").textContent = (deck.meta && deck.meta.deckTitle) || "발표";
+}
+function renderSlide(id) {
+  const i = deck.slides.findIndex(s => s.id === id);
+  const old = stage.querySelector(`.slide[data-sid="${CSS.escape(id)}"]`);
+  if (i < 0 || !old) return renderAll();
+  const tmp = document.createElement("div"); tmp.innerHTML = slideHTML(deck.slides[i], i);
+  const el = tmp.firstElementChild; old.replaceWith(el);
+  applyEditable(el);
+  if (i === cur) { el.classList.add("is-active"); applyStep(el); }
+}
+function applyEditable(root = stage) {
+  $$("[data-k]", root).forEach(el => {
+    if (mode.edit) {
+      el.contentEditable = "plaintext-only";
+      if (el.contentEditable !== "plaintext-only") el.contentEditable = "true";
+      el.spellcheck = false;
+    } else el.removeAttribute("contenteditable");
+  });
+}
+
+/* ================= 이동·단계 ================= */
+function slideEl(i) { return stage.children[i]; }
+function applyStep(el) {
+  const s = deck.slides[cur];
+  const showAll = mode.edit;
+  el.classList.toggle("show-all", showAll);
+  $$(".frag", el).forEach(f => f.classList.toggle("on", showAll || +f.dataset.f <= step));
+  const hlOn = !showAll && step > 0 && ["scurve", "factors", "question"].includes(s.type);
+  el.classList.toggle("has-hl", hlOn);
+  $$(".hl-item", el).forEach(h => h.classList.toggle("hl", hlOn && +h.dataset.hl === step));
+  updateChrome();
+}
+function runCounts(el) {
+  $$("[data-count]", el).forEach(n => {
+    const target = +n.dataset.count, delay = +n.dataset.delay || 0;
+    const fmt = v => target >= 1 ? Math.round(v).toLocaleString("ko-KR") : v.toFixed(2);
+    if (reduceMotion() || mode.edit || !isFinite(target)) { n.textContent = fmt(target); return; }
+    n.textContent = fmt(0);
+    const dur = 700, t0 = performance.now() + delay;
+    const tick = now => {
+      const t = Math.min(1, Math.max(0, (now - t0) / dur));
+      n.textContent = fmt(target * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+function show(i, st = 0, opt = {}) {
+  const n = deck.slides.length;
+  i = Math.max(0, Math.min(n - 1, i));
+  const prevI = cur;
+  cur = i;
+  step = st === "end" ? steps(deck.slides[i]) : Math.max(0, Math.min(steps(deck.slides[i]), st));
+  $$(".slide", stage).forEach((el, k) => {
+    el.classList.toggle("from-left", k < i);
+    if (k !== i) el.classList.remove("is-active", "play");
+  });
+  const el = slideEl(i);
+  if (!el) return;
+  const entering = !el.classList.contains("is-active") || opt.instant;
+  el.classList.add("is-active");
+  applyStep(el);
+  if (entering && !mode.edit && !reduceMotion()) { el.classList.remove("play"); void el.offsetWidth; el.classList.add("play"); runCounts(el); }
+  else if (entering) { el.classList.remove("play"); runCounts(el); }
+  try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
+  if (mode.edit && (prevI !== i || opt.instant)) renderEditor();
+  renderNotes();
+}
+function next() { const s = deck.slides[cur]; if (!mode.edit && step < steps(s)) { step++; applyStep(slideEl(cur)); } else if (cur < deck.slides.length - 1) show(cur + 1, 0); }
+function prev() { if (!mode.edit && step > 0) { step--; applyStep(slideEl(cur)); } else if (cur > 0) show(cur - 1, mode.edit ? 0 : "end"); }
+
+function updateChrome() {
+  const n = deck.slides.length, s = deck.slides[cur];
+  $("#counter").innerHTML = `<b>${pad(cur + 1)}</b> / ${pad(n)}`;
+  $("#prev").disabled = cur === 0 && step === 0;
+  $("#next").disabled = cur === n - 1 && step >= steps(s);
+  const total = deck.slides.reduce((a, x) => a + (+x.duration || 0), 0);
+  const before = deck.slides.slice(0, cur).reduce((a, x) => a + (+x.duration || 0), 0);
+  const prog = $("#progress");
+  if (prog.children.length !== n) prog.innerHTML = deck.slides.map((_, k) => `<span class="seg" data-go="${k}" title="${k + 1}번 슬라이드로 이동"><i></i></span>`).join("");
+  deck.slides.forEach((x, k) => {
+    const seg = prog.children[k];
+    seg.style.flexGrow = Math.max(1, +x.duration || 1);
+    const st = steps(x);
+    const frac = k < cur ? 1 : k > cur ? 0 : (st ? (step + 1) / (st + 1) : 1);
+    seg.firstElementChild.style.width = (frac * 100) + "%";
+  });
+  const pct = total ? Math.round(((before + (+s.duration || 0) * (steps(s) ? (step + 1) / (steps(s) + 1) : 1)) / total) * 100) : 0;
+  prog.setAttribute("aria-valuenow", pct);
+  prog.title = "발표 진행률 " + pct + "%";
+  const t = $("#timer");
+  t.textContent = `${fmtTime(before)}–${fmtTime(before + (+s.duration || 0))} · 합계 ${fmtTime(total)}`;
+  t.classList.toggle("bad", total !== 600);
+  t.title = total === 600 ? "발표 시간 합계 10:00" : "발표 시간 합계가 10:00이 아닙니다";
+  // 대본
+  $("#scriptHead").textContent = `발표 대본 · ${pad(cur + 1)} ${s.title || ""} · ${fmtTime(+s.duration || 0)}`;
+  const st = $("#scriptText");
+  if (document.activeElement !== st) st.textContent = s.script || "";
+  if (mode.edit) { st.contentEditable = "plaintext-only"; if (st.contentEditable !== "plaintext-only") st.contentEditable = "true"; } else st.removeAttribute("contenteditable");
+}
+function renderNotes() {
+  if (!mode.notes) return;
+  const s = deck.slides[cur], nx = deck.slides[cur + 1];
+  $("#notesBody").innerHTML = `<div class="notes-title">${pad(cur + 1)} · ${esc(s.title)} · ${fmtTime(+s.duration || 0)}</div>
+    <div class="notes-text">${esc(s.notes || "메모 없음")}</div>
+    ${steps(s) ? `<div class="hint">이 슬라이드는 단계가 ${steps(s)}개 있습니다. 현재 ${step}단계.</div>` : ""}
+    <div class="notes-next">다음 슬라이드 · ${nx ? esc(nx.title) : "마지막 슬라이드입니다"}</div>`;
+}
+
+/* ================= 무대 크기 맞춤 ================= */
+function fit() {
+  const vp = $("#viewport");
+  const cs = getComputedStyle(vp);
+  const w = vp.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const h = vp.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  const sc = Math.max(0.05, Math.min(w / 1600, h / 900));
+  const wrap = $("#stageWrap");
+  wrap.style.width = (1600 * sc) + "px"; wrap.style.height = (900 * sc) + "px";
+  stage.style.transform = `scale(${sc})`;
+}
+new ResizeObserver(fit).observe($("#viewport"));
+window.addEventListener("resize", fit);
+
+/* ================= 인라인 편집 ================= */
+stage.addEventListener("input", e => {
+  const el = e.target.closest("[data-k]"); if (!el || !mode.edit) return;
+  const sl = el.closest(".slide"); const s = deck.slides.find(x => x.id === sl.dataset.sid); if (!s) return;
+  setPath(s, el.dataset.k, el.innerText.replace(/\n$/, ""));
+  save(); syncPanelField(el.dataset.k);
+  if (el.dataset.k === "title" || el.dataset.k === "deckTitle") { updateChrome(); if (el.dataset.k === "deckTitle") { deck.meta.deckTitle = s.deckTitle; $("#brandTitle").textContent = s.deckTitle; } }
+});
+stage.addEventListener("paste", e => {
+  const el = e.target.closest("[data-k]"); if (!el || !mode.edit) return;
+  e.preventDefault();
+  const t = (e.clipboardData || window.clipboardData).getData("text/plain");
+  document.execCommand("insertText", false, t);
+});
+stage.addEventListener("click", e => {
+  const b = e.target.closest("[data-imgedit]"); if (!b) return;
+  e.preventDefault();
+  mode.tab = "slide"; renderEditor();
+  const f = document.getElementById("f-" + b.dataset.imgedit.replace(/\./g, "-"));
+  if (f) { f.scrollIntoView({ block: "center", behavior: "smooth" }); const inp = f.querySelector("input"); if (inp) inp.focus(); }
+});
+stage.addEventListener("click", e => { if (mode.edit) { const a = e.target.closest("a"); if (a) e.preventDefault(); } }, true);
+$("#scriptText").addEventListener("input", e => {
+  if (!mode.edit) return;
+  deck.slides[cur].script = e.target.innerText.replace(/\n$/, ""); save(); syncPanelField("script");
+});
+
+/* ================= 편집 패널 ================= */
+const COMMON_TOP = [
+  { k: "title", label: "슬라이드 제목" },
+  { k: "lead", label: "핵심 문구 (화면 문구)", area: true, when: s => s.lead != null },
+  { k: "duration", label: "발표 시간 (초)", num: true }
+];
+const SRC_LIST = { k: "sources", label: "출처 표시 (슬라이드 하단)", list: [{ key: "label", label: "출처 문구" }, { key: "url", label: "링크 URL" }], blank: { label: "", url: "" } };
+const SCHEMA = {
+  cover: [
+    { k: "question", label: "질문 문구", area: true },
+    { k: "deckTitle", label: "발표 제목" }, { k: "subtitle", label: "부제" }, { k: "presenter", label: "발표자" },
+    { k: "cases", label: "사례 표시", strlist: true, blank: "새 사례" },
+    { k: "images.0", label: "사진 1", image: true }, { k: "images.1", label: "사진 2", image: true },
+    { k: "imageNote", label: "사진 안내 문구", area: true }
+  ],
+  question: [
+    { k: "quote", label: "토론 문제 원문", area: true }, { k: "quoteSrc", label: "원문 출처" },
+    { k: "qs", label: "질문과 답", list: [{ key: "q", label: "질문" }, { key: "a", label: "답" }, { key: "note", label: "설명" }], blank: { q: "새 질문", a: "", note: "" }, max: 3 },
+    { k: "badge", label: "분석 표시 문구" },
+    { k: "roadmap", label: "발표 순서", list: [{ key: "n", label: "장 번호" }, { key: "t", label: "구분" }, { key: "d", label: "내용" }], blank: { n: "", t: "새 구분", d: "" }, max: 5 }
+  ],
+  flow: [
+    { k: "steps", label: "흐름도 단계", list: [{ key: "label", label: "단계 이름" }, { key: "desc", label: "설명", area: true }], blank: { label: "새 단계", desc: "", icon: "steps" } },
+    { k: "versus.0.label", label: "비교 왼쪽 이름" }, { k: "versus.0.text", label: "비교 왼쪽 설명", area: true },
+    { k: "versus.1.label", label: "비교 오른쪽 이름" }, { k: "versus.1.text", label: "비교 오른쪽 설명", area: true },
+    { k: "versusNote", label: "가운데 문구" }
+  ],
+  scurve: [
+    { k: "chart.title", label: "그래프 제목" }, { k: "chart.badge", label: "그래프 표시 문구" },
+    { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.limitLabel", label: "한계선 이름" },
+    { k: "phases", label: "구간 (3개)", list: [{ key: "name", label: "구간 이름" }, { key: "desc", label: "설명", area: true }], blank: { name: "새 구간", desc: "" }, max: 3 },
+    { k: "lectureImg", label: "강의자료 원본 그림", image: true },
+    { k: "tip", label: "아래 강조 문구", area: true }
+  ],
+  jump: [
+    { k: "chart.oldLabel", label: "기존 곡선 이름" }, { k: "chart.newLabel", label: "새 곡선 이름" },
+    { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.note", label: "새 곡선 설명" },
+    { k: "examples", label: "예시", list: [{ key: "from", label: "이전" }, { key: "to", label: "이후" }, { key: "note", label: "설명" }], blank: { from: "", to: "", note: "" } },
+    { k: "insight", label: "아래 설명", area: true }
+  ],
+  cycle: [
+    { k: "nodes", label: "사이클 단계", list: [{ key: "label", label: "단계 이름" }, { key: "desc", label: "설명", area: true }], blank: { label: "새 단계", desc: "", icon: "steps" } },
+    { k: "loopLabel", label: "순환 화살표 문구" },
+    { k: "findingsTitle", label: "정리 제목" }, { k: "findings", label: "정리 항목", strlist: true, area: true, blank: "새 항목" },
+    { k: "lectureImg", label: "강의자료 원본 그림", image: true }
+  ],
+  timeline: [
+    { k: "chart.title", label: "그래프 제목" }, { k: "chart.legend", label: "범례" },
+    { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.unit", label: "단위" },
+    { k: "chart.scale", label: "세로축 눈금", select: [["log", "로그 눈금 (2배 간격)"], ["linear", "선형 눈금"]] },
+    { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }], blank: { year: 2008, value: 1 } },
+    { k: "photo", label: "제품 사진", image: true },
+    { k: "bigLabel", label: "큰 숫자 설명" }, { k: "warn", label: "주의 문구", area: true }, { k: "link", label: "수업 연결 문구", area: true }
+  ],
+  shift: [
+    { k: "stages", label: "기술 방식 단계", list: [{ key: "year", label: "연도" }, { key: "name", label: "이름" }, { key: "text", label: "설명", area: true }], blank: { year: "", name: "새 방식", text: "" }, max: 4 },
+    { k: "photo", label: "사진·그림", image: true },
+    { k: "insight", label: "해석 문구", area: true }
+  ],
+  efe: [
+    { k: "photo", label: "제품 사진", image: true },
+    { k: "facts", label: "기본 정보", list: [{ key: "k", label: "항목" }, { key: "v", label: "내용" }], blank: { k: "", v: "" }, max: 3 },
+    { k: "path", label: "개발 경로", list: [{ key: "when", label: "시점" }, { key: "what", label: "내용", area: true }], blank: { when: "", what: "" } },
+    { k: "pipeline", label: "파이프라인 문구", area: true },
+    { k: "insight", label: "해석 문구", area: true }, { k: "caveat", label: "주의 문구", area: true }
+  ],
+  factors: [
+    { k: "badge", label: "분석 표시 문구" },
+    { k: "factors", label: "요인 (4개)", list: [{ key: "title", label: "요인", area: true }, { key: "link", label: "연결 개념·사례" }], blank: { title: "새 요인", link: "", icon: "steps" }, max: 4 },
+    { k: "ring", label: "원 위 단계 이름 (요인 1~4 위치)", strlist: true, blank: "단계", max: 4 },
+    { k: "strip", label: "아래 강조 문구", area: true }
+  ],
+  compare: [
+    { k: "scaleTitle", label: "비교 축 제목" }, { k: "shortLabel", label: "왼쪽 끝 이름" }, { k: "longLabel", label: "오른쪽 끝 이름" },
+    { k: "items", label: "비교 항목 (위치 0~1, 순서만 나타냄)", list: [{ key: "label", label: "이름" }, { key: "text", label: "설명" }, { key: "pos", label: "위치", num: true, step: 0.01 }], blank: { label: "새 항목", text: "", pos: 0.5 } },
+    { k: "caption", label: "그래프 아래 문구", area: true },
+    { k: "pavitt", label: "보충 문구", area: true },
+    { k: "limits", label: "자료의 한계", strlist: true, area: true, blank: "새 항목" }
+  ],
+  conclusion: [
+    { k: "takeaways", label: "요점", strlist: true, area: true, blank: "새 요점", max: 3 },
+    { k: "refs", label: "참고문헌", list: [{ key: "label", label: "문헌", area: true }, { key: "url", label: "링크 URL" }], blank: { label: "", url: "" } }
+  ],
+  text: [
+    { k: "bullets", label: "본문 항목", strlist: true, area: true, blank: "새 항목" },
+    { k: "image", label: "이미지", image: true }
+  ]
+};
+SCHEMA.case = SCHEMA.text;
+
+const COMMON_BOTTOM = [
+  { k: "script", label: "발표 대본", area: true, rows: 8 },
+  { k: "notes", label: "발표자 메모 (발표 화면에 표시되지 않음)", area: true, rows: 5 }
+];
+
+function el(tag, attrs = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "on") for (const [ev, fn] of Object.entries(v)) e.addEventListener(ev, fn);
+    else if (k === "html") e.innerHTML = v;
+    else if (v != null && v !== false) e.setAttribute(k, v);
+  }
+  kids.flat().forEach(c => c != null && e.append(c.nodeType ? c : document.createTextNode(c)));
+  return e;
+}
+let refreshTimer;
+function changed(s, structural) {
+  save();
+  clearTimeout(refreshTimer);
+  const go = () => { renderSlide(s.id); updateChrome(); renderNotes(); };
+  if (structural) go(); else refreshTimer = setTimeout(go, 250);
+}
+function inputFor(s, path, d, id) {
+  const val = getPath(s, path);
+  let inp;
+  if (d.select) {
+    inp = el("select", { id }); d.select.forEach(([v, t]) => inp.append(el("option", { value: v, selected: val === v ? "selected" : null }, t)));
+    inp.addEventListener("change", () => { setPath(s, path, inp.value); changed(s, true); });
+    return inp;
+  }
+  if (d.area) inp = el("textarea", { id, rows: d.rows || 3 });
+  else inp = el("input", { id, type: d.num ? "number" : "text", step: d.num ? (d.step || "any") : null });
+  inp.value = val == null ? "" : val;
+  inp.dataset.path = path;
+  inp.addEventListener("input", () => {
+    let v = inp.value;
+    if (d.num) { if (v === "" || !isFinite(+v)) return; v = +v; }
+    setPath(s, path, v);
+    if (path === "deckTitle") { deck.meta.deckTitle = v; $("#brandTitle").textContent = v; }
+    changed(s, false);
+  });
+  return inp;
+}
+function imageField(s, d) {
+  const im = getPath(s, d.k) || {}; if (!getPath(s, d.k)) setPath(s, d.k, im);
+  const box = el("div", { class: "group", id: "f-" + d.k.replace(/\./g, "-") });
+  box.append(el("div", { class: "group-title" }, d.label));
+  const u = safeUrl(resolveSrc(im.src));
+  if (u) box.append(el("img", { class: "img-prev", src: u, alt: "" }));
+  else box.append(el("div", { class: "hint" }, im.fallback && FALLBACK[im.fallback] ? "현재 자체 제작 도식을 표시하고 있습니다." : "이미지가 없습니다."));
+  const url = el("input", { type: "url", placeholder: "https://… 이미지 주소", id: "f-" + d.k.replace(/\./g, "-") + "-url" });
+  url.value = im.src && !/^(data:|LECTURE_IMG_)/.test(String(im.src)) ? im.src : "";
+  url.addEventListener("change", () => { im.src = url.value.trim(); changed(s, true); renderEditor(); });
+  const file = el("input", { type: "file", accept: "image/*", id: "f-" + d.k.replace(/\./g, "-") + "-file" });
+  file.addEventListener("change", () => { const f = file.files[0]; if (f) readImage(f, data => { im.src = data; changed(s, true); renderEditor(); }); });
+  box.append(el("div", { class: "fld" }, el("label", { for: url.id }, "이미지 URL"), url));
+  box.append(el("div", { class: "fld" }, el("label", { for: file.id }, "내 컴퓨터에서 올리기"), file));
+  ["caption", "credit"].forEach(k => {
+    const id = "f-" + d.k.replace(/\./g, "-") + "-" + k;
+    box.append(el("div", { class: "fld" }, el("label", { for: id }, k === "caption" ? "캡션" : "이미지 출처 · 라이선스"), inputFor(s, d.k + "." + k, {}, id)));
+  });
+  if (im.src) box.append(el("div", { class: "btn-row" }, el("button", { class: "btn small solid", on: { click: () => { im.src = ""; changed(s, true); renderEditor(); } } }, im.fallback && FALLBACK[im.fallback] ? "자체 제작 도식으로 되돌리기" : "이미지 지우기")));
+  box.append(el("p", { class: "hint" }, "사진을 쓸 때는 원 출처와 라이선스를 확인해 출처 칸에 적으세요. 올린 이미지는 이 브라우저에 함께 저장됩니다."));
+  return box;
+}
+function readImage(file, cb) {
+  const fr = new FileReader();
+  fr.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 1600, sc = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement("canvas"); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      try { cb(c.toDataURL("image/jpeg", 0.85)); } catch (e) { cb(fr.result); }
+    };
+    img.onerror = () => toast("이미지를 읽지 못했습니다. 다른 파일을 선택하세요.");
+    img.src = fr.result;
+  };
+  fr.readAsDataURL(file);
+}
+function listField(s, d) {
+  let arr = getPath(s, d.k); if (!Array.isArray(arr)) { arr = []; setPath(s, d.k, arr); }
+  const box = el("div", { class: "group", id: "f-" + d.k.replace(/\./g, "-") });
+  box.append(el("div", { class: "group-title" }, d.label));
+  const rows = el("div", { class: "rows" });
+  arr.forEach((item, idx) => {
+    const cols = d.strlist ? [{ key: null, label: "", area: d.area }] : d.list;
+    const row = el("div", { class: "row", style: `--cols:${d.strlist ? 1 : cols.filter(c => !c.area).length || 1}` });
+    const wrap = d.strlist ? row : row;
+    const areaCols = [];
+    cols.forEach(c => {
+      const path = d.k + "." + idx + (c.key ? "." + c.key : "");
+      const id = "f-" + path.replace(/\./g, "-");
+      const m = el("label", { class: "mini", for: id }, c.label ? el("span", {}, c.label) : null, inputFor(s, path, c, id));
+      if (c.area && !d.strlist) areaCols.push(m); else wrap.append(m);
+    });
+    const x = el("button", { class: "x", title: "이 행 삭제", on: { click: () => { arr.splice(idx, 1); changed(s, true); renderEditor(); } } }, "×");
+    row.append(x);
+    rows.append(row);
+    areaCols.forEach(m => rows.append(m));
+    if (!d.strlist && areaCols.length) rows.append(el("div", { style: "height:6px" }));
+  });
+  box.append(rows);
+  if (!d.max || arr.length < d.max) box.append(el("div", { class: "btn-row" }, el("button", { class: "btn small solid", on: { click: () => { arr.push(clone(d.blank)); changed(s, true); renderEditor(); } } }, "+ 행 추가")));
+  if (d.k === "points" && s.type === "timeline") box.append(el("p", { class: "hint" }, "값을 고치면 그래프와 숫자 애니메이션에 바로 반영됩니다. 출처가 있는 값만 넣고, 출처는 아래 출처 표시에 적으세요."));
+  return box;
+}
+function fieldFor(s, d) {
+  if (d.when && !d.when(s)) return null;
+  if (d.image) return imageField(s, d);
+  if (d.list || d.strlist) return listField(s, d);
+  const id = "f-" + d.k.replace(/\./g, "-");
+  return el("div", { class: "fld", id: id + "-wrap" }, el("label", { for: id }, d.label), inputFor(s, d.k, d, id));
+}
+function renderEditor() {
+  if (!mode.edit) return;
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === mode.tab)));
+  const body = $("#editBody"); const keep = body.scrollTop;
+  body.innerHTML = "";
+  if (mode.tab === "slide") {
+    const s = deck.slides[cur];
+    body.append(el("div", { class: "hint" }, `${pad(cur + 1)}번 슬라이드 · 화면의 글자를 클릭하면 바로 고칠 수 있습니다. 숫자·그래프·이미지·출처는 여기서 고치세요.`));
+    [...COMMON_TOP, ...(SCHEMA[s.type] || SCHEMA.text), SRC_LIST, ...COMMON_BOTTOM].forEach(d => { const f = fieldFor(s, d); if (f) body.append(f); });
+  } else if (mode.tab === "deck") renderDeckTab(body);
+  else renderFileTab(body);
+  body.scrollTop = keep;
+}
+function syncPanelField(path) {
+  const inp = $(`#editBody [data-path="${CSS.escape(path)}"]`);
+  const s = deck.slides[cur];
+  if (inp && document.activeElement !== inp) inp.value = getPath(s, path) ?? "";
+}
+function renderDeckTab(body) {
+  const total = deck.slides.reduce((a, x) => a + (+x.duration || 0), 0);
+  body.append(el("div", { class: "hint" }, `슬라이드 ${deck.slides.length}장 · 발표 시간 합계 ${fmtTime(total)}${total === 600 ? " (10분)" : " — 10분에 맞추려면 각 슬라이드의 발표 시간을 조정하세요"}`));
+  const ul = el("ul", { class: "slide-list" });
+  deck.slides.forEach((s, i) => {
+    const del = el("button", { class: "icon-btn", title: "삭제", html: uiIcon("del") });
+    del.addEventListener("click", () => {
+      if (deck.slides.length <= 1) return toast("마지막 한 장은 삭제할 수 없습니다.");
+      if (!del.classList.contains("confirm")) { del.classList.add("confirm"); del.title = "한 번 더 누르면 삭제"; toast("한 번 더 누르면 이 슬라이드를 삭제합니다."); setTimeout(() => { del.classList.remove("confirm"); del.title = "삭제"; }, 3000); return; }
+      deck.slides.splice(i, 1); if (cur >= deck.slides.length) cur = deck.slides.length - 1; else if (i < cur) cur--;
+      save(); renderAll(); renderEditor(); toast("슬라이드를 삭제했습니다.");
+    });
+    const mv = (dir) => () => { const j = i + dir; if (j < 0 || j >= deck.slides.length) return; const [x] = deck.slides.splice(i, 1); deck.slides.splice(j, 0, x); if (cur === i) cur = j; else if (cur === j) cur = i; save(); renderAll(); renderEditor(); };
+    const dup = () => { const c = clone(s); c.id = uid(); deck.slides.splice(i + 1, 0, c); save(); cur = i + 1; renderAll(); renderEditor(); toast("슬라이드를 복제했습니다."); };
+    ul.append(el("li", { class: i === cur ? "cur" : "" },
+      el("span", { class: "n" }, pad(i + 1)),
+      el("span", { class: "t", on: { click: () => { show(i, 0); renderEditor(); } }, title: "이 슬라이드로 이동" }, s.title || "(제목 없음)", el("small", {}, `${s.type} · ${fmtTime(+s.duration || 0)}`)),
+      el("span", { class: "acts" },
+        el("button", { class: "icon-btn", title: "위로", html: uiIcon("up"), on: { click: mv(-1) } }),
+        el("button", { class: "icon-btn", title: "아래로", html: uiIcon("down"), on: { click: mv(1) } }),
+        el("button", { class: "icon-btn", title: "복제", html: uiIcon("dup"), on: { click: dup } }),
+        del)));
+  });
+  body.append(ul);
+  body.append(el("div", { class: "group" }, el("div", { class: "group-title" }, "슬라이드 추가"),
+    el("div", { class: "btn-row" },
+      el("button", { class: "btn small solid", on: { click: () => {
+        const s = { id: uid(), type: "text", duration: 30, title: "새 슬라이드", lead: "핵심 문구를 입력하세요", bullets: ["본문 항목을 입력하세요"], image: { src: "", fallback: "none", caption: "", credit: "" }, sources: [], script: "", notes: "" };
+        deck.slides.splice(cur + 1, 0, s); cur = cur + 1; save(); renderAll(); mode.tab = "slide"; renderEditor(); toast("현재 슬라이드 뒤에 새 슬라이드를 추가했습니다.");
+      } } }, "+ 텍스트 슬라이드를 현재 슬라이드 뒤에 추가"))));
+}
+function exportJSON() { return JSON.stringify({ format: "tech-cycle-deck", exportedAt: new Date().toISOString(), deck }, null, 2); }
+function renderFileTab(body) {
+  body.append(el("div", { class: "group-title" }, "발표 정보"));
+  const ti = el("input", { id: "meta-title", type: "text" }); ti.value = deck.meta.deckTitle || "";
+  ti.addEventListener("input", () => { deck.meta.deckTitle = ti.value; $("#brandTitle").textContent = ti.value; save(); });
+  body.append(el("div", { class: "fld" }, el("label", { for: "meta-title" }, "상단 표시 제목"), ti));
+  body.append(el("p", { class: "hint" }, "수정 내용은 이 브라우저에 자동 저장되어 새로고침해도 유지됩니다. 다른 컴퓨터로 옮기려면 JSON으로 내보내세요."));
+
+  const g1 = el("div", { class: "group" }, el("div", { class: "group-title" }, "JSON 내보내기"));
+  const ta = el("textarea", { class: "json-box", id: "json-out", readonly: "readonly", rows: 6 }); ta.value = exportJSON();
+  g1.append(ta, el("div", { class: "btn-row" },
+    el("button", { class: "btn small solid", on: { click: () => {
+      ta.value = exportJSON();
+      const done = () => toast("JSON을 복사했습니다. 메모장 등에 붙여 넣어 .json 파일로 보관하세요.");
+      try { navigator.clipboard.writeText(ta.value).then(done, () => { ta.select(); toast("복사가 막혀 있어 내용을 선택해 두었습니다. Ctrl+C로 복사하세요."); }); }
+      catch (e) { ta.select(); toast("내용을 선택해 두었습니다. Ctrl+C로 복사하세요."); }
+    } } }, "JSON 복사"),
+    el("button", { class: "btn small solid", on: { click: () => {
+      try {
+        const blob = new Blob([exportJSON()], { type: "application/json" });
+        const a = el("a", { href: URL.createObjectURL(blob), download: "tech-cycle-deck.json" }); document.body.append(a); a.click(); a.remove();
+        toast("파일 저장을 시작했습니다. 저장이 안 되면 'JSON 복사'를 쓰세요.");
+      } catch (e) { toast("파일 저장이 막혀 있습니다. 'JSON 복사'를 쓰세요."); }
+    } } }, "파일로 저장")));
+  body.append(g1);
+
+  const g2 = el("div", { class: "group" }, el("div", { class: "group-title" }, "JSON 불러오기"));
+  const fi = el("input", { type: "file", accept: "application/json,.json", id: "json-file" });
+  const pa = el("textarea", { class: "json-box", id: "json-in", rows: 5, placeholder: "내보낸 JSON을 여기에 붙여 넣으세요" });
+  const apply = txt => {
+    try {
+      const o = JSON.parse(txt); const d = o && o.deck ? o.deck : o;
+      if (!validDeck(d)) throw new Error("bad");
+      d.meta = d.meta || {}; d.slides.forEach(s => { if (!s.id) s.id = uid(); });
+      deck = d; cur = 0; step = 0; save(); renderAll(); renderEditor(); toast("불러왔습니다. 슬라이드 " + d.slides.length + "장.");
+    } catch (e) { toast("불러오지 못했습니다. 이 사이트에서 내보낸 JSON인지 확인하세요."); }
+  };
+  fi.addEventListener("change", () => { const f = fi.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => apply(r.result); r.readAsText(f); });
+  g2.append(el("div", { class: "fld" }, el("label", { for: "json-file" }, "JSON 파일 선택"), fi), pa,
+    el("div", { class: "btn-row" }, el("button", { class: "btn small solid", on: { click: () => apply(pa.value) } }, "붙여 넣은 JSON 불러오기")));
+  body.append(g2);
+
+  const g3 = el("div", { class: "group" }, el("div", { class: "group-title" }, "초기 상태로 되돌리기"));
+  const rb = el("button", { class: "btn small danger solid", on: { click: () => {
+    g3.querySelector(".confirm-box").hidden = false; rb.hidden = true;
+  } } }, "초기 상태로 되돌리기…");
+  const cb = el("div", { class: "confirm-box", hidden: "hidden" },
+    el("span", {}, "모든 수정 내용이 지워지고 처음 받은 9장 상태로 돌아갑니다. 필요하면 먼저 JSON으로 내보내세요."),
+    el("div", { class: "btn-row" },
+      el("button", { class: "btn small danger solid", on: { click: () => { try { localStorage.removeItem(STORE_KEY); } catch (e) {} deck = clone(DEFAULT_DECK); cur = 0; step = 0; save(); renderAll(); renderEditor(); toast("초기 상태로 되돌렸습니다."); } } }, "되돌리기"),
+      el("button", { class: "btn small solid", on: { click: () => { cb.hidden = true; rb.hidden = false; } } }, "취소")));
+  g3.append(rb, cb);
+  body.append(g3);
+  if (!storageOK) body.append(el("p", { class: "hint" }, "이 브라우저는 저장 공간을 막고 있어 새로고침하면 수정 내용이 사라집니다. JSON으로 내보내 보관하세요."));
+}
+
+/* ================= 모드 전환 ================= */
+function setEdit(on) {
+  mode.edit = on;
+  if (on) { setPresent(false); mode.notes = false; }
+  document.body.classList.toggle("editing", on);
+  $("#btnEdit").setAttribute("aria-pressed", String(on));
+  $("#modeChip").textContent = on ? "편집 모드" : "보기 모드";
+  $("#editPanel").hidden = !on;
+  syncDrawers();
+  applyEditable();
+  const el = slideEl(cur); if (el) { el.classList.remove("play"); applyStep(el); }
+  if (on) renderEditor();
+  fit();
+}
+function syncDrawers() {
+  $("#notesPanel").hidden = !mode.notes || mode.present;
+  $("#btnNotes").setAttribute("aria-pressed", String(mode.notes));
+  $("#editPanel").hidden = !mode.edit || mode.present;
+  $("#scriptBar").hidden = !mode.script;
+  $("#btnScript").setAttribute("aria-pressed", String(mode.script));
+  requestAnimationFrame(fit);
+}
+function setPresent(on) {
+  if (on && mode.edit) setEdit(false);
+  mode.present = on;
+  document.body.classList.toggle("presenting", on);
+  syncDrawers();
+  if (on) { flashCtrl(); toast("발표 모드 · 방향키나 스페이스로 넘기고, Esc로 끝냅니다.", 2600); }
+}
+let ctrlTimer;
+function flashCtrl() { if (!mode.present) return; document.body.classList.add("show-ctrl"); clearTimeout(ctrlTimer); ctrlTimer = setTimeout(() => document.body.classList.remove("show-ctrl"), 2200); }
+function toggleFull() {
+  try {
+    if (!document.fullscreenElement) { const p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => toast("이 화면에서는 전체 화면을 열 수 없습니다. 브라우저에서 파일을 직접 열어 보세요.")); }
+    else document.exitFullscreen();
+  } catch (e) { toast("이 화면에서는 전체 화면을 열 수 없습니다."); }
+}
+function doPrint() {
+  const wasEdit = mode.edit; if (wasEdit) setEdit(false);
+  toast("인쇄 창이 열리지 않으면 HTML 파일을 브라우저에서 직접 열어 인쇄하세요. 가로 방향, 배경 그래픽 켜기를 권장합니다.", 6000);
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 60);
+}
+
+$("#btnEdit").addEventListener("click", () => setEdit(!mode.edit));
+$("#btnScript").addEventListener("click", () => { mode.script = !mode.script; syncDrawers(); });
+$("#btnNotes").addEventListener("click", () => { mode.notes = !mode.notes; if (mode.notes && mode.edit) setEdit(false); syncDrawers(); renderNotes(); });
+$("#btnPresent").addEventListener("click", () => setPresent(true));
+$("#exitPresent").addEventListener("click", () => setPresent(false));
+$("#btnFull").addEventListener("click", toggleFull);
+$("#btnPrint").addEventListener("click", doPrint);
+$$("[data-close]").forEach(b => b.addEventListener("click", () => { if (b.dataset.close === "edit") setEdit(false); else { mode.notes = false; syncDrawers(); } }));
+$$(".tab").forEach(t => t.addEventListener("click", () => { mode.tab = t.dataset.tab; renderEditor(); }));
+$("#prev").addEventListener("click", prev);
+$("#next").addEventListener("click", next);
+$("#progress").addEventListener("click", e => { const s = e.target.closest("[data-go]"); if (s) show(+s.dataset.go, 0); });
+document.addEventListener("mousemove", flashCtrl);
+document.addEventListener("fullscreenchange", () => requestAnimationFrame(fit));
+
+document.addEventListener("keydown", e => {
+  const t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) { if (e.key === "Escape") t.blur(); return; }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  switch (e.key) {
+    case "ArrowRight": case "PageDown": case " ": case "Spacebar": e.preventDefault(); next(); flashCtrl(); break;
+    case "ArrowLeft": case "PageUp": e.preventDefault(); prev(); flashCtrl(); break;
+    case "Home": show(0, 0); break;
+    case "End": show(deck.slides.length - 1, "end"); break;
+    case "f": case "F": toggleFull(); break;
+    case "s": case "S": mode.script = !mode.script; syncDrawers(); break;
+    case "n": case "N": mode.notes = !mode.notes; if (mode.notes && mode.edit) setEdit(false); syncDrawers(); renderNotes(); break;
+    case "p": case "P": setPresent(!mode.present); break;
+    case "e": case "E": setEdit(!mode.edit); break;
+    case "Escape": if (mode.present) setPresent(false); break;
+  }
+});
+let tx = null, ty = null;
+$("#viewport").addEventListener("touchstart", e => { if (mode.edit) return; tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+$("#viewport").addEventListener("touchend", e => {
+  if (tx == null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) dx < 0 ? next() : prev();
+});
+window.addEventListener("beforeprint", () => { $$(".slide", stage).forEach(s => s.classList.add("show-all")); });
+window.addEventListener("afterprint", () => { $$(".slide", stage).forEach((s, k) => { if (k !== cur || !mode.edit) s.classList.remove("show-all"); }); applyStep(slideEl(cur)); });
+
+/* ================= 시작 ================= */
+deck = load();
+deck.meta = deck.meta || {};
+const h = parseInt((location.hash || "").replace("#", ""), 10);
+cur = isFinite(h) ? Math.max(0, Math.min(deck.slides.length - 1, h - 1)) : 0;
+renderAll();
+fit();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+window.__deck = { get state() { return deck; }, show, next, prev, setEdit };
+})();
+</script>
+</body></html>
