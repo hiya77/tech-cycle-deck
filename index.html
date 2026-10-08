@@ -570,6 +570,42 @@ body.editing .cover-q{color:var(--ink);background:none}
 .findings li{font-size:23px}
 .findings li::before{top:14px}
 
+/* v4 */
+.study{display:flex;flex-direction:column;gap:14px;padding:24px 28px;border-radius:18px;background:var(--bg);border:1px solid var(--line)}
+.study b{font-size:20px;font-weight:800;color:var(--ink-2)}
+.study ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.study li{padding:10px 20px;border-radius:999px;font-size:24px;font-weight:800;color:#fff;background:var(--c)}
+.study p{margin:0;font-size:18px;line-height:1.5;color:var(--ink-2)}
+.stairs{grid-template-columns:repeat(var(--n,3),minmax(0,1fr));gap:12px}
+.shift{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:36px}
+.stair{margin-bottom:calc(var(--k) * 54px);padding:18px 16px 14px}
+.st-name{font-size:26px}
+.st-text{font-size:17px}
+.cover-by{font-size:24px;font-weight:700;color:var(--ink-2);margin-top:12px}
+.s-foot .src{flex-direction:row;flex-wrap:wrap;gap:2px 18px;font-size:15px}
+.s-foot .src span{white-space:normal}
+.s-foot a{word-break:normal;white-space:nowrap}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px;font-size:14px;line-height:1.4}
+.refs .rh{grid-column:1/-1}
+.refs a{word-break:normal;white-space:nowrap}
+.concl .takeaways li{font-size:24px}
+.concl .statement{font-size:54px}
+.examples li.has-img{grid-template-columns:auto auto auto 1fr;padding:12px 20px 12px 12px}
+.examples li.has-img small{grid-column:2/-1}
+.ex-imgs{grid-row:1/span 2;display:flex;gap:6px;margin-right:6px}
+.ex-img{width:92px;height:92px;border-radius:12px;object-fit:cover;background:var(--line);display:block}
+.ex-img:not(.to){filter:grayscale(1);opacity:.75}
+.ex-img.to{outline:3px solid var(--c-violet);outline-offset:-3px}
+.slide.play .ex-img.to{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:.6s}
+.ex-img{width:78px;height:78px}
+.examples{gap:10px}
+.examples li.has-img{padding:10px 18px 10px 10px}
+.ex-from{font-size:24px}.ex-to{font-size:27px}
+.examples small{font-size:17px}
+.ex-title{margin-bottom:-4px}
+.caveat.soft{padding:14px 20px;font-size:20px}
+.factors{margin-bottom:6px}
+
 </style>
 </head><body>
 
@@ -627,7 +663,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v3";
+const STORE_KEY = "tech-cycle-deck.v4";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -636,6 +672,35 @@ const IMG_SAMSUNG_USB = SAM_BASE + "6.jpg?$ORIGIN_JPG$";
 const IMG_HANMI_EFE = "https://www.hanmi.co.kr/file/editor/1791367079321.jpg";
 const IMG_HANMI_RND = "https://www.hanmi.co.kr/images/main/img_tech_bg1.jpg?ver=1.0";
 const LECTURE = "제5강 강의자료";
+const IMG_SS_9G = "https://img.global.news.samsung.com/global/wp-content/uploads/2024/04/9th-Generation-V-NAND_dl1.jpg";
+const IMG_SS_4G = "https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/4.-Samsung%E2%80%99s-fourth-generation-V-NAND_01.jpg";
+const IMG_SS_FAB = "https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/1.-Samsung-Electronics-Pyeongtaek-Line-1.jpg";
+const IMG_HANMI_PLANT = "https://hanmi.co.kr/file/editor/1754970686072.jpg";
+const UNS = id => "https://images.unsplash.com/" + id + "?w=1200&q=80&auto=format&fit=crop";
+const IMG_VINYL = UNS("photo-1603048588665-791ca8aea617");
+const IMG_CD = UNS("photo-1618034100983-e1d78be0dc80");
+const IMG_CARRIAGE = UNS("photo-1577639389657-e33f4c461e4e");
+const IMG_CAR = UNS("photo-1563137391-0030ae24bc35");
+const SRC_FOSTER = "Foster, R. N. (1986). Innovation: The Attacker's Advantage. Summit Books";
+const SRC_AT = "Anderson, P. & Tushman, M. L. (1990). Technological Discontinuities and Dominant Designs: A Cyclical Model of Technological Change. Administrative Science Quarterly, 35, 604–633";
+const SRC_TA86 = "Tushman, M. L. & Anderson, P. (1986). Technological discontinuities and organizational environments. Administrative Science Quarterly, 31, 439–465";
+const SRC_UA = "Utterback, J. M. & Abernathy, W. J. (1975). A dynamic model of process and product innovation. Omega, 3(6), 639–656";
+const URL_UA = "https://ideas.repec.org/a/eee/jomega/v3y1975i6p639-656.html";
+const URL_FOSTER = "https://fs.blog/richard-foster-the-attackers-advantage/";
+const URL_SS_VNAND = "https://news.samsung.com/global/samsung-starts-mass-producing-industrys-first-3d-vertical-nand-flash";
+const SRC_SS_VNAND = "Samsung Newsroom, Samsung Starts Mass Producing Industry's First 3D Vertical NAND Flash (2013.08.06)";
+const URL_SS_9G = "https://www.businesswire.com/news/home/20240423850376/en/";
+const SRC_SS_9G = "Samsung Electronics 보도자료(BusinessWire), 9세대 V-NAND 양산 (2024.04.23)";
+const URL_MT_CTF = "https://www.mt.co.kr/stock/2006/09/11/2006091111515679982";
+const SRC_MT_CTF = "머니투데이, 「삼성電, CTF 상용화 '황의 법칙 계속'」(2006.09.11)";
+const URL_KBR = "https://www.koreabiomed.com/news/articleView.html?idxno=8244";
+const SRC_KBR = "Korea Biomedical Review, Sanofi returns rights to efpeglenatide (2020.05.14)";
+const URL_DP23 = "https://dailypharm.com/user/news/25708";
+const SRC_DP23 = "데일리팜, 에페글레나타이드 비만 치료제로 타깃 변경 (2023.07.31)";
+const URL_ASIAE = "https://view.asiae.co.kr/article/2026100717445473666";
+const SRC_ASIAE = "아시아경제, 식약처 '에페' 허가 보도 (2026.10.07)";
+const URL_MOORE = "https://news.samsungsemiconductor.com/kr/tag/%EB%AC%B4%EC%96%B4%EC%9D%98-%EB%B2%95%EC%B9%99";
+const SRC_MOORE = "삼성전자 반도체 뉴스룸, 「반도Chat」 무어의 법칙 설명 (2024.02.01)";
 const URL_SAMSUNG = "https://semiconductor.samsung.com/kr/news-events/tech-blog/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/";
 const URL_HANMI = "https://www.hanmi.co.kr/science/pipeline/innovative-rnd-pipeline.hm";
 const URL_HANMI_EFE = "https://www.hanmi.co.kr/about/news-media/press/detail-5083.hm";
@@ -645,8 +710,8 @@ const SRC_EFE = "한미약품 보도자료, 「GLP-1 비만신약 삼국지 대�
 
 /* ================= 기본 데이터 ================= */
 const DEFAULT_DECK = {
-  version: 3,
-  meta: { deckTitle: "산업마다 기술주기의 길이가 다른 이유", presenter: "발표자 이름" },
+  version: 4,
+  meta: { deckTitle: "산업마다 기술주기의 길이가 다른 이유", presenter: "발표 · 박민준 · 박태하 · 정희원" },
   slides: [
     {
       id: "s1", type: "cover", duration: 35,
@@ -654,16 +719,16 @@ const DEFAULT_DECK = {
       question: "왜 어떤 산업의 기술은 빠르게 바뀌고,\n어떤 산업은 변화가 느릴까?",
       deckTitle: "산업마다 기술주기의 길이가 다른 이유",
       subtitle: "기술적 불연속, 지배적 디자인, 점진적 개선을 중심으로",
-      presenter: "발표자 이름",
+      presenter: "발표 · 박민준 · 박태하 · 정희원",
       cases: ["사례 1 · 삼성전자 NAND 플래시", "사례 2 · 한미약품 비만 신약 '에페'"],
       images: [
-        { src: IMG_SAMSUNG_VNAND, fallback: "chip", tag: "반도체", caption: "삼성전자가 2013년 세계 최초로 양산한 3D V낸드", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
-        { src: IMG_HANMI_EFE, fallback: "pharma", tag: "제약", caption: "한미약품 비만 신약 '에페' 패키지", credit: "사진: 한미약품 보도자료(2026.10.07) © Hanmi Pharm" }
+        { src: IMG_SS_FAB, fallback: "chip", tag: "반도체", caption: "삼성전자 평택캠퍼스 반도체 생산라인", credit: "사진: Samsung Newsroom (2017.07.04)" },
+        { src: IMG_HANMI_PLANT, fallback: "pharma", tag: "제약", caption: "한미약품 평택 바이오플랜트 내부 · 에페 생산 시설", credit: "사진: 한미약품 제공 (2025.08.12)" }
       ],
-      imageNote: "사진은 산업과 사례를 알아보기 위한 것이며 기술주기 길이의 근거가 아닙니다. 각 기업 공식 자료의 이미지를 출처와 함께 인용했습니다.",
+      imageNote: "사진은 각 기업 공식 자료에서 출처와 함께 인용했습니다.",
       sources: [],
-      script: "안녕하세요. 저희 팀은 제5강 토론 문제 4번을 맡았습니다. 질문은 이것입니다. 왜 어떤 산업의 기술은 빠르게 바뀌고, 어떤 산업은 변화가 느릴까요?\n수업에서 배운 S-곡선과 기술의 사이클로 이 질문에 답해 보겠습니다. 사례는 삼성전자의 낸드 플래시와, 바로 오늘 시판 허가 소식이 나온 한미약품의 비만 신약 '에페'입니다.",
-      notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· '오늘 범위는 제5강 32~43쪽 개념'이라고 먼저 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
+      script: "안녕하세요. 저희 조는 박민준, 박태하, 정희원입니다. 저희는 제5강 토론 문제 4번을 맡았습니다. 질문은 이것입니다. 왜 어떤 산업의 기술은 빠르게 바뀌고, 어떤 산업은 변화가 느릴까요?\n수업에서 배운 S-곡선과 기술의 사이클로 이 질문에 답해 보겠습니다. 사례는 삼성전자의 낸드 플래시와, 바로 오늘 시판 허가 소식이 나온 한미약품의 비만 신약 '에페'입니다.",
+      notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· 조원 이름을 소개하고, 수업에서 배운 개념의 원 논문과 기업 자료로 답한다고 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
     },
     {
       id: "s2", type: "question", duration: 30,
@@ -675,9 +740,9 @@ const DEFAULT_DECK = {
         { q: "긴 기술주기 산업은?", a: "제약", note: "사례: 한미약품 비만 신약 '에페'" },
         { q: "주기의 길이를 정하는 요인은?", a: "기술 사이클의 네 단계", note: "S-곡선과 기술 사이클로 분석" }
       ],
-      badge: "우리 팀의 답 · 수업 개념을 사례에 적용한 발표자 분석",
+      badge: "우리 조의 답 · 원 논문과 기업 자료로 찾은 근거",
       roadmap: [
-        { n: "03–06", t: "개념", d: "S-곡선 · 기술의 사이클" },
+        { n: "03–06", t: "개념", d: "Foster · Anderson & Tushman" },
         { n: "07–09", t: "사례", d: "삼성전자 · 한미약품" },
         { n: "10–11", t: "분석", d: "요인과 우리 팀의 답" },
         { n: "12", t: "결론", d: "세 가지 요점" }
@@ -692,18 +757,18 @@ const DEFAULT_DECK = {
       lead: "기술주기는 새 기술의 등장에서\n점진적 개선까지 이어지는 흐름이다",
       steps: [
         { label: "단속적 기술의\n출현", desc: "기존과 다른 지식에 기반한\n새 기술의 등장", icon: "break" },
-        { label: "배양기", desc: "디자인 경쟁과 대체,\n여러 디자인의 실험", icon: "branch" },
+        { label: "격동기 · 배양기", desc: "여러 디자인이 경쟁하고\n서로 대체하는 시기", icon: "branch" },
         { label: "지배적 디자인의\n선택", desc: "여러 디자인 중\n하나가 정해짐", icon: "converge" },
-        { label: "점진적 개선의\n시기", desc: "지배적 디자인의 성숙", icon: "steps" }
+        { label: "점진적 개선의\n시기", desc: "지배적 디자인을\n다듬고 정교화", icon: "steps" }
       ],
       versus: [
         { label: "제품 출시 간격", text: "새 제품이 시장에 나오는 간격" },
         { label: "기술주기", text: "단속적 기술의 출현부터 지배적 디자인 이후\n점진적 개선까지의 흐름" }
       ],
       versusNote: "같은 말이\n아니다",
-      sources: [{ label: "출처: " + LECTURE + ", 39~40쪽(그림 3.11 기술의 사이클)의 용어를 따라 정리", url: "" }],
-      script: "먼저 기술주기가 무엇인지 정리하겠습니다. 강의자료 40쪽의 그림처럼, 기술주기는 단속적 기술이 나타나고, 여러 디자인이 경쟁하는 배양기를 거쳐, 지배적 디자인이 선택되고, 그 디자인이 점진적으로 개선되는 흐름입니다.\n여기서 주의할 점은 제품 출시 간격과 기술주기가 다르다는 것입니다. 새 제품이 자주 나와도 같은 사이클 안의 점진적 개선일 수 있습니다.",
-      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다.\n· 용어는 강의자료 그림 3.11(40쪽)의 표현을 그대로 썼다."
+      sources: [{ label: "개념 출처: " + SRC_AT, url: "" }],
+      script: "먼저 기술주기가 무엇인지 정리하겠습니다. 이 개념을 처음 제시한 Anderson과 Tushman의 1990년 논문에 따르면, 기술주기는 단속적 기술이 나타나고, 여러 디자인이 경쟁하는 배양기를 거쳐, 지배적 디자인이 선택되고, 그 디자인이 점진적으로 개선되는 흐름입니다.\n여기서 주의할 점은 제품 출시 간격과 기술주기가 다르다는 것입니다. 새 제품이 자주 나와도 같은 사이클 안의 점진적 개선일 수 있습니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다.\n· 논문 원문: 'era of ferment(격동기)는 디자인 경쟁과 대체가 특징', 지배적 디자인 이후는 'elaboration(정교화)'의 시기."
     },
     {
       id: "s4", type: "scurve", duration: 55,
@@ -715,11 +780,10 @@ const DEFAULT_DECK = {
         { name: "2단계", desc: "기술에 대한 이해가 늘면서\n성능 향상이 빨라진다" },
         { name: "3단계", desc: "기술의 한계에 가까워지면\n성능 향상이 점점 늦춰진다" }
       ],
-      lectureImg: { src: "LECTURE_IMG_32", caption: "강의자료 원본 · 그림 3.1 기술 성능의 S-curve", credit: LECTURE + " 32쪽" },
-      tip: "기술의 실제 한계가 어디인지 미리 알 수 있는 경우는 매우 드물다 (35쪽)",
-      sources: [{ label: "출처: " + LECTURE + ", 32쪽(그림 3.1)과 35쪽. 왼쪽 그래프는 같은 그림을 단계 설명용으로 다시 그린 것", url: "" }],
-      script: "기술의 성능이 어떻게 좋아지는지는 강의자료 32쪽의 S-곡선으로 설명할 수 있습니다. 가로축은 노력, 세로축은 성능 수준이고, 숫자가 없는 개념 그래프입니다.\n1단계에서는 기술이 아직 제대로 이해되지 않아 성능이 천천히 오릅니다. 2단계에서는 이해가 늘면서 성능 향상이 빨라집니다. 3단계에서는 기술의 한계에 가까워지면서 같은 노력을 들여도 향상 속도가 늦춰집니다.\n다만 35쪽에 나온 것처럼, 그 한계가 어디인지 미리 알기는 매우 어렵습니다.",
-      notes: "· 방향키 1·2·3번으로 단계가 강조된다.\n· 오른쪽 아래 작은 그림이 강의자료 원본이다."
+      tip: "“한계에 다다르면 아무리 애써도 더 나아갈 수 없다.” — Foster (1986)",
+      sources: [{ label: "개념 출처: " + SRC_FOSTER + ". S-곡선은 ‘제품을 개선하려는 노력과 그 결과의 관계’를 그린 것. 그래프는 직접 그린 개념도", url: URL_FOSTER }],
+      script: "기술의 성능이 어떻게 좋아지는지는 S-곡선으로 설명할 수 있습니다. 맥킨지의 리처드 포스터는 1986년 책에서 S-곡선을 '제품을 개선하려는 노력과 그 결과 사이의 관계'라고 정의했습니다. 가로축은 노력, 세로축은 성능 수준이고, 숫자가 없는 개념 그래프입니다.\n1단계에서는 기술이 아직 제대로 이해되지 않아 성능이 천천히 오릅니다. 2단계에서는 이해가 늘면서 성능 향상이 빨라집니다. 3단계에서는 기술의 한계에 가까워지면서 같은 노력을 들여도 향상 속도가 늦춰집니다.\n포스터는 이렇게 말했습니다. 한계에 다다르면 아무리 애써도 더 나아갈 수 없다고요.",
+      notes: "· 방향키 1·2·3번으로 단계가 강조된다.\n· 오른쪽 아래 인용은 Foster(1986)의 문장을 옮긴 것이다."
     },
     {
       id: "s5", type: "jump", duration: 50,
@@ -727,14 +791,14 @@ const DEFAULT_DECK = {
       lead: "모든 기술이 한계에 도달하는 것은 아니다.\n새로운 불연속 기술로 대체될 수 있다",
       chart: { oldLabel: "기존 기술", newLabel: "불연속 기술", xLabel: "노력 · 시간", yLabel: "성능", note: "초기에는 기존 기술보다 성능이 낮다" },
       examples: [
-        { from: "탄소 복사", to: "사진 복사" },
-        { from: "비닐 레코드", to: "CD" },
-        { from: "마차", to: "자동차", note: "최초의 자동차는 마차보다 훨씬 느렸다" }
+        { from: "평면 낸드", to: "3D V낸드", note: "2013년 삼성전자, 평면 미세화가 매우 어려워지자 수직으로 쌓음", imgFrom: IMG_SAMSUNG_12, imgTo: IMG_SS_4G },
+        { from: "비닐 레코드", to: "CD", imgFrom: IMG_VINYL, imgTo: IMG_CD },
+        { from: "마차", to: "자동차", note: "최초의 자동차는 마차보다 훨씬 느렸다", imgFrom: IMG_CARRIAGE, imgTo: IMG_CAR }
       ],
-      insight: "신기술은 초기에 성과가 느리고 비용이 들기 때문에, 기업은 기존 기술에 계속 투자하는 쪽을 선호할 수 있다",
-      sources: [{ label: "출처: " + LECTURE + ", 33쪽 (예시와 설명은 강의자료 그대로)", url: "" }],
-      script: "그런데 33쪽에서 배운 것처럼, 모든 기술이 한계까지 가는 것은 아닙니다. 완전히 새로운 지식에 기반한 불연속 기술이 나타나 기존 기술을 대체할 수 있습니다. 탄소 복사가 사진 복사로, 비닐 레코드가 CD로 바뀐 것이 그 예입니다.\n재미있는 점은 새 기술이 처음에는 오히려 성능이 낮다는 것입니다. 최초의 자동차는 마차보다 훨씬 느렸습니다. 그래서 기업은 신기술로 바로 넘어가기를 꺼릴 수 있습니다. 이렇게 새 S-곡선이 얼마나 자주 나타나느냐가 기술주기의 길이와 이어집니다.",
-      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선이 아래에서 시작해 위로 올라간다.\n· 예시는 모두 강의자료 33쪽에 있는 것만 썼다."
+      insight: "신기술은 처음엔 성능이 낮고 비용이 들어, 기업은 기존 기술에 계속 투자하기 쉽다",
+      sources: [{ label: "개념: Foster (1986) · 낸드 예시: Samsung Newsroom (2013.08.06)", url: URL_SS_VNAND }, { label: "사진: Samsung, Unsplash(A. Cipriani, R. Sorin, Foto Phanatic, P. Schroeder)", url: "" }],
+      script: "그런데 모든 기술이 한계까지 가는 것은 아닙니다. 완전히 새로운 지식에 기반한 불연속 기술이 나타나 기존 기술을 대체할 수 있습니다. 비닐 레코드가 CD로 바뀐 것, 그리고 뒤에서 볼 삼성의 평면 낸드가 3D V낸드로 바뀐 것이 그 예입니다.\n재미있는 점은 새 기술이 처음에는 오히려 성능이 낮다는 것입니다. 최초의 자동차는 마차보다 훨씬 느렸습니다. 그래서 기업은 신기술로 바로 넘어가기를 꺼릴 수 있습니다. 이렇게 새 S-곡선이 얼마나 자주 나타나느냐가 기술주기의 길이와 이어집니다.",
+      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선이 아래에서 시작해 위로 올라간다.\n· 평면 낸드→3D V낸드 예시는 삼성 뉴스룸(2013.08.06) 보도자료 내용이다."
     },
     {
       id: "s6", type: "cycle", duration: 60,
@@ -746,16 +810,16 @@ const DEFAULT_DECK = {
         { label: "지배적 디자인", desc: "시장 요구를 충족하는\n기능을 묶어서 제공", icon: "converge" },
         { label: "구체기 · 점진적 개선", desc: "디자인과 제조 효율의\n점진적 개선에 집중", icon: "steps" }
       ],
-      lectureImg: { src: "LECTURE_IMG_40", caption: "강의자료 원본 · 그림 3.11 기술의 사이클", credit: LECTURE + " 40쪽" },
-      findingsTitle: "Anderson & Tushman의 발견 (41쪽)",
+      study: { title: "원 연구가 살펴본 산업", items: ["시멘트", "항공", "미니컴퓨터"], note: "Tushman & Anderson(1986)이 여러 산업의 긴 역사를 분석해 이 사이클을 찾아냈다" },
+      findingsTitle: "Anderson & Tushman의 발견",
       findings: [
-        "지배적 디자인은 최첨단 기술이 아니었고, 시장의 요구를 충족하는 기능을 묶어서 제공했다",
-        "기업은 지배적 디자인과 관련된 역량 개발에 집중해야 한다",
-        "이 사이클은 기업이 단속적 기술을 인식하고 대응하는 데 어려움을 겪을 수 있는 이유를 부분적으로 설명한다"
+        "격동기에는 여러 디자인이 경쟁하고 서로 대체된다",
+        "지배적 디자인이 정해진 뒤에는 그 디자인을 다듬는 점진적 변화가 이어진다",
+        "기존 기업의 역량을 살리는 불연속도, 쓸모없게 만드는 불연속도 있다"
       ],
-      loopLabel: "결국 새로운 기술 불연속성으로 대체되며 다음 사이클이 시작된다 (39쪽)",
-      sources: [{ label: "출처: " + LECTURE + ", 39~41쪽 (그림 3.11 원본은 오른쪽 아래)", url: "" }],
-      script: "이제 기술의 사이클입니다. 39쪽에서 41쪽까지의 내용입니다.\n사이클은 단속적 기술의 출현으로 시작합니다. 그다음 유동기, 그림에서는 배양기라고 부르는 시기에는 기술과 시장의 불확실성이 크고 다양한 디자인이 실험됩니다.\n그러다 지배적 디자인이 선택됩니다. 41쪽에 따르면 지배적 디자인은 최첨단 기술이 아니라, 시장 요구를 충족하는 기능을 묶어서 제공한 디자인이었습니다.\n그 뒤 구체기에는 디자인과 제조 효율을 점진적으로 개선합니다. 그리고 결국 새로운 불연속 기술이 나타나면 다음 사이클이 시작됩니다.",
+      loopLabel: "결국 새로운 기술 불연속이 나타나며 다음 사이클이 시작된다",
+      sources: [{ label: "Anderson & Tushman (1990), ASQ 35 · Tushman & Anderson (1986), ASQ 31 · Utterback & Abernathy (1975), Omega 3(6)", url: URL_UA }],
+      script: "이제 기술의 사이클입니다. Anderson과 Tushman은 시멘트, 항공, 미니컴퓨터 같은 산업의 긴 역사를 분석해서 기술 변화가 주기적으로 반복된다는 것을 보였습니다.\n사이클은 단속적 기술의 출현으로 시작합니다. 그다음 유동기, 그림에서는 배양기라고 부르는 시기에는 기술과 시장의 불확실성이 크고 다양한 디자인이 실험됩니다.\n그러다 지배적 디자인이 선택됩니다. 논문은 그 이후를 디자인을 다듬고 정교화하는 시기라고 설명합니다.\nUtterback과 Abernathy는 이 흐름을 유동기에서 구체기로 넘어가는 과정이라고 불렀습니다. 또 Anderson과 Tushman은 어떤 불연속은 기존 기업의 역량을 살리지만, 어떤 불연속은 그 역량을 쓸모없게 만든다고 했습니다. 그리고 결국 새로운 불연속 기술이 나타나면 다음 사이클이 시작됩니다.",
       notes: "· 방향키를 누를 때마다 단계가 하나씩 나타나고, 마지막에 아래 정리 영역이 나타난다.\n· '유동기=배양기', '구체기=점진적 개선의 시기'로 같은 단계라는 점을 짚는다."
     },
     {
@@ -770,9 +834,9 @@ const DEFAULT_DECK = {
       photo: { src: IMG_SAMSUNG_12, fallback: "none", caption: "삼성전자 1Gb(왼쪽)·2Gb(오른쪽) 낸드 플래시", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
       bigLabel: "제품 용량 변화",
       warn: "NAND 제품 용량 변화입니다 (단위 Gb, 기가비트).\n기술주기의 길이가 아닙니다.",
-      link: "수업 연결 · S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습",
-      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }],
-      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다.",
+      link: "황의 법칙 · ‘해마다 반도체 집적도가 두 배로 증가’ (머니투데이, 2006) — S-곡선의 2단계처럼 빠른 점진적 개선",
+      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }, { label: SRC_MT_CTF, url: URL_MT_CTF }],
+      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다. 당시 언론은 이것을 '해마다 집적도가 두 배로 늘어난다'는 황의 법칙이라고 불렀습니다.",
       notes: "· 원문 표기는 Gb(기가비트). 1999년은 '1Gb 낸드 플래시 개발'로 적혀 있다.\n· 세로축은 로그 눈금이라 직선처럼 보이면 해마다 두 배라는 뜻이다."
     },
     {
@@ -782,13 +846,14 @@ const DEFAULT_DECK = {
       stages: [
         { year: "기존 방식", name: "플로팅 게이트", text: "도체인 플로팅 게이트가\n데이터를 저장하던 방식" },
         { year: "2006", name: "CTF 낸드", text: "플로팅 게이트 기술의 한계를 극복,\n세계 최초 40나노 32Gb 상용화" },
-        { year: "2013", name: "3D V낸드", text: "수직 구조로 미세화 기술의\n한계를 넘어 세계 최초 양산" }
+        { year: "2013", name: "3D V낸드", text: "최대 24단을 수직으로 쌓은\n128Gb, 업계 최초 양산" },
+        { year: "2024", name: "9세대 V낸드", text: "8세대보다 비트 밀도\n약 50% 향상" }
       ],
-      photo: { src: IMG_SAMSUNG_TECH, fallback: "none", caption: "플로팅 게이트 · CTF · 3D V낸드 기술 비교", credit: "그림: 삼성반도체 기술 블로그 © Samsung" },
-      insight: "발표자 해석 · 33쪽의 '새로운 불연속 기술로의 대체'처럼, 새 S-곡선이 짧은 간격으로 이어진 모습으로 볼 수 있다",
-      sources: [{ label: SRC_SAMSUNG + " (기술 설명과 연도는 원문 표현을 요약)", url: URL_SAMSUNG }],
-      script: "같은 블로그를 더 읽어 보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 '미세화 기술의 한계를 넘어선' 3D V낸드를 세계 최초로 양산했습니다.\n저희는 이것을 33쪽의 개념으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
-      notes: "· '한계를 극복', '한계를 넘어섰다'는 블로그 원문 표현이다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
+      photo: { src: IMG_SS_9G, fallback: "none", caption: "삼성전자 9세대 V낸드 (2024)", credit: "사진: Samsung Newsroom (2024.04.23)" },
+      insight: "우리 조 해석 · 한계에 닿으면 새 S-곡선(불연속)으로 옮기고, 그 위에서 다시 빠른 점진적 개선이 이어진다",
+      sources: [{ label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_VNAND, url: URL_SS_VNAND }, { label: SRC_SS_9G, url: URL_SS_9G }],
+      script: "기사와 보도자료를 더 찾아보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 평면에서 더 줄이기가 매우 어려워지자 셀을 최대 24층으로 쌓은 3D V낸드를 업계 최초로 양산했습니다. 그리고 2024년 9세대 V낸드는 8세대보다 비트 밀도를 약 50% 높였습니다.\n저희는 이것을 불연속과 S-곡선으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
+      notes: "· '플로팅 게이트 기술의 한계를 극복'은 머니투데이(2006) 표현, 24단·128Gb는 삼성 뉴스룸(2013), 약 50%는 9세대 보도자료(2024) 표현이다. 9세대 단수는 공식 발표가 없어 쓰지 않았다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
     },
     {
       id: "s9", type: "efe", duration: 70,
@@ -801,37 +866,38 @@ const DEFAULT_DECK = {
         { k: "생산", v: "평택 바이오플랜트에서 원료부터 완제품까지" }
       ],
       path: [
-        { when: "먼저", what: "파트너사(사노피)가 당뇨병 치료제로 개발" },
-        { when: "이후", what: "권리가 한미약품으로 돌아옴, 비만 치료제로 개발을 이어감" },
-        { when: "2026.10.07", what: "국내 시판 허가 발표 · 국내 기업이 개발한 첫 GLP-1 비만 신약" }
+        { when: "2015.11", what: "랩스커버리 기반 당뇨병 치료제로 사노피에 기술수출" },
+        { when: "2020", what: "사노피가 권리 반환, 한미약품으로 돌아옴" },
+        { when: "2023.07", what: "목표를 비만 치료제로 변경 · ‘한국인 맞춤형 비만약’" },
+        { when: "2026.10.07", what: "식약처 허가 · 국내 개발 GLP-1 비만 치료제로 처음" }
       ],
-      pipeline: "공식 파이프라인 페이지(2024.02 현재 표기)에서도 비만 · 대사를 첫 번째 질환군으로 소개",
-      insight: "발표자 해석 · 한 물질이 용도를 바꿔 가며 오랜 기간 개발되었다. 같은 플랫폼 기술을 계속 활용한 점은 29쪽의 핵심역량 강화 혁신과도 연결된다",
+      pipeline: "아시아경제(2026.10.07): ‘국내에서 개발된 GLP-1 계열 비만치료제가 허가된 것은 이번이 처음’",
+      insight: "우리 조 해석 · 한 기술의 제품 한 세대가 나오기까지 2015년부터 2026년까지 10년이 넘게 걸렸다",
       caveat: "한 기업, 한 제품의 사례로 제약산업 전체의 기술주기가 길다는 것을 입증할 수는 없습니다.",
-      sources: [{ label: SRC_EFE, url: URL_HANMI_EFE }, { label: "한미약품, 「혁신신약 파이프라인」(페이지 표기: 2024.02 현재)", url: URL_HANMI }],
-      script: "두 번째 사례는 한미약품입니다. 바로 오늘, 10월 7일에 한미약품이 비만 신약 '에페'의 시판 허가를 발표했습니다. 국내 기업이 개발한 첫 GLP-1 계열 비만 신약이라고 합니다.\n회사 보도자료를 보면 이 물질은 처음에 파트너사인 사노피가 당뇨병 치료제로 개발했고, 권리가 돌아온 뒤 한미약품이 비만 치료제로 개발을 이어 왔습니다. 그리고 회사의 자체 플랫폼 기술인 랩스커버리가 적용되었습니다.\n저희는 하나의 물질이 용도를 바꿔 가며 오랜 기간 개발되었다는 점에 주목했습니다. 또 같은 플랫폼 기술을 계속 활용했다는 점은 29쪽의 핵심역량 강화 혁신과도 연결됩니다. 다만 한 제품의 사례로 제약산업 전체를 증명할 수는 없습니다.",
-      notes: "· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다. 질문이 나오면 '수업 범위 밖이라 다루지 않았다'고 답한다.\n· 보도자료에는 사노피 개발 시작과 권리 반환 연도가 나오지 않아 연도를 쓰지 않았다.\n· 방향키를 누를 때마다 개발 경로가 하나씩 나타난다."
+      sources: [{ label: SRC_KBR, url: URL_KBR }, { label: SRC_DP23, url: URL_DP23 }, { label: SRC_ASIAE, url: URL_ASIAE }, { label: SRC_EFE, url: URL_HANMI_EFE }],
+      script: "두 번째 사례는 한미약품입니다. 바로 오늘, 10월 7일에 한미약품이 비만 신약 '에페'의 시판 허가를 발표했습니다. 국내 기업이 개발한 첫 GLP-1 계열 비만 신약이라고 합니다.\n기사를 찾아보니 이 물질은 한미약품의 랩스커버리 기술로 만든 당뇨병 치료제로, 2015년 11월 사노피에 기술수출되었습니다. 2020년에 권리가 돌아왔고, 2023년 7월 한미약품은 목표를 비만 치료제로 바꿨습니다. 그리고 2026년 10월 7일 허가를 받았습니다.\n즉 한 기술의 제품 한 세대가 나오기까지 10년이 넘게 걸렸습니다. 해마다 용량이 두 배로 늘던 낸드와 비교하면 차이가 분명합니다. 다만 한 제품의 사례로 제약산업 전체를 증명할 수는 없습니다.",
+      notes: "· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다. 질문이 나오면 '수업 범위 밖이라 다루지 않았다'고 답한다.\n· 2015.11 기술수출·2020 권리 반환: Korea Biomedical Review·데일리팜(2020.05.14). 2023.07 비만 치료제 전환: 데일리팜·머니투데이(2023.07.31). 권리 반환 확정 월은 기사마다 달라 연도만 썼다.\n· 방향키를 누를 때마다 개발 경로가 하나씩 나타난다."
     },
     {
       id: "s10", type: "factors", duration: 70,
       title: "기술주기 길이에 영향을 주는 요인",
       lead: "주기의 길이는 사이클의 각 단계가 얼마나 걸리느냐에 달려 있다",
-      badge: "수업 개념을 사례에 적용한 발표자 분석",
+      badge: "개념을 사례에 적용한 우리 조의 분석",
       ring: ["단속적 기술의\n출현", "배양기 →\n지배적 디자인", "기술의 한계\n근접", "점진적 개선의\n시기"],
       factors: [
-        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "33·39쪽 · 반도체: 새 방식이 짧은 간격으로 등장", icon: "break" },
-        { title: "지배적 디자인이 정해지기까지\n얼마나 걸리는가", link: "40·41쪽 · 배양기가 길수록 사이클도 길어짐", icon: "converge" },
-        { title: "기존 기술이 한계에\n얼마나 빨리 가까워지는가", link: "32·35쪽 · 시장·부품·보완 기술의 변화가 곡선 모양을 바꿈", icon: "ceiling" },
-        { title: "점진적 개선이\n얼마나 오래 이어지는가", link: "39쪽 · 제약: 한 물질의 개발이 오래 이어짐", icon: "steps" }
+        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "반도체: CTF(2006) → 3D V낸드(2013), 새 방식이 짧은 간격으로 등장", icon: "break" },
+        { title: "지배적 디자인이 정해지기까지\n얼마나 걸리는가", link: "Anderson & Tushman: 격동기(디자인 경쟁)가 길수록 사이클도 길어짐", icon: "converge" },
+        { title: "기존 기술이 한계에\n얼마나 빨리 가까워지는가", link: "Foster: 한계에 다다르면 노력해도 성능이 늘지 않음 → 새 기술로 이동", icon: "ceiling" },
+        { title: "점진적 개선이\n얼마나 오래 이어지는가", link: "제약: 에페, 2015 기술수출 → 2026 허가, 한 세대에 10년 넘게", icon: "steps" }
       ],
-      strip: "S-곡선의 형태는 시장의 변화, 부품 기술의 변화, 보완 기술의 변화에 영향을 받는다 (35쪽)",
-      sources: [{ label: "개념 출처: " + LECTURE + ", 32~35쪽(S-곡선), 39~41쪽(기술의 사이클). 네 요인과 사례 연결은 발표자 분석", url: "" }],
-      script: "그렇다면 기술주기의 길이는 무엇이 정할까요? 여기서부터는 수업 개념을 사례에 적용한 저희 팀의 분석입니다.\n첫째, 새로운 단속적 기술이 얼마나 자주 나타나는가입니다. 반도체는 CTF, 3D 낸드처럼 새 방식이 짧은 간격으로 등장했습니다.\n둘째, 배양기를 거쳐 지배적 디자인이 정해지기까지 얼마나 걸리는가입니다. 이 시기가 길수록 사이클도 길어집니다.\n셋째, 기존 기술이 한계에 얼마나 빨리 가까워지는가입니다. 35쪽에 나온 것처럼 시장, 부품 기술, 보완 기술의 변화가 S-곡선의 모양을 바꿉니다.\n넷째, 점진적 개선이 얼마나 오래 이어지는가입니다. 제약은 에페처럼 한 물질의 개발이 오래 이어지는 모습을 보였습니다.",
+      strip: "반도체: 황의 법칙 ‘해마다 집적도 2배’, 무어의 법칙 ‘24개월마다 2배’  ·  제약: 에페 한 세대에 10년 이상",
+      sources: [{ label: "개념: Foster (1986) · Anderson & Tushman (1990). 네 요인과 사례 연결은 우리 조 분석", url: "" }, { label: SRC_MOORE, url: URL_MOORE }],
+      script: "그렇다면 기술주기의 길이는 무엇이 정할까요? 여기서부터는 개념을 사례에 적용한 저희 조의 분석입니다.\n첫째, 새로운 단속적 기술이 얼마나 자주 나타나는가입니다. 반도체는 CTF, 3D 낸드처럼 새 방식이 짧은 간격으로 등장했습니다.\n둘째, 배양기를 거쳐 지배적 디자인이 정해지기까지 얼마나 걸리는가입니다. 이 시기가 길수록 사이클도 길어집니다.\n셋째, 기존 기술이 한계에 얼마나 빨리 가까워지는가입니다. 포스터의 말처럼 한계에 다다르면 아무리 노력해도 성능이 늘지 않으니, 새 기술로 옮겨 가게 됩니다.\n넷째, 점진적 개선이 얼마나 오래 이어지는가입니다. 제약은 에페처럼 한 기술의 제품 한 세대가 나오는 데 10년이 넘게 걸렸습니다. 반대로 반도체는 황의 법칙처럼 해마다 집적도가 두 배로 늘었습니다.",
       notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 단계가 강조된다.\n· 사례 연결은 '보였다', '볼 수 있다' 정도로 말하고 단정하지 않는다."
     },
     {
       id: "s11", type: "compare", duration: 45,
-      title: "우리 팀의 답과 자료의 한계",
+      title: "우리 조의 답과 자료의 한계",
       lead: "반도체·IT는 짧은 편, 제약은 긴 편.\n단, 상대적 비교와 직접 측정은 구분해야 한다",
       scaleTitle: "기술순환주기 (특허 인용 기반 지표) · 참고 논문의 상대 비교",
       shortLabel: "짧은 편",
@@ -840,7 +906,7 @@ const DEFAULT_DECK = {
         { label: "반도체 · IT", text: "상대적으로 짧은 편", pos: 0.22 },
         { label: "제약", text: "상대적으로 긴 편", pos: 0.78 }
       ],
-      caption: "특허 인용 기반 지표의 상대 비교이며, 강의자료의 기술 사이클 기간을 직접 측정한 수치가 아님. 위치는 순서만 나타냄.",
+      caption: "특허 인용 기반 지표의 상대 비교이며, 기술 사이클 기간을 직접 측정한 수치가 아님. 위치는 순서만 나타냄.",
       pavitt: "두 산업 모두 제2강 9쪽 Pavitt 분류의 '과학기반형'(컴퓨터, BIO)에 속한다. 같은 유형 안에서도 주기 길이가 다를 수 있다는 점이 흥미롭다",
       limits: [
         "논문의 기술순환주기는 특허 인용 기반 지표로, 수업의 기술 사이클과 측정 기준이 완전히 같지 않다",
@@ -848,7 +914,7 @@ const DEFAULT_DECK = {
         "삼성전자와 한미약품 사례는 산업 전체의 기술주기 길이를 직접 증명하지 않는다"
       ],
       sources: [{ label: "Lee, K. (2024). Economics of technology cycle time (TCT) and catch-up by latecomers. Journal of Evolutionary Economics, 34(2), 319–349. 산업 비교의 보조 자료", url: URL_LEE }, { label: "제2강 강의자료 9쪽, 산업별 기술혁신 패턴에 의한 산업 분류(Pavitt)", url: "" }],
-      script: "정리하면 저희 팀의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 참고 논문도 IT를 제약보다 기술순환주기가 상대적으로 짧은 사례로 제시합니다.\n다만 이 논문의 지표는 특허 인용을 바탕으로 해서 수업의 기술 사이클과 측정 기준이 같지 않습니다. 그래서 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
+      script: "정리하면 저희 조의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 참고 논문도 IT를 제약보다 기술순환주기가 상대적으로 짧은 사례로 제시합니다.\n다만 이 논문의 지표는 특허 인용을 바탕으로 해서 수업의 기술 사이클과 측정 기준이 같지 않습니다. 그래서 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
       notes: "· 숫자를 묻는 질문이 나오면: 측정 기준이 달라 연수를 제시하지 않았다고 답한다.\n· 논문 본문의 IT·제약 비교 문장 쪽 번호를 발표 전에 확인해 둔다."
     },
     {
@@ -857,14 +923,22 @@ const DEFAULT_DECK = {
       lead: "기술주기는 새 기술의 등장, 지배적 디자인, 점진적 개선의 흐름에 따라 달라진다.",
       takeaways: [
         "주기의 길이는 사이클의\n각 단계가 얼마나 걸리느냐에 달려 있다",
-        "반도체는 새 S-곡선이 빠르게 이어지고,\n제약은 한 기술의 개발이 오래 이어진다",
+        "반도체는 해마다 집적도가 두 배로 늘고,\n제약은 제품 한 세대에 10년이 넘게 걸렸다",
         "제품 출시 주기와 기술주기는\n같은 말이 아니다"
       ],
       refs: [
-        { label: LECTURE + " 32~35쪽(기술의 S-Curves), 39~41쪽(기술의 사이클), 43쪽(토론 문제) · 제2강 강의자료 9쪽(Pavitt 분류)", url: "" },
+        { label: SRC_FOSTER, url: URL_FOSTER },
+        { label: SRC_AT, url: "" },
+        { label: SRC_TA86, url: "" },
+        { label: SRC_UA, url: URL_UA },
+        { label: SRC_MT_CTF, url: URL_MT_CTF },
+        { label: SRC_SS_VNAND, url: URL_SS_VNAND },
+        { label: SRC_SS_9G, url: URL_SS_9G },
+        { label: SRC_KBR, url: URL_KBR },
+        { label: SRC_DP23, url: URL_DP23 },
+        { label: SRC_ASIAE, url: URL_ASIAE },
         { label: SRC_SAMSUNG, url: URL_SAMSUNG },
         { label: SRC_EFE, url: URL_HANMI_EFE },
-        { label: "한미약품, 「혁신신약 파이프라인」, 2024.02 현재 기준", url: URL_HANMI },
         { label: "Lee, K. (2024). Economics of technology cycle time (TCT) and catch-up by latecomers: Micro-, meso-, and macro-analyses and implications. Journal of Evolutionary Economics, 34(2), 319–349.", url: URL_LEE }
       ],
       sources: [],
@@ -993,14 +1067,14 @@ function head(s, i) {
 function foot(s, i) {
   const src = (s.sources || []).filter(x => x && (x.label || x.url)).map(x => {
     const u = safeUrl(x.url);
-    return `<span>${esc(x.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//, ""))}</a>` : ""}</span>`;
+    return `<span>${esc(x.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] + " ↗")}</a>` : ""}</span>`;
   }).join("");
   return `<footer class="s-foot"><div class="src">${src}</div><span class="pg">${pad(i + 1)} / ${pad(deck.slides.length)}</span></footer>`;
 }
 const COL = { break: "var(--c-coral)", branch: "var(--c-orange)", converge: "var(--c-violet)", steps: "var(--c-teal)", ceiling: "var(--c-blue)" };
 const PAL = ["var(--c-blue)", "var(--c-teal)", "var(--c-violet)", "var(--c-orange)", "var(--c-coral)", "var(--c-sky)"];
 const PHASE_COL = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
-const LECTURE_IMG = { LECTURE_IMG_32: "data:image/png;base64,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", LECTURE_IMG_40: "data:image/png;base64,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p1LkYYCtSqJ8y6Tzc9T+tBFKvUPTJNN8JVA8zxM8vumOlN3RExDt+QDe0YVRqJA8YpRNcTgk+f+RvFRBwdzmqn2JyOAxYBARkeEwKQjH7t/CMX/a4yVlH+Ywt/HGnT/7YtWQbqmU7th08ln6c2tkRL6maDPjR+Q40AvTu32Pf+b/oZrBe9VU/DO4NaYP2Ambkb+jTd188gFERG+xiRQZJDaRMj5sImXoREfqZ4gtVAFF8urYpENM8vfoNSxLlc9Ap+J3eJ0kFEgIegqv11YoqvMs5AmI8XHDazh8oFqYjHxGaV8XJ3i9DIaqm7kZrPI5oljljHbUjkWYxyMEW5XKgjVNxo1NpEhgHwwiHTBgGB8GDCKijGPAIIF9MIiIiIiIKMtiwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr1hwCAiIiIiIr0xUUjkZSKDUcaxpPKnu6eH8icRERERaafv6ybWYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd4wYBARERERkd6YKCTyMpHBKONYUl4iIiIiIl24e3rIS++HNRhERERERKQ3rMEgIiIiIiK9YQ0GERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpDQMGERERERHpCfB/DWhkJvxoMn8AAAAASUVORK5CYII=" };
+const LECTURE_IMG = { LECTURE_IMG_32: "data:image/png;base64,", LECTURE_IMG_40: "data:image/png;base64," };
 const resolveSrc = src => LECTURE_IMG[src] || src;
 function mixHex(stops, t) {
   const seg = Math.min(stops.length - 2, Math.floor(t * (stops.length - 1)));
@@ -1077,7 +1151,7 @@ R.cycle = (s, i) => {
   <div class="loop-line frag" data-f="${n}"><svg viewBox="0 0 1408 54" preserveAspectRatio="none" aria-hidden="true"><path class="flowing" d="M1230 2 V26 Q1230 44 1212 44 H196 Q178 44 178 26 V10" fill="none" style="stroke:var(--c-coral)" stroke-width="3" stroke-dasharray="9 9" vector-effect="non-scaling-stroke"/><path d="M170 14 L178 2 L186 14" fill="none" style="stroke:var(--c-coral)" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>${ed(s, "loopLabel", "span", "loop-label")}</div>
   <div class="cycle-bottom frag" data-f="${n}">
     <div class="findings"><b data-k="findingsTitle">${esc(s.findingsTitle)}</b><ul>${(s.findings || []).map((f, k) => `<li>${ed(s, `findings.${k}`)}</li>`).join("")}</ul></div>
-    ${lectureThumb(s, "lectureImg")}
+    ${s.study ? `<div class="study"><b data-k="study.title">${esc(s.study.title)}</b><ul>${(s.study.items || []).map((t, k) => `<li style="--c:${PAL[k % PAL.length]}" data-k="study.items.${k}">${esc(t)}</li>`).join("")}</ul><p data-k="study.note">${esc(s.study.note)}</p></div>` : lectureThumb(s, "lectureImg")}
   </div></div>${foot(s, i)}`;
 };
 function sPath(f, px, py, a, b, n = 40) { let d = ""; for (let k = 0; k <= n; k++) { const x = a + (b - a) * k / n; d += (k ? "L" : "M") + px(x).toFixed(1) + " " + py(x).toFixed(1); } return d; }
@@ -1109,7 +1183,7 @@ R.scurve = (s, i) => {
         <text class="axis-label" x="${(L + Rr) / 2}" y="${H - 2}" text-anchor="middle">${esc(c.xLabel)}</text>
         <text class="axis-label" transform="translate(${L - 24} ${(T + B) / 2}) rotate(-90)" text-anchor="middle">${esc(c.yLabel)}</text>
       </svg>
-      <div class="lec-overlay">${lectureThumb(s, "lectureImg")}</div>
+      ${s.lectureImg && s.lectureImg.src ? `<div class="lec-overlay">${lectureThumb(s, "lectureImg")}</div>` : ""}
     </div>
     <div class="side">
       <ol class="phase-list">${ph.map((p, k) => `<li class="hl-item rise" data-hl="${k + 1}" style="--i:${k + 1};--c:${PHASE_COL[k]}"><span class="pn">${pad(k + 1)}</span>${ed(s, `phases.${k}.name`, "span", "pt")}${ed(s, `phases.${k}.desc`, "span", "pd")}</li>`).join("")}</ol>
@@ -1145,8 +1219,8 @@ R.jump = (s, i) => {
       </svg>
     </div>
     <div class="side">
-      <div class="ex-title rise"${rise(1)}>강의자료 33쪽의 예</div>
-      <ul class="examples">${(s.examples || []).map((e, k) => `<li class="rise" style="--i:${k + 2}"><span class="ex-from" data-k="examples.${k}.from">${esc(e.from)}</span><span class="ex-arrow">→</span><span class="ex-to" data-k="examples.${k}.to">${esc(e.to)}</span>${e.note != null ? `<small data-k="examples.${k}.note">${esc(e.note)}</small>` : ""}</li>`).join("")}</ul>
+      <div class="ex-title rise"${rise(1)}>불연속 기술의 예</div>
+      <ul class="examples">${(s.examples || []).map((e, k) => `<li class="rise${e.imgFrom || e.imgTo ? " has-img" : ""}" style="--i:${k + 2}">${e.imgFrom || e.imgTo ? `<span class="ex-imgs">${[e.imgFrom, e.imgTo].map((u, j) => safeUrl(u) ? `<img class="ex-img${j ? " to" : ""}" src="${esc(safeUrl(u))}" alt="" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">` : "<span class=ex-img></span>").join("")}</span>` : ""}<span class="ex-from" data-k="examples.${k}.from">${esc(e.from)}</span><span class="ex-arrow">→</span><span class="ex-to" data-k="examples.${k}.to">${esc(e.to)}</span>${e.note != null ? `<small data-k="examples.${k}.note">${esc(e.note)}</small>` : ""}</li>`).join("")}</ul>
       <div class="caveat soft rise"${rise(5)}>${icon("info")}${ed(s, "insight")}</div>
     </div>
   </div></div>${foot(s, i)}`;
@@ -1223,7 +1297,7 @@ R.shift = (s, i) => {
   const st = s.stages || [];
   const cols = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
   return `${head(s, i)}<div class="s-body"><div class="shift">
-    <div class="stairs">
+    <div class="stairs" style="--n:${st.length}">
       ${st.map((x, k) => `<div class="stair frag" data-f="${k}" style="--c:${cols[k % cols.length]};--k:${k};--n:${st.length}">
         <span class="st-year" data-k="stages.${k}.year">${esc(x.year)}</span>
         <span class="st-name" data-k="stages.${k}.name">${esc(x.name)}</span>
@@ -1243,7 +1317,7 @@ R.efe = (s, i) => `${head(s, i)}<div class="s-body"><div class="efe">
       <dl class="facts">${(s.facts || []).map((f, k) => `<div><dt data-k="facts.${k}.k">${esc(f.k)}</dt><dd data-k="facts.${k}.v">${esc(f.v)}</dd></div>`).join("")}</dl>
     </div>
     <div class="efe-r">
-      <ol class="path">${(s.path || []).map((p, k) => `<li class="frag" data-f="${k}" style="--c:${["var(--c-orange)", "var(--c-violet)", "var(--c-teal)"][k % 3]}"><span class="p-when" data-k="path.${k}.when">${esc(p.when)}</span><span class="p-what" data-k="path.${k}.what">${esc(p.what)}</span></li>`).join("")}</ol>
+      <ol class="path">${(s.path || []).map((p, k) => `<li class="frag" data-f="${k}" style="--c:${["var(--c-orange)", "var(--c-coral)", "var(--c-violet)", "var(--c-teal)"][k % 4]}"><span class="p-when" data-k="path.${k}.when">${esc(p.when)}</span><span class="p-what" data-k="path.${k}.what">${esc(p.what)}</span></li>`).join("")}</ol>
       ${ed(s, "pipeline", "p", "pipe-note rise").replace("<p", `<p style="--i:3"`)}
       <div class="tag teal rise"${rise(4)}>${icon("link")}${ed(s, "insight")}</div>
       <div class="caveat rise"${rise(5)}>${icon("info")}${ed(s, "caveat")}</div>
@@ -1301,7 +1375,7 @@ R.conclusion = (s, i) => `<div class="eyebrow"><span class="no">${pad(i + 1)}</s
   <div class="concl">
     ${ed(s, "lead", "h2", "statement rise").replace("<h2", `<h2 style="--i:0"`)}
     <ul class="takeaways" style="--n:${(s.takeaways || []).length}">${(s.takeaways || []).map((t, k) => `<li class="rise" style="--i:${k + 1};--c:${[PAL[0], PAL[2], "var(--c-coral)", PAL[1]][k % 4]}"><b>${pad(k + 1)}</b>${ed(s, `takeaways.${k}`)}</li>`).join("")}</ul>
-    <div class="refs"><span class="rh">참고문헌</span>${(s.refs || []).map(r => { const u = safeUrl(r.url); return `<span>${esc(r.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\//, ""))}</a>` : ""}</span>`; }).join("")}</div>
+    <div class="refs"><span class="rh">참고문헌</span>${(s.refs || []).map(r => { const u = safeUrl(r.url); return `<span>${esc(r.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] + " ↗")}</a>` : ""}</span>`; }).join("")}</div>
   </div>`;
 R.text = (s, i) => `${head(s, i)}<div class="s-body" style="display:grid;grid-template-columns:${safeUrl((s.image || {}).src) ? "minmax(0,1.1fr) minmax(0,1fr)" : "1fr"};gap:56px">
     <ul class="bullets">${(s.bullets || []).map((b, k) => `<li class="rise" style="--i:${k}">${ed(s, `bullets.${k}`)}</li>`).join("")}</ul>
@@ -1500,20 +1574,19 @@ const SCHEMA = {
     { k: "chart.title", label: "그래프 제목" }, { k: "chart.badge", label: "그래프 표시 문구" },
     { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.limitLabel", label: "한계선 이름" },
     { k: "phases", label: "구간 (3개)", list: [{ key: "name", label: "구간 이름" }, { key: "desc", label: "설명", area: true }], blank: { name: "새 구간", desc: "" }, max: 3 },
-    { k: "lectureImg", label: "강의자료 원본 그림", image: true },
     { k: "tip", label: "아래 강조 문구", area: true }
   ],
   jump: [
     { k: "chart.oldLabel", label: "기존 곡선 이름" }, { k: "chart.newLabel", label: "새 곡선 이름" },
     { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.note", label: "새 곡선 설명" },
-    { k: "examples", label: "예시", list: [{ key: "from", label: "이전" }, { key: "to", label: "이후" }, { key: "note", label: "설명" }], blank: { from: "", to: "", note: "" } },
+    { k: "examples", label: "예시", list: [{ key: "from", label: "이전" }, { key: "to", label: "이후" }, { key: "note", label: "설명" }, { key: "imgFrom", label: "이전 사진 URL" }, { key: "imgTo", label: "이후 사진 URL" }], blank: { from: "", to: "", note: "", imgFrom: "", imgTo: "" } },
     { k: "insight", label: "아래 설명", area: true }
   ],
   cycle: [
     { k: "nodes", label: "사이클 단계", list: [{ key: "label", label: "단계 이름" }, { key: "desc", label: "설명", area: true }], blank: { label: "새 단계", desc: "", icon: "steps" } },
     { k: "loopLabel", label: "순환 화살표 문구" },
     { k: "findingsTitle", label: "정리 제목" }, { k: "findings", label: "정리 항목", strlist: true, area: true, blank: "새 항목" },
-    { k: "lectureImg", label: "강의자료 원본 그림", image: true }
+    { k: "study.title", label: "오른쪽 상자 제목" }, { k: "study.items", label: "원 연구의 산업", strlist: true, blank: "산업" }, { k: "study.note", label: "오른쪽 상자 설명", area: true }
   ],
   timeline: [
     { k: "chart.title", label: "그래프 제목" }, { k: "chart.legend", label: "범례" },
