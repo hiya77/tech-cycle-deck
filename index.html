@@ -727,7 +727,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v9";
+const STORE_KEY = "tech-cycle-deck.v10";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -868,8 +868,8 @@ const DEFAULT_DECK = {
       ],
       insight: "신기술은 초기에는 기존 기술보다 성능이 낮을 수도 있고 비용이 들어, 기업이 전환을 꺼릴 수 있다 (33쪽)",
       sources: [{ label: "개념: " + LECTURE + " 33쪽 · 낸드 예시: Samsung Newsroom (2013.08.06)", url: URL_SS_VNAND }, { label: "사진: Samsung, Unsplash(A. Cipriani, R. Sorin, Foto Phanatic, P. Schroeder)", url: "" }],
-      script: "기존 기술의 개선이 느려지는 동안, 문제를 다른 방식으로 해결하는 새 기술이 등장할 수 있습니다. 비닐 레코드 다음에 CD가 등장한 것처럼요. 그렇다고 새 기술이 처음부터 모든 면에서 더 좋은 것은 아닙니다. 처음에는 성능이 부족하거나 비용이 많이 들어서 기업이 기존 방식을 계속 선택할 수도 있습니다. 뒤에서 볼 평면 낸드에서 3D 낸드로의 변화도, 저희는 이런 기술 방식의 변화와 연결해 해석했습니다.",
-      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선.\n· 가로축은 노력(4장과 같은 기준)이며 시간축 그래프가 아니다.\n· 평면→3D 연결은 우리 조의 해석이라는 점을 짚는다."
+      script: "기존 기술의 개선이 느려지는 동안, 문제를 다른 방식으로 해결하는 새 기술이 등장할 수 있습니다. 비닐 레코드 다음에 CD가 등장한 것처럼요. (엔터)\n그렇다고 새 기술이 처음부터 모든 면에서 더 좋은 것은 아닙니다. 처음에는 성능이 부족하거나 비용이 많이 들어서 기업이 기존 방식을 계속 선택할 수도 있습니다. 뒤에서 볼 평면 낸드에서 3D 낸드로의 변화도, 저희는 이런 기술 방식의 변화와 연결해 해석했습니다.",
+      notes: "· (엔터) 표시에서 엔터를 누르면 새 기술 곡선이 나타난다.\n· 가로축은 노력(4장과 같은 기준)이며 시간축 그래프가 아니다.\n· 평면→3D 연결은 우리 조의 해석이라는 점을 짚는다."
     },
     {
       id: "s6", type: "cycle", duration: 45,
@@ -888,8 +888,8 @@ const DEFAULT_DECK = {
       ],
       loopLabel: "결국 새로운 기술 불연속이 나타나며 다음 사이클이 시작된다",
       sources: [{ label: "개념: " + LECTURE + " 39~41쪽 · Anderson & Tushman (1990), ASQ 35", url: "" }],
-      script: "새 기술이 나왔다고 해서 곧바로 한 가지 방식으로 정해지는 것은 아닙니다. 처음에는 무엇이 잘 작동할지 불확실해서 여러 디자인이 경쟁합니다. 그러다 시장에서 널리 받아들여지는 방식, 즉 지배적 디자인이 자리 잡으면 기업들은 그 방식을 바탕으로 성능과 생산 효율을 개선합니다. 이후 또 다른 큰 기술 변화가 나타나면 비슷한 과정이 다시 이어집니다. 이 흐름을 기억하고 사례를 보시면 이해하기 쉽습니다.",
-      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타나고, 마지막에 아래 정리 영역이 나타난다.\n· 3장과 겹치지 않게 ‘각 단계에서 무슨 일이 일어나는가’에 집중한다."
+      script: "새 기술이 나왔다고 해서 곧바로 한 가지 방식으로 정해지는 것은 아닙니다. (엔터)\n처음에는 무엇이 잘 작동할지 불확실해서 여러 디자인이 경쟁합니다. (엔터)\n그러다 시장에서 널리 받아들여지는 방식, 즉 지배적 디자인이 자리 잡으면 기업들은 그 방식을 바탕으로 성능과 생산 효율을 개선합니다. (엔터)\n이후 또 다른 큰 기술 변화가 나타나면 비슷한 과정이 다시 이어집니다. 이 흐름을 기억하고 사례를 보시면 이해하기 쉽습니다.",
+      notes: "· (엔터) 표시마다 엔터를 누르면 다음 단계가 나타난다. 마지막 문장 뒤 엔터를 한 번 더 누르면 아래 정리 영역이 나타난다.\n· 3장과 겹치지 않게 ‘각 단계에서 무슨 일이 일어나는가’에 집중한다."
     },
     {
       id: "s7", type: "timeline", duration: 65,
