@@ -606,6 +606,22 @@ body.editing .cover-q{color:var(--ink);background:none}
 .caveat.soft{padding:14px 20px;font-size:20px}
 .factors{margin-bottom:6px}
 
+/* v5: 핵심 문구 밑줄·포인트 */
+.mark-u{color:var(--c-coral);background-image:linear-gradient(color-mix(in srgb,var(--c-coral) 26%,transparent),color-mix(in srgb,var(--c-coral) 26%,transparent));background-repeat:no-repeat;background-position:0 92%;background-size:100% .34em;padding:0 .06em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.slide.play .mark-u{animation:markDraw 1s cubic-bezier(.2,.7,.2,1) .5s both}
+@keyframes markDraw{from{background-size:0 .34em}to{background-size:100% .34em}}
+@media (prefers-reduced-motion: reduce){.slide.play .mark-u{animation:none}}
+.tl-ev-t{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.slide.play .tl-ev{animation:fadeIn .6s ease both;animation-delay:var(--d)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.slide.play .tl-ev{animation:none}}
+.shift.n5{grid-template-columns:minmax(0,2.5fr) minmax(0,1fr);gap:28px}
+.shift.n5 .stairs{gap:10px}
+.shift.n5 .stair{margin-bottom:calc(var(--k) * 44px);padding:16px 14px 12px;gap:6px}
+.shift.n5 .st-name{font-size:23px}
+.shift.n5 .st-text{font-size:16px}
+.shift.n5 .st-curve{height:48px}
+
 </style>
 </head><body>
 
@@ -663,7 +679,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v4";
+const STORE_KEY = "tech-cycle-deck.v5";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -690,6 +706,12 @@ const URL_FOSTER = "https://fs.blog/richard-foster-the-attackers-advantage/";
 const URL_SS_VNAND = "https://news.samsung.com/global/samsung-starts-mass-producing-industrys-first-3d-vertical-nand-flash";
 const SRC_SS_VNAND = "Samsung Newsroom, Samsung Starts Mass Producing Industry's First 3D Vertical NAND Flash (2013.08.06)";
 const URL_SS_9G = "https://www.businesswire.com/news/home/20240423850376/en/";
+const SRC_SS_256 = "Samsung Newsroom, 256Gb 3D V-NAND 업계 최초 양산 (2015.08.11)";
+const URL_SS_256 = "https://news.samsung.com/us/?p=816";
+const SRC_SS_8G = "Samsung Newsroom, 1Tb 8세대 V-NAND 양산 (2022.11.06)";
+const URL_SS_8G = "https://news.samsung.com/us/samsung-8th-gen-vertical-nand-industry-highest-bit-density-mass-production";
+const SRC_SS_V10 = "Samsung Newsroom, FMS 2026 차세대 3D 메모리 발표 · V10 (2026.08.05)";
+const URL_SS_V10 = "https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure";
 const SRC_SS_9G = "Samsung Electronics 보도자료(BusinessWire), 9세대 V-NAND 양산 (2024.04.23)";
 const URL_MT_CTF = "https://www.mt.co.kr/stock/2006/09/11/2006091111515679982";
 const SRC_MT_CTF = "머니투데이, 「삼성電, CTF 상용화 '황의 법칙 계속'」(2006.09.11)";
@@ -718,14 +740,14 @@ const DEFAULT_DECK = {
       title: "토론 문제 4번 · 팀 발표",
       question: "왜 어떤 산업의 기술은 빠르게 바뀌고,\n어떤 산업은 변화가 느릴까?",
       deckTitle: "산업마다 기술주기의 길이가 다른 이유",
+      mark: "산업마다 기술주기의 길이가 다른 이유",
       subtitle: "기술적 불연속, 지배적 디자인, 점진적 개선을 중심으로",
       presenter: "발표 · 박민준 · 박태하 · 정희원",
       cases: ["사례 1 · 삼성전자 NAND 플래시", "사례 2 · 한미약품 비만 신약 '에페'"],
       images: [
-        { src: IMG_SS_FAB, fallback: "chip", tag: "반도체", caption: "삼성전자 평택캠퍼스 반도체 생산라인", credit: "사진: Samsung Newsroom (2017.07.04)" },
-        { src: IMG_HANMI_PLANT, fallback: "pharma", tag: "제약", caption: "한미약품 평택 바이오플랜트 내부 · 에페 생산 시설", credit: "사진: 한미약품 제공 (2025.08.12)" }
+        { src: IMG_SS_FAB, fallback: "chip", tag: "반도체", caption: "삼성전자 평택캠퍼스 반도체 생산라인" },
+        { src: IMG_HANMI_PLANT, fallback: "pharma", tag: "제약", caption: "한미약품 평택 바이오플랜트 내부 · 에페 생산 시설" }
       ],
-      imageNote: "사진은 각 기업 공식 자료에서 출처와 함께 인용했습니다.",
       sources: [],
       script: "안녕하세요. 저희 조는 제5강 토론 문제 4번을 맡았습니다. 질문은 이것입니다. 왜 어떤 산업의 기술은 빠르게 바뀌고, 어떤 산업은 변화가 느릴까요?\n수업에서 배운 S-곡선과 기술의 사이클로 이 질문에 답해 보겠습니다. 사례는 삼성전자의 낸드 플래시와, 지난 10월 7일 허가를 받은 한미약품의 비만 신약 '에페'입니다.",
       notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· 수업에서 배운 개념의 원 논문과 기업 자료로 답한다고 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
@@ -789,6 +811,7 @@ const DEFAULT_DECK = {
       id: "s5", type: "jump", duration: 50,
       title: "단속적 기술과 새로운 S-곡선",
       lead: "모든 기술이 한계에 도달하는 것은 아니다.\n새로운 불연속 기술로 대체될 수 있다",
+      mark: "새로운 불연속 기술로 대체",
       chart: { oldLabel: "기존 기술", newLabel: "불연속 기술", xLabel: "노력 · 시간", yLabel: "성능", note: "초기에는 기존 기술보다 성능이 낮다" },
       examples: [
         { from: "평면 낸드", to: "3D V낸드", note: "2013년 삼성전자, 평면 미세화가 매우 어려워지자 수직으로 쌓음", imgFrom: IMG_SAMSUNG_12, imgTo: IMG_SS_4G },
@@ -826,33 +849,37 @@ const DEFAULT_DECK = {
       id: "s7", type: "timeline", duration: 65,
       title: "사례 1 · 삼성전자 반도체",
       lead: "기술 개선의 흐름: 삼성 NAND 플래시 메모리",
-      chart: { title: "삼성 NAND 플래시 제품 용량 변화", xLabel: "연도", yLabel: "용량 (Gb, 로그 눈금)", legend: "NAND 플래시 제품 용량", unit: "Gb", scale: "log" },
+      chart: { title: "삼성 NAND 플래시 제품 용량 변화 (1999–2026)", xLabel: "연도 (5년 단위)", yLabel: "칩 1개 용량 (Gb, 로그 눈금)", legend: "NAND 플래시 제품 용량", unit: "Gb", scale: "log", tickEvery: 5, xMin: 1998, xMax: 2027,
+        events: [{ year: 2006, name: "CTF" }, { year: 2013, name: "3D V낸드" }, { year: 2024, name: "9세대 1Tb", row: 1 }, { year: 2026, name: "10세대 · 용량 비공개", row: 0 }] },
       points: [
-        { year: 1999, value: 1 }, { year: 2002, value: 2 }, { year: 2003, value: 4 },
-        { year: 2004, value: 8 }, { year: 2005, value: 16 }, { year: 2006, value: 32 }, { year: 2007, value: 64 }
+        { year: 1999, value: 1, label: "1Gb" }, { year: 2002, value: 2, label: "" }, { year: 2003, value: 4, label: "" },
+        { year: 2004, value: 8, label: "" }, { year: 2005, value: 16, label: "" }, { year: 2006, value: 32, label: "" }, { year: 2007, value: 64, label: "64Gb" },
+        { year: 2013, value: 128, label: "128Gb" }, { year: 2015, value: 256, label: "256Gb" }, { year: 2022, value: 1024, label: "1Tb" }, { year: 2024, value: 1024, label: "" }
       ],
       photo: { src: IMG_SAMSUNG_12, fallback: "none", caption: "삼성전자 1Gb(왼쪽)·2Gb(오른쪽) 낸드 플래시", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
       bigLabel: "제품 용량 변화",
-      warn: "NAND 제품 용량 변화입니다 (단위 Gb, 기가비트).\n기술주기의 길이가 아닙니다.",
-      link: "황의 법칙 · ‘해마다 반도체 집적도가 두 배로 증가’ (머니투데이, 2006) — S-곡선의 2단계처럼 빠른 점진적 개선",
-      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }, { label: SRC_MT_CTF, url: URL_MT_CTF }],
-      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다. 당시 언론은 이것을 '해마다 집적도가 두 배로 늘어난다'는 황의 법칙이라고 불렀습니다.",
-      notes: "· 원문 표기는 Gb(기가비트). 1999년은 '1Gb 낸드 플래시 개발'로 적혀 있다.\n· 세로축은 로그 눈금이라 직선처럼 보이면 해마다 두 배라는 뜻이다."
+      warn: "NAND 제품 용량 변화입니다 (단위 Gb, 1Tb = 1,024Gb).\n기술주기의 길이가 아닙니다.",
+      link: "황의 법칙 ‘해마다 집적도 2배’(머니투데이, 2006)는 2007년 64Gb까지 이어졌고, 3D 전환 뒤에는 2013 128Gb → 2015 256Gb → 2022 1Tb로 이어졌다. 2026년 10세대는 400단 이상, 비트 밀도 58%↑ (삼성 뉴스룸)",
+      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }, { label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_256, url: URL_SS_256 }, { label: SRC_SS_8G, url: URL_SS_8G }, { label: SRC_SS_V10, url: URL_SS_V10 }],
+      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다. 당시 언론은 이것을 '해마다 집적도가 두 배로 늘어난다'는 황의 법칙이라고 불렀습니다.\n그 뒤로도 그래프를 2026년까지 이어 보면, 3D V낸드로 넘어간 뒤 2013년 128기가비트, 2015년 256기가비트, 2022년 1테라비트가 됐습니다. 그리고 올해 8월 삼성은 400단이 넘는 10세대 V낸드를 공개했는데, 칩 용량은 밝히지 않았고 비트 밀도가 이전 세대보다 58% 이상 높다고만 발표했습니다. 점선으로 표시한 시점이 다음 장에서 볼 기술 방식의 전환입니다.",
+      notes: "· 2013 128Gb·2015 256Gb·2022 1Tb·2024 1Tb는 각 삼성 뉴스룸 양산 발표. 2026 10세대는 칩 용량 미공개라 점을 찍지 않고 점선으로만 표시.\n· 원문 표기는 Gb(기가비트). 1999년은 '1Gb 낸드 플래시 개발'로 적혀 있다.\n· 세로축은 로그 눈금이라 직선처럼 보이면 해마다 두 배라는 뜻이다."
     },
     {
       id: "s8", type: "shift", duration: 45,
       title: "사례 1 · 해석",
       lead: "한계에 부딪힐 때마다 새로운 기술 방식으로 넘어갔다",
+      mark: "새로운 기술 방식",
       stages: [
-        { year: "기존 방식", name: "플로팅 게이트", text: "도체인 플로팅 게이트가\n데이터를 저장하던 방식" },
-        { year: "2006", name: "CTF 낸드", text: "플로팅 게이트 기술의 한계를 극복,\n세계 최초 40나노 32Gb 상용화" },
-        { year: "2013", name: "3D V낸드", text: "최대 24단을 수직으로 쌓은\n128Gb, 업계 최초 양산" },
-        { year: "2024", name: "9세대 V낸드", text: "8세대보다 비트 밀도\n약 50% 향상" }
+        { year: "기존 방식", name: "플로팅 게이트", text: "플로팅 게이트에\n데이터를 저장" },
+        { year: "2006", name: "CTF 낸드", text: "플로팅 게이트의 한계 극복,\n40나노 32Gb 상용화" },
+        { year: "2013", name: "3D V낸드", text: "최대 24단 수직 적층,\n128Gb 업계 최초 양산" },
+        { year: "2024", name: "9세대 V낸드", text: "1Tb, 8세대보다\n비트 밀도 약 50%↑" },
+        { year: "2026", name: "10세대 V낸드", text: "400단 이상, 9세대보다\n비트 밀도 58% 이상↑" }
       ],
       photo: { src: IMG_SS_9G, fallback: "none", caption: "삼성전자 9세대 V낸드 (2024)", credit: "사진: Samsung Newsroom (2024.04.23)" },
       insight: "우리 조 해석 · 한계에 닿으면 새 S-곡선(불연속)으로 옮기고, 그 위에서 다시 빠른 점진적 개선이 이어진다",
-      sources: [{ label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_VNAND, url: URL_SS_VNAND }, { label: SRC_SS_9G, url: URL_SS_9G }],
-      script: "기사와 보도자료를 더 찾아보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 평면에서 더 줄이기가 매우 어려워지자 셀을 최대 24층으로 쌓은 3D V낸드를 업계 최초로 양산했습니다. 그리고 2024년 9세대 V낸드는 8세대보다 비트 밀도를 약 50% 높였습니다.\n저희는 이것을 불연속과 S-곡선으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
+      sources: [{ label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_VNAND, url: URL_SS_VNAND }, { label: SRC_SS_9G, url: URL_SS_9G }, { label: SRC_SS_V10, url: URL_SS_V10 }],
+      script: "기사와 보도자료를 더 찾아보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 평면에서 더 줄이기가 매우 어려워지자 셀을 최대 24층으로 쌓은 3D V낸드를 업계 최초로 양산했습니다. 2024년 9세대 V낸드는 8세대보다 비트 밀도를 약 50% 높였고, 올해 8월 공개된 10세대 V낸드는 400단을 넘기며 9세대보다 비트 밀도를 58% 이상 높였습니다.\n저희는 이것을 불연속과 S-곡선으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
       notes: "· '플로팅 게이트 기술의 한계를 극복'은 머니투데이(2006) 표현, 24단·128Gb는 삼성 뉴스룸(2013), 약 50%는 9세대 보도자료(2024) 표현이다. 9세대 단수는 공식 발표가 없어 쓰지 않았다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
     },
     {
@@ -903,7 +930,7 @@ const DEFAULT_DECK = {
       shortLabel: "짧은 편",
       longLabel: "긴 편",
       items: [
-        { label: "반도체 · IT", text: "CTF 2006 → 3D V낸드 2013", pos: 0.22 },
+        { label: "반도체 · IT", text: "CTF 2006 → 3D V낸드 2013 → 9세대 2024 → 10세대 2026", pos: 0.22 },
         { label: "제약", text: "에페 2015 → 2026, 10년 넘게", pos: 0.78 }
       ],
       caption: "사례에서 확인한 연도를 바탕으로 한 상대 비교이며, 기술주기 길이를 직접 측정한 수치가 아님. 위치는 순서만 나타냄.",
@@ -913,8 +940,8 @@ const DEFAULT_DECK = {
         "그래서 산업별 기술주기의 정확한 연수나 배수는 제시하지 않는다",
         "삼성전자와 한미약품 사례는 산업 전체의 기술주기 길이를 직접 증명하지 않는다"
       ],
-      sources: [{ label: "사례 연도: 머니투데이(2006.09.11), Samsung Newsroom(2013.08.06), Korea Biomedical Review(2020.05.14), 아시아경제(2026.10.07)", url: "" }, { label: "제2강 강의자료 9쪽, 산업별 기술혁신 패턴에 의한 산업 분류(Pavitt)", url: "" }],
-      script: "정리하면 저희 조의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 삼성은 2006년 CTF에서 2013년 3D V낸드로 새 방식이 짧은 간격으로 이어졌고, 에페는 2015년부터 2026년까지 한 제품이 나오는 데 10년이 넘게 걸렸습니다.\n다만 두 비교는 기준이 완전히 같지 않아서, 산업별 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
+      sources: [{ label: "사례 연도: 머니투데이(2006.09.11), Samsung Newsroom(2013.08.06 · 2024.04.23 · 2026.08.05), Korea Biomedical Review(2020.05.14), 아시아경제(2026.10.07)", url: "" }, { label: "제2강 강의자료 9쪽, 산업별 기술혁신 패턴에 의한 산업 분류(Pavitt)", url: "" }],
+      script: "정리하면 저희 조의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 삼성은 2006년 CTF, 2013년 3D V낸드, 2024년 9세대, 그리고 올해 2026년 10세대 V낸드까지 새 방식과 새 세대가 짧은 간격으로 이어졌습니다. 반면 에페는 같은 2015년부터 2026년까지 한 제품이 나오는 데 10년이 넘게 걸렸습니다.\n다만 두 비교는 기준이 완전히 같지 않아서, 산업별 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
       notes: "· 숫자를 묻는 질문이 나오면: 두 사례의 연도만 확인했고, 산업 전체의 연수는 제시하지 않았다고 답한다."
     },
     {
@@ -934,6 +961,9 @@ const DEFAULT_DECK = {
         { label: SRC_MT_CTF, url: URL_MT_CTF },
         { label: SRC_SS_VNAND, url: URL_SS_VNAND },
         { label: SRC_SS_9G, url: URL_SS_9G },
+        { label: SRC_SS_256, url: URL_SS_256 },
+        { label: SRC_SS_8G, url: URL_SS_8G },
+        { label: SRC_SS_V10, url: URL_SS_V10 },
         { label: SRC_KBR, url: URL_KBR },
         { label: SRC_DP23, url: URL_DP23 },
         { label: SRC_ASIAE, url: URL_ASIAE },
@@ -1097,6 +1127,12 @@ function lectureThumb(s, key) {
   return `<figure class="lec-thumb"><img src="${esc(u)}" alt="${esc(im.caption)}"><figcaption>${ed(s, key + ".caption", "b")}${ed(s, key + ".credit")}</figcaption><button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></figure>`;
 }
 
+function markHL(s, html) {
+  const m = s.mark && esc(s.mark);
+  if (!m || html.indexOf(m) < 0) return html;
+  return html.replace(m, `<span class="mark-u">${m}</span>`);
+}
+
 const R = {};
 R.cover = (s, i) => {
   const cases = Array.isArray(s.cases) ? s.cases : [];
@@ -1110,7 +1146,7 @@ R.cover = (s, i) => {
     </div>
     <div class="cover-r">
       ${(s.images || []).map((im, k) => `<div class="rise" style="--i:${k + 1};display:flex;min-height:0">${figure(s, "images." + k, "", im.tag || "", PAL[k % PAL.length])}</div>`).join("")}
-      ${ed(s, "imageNote", "p", "cover-note")}
+      ${s.imageNote ? ed(s, "imageNote", "p", "cover-note") : ""}
     </div>
   </div>`;
 };
@@ -1226,15 +1262,20 @@ R.jump = (s, i) => {
 };
 R.timeline = (s, i) => {
   const c = s.chart || {};
-  const pts = (s.points || []).map(p => ({ year: +p.year, value: +p.value })).filter(p => isFinite(p.year) && isFinite(p.value) && p.value > 0).sort((a, b) => a.year - b.year);
-  const W = 940, H = 520, L = 84, Rr = 910, T = 56, B = 440;
+  const pts = (s.points || []).map(p => ({ year: +p.year, value: +p.value, label: p.label })).filter(p => isFinite(p.year) && isFinite(p.value) && p.value > 0).sort((a, b) => a.year - b.year);
+  const W = 940, H = 520, L = 84, Rr = 910, B = 440, T = (c.events || []).length ? 104 : 56;
   const STOPS = ["#12A594", "#1AA3E8", "#2F6BFF", "#7B5CFA"];
   const gid = "tg-" + esc(s.id);
   let svg = "";
   if (pts.length) {
     const log = c.scale !== "linear";
     const y0 = pts[0].year, y1 = pts[pts.length - 1].year;
-    const xs = y => L + 30 + ((y - y0) / Math.max(1, y1 - y0)) * (Rr - L - 60);
+    const every5 = +c.tickEvery > 0 ? +c.tickEvery : 0;
+    const evs = (c.events || []).filter(e => isFinite(+e.year));
+    const x0 = every5 && isFinite(+c.xMin) ? Math.min(+c.xMin, y0) : y0;
+    const x1 = every5 && isFinite(+c.xMax) ? Math.max(+c.xMax, y1, ...evs.map(e => +e.year)) : y1;
+    const xs = y => L + 30 + ((y - x0) / Math.max(1, x1 - x0)) * (Rr - L - 60);
+    const someLabels = pts.some(p => p.label != null && p.label !== "");
     const vMax = Math.max(...pts.map(p => p.value)), vMin = Math.min(...pts.map(p => p.value));
     let yt = [], ys;
     if (log) {
@@ -1258,20 +1299,27 @@ R.timeline = (s, i) => {
     svg += yt.map(v => `<line class="grid-line" x1="${L}" x2="${Rr}" y1="${ys(v)}" y2="${ys(v)}"/><text class="tick" x="${L - 12}" y="${ys(v) + 6}" text-anchor="end">${fmt(v)}</text>`).join("");
     svg += `<path class="area-fill" d="${area}" fill="url(#${gid}a)"/>`;
     svg += `<path class="axis" d="M${L} ${T - 16}V${B}H${Rr}"/>`;
-    const years = []; for (let y = y0; y <= y1; y++) years.push(y);
+    if (every5) {
+      for (let y = Math.ceil(x0 / every5) * every5; y <= x1; y += every5) svg += `<line class="grid-line" x1="${xs(y)}" x2="${xs(y)}" y1="${T - 16}" y2="${B}" opacity=".6"/><text class="tick" x="${xs(y)}" y="${B + 30}" text-anchor="middle">${y}</text>`;
+      svg += evs.map((e, k) => { const x = xs(+e.year), col = e.color || PAL[k % PAL.length], ty = 50 + (e.row != null ? +e.row : k % 2) * 28;
+        return `<g class="tl-ev" style="--d:${(0.4 + k * 0.35).toFixed(2)}s"><line x1="${x}" x2="${x}" y1="${ty + 6}" y2="${B}" stroke="${col}" stroke-width="2.5" stroke-dasharray="6 6"/><text class="tl-ev-t" x="${x}" y="${ty}" text-anchor="${+e.year >= x1 - 4 ? "end" : "middle"}" fill="${col}">${esc(e.year)} ${esc(e.name || "")}</text></g>`; }).join("");
+    }
+    const years = []; if (!every5) for (let y = y0; y <= y1; y++) years.push(y);
     const showAll = years.length <= 12;
     svg += years.map(y => { const has = pts.some(p => p.year === y); if (!has && !showAll) return ""; return `<text class="tick" x="${xs(y)}" y="${B + 30}" text-anchor="middle" ${has ? "" : 'opacity=".4"'}>${y}</text>`; }).join("");
     svg += `<path class="curve draw" pathLength="1" d="${d}" style="--dur:${dur}s;stroke:url(#${gid})"/>`;
     svg += pts.map((p, k) => {
       const t = ((xs(p.year) - xs(y0)) / Math.max(1, xs(y1) - xs(y0))) * dur;
       const col = mixHex(STOPS, pts.length > 1 ? k / (pts.length - 1) : 0);
-      const label = fmt(p.value), w = 26 + label.length * 14, x = xs(p.year), y = ys(p.value);
+      const label = someLabels ? String(p.label || "") : fmt(p.value), w = 26 + label.length * 14, x = xs(p.year), y = ys(p.value), py = someLabels && p.value === vMax ? y + 76 : y;
+      if (someLabels && !label) return `<circle class="pt-dot" cx="${x}" cy="${y}" r="8" fill="${col}" style="--d:${t.toFixed(2)}s"><title>${p.year} · ${fmt(p.value)}</title></circle>`;
+      const cnt = someLabels ? "" : ` data-count="${p.value}" data-delay="${Math.round(t * 1000)}"`;
       return `<circle class="pt-dot" cx="${x}" cy="${y}" r="10" fill="${col}" style="--d:${t.toFixed(2)}s"/>
-        <rect class="pt-bg" x="${x - w / 2}" y="${y - 52}" width="${w}" height="32" rx="16" fill="${col}" style="--d:${t.toFixed(2)}s"/>
-        <text class="pt-val" x="${x}" y="${y - 29}" fill="#fff" style="--d:${t.toFixed(2)}s" data-count="${p.value}" data-delay="${Math.round(t * 1000)}">${label}</text>`;
+        <rect class="pt-bg" x="${x - w / 2}" y="${py - 52}" width="${w}" height="32" rx="16" fill="${col}" style="--d:${t.toFixed(2)}s"/>
+        <text class="pt-val" x="${x}" y="${py - 29}" fill="#fff" style="--d:${t.toFixed(2)}s"${cnt}>${esc(label)}</text>`;
     }).join("");
     svg += `<text class="axis-label" x="${(L + Rr) / 2}" y="${H - 6}" text-anchor="middle">${esc(c.xLabel)}</text>`;
-    svg += `<text class="axis-label" x="${L - 4}" y="${T - 28}" text-anchor="start">${esc(c.yLabel)}</text>`;
+    svg += `<text class="axis-label" x="${L - 4}" y="${evs.length ? 18 : T - 28}" text-anchor="start">${esc(c.yLabel)}</text>`;
   } else {
     svg = `<text class="axis-label" x="${W / 2}" y="${H / 2}" text-anchor="middle">편집 패널에서 데이터를 추가하세요</text>`;
   }
@@ -1294,8 +1342,8 @@ R.timeline = (s, i) => {
 };
 R.shift = (s, i) => {
   const st = s.stages || [];
-  const cols = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
-  return `${head(s, i)}<div class="s-body"><div class="shift">
+  const cols = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)", "var(--c-coral)"];
+  return `${head(s, i)}<div class="s-body"><div class="shift${st.length >= 5 ? " n5" : ""}">
     <div class="stairs" style="--n:${st.length}">
       ${st.map((x, k) => `<div class="stair frag" data-f="${k}" style="--c:${cols[k % cols.length]};--k:${k};--n:${st.length}">
         <span class="st-year" data-k="stages.${k}.year">${esc(x.year)}</span>
@@ -1383,7 +1431,7 @@ R.text = (s, i) => `${head(s, i)}<div class="s-body" style="display:grid;grid-te
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
-  return `<section class="slide" data-sid="${esc(s.id)}" aria-label="${i + 1}번 슬라이드">${fn(s, i)}</section>`;
+  return `<section class="slide" data-sid="${esc(s.id)}" aria-label="${i + 1}번 슬라이드">${markHL(s, fn(s, i))}</section>`;
 }
 
 const stage = $("#stage");
@@ -1591,12 +1639,13 @@ const SCHEMA = {
     { k: "chart.title", label: "그래프 제목" }, { k: "chart.legend", label: "범례" },
     { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.unit", label: "단위" },
     { k: "chart.scale", label: "세로축 눈금", select: [["log", "로그 눈금 (2배 간격)"], ["linear", "선형 눈금"]] },
-    { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }], blank: { year: 2008, value: 1 } },
+    { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }, { key: "label", label: "값 표시(비우면 점만)" }], blank: { year: 2008, value: 1, label: "" } },
+    { k: "chart.events", label: "전환 시점 표시", list: [{ key: "year", label: "연도", num: true }, { key: "name", label: "이름" }], blank: { year: 2020, name: "" } },
     { k: "photo", label: "제품 사진", image: true },
     { k: "bigLabel", label: "큰 숫자 설명" }, { k: "warn", label: "주의 문구", area: true }, { k: "link", label: "수업 연결 문구", area: true }
   ],
   shift: [
-    { k: "stages", label: "기술 방식 단계", list: [{ key: "year", label: "연도" }, { key: "name", label: "이름" }, { key: "text", label: "설명", area: true }], blank: { year: "", name: "새 방식", text: "" }, max: 4 },
+    { k: "stages", label: "기술 방식 단계", list: [{ key: "year", label: "연도" }, { key: "name", label: "이름" }, { key: "text", label: "설명", area: true }], blank: { year: "", name: "새 방식", text: "" }, max: 5 },
     { k: "photo", label: "사진·그림", image: true },
     { k: "insight", label: "해석 문구", area: true }
   ],
