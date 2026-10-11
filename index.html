@@ -622,6 +622,34 @@ body.editing .cover-q{color:var(--ink);background:none}
 .shift.n5 .st-text{font-size:16px}
 .shift.n5 .st-curve{height:48px}
 
+/* v6: 11장 같은 기간 비교, 13장 참고문헌 */
+.win{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:22px;align-items:stretch;flex:1;min-height:0}
+.win-col{display:flex;flex-direction:column;gap:14px;padding:24px 28px;border-radius:22px;background:color-mix(in srgb,var(--c) 7%,white);border-top:6px solid var(--c)}
+.win-col header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.win-name{font-size:24px;font-weight:700;color:var(--ink-2)}
+.win-verdict{font-size:30px;font-weight:800;color:var(--c);letter-spacing:-.02em;white-space:nowrap}
+.win-rows{list-style:none;margin:0;padding:0 0 0 22px;display:flex;flex-direction:column;gap:10px;position:relative}
+.win-rows::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:3px;border-radius:2px;background:color-mix(in srgb,var(--c) 35%,transparent)}
+.win-rows li{display:flex;gap:16px;align-items:baseline;font-size:22px;color:var(--ink);position:relative}
+.win-rows li::before{content:"";position:absolute;left:-22px;top:.45em;width:15px;height:15px;border-radius:50%;background:#fff;border:4px solid var(--c);box-sizing:border-box}
+.win-when{font-family:var(--font-mono);font-weight:600;color:var(--c);min-width:104px;font-size:20px}
+.win-why{margin:auto 0 0;padding:14px 18px;border-radius:14px;background:#fff;font-size:21px;line-height:1.45;font-weight:600;color:var(--ink);white-space:pre-line}
+.win-span{align-self:center;writing-mode:horizontal-tb;padding:12px 16px;border-radius:999px;background:var(--ink);color:#fff;font-size:18px;font-weight:700;white-space:nowrap}
+.win-limit{margin:16px 0 0;font-size:18px;color:var(--ink-3)}
+
+.reflist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 40px;margin-top:28px;align-content:start}
+.reflist section{padding:18px 22px;border-radius:18px;background:color-mix(in srgb,var(--c) 6%,white);border-left:5px solid var(--c)}
+.reflist h3{margin:0 0 10px;font-size:20px;font-weight:800;color:var(--c)}
+.reflist ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.reflist li{font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+.reflist a{color:var(--ink-3);white-space:nowrap}
+.concl .takeaways{flex:1;max-height:330px;align-items:stretch;margin-top:44px}
+.concl .takeaways li{padding:30px 32px;gap:16px}
+.tk{display:flex;flex-direction:column;gap:14px}
+.tk-h{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--c)}
+.tk-b{display:block;font-size:24px;font-weight:600;line-height:1.5;color:var(--ink);white-space:pre-line}
+.concl-close{margin:auto 0 0;align-self:flex-end;font-size:22px;font-weight:700;color:var(--ink-3)}
+
 </style>
 </head><body>
 
@@ -679,7 +707,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v5";
+const STORE_KEY = "tech-cycle-deck.v6";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -767,7 +795,7 @@ const DEFAULT_DECK = {
         { n: "03–06", t: "개념", d: "Foster · Anderson & Tushman" },
         { n: "07–09", t: "사례", d: "삼성전자 · 한미약품" },
         { n: "10–11", t: "분석", d: "요인과 우리 팀의 답" },
-        { n: "12", t: "결론", d: "세 가지 요점" }
+        { n: "12–13", t: "결론", d: "우리 조의 답 · 참고문헌" }
       ],
       sources: [{ label: "출처: " + LECTURE + ", 43쪽 토론 문제", url: "" }],
       script: "토론 문제 4번은 세 가지를 묻습니다. 짧은 기술주기를 가진 산업, 긴 주기를 가진 산업, 그리고 주기의 길이에 영향을 주는 요인입니다.\n저희 조의 답을 먼저 말씀드리면, 짧은 쪽은 반도체와 IT, 긴 쪽은 제약입니다. 그리고 그 차이를 기술 사이클의 네 단계로 설명하겠습니다.",
@@ -883,7 +911,7 @@ const DEFAULT_DECK = {
       notes: "· '플로팅 게이트 기술의 한계를 극복'은 머니투데이(2006) 표현, 24단·128Gb는 삼성 뉴스룸(2013), 약 50%는 9세대 보도자료(2024) 표현이다. 9세대 단수는 공식 발표가 없어 쓰지 않았다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
     },
     {
-      id: "s9", type: "efe", duration: 70,
+      id: "s9", type: "efe", duration: 65,
       title: "사례 2 · 한미약품",
       lead: "하나의 물질이 신약이 되기까지:\n한미약품 비만 신약 '에페'",
       photo: { src: IMG_HANMI_EFE, fallback: "pharma", caption: "한미약품 비만 신약 '에페' 패키지", credit: "사진: 한미약품 보도자료 © Hanmi Pharm" },
@@ -906,13 +934,13 @@ const DEFAULT_DECK = {
       notes: "· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다. 질문이 나오면 '수업 범위 밖이라 다루지 않았다'고 답한다.\n· 2015.11 기술수출·2020 권리 반환: Korea Biomedical Review·데일리팜(2020.05.14). 2023.07 비만 치료제 전환: 데일리팜·머니투데이(2023.07.31). 권리 반환 확정 월은 기사마다 달라 연도만 썼다.\n· 방향키를 누를 때마다 개발 경로가 하나씩 나타난다."
     },
     {
-      id: "s10", type: "factors", duration: 70,
+      id: "s10", type: "factors", duration: 65,
       title: "기술주기 길이에 영향을 주는 요인",
       lead: "주기의 길이는 사이클의 각 단계가 얼마나 걸리느냐에 달려 있다",
       badge: "개념을 사례에 적용한 우리 조의 분석",
       ring: ["단속적 기술의\n출현", "배양기 →\n지배적 디자인", "기술의 한계\n근접", "점진적 개선의\n시기"],
       factors: [
-        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "반도체: CTF(2006) → 3D V낸드(2013), 새 방식이 짧은 간격으로 등장", icon: "break" },
+        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "반도체: CTF(2006) → 3D V낸드(2013) → 10세대(2026), 새 방식이 짧은 간격으로 등장", icon: "break" },
         { title: "지배적 디자인이 정해지기까지\n얼마나 걸리는가", link: "Anderson & Tushman: 격동기(디자인 경쟁)가 길수록 사이클도 길어짐", icon: "converge" },
         { title: "기존 기술이 한계에\n얼마나 빨리 가까워지는가", link: "S-곡선의 모양은 시장·부품 기술·보완 기술의 변화에 따라 달라짐", icon: "ceiling" },
         { title: "점진적 개선이\n얼마나 오래 이어지는가", link: "제약: 에페, 2015 기술수출 → 2026 허가, 한 세대에 10년 넘게", icon: "steps" }
@@ -923,56 +951,70 @@ const DEFAULT_DECK = {
       notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 단계가 강조된다.\n· 사례 연결은 '보였다', '볼 수 있다' 정도로 말하고 단정하지 않는다."
     },
     {
-      id: "s11", type: "compare", duration: 45,
-      title: "우리 조의 답과 자료의 한계",
-      lead: "반도체·IT는 짧은 편, 제약은 긴 편.\n단, 두 사례로 산업 전체를 증명할 수는 없다",
-      scaleTitle: "두 사례로 본 기술주기의 상대 비교",
-      shortLabel: "짧은 편",
-      longLabel: "긴 편",
-      items: [
-        { label: "반도체 · IT", text: "CTF 2006 → 3D V낸드 2013 → 9세대 2024 → 10세대 2026", pos: 0.22 },
-        { label: "제약", text: "에페 2015 → 2026, 10년 넘게", pos: 0.78 }
+      id: "s11", type: "window", duration: 45,
+      title: "우리 조의 답",
+      lead: "같은 11년(2015~2026) 동안\n반도체는 세대가 일곱 번 바뀌었고, 제약은 신약 하나가 나왔다",
+      mark: "같은 11년(2015~2026)",
+      span: "2015 → 2026 · 같은 11년",
+      cols: [
+        { name: "반도체 · 삼성전자 V낸드", verdict: "기술주기가 짧은 편", rows: [
+          { when: "2015", what: "3세대 V낸드 · 48단 256Gb 양산" },
+          { when: "2022", what: "8세대 V낸드 · 1Tb 양산" },
+          { when: "2024", what: "9세대 V낸드 · 비트 밀도 약 50%↑" },
+          { when: "2026", what: "10세대 V낸드 공개 · 400단 이상" }
+        ], why: "한계에 가까워지면 새 방식·새 세대로 빠르게 넘어가\n새 S-곡선이 짧은 간격으로 시작된다" },
+        { name: "제약 · 한미약품 '에페'", verdict: "기술주기가 긴 편", rows: [
+          { when: "2015.11", what: "당뇨병 치료제로 사노피에 기술수출" },
+          { when: "2020", what: "사노피 권리 반환" },
+          { when: "2023.07", what: "비만 치료제로 목표 변경" },
+          { when: "2026.10", what: "식약처 허가 · 신약 '에페'" }
+        ], why: "한 기술이 제품 한 세대가 되기까지\n10년 넘게 걸려 사이클 하나가 길다" }
       ],
-      caption: "사례에서 확인한 연도를 바탕으로 한 상대 비교이며, 기술주기 길이를 직접 측정한 수치가 아님. 위치는 순서만 나타냄.",
-      pavitt: "두 산업 모두 제2강 9쪽 Pavitt 분류의 '과학기반형'(컴퓨터, BIO)에 속한다. 같은 유형 안에서도 주기 길이가 다를 수 있다는 점이 흥미롭다",
-      limits: [
-        "반도체는 새 방식이 나온 간격, 제약은 한 제품이 나오기까지의 기간으로, 비교 기준이 완전히 같지 않다",
-        "그래서 산업별 기술주기의 정확한 연수나 배수는 제시하지 않는다",
-        "삼성전자와 한미약품 사례는 산업 전체의 기술주기 길이를 직접 증명하지 않는다"
-      ],
-      sources: [{ label: "사례 연도: 머니투데이(2006.09.11), Samsung Newsroom(2013.08.06 · 2024.04.23 · 2026.08.05), Korea Biomedical Review(2020.05.14), 아시아경제(2026.10.07)", url: "" }, { label: "제2강 강의자료 9쪽, 산업별 기술혁신 패턴에 의한 산업 분류(Pavitt)", url: "" }],
-      script: "정리하면 저희 조의 답은 반도체와 IT는 기술주기가 짧은 편, 제약은 긴 편이라는 것입니다. 삼성은 2006년 CTF, 2013년 3D V낸드, 2024년 9세대, 그리고 올해 2026년 10세대 V낸드까지 새 방식과 새 세대가 짧은 간격으로 이어졌습니다. 반면 에페는 같은 2015년부터 2026년까지 한 제품이 나오는 데 10년이 넘게 걸렸습니다.\n다만 두 비교는 기준이 완전히 같지 않아서, 산업별 정확한 연수는 말하지 않겠습니다. 또 두 회사의 사례가 산업 전체를 증명하는 것도 아닙니다.\n흥미로운 점은, 제2강에서 배운 Pavitt 분류로는 두 산업이 모두 과학기반형이라는 것입니다. 같은 유형이어도 사이클의 단계가 다르게 흘러가면 주기의 길이가 달라질 수 있습니다.",
-      notes: "· 숫자를 묻는 질문이 나오면: 두 사례의 연도만 확인했고, 산업 전체의 연수는 제시하지 않았다고 답한다."
+      limit: "두 기업의 사례이므로 산업 전체의 정확한 주기 연수는 말하지 않는다. 해석은 우리 조의 분석이다.",
+      sources: [{ label: "삼성: Samsung Newsroom (2015.08.11 · 2022.11.06 · 2024.04.23 · 2026.08.05)", url: "" }, { label: "한미약품: Korea Biomedical Review (2020.05.14) · 데일리팜 (2023.07.31) · 한미약품 보도자료 (2026.10.07)", url: "" }],
+      script: "그럼 저희 조의 답입니다. 두 사례를 같은 기간, 2015년부터 2026년까지 11년으로 맞춰 놓고 비교해 보았습니다.\n삼성의 V낸드는 이 기간에 2015년 3세대에서 2026년 10세대까지, 일곱 번 세대가 바뀌었습니다. 한계에 가까워질 때마다 새 방식과 새 세대로 넘어가면서 새로운 S-곡선이 짧은 간격으로 시작된 것입니다. 그래서 반도체는 기술주기가 짧은 편입니다.\n반면 같은 11년 동안 에페는 기술수출, 권리 반환, 목표 변경을 거쳐 올해 신약 하나가 나왔습니다. 한 기술이 제품 한 세대가 되기까지 사이클 하나가 오래 걸린 것입니다. 그래서 제약은 기술주기가 긴 편입니다.\n다만 두 기업의 사례이므로 산업 전체의 정확한 연수는 말하지 않겠습니다.",
+      notes: "· 세대 번호(3세대·8세대·9세대·10세대)는 모두 삼성 뉴스룸 발표 표현이다.\n· 숫자를 묻는 질문이 나오면: 두 사례의 연도만 확인했고, 산업 전체의 연수는 제시하지 않았다고 답한다."
     },
     {
       id: "s12", type: "conclusion", duration: 30,
       title: "결론",
-      lead: "기술주기는 새 기술의 등장, 지배적 디자인, 점진적 개선의 흐름에 따라 달라진다.",
+      lead: "산업마다 기술주기의 길이가 다른 이유는\n기술 사이클의 각 단계를 지나는 속도가 다르기 때문이다",
+      mark: "기술 사이클의 각 단계를 지나는 속도",
       takeaways: [
-        "주기의 길이는 사이클의\n각 단계가 얼마나 걸리느냐에 달려 있다",
-        "반도체는 해마다 집적도가 두 배로 늘고,\n제약은 제품 한 세대에 10년이 넘게 걸렸다",
-        "제품 출시 주기와 기술주기는\n같은 말이 아니다"
+        "짧은 산업 · 반도체\n한계에 닿으면 새 S-곡선으로 빠르게 옮겨 가고, 새 세대가 짧은 간격으로 이어진다",
+        "긴 산업 · 제약\n한 기술이 제품 한 세대가 되기까지 10년 넘게 걸려 사이클 하나가 길다",
+        "기술주기를 보는 법\n제품 출시 간격이 아니라 단속적 기술 → 지배적 디자인 → 점진적 개선의 흐름으로 봐야 한다"
       ],
+      closing: "들어 주셔서 감사합니다 · 질문 받겠습니다",
+      sources: [],
+      script: "결론입니다. 토론 문제 4번에 대한 저희 조의 답은 이것입니다. 산업마다 기술주기의 길이가 다른 이유는, 기술 사이클의 각 단계를 지나는 속도가 다르기 때문입니다.\n반도체는 기술이 한계에 닿으면 새로운 S-곡선으로 빠르게 옮겨 가기 때문에 주기가 짧습니다. 제약은 한 기술이 제품 한 세대가 되기까지 10년 넘게 걸리기 때문에 주기가 깁니다.\n그래서 기술주기를 볼 때는 제품이 얼마나 자주 나오느냐가 아니라, 단속적 기술에서 지배적 디자인, 점진적 개선으로 이어지는 흐름을 봐야 한다는 것이 저희 조의 결론입니다. 들어 주셔서 감사합니다.",
+      notes: "· 첫 문장(우리 조의 답)을 또박또박 읽는다.\n· 마지막 문장 후 2초 쉬고 질문을 받는다."
+    },
+    {
+      id: "s13", type: "refs", duration: 10,
+      title: "참고문헌",
+      lead: "참고문헌",
       refs: [
-        { label: SRC_FOSTER, url: URL_FOSTER },
-        { label: SRC_AT, url: "" },
-        { label: SRC_TA86, url: "" },
-        { label: SRC_UA, url: URL_UA },
-        { label: SRC_MT_CTF, url: URL_MT_CTF },
-        { label: SRC_SS_VNAND, url: URL_SS_VNAND },
-        { label: SRC_SS_9G, url: URL_SS_9G },
-        { label: SRC_SS_256, url: URL_SS_256 },
-        { label: SRC_SS_8G, url: URL_SS_8G },
-        { label: SRC_SS_V10, url: URL_SS_V10 },
-        { label: SRC_KBR, url: URL_KBR },
-        { label: SRC_DP23, url: URL_DP23 },
-        { label: SRC_ASIAE, url: URL_ASIAE },
-        { label: SRC_SAMSUNG, url: URL_SAMSUNG },
-        { label: SRC_EFE, url: URL_HANMI_EFE },
+        { group: "개념", label: SRC_FOSTER, url: URL_FOSTER },
+        { group: "개념", label: SRC_AT, url: "" },
+        { group: "개념", label: SRC_TA86, url: "" },
+        { group: "개념", label: SRC_UA, url: URL_UA },
+        { group: "사례 1 · 삼성전자", label: SRC_SAMSUNG, url: URL_SAMSUNG },
+        { group: "사례 1 · 삼성전자", label: SRC_MT_CTF, url: URL_MT_CTF },
+        { group: "사례 1 · 삼성전자", label: SRC_SS_VNAND, url: URL_SS_VNAND },
+        { group: "사례 1 · 삼성전자", label: SRC_SS_256, url: URL_SS_256 },
+        { group: "사례 1 · 삼성전자", label: SRC_SS_8G, url: URL_SS_8G },
+        { group: "사례 1 · 삼성전자", label: SRC_SS_9G, url: URL_SS_9G },
+        { group: "사례 1 · 삼성전자", label: SRC_SS_V10, url: URL_SS_V10 },
+        { group: "사례 2 · 한미약품", label: SRC_KBR, url: URL_KBR },
+        { group: "사례 2 · 한미약품", label: SRC_DP23, url: URL_DP23 },
+        { group: "사례 2 · 한미약품", label: SRC_ASIAE, url: URL_ASIAE },
+        { group: "사례 2 · 한미약품", label: SRC_EFE, url: URL_HANMI_EFE },
+        { group: "강의자료", label: LECTURE + ", 기술 수준의 S-곡선 · 기술의 사이클 · 43쪽 토론 문제", url: "" }
       ],
       sources: [],
-      script: "결론입니다. 기술주기의 길이는 단속적 기술이 얼마나 자주 나타나고, 지배적 디자인이 얼마나 빨리 정해지고, 점진적 개선이 얼마나 오래 이어지느냐에 달려 있습니다.\n반도체는 새로운 S-곡선이 빠르게 이어졌고, 제약은 한 기술의 개발이 오래 이어졌습니다. 그리고 제품 출시 주기와 기술주기는 같은 말이 아닙니다. 들어 주셔서 감사합니다.",
-      notes: "· 마지막 문장 후 2초 쉬고 질문을 받는다."
+      script: "참고문헌입니다. 질문 시간에 필요하면 이 화면을 띄워 둡니다.",
+      notes: "· 발표 중에는 넘기기만 하고, 질문 시간에 띄워 둔다."
     }
   ]
 };
@@ -1421,9 +1463,26 @@ R.compare = (s, i) => `${head(s, i)}<div class="s-body">
 R.conclusion = (s, i) => `<div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
   <div class="concl">
     ${ed(s, "lead", "h2", "statement rise").replace("<h2", `<h2 style="--i:0"`)}
-    <ul class="takeaways" style="--n:${(s.takeaways || []).length}">${(s.takeaways || []).map((t, k) => `<li class="rise" style="--i:${k + 1};--c:${[PAL[0], PAL[2], "var(--c-coral)", PAL[1]][k % 4]}"><b>${pad(k + 1)}</b>${ed(s, `takeaways.${k}`)}</li>`).join("")}</ul>
-    <div class="refs"><span class="rh">참고문헌</span>${(s.refs || []).map(r => { const u = safeUrl(r.url); return `<span>${esc(r.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] + " ↗")}</a>` : ""}</span>`; }).join("")}</div>
+    <ul class="takeaways" style="--n:${(s.takeaways || []).length}">${(s.takeaways || []).map((t, k) => `<li class="rise" style="--i:${k + 1};--c:${[PAL[0], PAL[2], "var(--c-coral)", PAL[1]][k % 4]}"><b>${pad(k + 1)}</b><span class="tk" data-k="takeaways.${k}">${(() => { const [h, ...r] = String(t || "").split("\n"); return `<strong class="tk-h">${esc(h)}</strong>${r.length ? `<span class="tk-b">${esc(r.join("\n"))}</span>` : ""}`; })()}</span></li>`).join("")}</ul>
+    ${s.closing ? ed(s, "closing", "p", "concl-close rise").replace("<p", `<p style="--i:5"`) : ""}
+    ${(s.refs || []).length ? `<div class="refs"><span class="rh">참고문헌</span>${s.refs.map(r => { const u = safeUrl(r.url); return `<span>${esc(r.label)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] + " ↗")}</a>` : ""}</span>`; }).join("")}</div>` : ""}
   </div>`;
+R.window = (s, i) => {
+  const cols = s.cols || [], C = [PAL[0], "var(--c-coral)"];
+  return `${head(s, i)}<div class="s-body"><div class="win">
+    ${cols.map((c, k) => `<section class="win-col rise" style="--i:${k + 1};--c:${C[k % 2]}">
+      <header>${ed(s, `cols.${k}.name`, "span", "win-name")}${ed(s, `cols.${k}.verdict`, "strong", "win-verdict")}</header>
+      <ol class="win-rows">${(c.rows || []).map((r, j) => `<li><span class="win-when" data-k="cols.${k}.rows.${j}.when">${esc(r.when)}</span><span data-k="cols.${k}.rows.${j}.what">${esc(r.what)}</span></li>`).join("")}</ol>
+      ${ed(s, `cols.${k}.why`, "p", "win-why")}
+    </section>${k === 0 && s.span ? `<div class="win-span rise" style="--i:3">${ed(s, "span")}</div>` : ""}`).join("")}
+  </div>${ed(s, "limit", "p", "win-limit rise").replace("<p", `<p style="--i:4"`)}</div>${foot(s, i)}`;
+};
+R.refs = (s, i) => {
+  const groups = [];
+  (s.refs || []).forEach((r, k) => { let g = groups.find(x => x.name === (r.group || "")); if (!g) groups.push(g = { name: r.group || "", items: [] }); g.items.push([r, k]); });
+  return `<div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+  <div class="reflist">${groups.map((g, gi) => `<section class="rise" style="--i:${gi};--c:${PAL[gi % PAL.length]}"><h3>${esc(g.name)}</h3><ul>${g.items.map(([r, k]) => { const u = safeUrl(r.url); return `<li><span data-k="refs.${k}.label">${esc(r.label)}</span>${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0])} ↗</a>` : ""}</li>`; }).join("")}</ul></section>`).join("")}</div>`;
+};
 R.text = (s, i) => `${head(s, i)}<div class="s-body" style="display:grid;grid-template-columns:${safeUrl((s.image || {}).src) ? "minmax(0,1.1fr) minmax(0,1fr)" : "1fr"};gap:56px">
     <ul class="bullets">${(s.bullets || []).map((b, k) => `<li class="rise" style="--i:${k}">${ed(s, `bullets.${k}`)}</li>`).join("")}</ul>
     ${safeUrl((s.image || {}).src) ? figure(s, "image") : `<div class="edit-only" style="align-self:start"><button class="img-edit" data-imgedit="image" style="position:static;display:inline-flex">이미지 넣기</button></div>`}
@@ -1670,8 +1729,15 @@ const SCHEMA = {
     { k: "limits", label: "자료의 한계", strlist: true, area: true, blank: "새 항목" }
   ],
   conclusion: [
-    { k: "takeaways", label: "요점", strlist: true, area: true, blank: "새 요점", max: 3 },
-    { k: "refs", label: "참고문헌", list: [{ key: "label", label: "문헌", area: true }, { key: "url", label: "링크 URL" }], blank: { label: "", url: "" } }
+    { k: "takeaways", label: "요점", strlist: true, area: true, blank: "새 요점", max: 3 }
+  ],
+  window: [
+    { k: "span", label: "기간 표시" },
+    { k: "cols", label: "비교 열", list: [{ key: "name", label: "이름" }, { key: "verdict", label: "판단" }, { key: "why", label: "이유", area: true }], max: 2 },
+    { k: "limit", label: "한계 문구", area: true }
+  ],
+  refs: [
+    { k: "refs", label: "참고문헌", list: [{ key: "group", label: "분류" }, { key: "label", label: "문헌", area: true }, { key: "url", label: "링크 URL" }], blank: { group: "개념", label: "", url: "" } }
   ],
   text: [
     { k: "bullets", label: "본문 항목", strlist: true, area: true, blank: "새 항목" },
