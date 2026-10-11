@@ -656,6 +656,15 @@ body.editing .cover-q{color:var(--ink);background:none}
 .win-col{gap:12px;padding:20px 26px}
 .win-rows li{font-size:21px}
 
+/* v7 */
+.st-tag{align-self:flex-start;font-size:15px;font-weight:700;padding:3px 10px;border-radius:999px;background:color-mix(in srgb,var(--c) 16%,white);color:var(--c)}
+.win-limit{font-size:21px;font-weight:600;color:var(--ink-2);padding:12px 18px;border-radius:14px;background:var(--surface);margin-top:14px}
+.win-rows li{font-size:23px}
+.win-when{min-width:140px}
+.win-verdict{font-size:24px}
+.win-why{font-size:22px}
+.cycle-bottom:not(:has(.study,.lec-thumb)){grid-template-columns:1fr}
+
 </style>
 </head><body>
 
@@ -713,7 +722,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v6";
+const STORE_KEY = "tech-cycle-deck.v7";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -770,7 +779,7 @@ const DEFAULT_DECK = {
   meta: { deckTitle: "산업마다 기술주기의 길이가 다른 이유", presenter: "발표 · 박민준 · 박태하 · 정희원" },
   slides: [
     {
-      id: "s1", type: "cover", duration: 35,
+      id: "s1", type: "cover", duration: 30,
       title: "토론 문제 4번 · 팀 발표",
       question: "왜 어떤 산업의 기술은 빠르게 바뀌고,\n어떤 산업은 변화가 느릴까?",
       deckTitle: "산업마다 기술주기의 길이가 다른 이유",
@@ -784,140 +793,146 @@ const DEFAULT_DECK = {
       ],
       sources: [],
       script: "안녕하세요. 저희 조는 제5강 토론 문제 4번을 맡았습니다. 질문은 이것입니다. 왜 어떤 산업의 기술은 빠르게 바뀌고, 어떤 산업은 변화가 느릴까요?\n수업에서 배운 S-곡선과 기술의 사이클로 이 질문에 답해 보겠습니다. 사례는 삼성전자의 낸드 플래시와, 지난 10월 7일 허가를 받은 한미약품의 비만 신약 '에페'입니다.",
-      notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· 수업에서 배운 개념의 원 논문과 기업 자료로 답한다고 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
+      notes: "· 질문을 천천히 읽고 1~2초 멈춘다.\n· 강의 개념으로 설명하고, 산업 비교는 문헌, 사례는 기업 자료를 근거로 한다고 밝힌다.\n· 사진은 각 기업 공식 자료에서 가져온 것(저작권은 각 기업)."
     },
     {
-      id: "s2", type: "question", duration: 30,
+      id: "s2", type: "question", duration: 40,
       title: "토론 문제 4번",
       quote: "어떤 산업이 평균적인 산업의 기술주기에 비해 특히 짧은 기술주기를 가지고 있다고 생각하는가? 또 어떤 산업이 긴 주기를 가지고 있는가? 산업에서 기술주기의 길이에 영향을 주는 데에는 어떠한 요인들이 있다고 생각하는가?",
       quoteSrc: "제5강 강의자료 43쪽, 토론 문제 4",
       qs: [
-        { q: "짧은 기술주기 산업은?", a: "반도체", note: "사례: 삼성전자 NAND 플래시" },
-        { q: "긴 기술주기 산업은?", a: "제약", note: "사례: 한미약품 비만 신약 '에페'" },
-        { q: "주기의 길이를 정하는 요인은?", a: "기술 사이클의 네 단계", note: "S-곡선과 기술 사이클로 분석" }
+        { q: "짧은 기술주기 산업은?", a: "반도체를 포함한 IT", note: "문헌 근거: Lee(2024) · 사례: 삼성전자 NAND" },
+        { q: "긴 기술주기 산업은?", a: "제약", note: "문헌 근거: Lee(2024) · 사례: 한미약품 '에페'" },
+        { q: "주기의 길이에 영향을 주는 요인은?", a: "네 가지 조건", note: "새 기술 등장 · 디자인 경쟁 · 개선 여지 · 전환 부담 (강의 33·35·39~41쪽)" }
       ],
-      badge: "우리 조의 답 · 원 논문과 기업 자료로 찾은 근거",
+      badge: "산업 비교는 문헌에 근거한 상대적 사례 선택이며, 산업 평균 기술주기를 직접 계산한 결과는 아님",
       roadmap: [
-        { n: "03–06", t: "개념", d: "Foster · Anderson & Tushman" },
+        { n: "03–06", t: "개념", d: "S-곡선 · 기술의 사이클" },
         { n: "07–09", t: "사례", d: "삼성전자 · 한미약품" },
-        { n: "10–11", t: "분석", d: "요인과 우리 팀의 답" },
+        { n: "10–11", t: "분석", d: "영향 요인 · 두 사례 정리" },
         { n: "12–13", t: "결론", d: "우리 조의 답 · 참고문헌" }
       ],
-      sources: [{ label: "출처: " + LECTURE + ", 43쪽 토론 문제", url: "" }],
-      script: "토론 문제 4번은 세 가지를 묻습니다. 짧은 기술주기를 가진 산업, 긴 주기를 가진 산업, 그리고 주기의 길이에 영향을 주는 요인입니다.\n저희 조의 답을 먼저 말씀드리면, 짧은 쪽은 반도체, 긴 쪽은 제약입니다. 그리고 그 차이를 기술 사이클의 네 단계로 설명하겠습니다.",
-      notes: "· 방향키를 누를 때마다 질문 하나씩 답이 강조된다(3단계).\n· '이건 우리 팀의 분석'이라는 표시를 짚는다."
+      sources: [{ label: "출처: " + LECTURE + ", 43쪽 토론 문제", url: "" }, { label: "산업 비교: Lee (2024), Journal of Evolutionary Economics 34", url: URL_LEE }],
+      script: "토론 문제 4번은 세 가지를 묻습니다. 기술주기가 짧은 산업, 긴 산업, 그리고 주기의 길이에 영향을 주는 요인입니다.\n저희 조는 짧은 쪽의 예로 반도체를 포함한 IT, 긴 쪽의 예로 제약을 골랐습니다. 이 구분은 기술순환주기를 산업별로 비교한 Lee의 2024년 논문을 근거로 한 상대적인 사례 선택이고, 저희가 산업 평균을 직접 계산한 것은 아닙니다.\n요인은 강의 개념으로 네 가지를 정리했습니다. 새로운 기술의 등장, 디자인 경쟁과 불확실성, 기존 기술의 개선 여지, 그리고 신기술 전환의 부담입니다.",
+      notes: "· 방향키를 누를 때마다 질문 하나씩 답이 강조된다(3단계).\n· Lee(2024)는 특허 인용 기반 기술순환주기(TCT)로 산업을 비교한다. 계산 방법은 설명하지 않고, 출처로만 언급한다."
     },
     {
-      id: "s3", type: "flow", duration: 45,
+      id: "s3", type: "flow", duration: 35,
       title: "기술주기의 의미",
       lead: "기술주기는 새 기술의 등장에서\n점진적 개선까지 이어지는 흐름이다",
       steps: [
-        { label: "단속적 기술의\n출현", desc: "기존과 다른 지식에 기반한\n새 기술의 등장", icon: "break" },
-        { label: "격동기 · 배양기", desc: "여러 디자인이 경쟁하고\n서로 대체하는 시기", icon: "branch" },
-        { label: "지배적 디자인의\n선택", desc: "여러 디자인 중\n하나가 정해짐", icon: "converge" },
-        { label: "점진적 개선의\n시기", desc: "지배적 디자인을\n다듬고 정교화", icon: "steps" }
+        { label: "불연속 기술의\n등장", desc: "새로운 지식에 기반한\n기술의 출현", icon: "break" },
+        { label: "디자인 경쟁", desc: "불확실성 속에서\n여러 디자인이 경쟁", icon: "branch" },
+        { label: "지배적 디자인의\n형성", desc: "여러 디자인 중\n하나가 선택됨", icon: "converge" },
+        { label: "점진적 개선", desc: "선택된 디자인을\n조금씩 개선", icon: "steps" }
       ],
       versus: [
         { label: "제품 출시 간격", text: "새 제품이 시장에 나오는 간격" },
-        { label: "기술주기", text: "단속적 기술의 출현부터 지배적 디자인 이후\n점진적 개선까지의 흐름" }
+        { label: "기술주기", text: "불연속 기술의 등장부터 지배적 디자인,\n점진적 개선, 다음 불연속 기술까지의 흐름" }
       ],
       versusNote: "같은 말이\n아니다",
-      sources: [{ label: "개념 출처: " + SRC_AT, url: "" }],
-      script: "먼저 기술주기가 무엇인지 정리하겠습니다. 이 개념을 처음 제시한 Anderson과 Tushman의 1990년 논문에 따르면, 기술주기는 단속적 기술이 나타나고, 여러 디자인이 경쟁하는 배양기를 거쳐, 지배적 디자인이 선택되고, 그 디자인이 점진적으로 개선되는 흐름입니다.\n여기서 주의할 점은 제품 출시 간격과 기술주기가 다르다는 것입니다. 새 제품이 자주 나와도 같은 사이클 안의 점진적 개선일 수 있습니다.",
-      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다.\n· 논문 원문: 'era of ferment(격동기)는 디자인 경쟁과 대체가 특징', 지배적 디자인 이후는 'elaboration(정교화)'의 시기."
+      sources: [{ label: "개념: " + LECTURE + " 39~40쪽 · Anderson & Tushman (1990)", url: "" }],
+      script: "먼저 기술주기가 무엇인지 정리하겠습니다. Anderson과 Tushman의 기술 사이클 모형에 따르면, 불연속 기술이 등장하고, 여러 디자인이 경쟁하다가, 지배적 디자인이 형성되고, 그 디자인이 점진적으로 개선됩니다. 그리고 다음 불연속 기술이 나오면 새 사이클이 시작됩니다.\n여기서 기준을 하나 정하겠습니다. 제품 출시 간격과 기술주기는 다릅니다. 새 제품이 자주 나와도 같은 사이클 안의 개선일 수 있습니다. 이 기준을 발표 끝까지 유지하겠습니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다.\n· 단계별 자세한 설명은 6장에서 하므로 여기서는 흐름과 '제품 출시 간격 ≠ 기술주기' 기준만 짚는다."
     },
     {
-      id: "s4", type: "scurve", duration: 55,
+      id: "s4", type: "scurve", duration: 45,
       title: "기술 수준의 S-곡선",
       lead: "초기에는 느리게, 중간에는 빠르게,\n한계에 가까워지면 다시 느리게",
-      chart: { title: "기술 성능의 S-곡선 (개념도)", xLabel: "노력", yLabel: "성능 수준", limitLabel: "기술의 한계", badge: "개념 그래프 · 수치 없음" },
+      chart: { title: "기술 성능의 S-곡선 (개념도)", xLabel: "노력", yLabel: "성능 수준", limitLabel: "기술의 한계 (실제 위치는 미리 알기 어려움)", badge: "개념도 · 수치 없음" },
       phases: [
         { name: "1단계", desc: "기술이 제대로 이해되지 않아\n성능이 천천히 향상된다" },
         { name: "2단계", desc: "기술에 대한 이해가 늘면서\n성능 향상이 빨라진다" },
         { name: "3단계", desc: "기술의 한계에 가까워지면\n성능 향상이 점점 늦춰진다" }
       ],
-      tip: "“한계에 다다르면 아무리 애써도 더 나아갈 수 없다.” — Foster (1986)",
-      sources: [{ label: "개념 출처: " + SRC_FOSTER + ". S-곡선은 ‘제품을 개선하려는 노력과 그 결과의 관계’를 그린 것. 그래프는 직접 그린 개념도", url: URL_FOSTER }],
-      script: "기술의 성능이 어떻게 좋아지는지는 S-곡선으로 설명할 수 있습니다. 맥킨지의 리처드 포스터는 1986년 책에서 S-곡선을 '제품을 개선하려는 노력과 그 결과 사이의 관계'라고 정의했습니다. 가로축은 노력, 세로축은 성능 수준이고, 숫자가 없는 개념 그래프입니다.\n1단계에서는 기술이 아직 제대로 이해되지 않아 성능이 천천히 오릅니다. 2단계에서는 이해가 늘면서 성능 향상이 빨라집니다. 3단계에서는 기술의 한계에 가까워지면서 같은 노력을 들여도 향상 속도가 늦춰집니다.\n포스터는 이렇게 말했습니다. 한계에 다다르면 아무리 애써도 더 나아갈 수 없다고요.",
-      notes: "· 방향키 1·2·3번으로 단계가 강조된다.\n· 오른쪽 아래 인용은 Foster(1986)의 문장을 옮긴 것이다."
+      tip: "기술의 실제 한계가 어디인지 미리 알 수 있는 경우는 매우 드물다 (35쪽)",
+      sources: [{ label: "개념: " + LECTURE + " 32쪽(기술 수준의 S-곡선) · 35쪽(진단 도구로서의 한계). 그래프는 직접 그린 개념도", url: "" }],
+      script: "기술의 성능이 좋아지는 모습은 S-곡선으로 설명할 수 있습니다. 가로축은 노력, 세로축은 성능이고, 숫자가 없는 개념도입니다.\n1단계에서는 기술이 아직 잘 이해되지 않아 성능이 천천히 오릅니다. 2단계에서는 이해가 늘면서 빨라지고, 3단계에서 한계에 가까워지면 다시 느려집니다.\n다만 강의 35쪽처럼, 실제 한계가 어디인지는 미리 알기 매우 어렵고, 곡선의 모양도 시장이나 부품, 보완 기술의 변화에 따라 달라집니다.",
+      notes: "· 방향키 1·2·3번으로 단계가 강조된다.\n· '한계에 닿으면 반드시 전환한다'고 말하지 않는다. 35쪽: S-곡선을 맹목적으로 믿으면 전환 시점이 너무 빠르거나 느릴 수 있다."
     },
     {
-      id: "s5", type: "jump", duration: 50,
-      title: "단속적 기술과 새로운 S-곡선",
+      id: "s5", type: "jump", duration: 45,
+      title: "불연속 기술과 새로운 S-곡선",
       lead: "모든 기술이 한계에 도달하는 것은 아니다.\n새로운 불연속 기술로 대체될 수 있다",
       mark: "새로운 불연속 기술로 대체",
-      chart: { oldLabel: "기존 기술", newLabel: "불연속 기술", xLabel: "노력 · 시간", yLabel: "성능", note: "초기에는 기존 기술보다 성능이 낮다" },
+      chart: { oldLabel: "기존 기술", newLabel: "불연속 기술", xLabel: "노력", yLabel: "성능", note: "초기에는 기존 기술보다 성능이 낮을 수도 있다", badge: "개념도 · 수치 없음" },
       examples: [
-        { from: "평면 낸드", to: "3D V낸드", note: "2013년 삼성전자, 평면 미세화가 매우 어려워지자 수직으로 쌓음", imgFrom: IMG_SAMSUNG_12, imgTo: IMG_SS_4G },
-        { from: "비닐 레코드", to: "CD", note: "바늘로 홈을 읽던 아날로그 방식에서 레이저로 읽는 디지털 방식으로", imgFrom: IMG_VINYL, imgTo: IMG_CD },
-        { from: "마차", to: "자동차", note: "최초의 자동차는 마차보다 훨씬 느렸다", imgFrom: IMG_CARRIAGE, imgTo: IMG_CAR }
+        { from: "비닐 레코드", to: "CD", note: "강의 33쪽의 예 · 아날로그에서 디지털 방식으로", imgFrom: IMG_VINYL, imgTo: IMG_CD },
+        { from: "마차", to: "자동차", note: "강의 33쪽의 예 · 최초의 자동차는 마차보다 느렸다", imgFrom: IMG_CARRIAGE, imgTo: IMG_CAR },
+        { from: "평면 낸드", to: "3D V낸드", note: "우리 조 해석 · 2013년 삼성, 셀을 수직으로 쌓음", imgFrom: IMG_SAMSUNG_12, imgTo: IMG_SS_4G }
       ],
-      insight: "신기술은 처음엔 성능이 낮고 비용이 들어, 기업은 기존 기술에 계속 투자하기 쉽다",
-      sources: [{ label: "개념: Foster (1986) · 낸드 예시: Samsung Newsroom (2013.08.06)", url: URL_SS_VNAND }, { label: "사진: Samsung, Unsplash(A. Cipriani, R. Sorin, Foto Phanatic, P. Schroeder)", url: "" }],
-      script: "그런데 모든 기술이 한계까지 가는 것은 아닙니다. 완전히 새로운 지식에 기반한 불연속 기술이 나타나 기존 기술을 대체할 수 있습니다. 비닐 레코드가 CD로 바뀐 것, 그리고 뒤에서 볼 삼성의 평면 낸드가 3D V낸드로 바뀐 것이 그 예입니다.\n재미있는 점은 새 기술이 처음에는 오히려 성능이 낮다는 것입니다. 최초의 자동차는 마차보다 훨씬 느렸습니다. 그래서 기업은 신기술로 바로 넘어가기를 꺼릴 수 있습니다. 이렇게 새 S-곡선이 얼마나 자주 나타나느냐가 기술주기의 길이와 이어집니다.",
-      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선이 아래에서 시작해 위로 올라간다.\n· 평면 낸드→3D V낸드 예시는 삼성 뉴스룸(2013.08.06) 보도자료 내용이다."
+      insight: "신기술은 초기에는 기존 기술보다 성능이 낮을 수도 있고 비용이 들어, 기업이 전환을 꺼릴 수 있다 (33쪽)",
+      sources: [{ label: "개념: " + LECTURE + " 33쪽 · 낸드 예시: Samsung Newsroom (2013.08.06)", url: URL_SS_VNAND }, { label: "사진: Samsung, Unsplash(A. Cipriani, R. Sorin, Foto Phanatic, P. Schroeder)", url: "" }],
+      script: "그런데 모든 기술이 한계까지 가는 것은 아닙니다. 완전히 새로운 지식에 기반한 불연속 기술이 나타나 기존 기술을 대체할 수 있습니다. 강의에서는 비닐 레코드에서 CD로, 마차에서 자동차로의 변화를 예로 들었습니다.\n새 기술은 초기에는 기존 기술보다 성능이 낮을 수도 있습니다. 최초의 자동차는 마차보다 훨씬 느렸습니다. 그래서 기업은 비용이 드는 신기술보다 기존 기술에 계속 투자하기도 합니다.\n세 번째 예인 평면 낸드에서 3D V낸드로의 변화는, 뒤에서 볼 삼성 사례를 저희가 이 개념에 연결해 본 해석입니다.",
+      notes: "· 방향키 1번: 기존 기술 곡선, 2번: 새 곡선.\n· 가로축은 노력 하나로 표기했다(4장과 같은 기준). 시간축 그래프가 아니다.\n· 평면→3D 연결은 우리 조 해석이라는 점을 짚는다."
     },
     {
-      id: "s6", type: "cycle", duration: 60,
-      title: "기술의 사이클 (Anderson & Tushman)",
-      lead: "배양기 → 지배적 디자인 → 점진적 개선, 그리고 다시 새 사이클",
+      id: "s6", type: "cycle", duration: 45,
+      title: "기술의 사이클",
+      lead: "디자인 경쟁 → 지배적 디자인 → 점진적 개선,\n그리고 다음 불연속 기술",
       nodes: [
         { label: "단속적 기술의 출현", desc: "새로운 S-곡선의 시작", icon: "break" },
-        { label: "유동기 · 배양기", desc: "기술과 시장의 불확실성이 크고\n다양한 디자인을 실험", icon: "branch" },
-        { label: "지배적 디자인", desc: "시장 요구를 충족하는\n기능을 묶어서 제공", icon: "converge" },
-        { label: "구체기 · 점진적 개선", desc: "디자인과 제조 효율의\n점진적 개선에 집중", icon: "steps" }
+        { label: "배양기", desc: "기술의 혼돈과 불확실성,\n여러 디자인의 경쟁", icon: "branch" },
+        { label: "지배적 디자인의 선택", desc: "시장 요구를 충족하는\n기능을 묶어서 제공", icon: "converge" },
+        { label: "점진적 개선의 시기", desc: "디자인과 제조 효율의\n점진적 개선에 집중", icon: "steps" }
       ],
-      study: { title: "원 연구가 살펴본 산업", items: ["시멘트", "항공", "미니컴퓨터"], note: "Tushman & Anderson(1986)이 여러 산업의 긴 역사를 분석해 이 사이클을 찾아냈다" },
-      findingsTitle: "Anderson & Tushman의 발견",
+      findingsTitle: "강의 39~41쪽 정리",
       findings: [
-        "격동기에는 여러 디자인이 경쟁하고 서로 대체된다",
-        "지배적 디자인이 정해진 뒤에는 그 디자인을 다듬는 점진적 변화가 이어진다",
-        "새 기술은 기존 역량을 살리기도(핵심역량 강화혁신), 쓸모없게 만들기도(핵심역량 소실혁신) 한다"
+        "39쪽: 유동기(불확실성 · 다양한 디자인 실험) → 구체기(지배적 디자인 · 점진적 개선)",
+        "41쪽: 지배적 디자인은 최첨단 기술이 아니라, 시장 요구를 충족하는 기능을 묶어 제공했다"
       ],
       loopLabel: "결국 새로운 기술 불연속이 나타나며 다음 사이클이 시작된다",
-      sources: [{ label: "Anderson & Tushman (1990), ASQ 35 · Tushman & Anderson (1986), ASQ 31 · Utterback & Abernathy (1975), Omega 3(6)", url: URL_UA }],
-      script: "이제 기술의 사이클입니다. Anderson과 Tushman은 시멘트, 항공, 미니컴퓨터 같은 산업의 긴 역사를 분석해서 기술 변화가 주기적으로 반복된다는 것을 보였습니다.\n사이클은 단속적 기술의 출현으로 시작합니다. 그다음 유동기, 그림에서는 배양기라고 부르는 시기에는 기술과 시장의 불확실성이 크고 다양한 디자인이 실험됩니다.\n그러다 지배적 디자인이 선택됩니다. 논문은 그 이후를 디자인을 다듬고 정교화하는 시기라고 설명합니다.\nUtterback과 Abernathy는 이 흐름을 유동기에서 구체기로 넘어가는 과정이라고 불렀습니다. 그리고 결국 새로운 불연속 기술이 나타나면 다음 사이클이 시작됩니다. 이때 새 기술은 기업의 기존 역량을 살리기도 하고, 쓸모없게 만들기도 합니다. 수업에서 배운 핵심역량 강화혁신과 소실혁신입니다.",
-      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타나고, 마지막에 아래 정리 영역이 나타난다.\n· '유동기=배양기', '구체기=점진적 개선의 시기'로 같은 단계라는 점을 짚는다."
+      sources: [{ label: "개념: " + LECTURE + " 39~41쪽 · Anderson & Tushman (1990), ASQ 35", url: "" }],
+      script: "이제 기술의 사이클을 강의자료 기준으로 보겠습니다. 단속적 기술이 출현하면, 기술의 혼돈과 불확실성 속에서 여러 디자인이 경쟁하는 배양기를 거칩니다. 그러다 지배적 디자인이 선택되고, 그 뒤에는 디자인과 제조 효율을 다듬는 점진적 개선이 이어집니다. 그리고 다음 단속적 기술이 나타나면 새 사이클이 시작됩니다.\n강의 41쪽에 따르면 지배적 디자인은 가장 앞선 기술이 아니라 시장 요구를 충족하는 기능을 묶어 제공한 디자인이었습니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타나고, 마지막에 아래 정리 영역이 나타난다.\n· 39쪽(유동기·구체기)과 40쪽(배양기·점진적 개선의 시기)은 비슷한 흐름을 설명하지만, 같은 개념이라고 단정하지 않고 40쪽 표현을 따랐다.\n· Anderson & Tushman(1990)이 분석한 산업은 시멘트·유리·미니컴퓨터. 발표에서는 언급하지 않는다."
     },
     {
       id: "s7", type: "timeline", duration: 65,
       title: "사례 1 · 삼성전자 반도체",
-      lead: "기술 개선의 흐름: 삼성 NAND 플래시 메모리",
-      chart: { title: "삼성 NAND 플래시 제품 용량 변화 (1999–2026)", xLabel: "연도 (5년 단위)", yLabel: "칩 1개 용량 (Gb, 로그 눈금)", legend: "NAND 플래시 제품 용량", unit: "Gb", scale: "log", tickEvery: 5, xMin: 1998, xMax: 2027,
-        events: [{ year: 2006, name: "CTF" }, { year: 2013, name: "3D V낸드" }, { year: 2024, name: "9세대 1Tb", row: 1 }, { year: 2026, name: "10세대 · 용량 비공개", row: 0 }] },
+      lead: "삼성 NAND 플래시: 주요 발표 시점의 용량 변화",
+      chart: { title: "주요 발표 시점의 삼성 NAND 용량 변화", xLabel: "연도 (5년 단위)", yLabel: "칩 1개 용량 (Gb, 로그 축)", legend: "● 양산·상용화 ○ 개발 · 선은 발표 시점 연결", unit: "Gb", scale: "log", tickEvery: 5, xMin: 1998, xMax: 2027,
+        events: [{ year: 2013, name: "3D V낸드 양산", row: 1 }, { year: 2026, name: "10세대 공개 · 용량 비공개", row: 0 }] },
       points: [
-        { year: 1999, value: 1, label: "1Gb" }, { year: 2002, value: 2, label: "" }, { year: 2003, value: 4, label: "" },
-        { year: 2004, value: 8, label: "" }, { year: 2005, value: 16, label: "" }, { year: 2006, value: 32, label: "" }, { year: 2007, value: 64, label: "64Gb" },
-        { year: 2013, value: 128, label: "128Gb" }, { year: 2015, value: 256, label: "256Gb" }, { year: 2022, value: 1024, label: "1Tb" }, { year: 2024, value: 1024, label: "" }
+        { year: 1999, value: 1, kind: "개발", label: "1Gb 개발", src: "삼성반도체 블로그" },
+        { year: 2002, value: 2, kind: "개발", label: "", src: "삼성반도체 블로그" },
+        { year: 2003, value: 4, kind: "개발", label: "", src: "삼성반도체 블로그" },
+        { year: 2004, value: 8, kind: "개발", label: "", src: "삼성반도체 블로그" },
+        { year: 2005, value: 16, kind: "개발", label: "", src: "삼성반도체 블로그" },
+        { year: 2006, value: 32, kind: "상용화", label: "", src: "삼성반도체 블로그 · 머니투데이" },
+        { year: 2007, value: 64, kind: "개발", label: "64Gb 개발", src: "삼성반도체 블로그" },
+        { year: 2013, value: 128, kind: "양산", label: "128Gb 양산", below: true, src: "Samsung Newsroom 2013" },
+        { year: 2015, value: 256, kind: "양산", label: "256Gb 양산", src: "Samsung Newsroom 2015" },
+        { year: 2022, value: 1024, kind: "양산", label: "1,024Gb 양산", src: "Samsung Newsroom 2022" },
+        { year: 2024, value: 1024, kind: "양산", label: "", src: "Samsung 보도자료 2024" }
       ],
       photo: { src: IMG_SAMSUNG_12, fallback: "none", caption: "삼성전자 1Gb(왼쪽)·2Gb(오른쪽) 낸드 플래시", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
-      bigLabel: "제품 용량 변화",
-      warn: "NAND 제품 용량 변화입니다 (단위 Gb, 1Tb = 1,024Gb).\n기술주기의 길이가 아닙니다.",
-      link: "황의 법칙 ‘해마다 집적도 2배’(머니투데이, 2006)는 2007년 64Gb까지 이어졌고, 3D 전환 뒤에는 2013 128Gb → 2015 256Gb → 2022 1Tb로 이어졌다. 2026년 10세대는 400단 이상, 비트 밀도 58%↑ (삼성 뉴스룸)",
-      sources: [{ label: SRC_SAMSUNG, url: URL_SAMSUNG }, { label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_256, url: URL_SS_256 }, { label: SRC_SS_8G, url: URL_SS_8G }, { label: SRC_SS_V10, url: URL_SS_V10 }],
-      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 삼성반도체 공식 블로그에 나온 연혁을 그대로 그래프로 옮겼습니다.\n1999년 1기가비트, 2002년 2기가비트, 2003년 4기가비트, 그리고 2007년 64기가비트까지, 거의 해마다 용량이 두 배로 늘었습니다. 단위는 기가바이트가 아니라 기가비트입니다.\n이 숫자는 제품 용량의 변화이지 기술주기의 길이가 아닙니다. 다만 S-곡선의 2단계처럼 성능 향상이 빠르게 이어지는 모습을 보여 줍니다. 당시 언론은 이것을 '해마다 집적도가 두 배로 늘어난다'는 황의 법칙이라고 불렀습니다.\n그 뒤로도 그래프를 2026년까지 이어 보면, 3D V낸드로 넘어간 뒤 2013년 128기가비트, 2015년 256기가비트, 2022년 1테라비트가 됐습니다. 그리고 올해 8월 삼성은 400단이 넘는 10세대 V낸드를 공개했는데, 칩 용량은 밝히지 않았고 비트 밀도가 이전 세대보다 58% 이상 높다고만 발표했습니다. 점선으로 표시한 시점이 다음 장에서 볼 기술 방식의 전환입니다.",
-      notes: "· 2013 128Gb·2015 256Gb·2022 1Tb·2024 1Tb는 각 삼성 뉴스룸 양산 발표. 2026 10세대는 칩 용량 미공개라 점을 찍지 않고 점선으로만 표시.\n· 원문 표기는 Gb(기가비트). 1999년은 '1Gb 낸드 플래시 개발'로 적혀 있다.\n· 세로축은 로그 눈금이라 직선처럼 보이면 해마다 두 배라는 뜻이다."
+      bigLabel: "주요 발표 시점의 용량",
+      warn: "주요 발표 시점만 이은 선입니다. 발표가 없는 해는 관측값이 아니며,\n기술주기를 직접 잰 자료도 아닙니다.",
+      link: "황의 법칙: 1999~2007년 개발 발표 흐름을 당시 언론이 ‘해마다 집적도 2배’로 부른 표현 (머니투데이, 2006). 2026년 10세대는 400단 이상, 비트 밀도 약 58%↑로 공개",
+      sources: [{ label: "1999~2007: 삼성반도체 기술 블로그 (2024.05.17)", url: URL_SAMSUNG }, { label: "황의 법칙: 머니투데이 (2006.09.11)", url: URL_MT_CTF }, { label: "2013~2026: Samsung Newsroom (2013.08.06 · 2015.08.11 · 2022.11.06 · 2026.08.05) · 보도자료 (2024.04.23) — 13장 참고", url: "" }],
+      script: "첫 번째 사례는 삼성전자의 낸드 플래시입니다. 이 그래프는 삼성이 발표한 주요 시점의 칩 용량을 이은 것입니다. 빈 점은 개발 발표, 채운 점은 양산이나 상용화 발표이고, 선은 발표 시점을 이은 것일 뿐 그 사이의 해를 관측한 값은 아닙니다. 단위는 모두 기가비트입니다.\n1999년 1기가비트 개발부터 2007년 64기가비트 개발까지 발표가 거의 해마다 이어졌고, 당시 언론은 이를 황의 법칙이라고 불렀습니다. 2013년에는 3D V낸드 128기가비트, 2022년에는 1,024기가비트를 양산했고, 2026년 10세대는 용량 없이 공개만 되었습니다.\n이 그래프는 시간에 따른 제품 용량이라, 노력에 따른 성능을 그린 S-곡선과는 기준이 다르고, 기술주기를 잰 자료도 아닙니다.",
+      notes: "· 로그 축에서 일정한 기울기는 일정한 비율의 증가를 나타낸다. 기울기를 따로 재지 않았으므로 '연 2배'라고 단정하지 않는다.\n· 1999~2007: 삼성반도체 블로그의 '개발' 표현(2006년 32Gb만 '상용화'). 2013·2015·2022·2024: 뉴스룸·보도자료의 '양산' 발표. 2026: FMS 2026 '공개'(칩 용량 비공개).\n· 1Tb = 1,024Gb로 통일해 표기했다."
     },
     {
-      id: "s8", type: "shift", duration: 45,
+      id: "s8", type: "shift", duration: 55,
       title: "사례 1 · 해석",
-      lead: "한계에 부딪힐 때마다 새로운 기술 방식으로 넘어갔다",
-      mark: "새로운 기술 방식",
+      lead: "기존 방식의 한계를 넘기 위한 구조 변화,\n그리고 그 이후 이어지는 성능 개선",
+      mark: "구조 변화",
       stages: [
-        { year: "기존 방식", name: "플로팅 게이트", text: "플로팅 게이트에\n데이터를 저장" },
-        { year: "2006", name: "CTF 낸드", text: "플로팅 게이트의 한계 극복,\n40나노 32Gb 상용화" },
-        { year: "2013", name: "3D V낸드", text: "최대 24단 수직 적층,\n128Gb 업계 최초 양산" },
-        { year: "2024", name: "9세대 V낸드", text: "1Tb, 8세대보다\n비트 밀도 약 50%↑" },
-        { year: "2026", name: "10세대 V낸드", text: "400단 이상, 9세대보다\n비트 밀도 58% 이상↑" }
+        { year: "기존 방식", name: "평면 낸드", text: "셀을 평면에 배치,\n미세화가 점점 어려워짐", kind: "base", tag: "" },
+        { year: "2013", name: "3D V낸드", text: "셀을 최대 24단 수직으로\n쌓은 128Gb 첫 양산", kind: "shift", tag: "① 기술 방식의 변화" },
+        { year: "2015", name: "3세대 V낸드", text: "48단 256Gb 양산", kind: "improve", tag: "② 이후 개선" },
+        { year: "2022", name: "8세대 V낸드", text: "1,024Gb(1Tb) 양산", kind: "improve", tag: "② 이후 개선" },
+        { year: "2024", name: "9세대 V낸드", text: "8세대보다 비트 밀도\n약 50% 향상", kind: "improve", tag: "② 이후 개선" }
       ],
       photo: { src: IMG_SS_9G, fallback: "none", caption: "삼성전자 9세대 V낸드 (2024)", credit: "사진: Samsung Newsroom (2024.04.23)" },
-      insight: "우리 조 해석 · 한계에 닿으면 새 S-곡선(불연속)으로 옮기고, 그 위에서 다시 빠른 점진적 개선이 이어진다",
-      sources: [{ label: SRC_MT_CTF, url: URL_MT_CTF }, { label: SRC_SS_VNAND, url: URL_SS_VNAND }, { label: SRC_SS_9G, url: URL_SS_9G }, { label: SRC_SS_V10, url: URL_SS_V10 }],
-      script: "기사와 보도자료를 더 찾아보면 흥미로운 부분이 있습니다. 2006년에 삼성은 '플로팅 게이트 기술의 한계를 극복한' CTF 기술을 개발했고, 2013년에는 평면에서 더 줄이기가 매우 어려워지자 셀을 최대 24층으로 쌓은 3D V낸드를 업계 최초로 양산했습니다. 2024년 9세대 V낸드는 8세대보다 비트 밀도를 약 50% 높였고, 올해 8월 공개된 10세대 V낸드는 400단을 넘기며 9세대보다 비트 밀도를 58% 이상 높였습니다.\n저희는 이것을 불연속과 S-곡선으로 해석했습니다. 기존 기술이 한계에 가까워질 때마다 새로운 방식, 즉 새 S-곡선으로 넘어간 것입니다. 반도체는 이런 전환이 비교적 짧은 간격으로 이어진다는 점에서 기술주기가 짧은 산업의 예로 볼 수 있습니다.",
-      notes: "· '플로팅 게이트 기술의 한계를 극복'은 머니투데이(2006) 표현, 24단·128Gb는 삼성 뉴스룸(2013), 약 50%는 9세대 보도자료(2024) 표현이다. 9세대 단수는 공식 발표가 없어 쓰지 않았다.\n· 해석 부분은 우리 팀 분석이라는 표시를 짚는다."
+      insight: "우리 조 해석 · 평면 → 3D 전환은 수업의 '불연속 기술'에 가깝다고 보았고, 이후 세대는 같은 3D 구조 위의 용량·밀도 개선으로 정리했다",
+      sources: [{ label: SRC_SS_VNAND, url: URL_SS_VNAND }, { label: SRC_SS_256, url: URL_SS_256 }, { label: SRC_SS_8G, url: URL_SS_8G }, { label: SRC_SS_9G, url: URL_SS_9G }],
+      script: "삼성 사례를 강의 개념으로 정리해 보겠습니다. 저희는 두 가지를 구분했습니다.\n첫째는 기술 방식의 변화입니다. 삼성은 2013년, 평면에서 더 미세하게 만들기가 어려워지자 셀을 최대 24단으로 수직으로 쌓은 3D V낸드를 처음 양산했습니다. 저희는 이 평면에서 3D로의 전환이 수업의 불연속 기술에 가깝다고 해석했습니다.\n둘째는 그 이후의 개선입니다. 2015년 256기가비트, 2022년 1테라비트, 2024년 9세대처럼 같은 3D 구조 위에서 용량과 밀도가 높아졌습니다. 이 세대들은 각각 새 사이클의 시작이라기보다 이후의 개선으로 보았습니다.\n즉 삼성 사례에서는 기존 방식의 한계를 해결하기 위한 구조 변화와, 그 이후 이어지는 성능 개선을 확인할 수 있습니다.",
+      notes: "· 방향키를 누를 때마다 단계가 하나씩 나타난다. S-곡선 그림은 구조 변화(2013)에만 있고, 이후 세대는 개선 막대로 표시했다.\n· 2026년 10세대(400단 이상, 비트 밀도 약 58%↑, 2026.08 공개)는 새 본딩 구조가 함께 설명되어 있어 이번 발표에서는 분류하지 않았다. 질문이 나오면 그렇게 답한다.\n· 2006년 CTF는 평면 구조 안의 셀 방식 변화라 이 장에서는 다루지 않았다."
     },
     {
-      id: "s9", type: "efe", duration: 65,
+      id: "s9", type: "efe", duration: 60,
       title: "사례 2 · 한미약품",
       lead: "하나의 물질이 신약이 되기까지:\n한미약품 비만 신약 '에페'",
       photo: { src: IMG_HANMI_EFE, fallback: "pharma", caption: "한미약품 비만 신약 '에페' 패키지", credit: "사진: 한미약품 보도자료 © Hanmi Pharm" },
@@ -933,77 +948,76 @@ const DEFAULT_DECK = {
         { when: "2026.10.07", what: "식약처 허가 · 국내 개발 GLP-1 비만 치료제로 처음" }
       ],
       pipeline: "아시아경제(2026.10.07): ‘국내에서 개발된 GLP-1 계열 비만치료제가 허가된 것은 이번이 처음’",
-      insight: "우리 조 해석 · 한 기술의 제품 한 세대가 나오기까지 2015년부터 2026년까지 10년이 넘게 걸렸다",
-      caveat: "한 기업, 한 제품의 사례로 제약산업 전체의 기술주기가 길다는 것을 입증할 수는 없습니다.",
+      insight: "2015년 기술수출 이후 2026년 국내 비만치료제 허가까지 장기간의 개발 과정이 이어졌다",
+      caveat: "제품 개발 과정의 사례이며, 제약산업의 기술 사이클 전체를 측정한 결과는 아닙니다.",
       sources: [{ label: SRC_KBR, url: URL_KBR }, { label: SRC_DP23, url: URL_DP23 }, { label: SRC_ASIAE, url: URL_ASIAE }, { label: SRC_EFE, url: URL_HANMI_EFE }],
-      script: "두 번째 사례는 한미약품입니다. 지난 10월 7일, 한미약품의 비만 신약 '에페'가 허가를 받았습니다. 국내 기업이 개발한 첫 GLP-1 계열 비만 신약이라고 합니다.\n기사를 찾아보니 이 물질은 한미약품의 랩스커버리 기술로 만든 당뇨병 치료제로, 2015년 11월 사노피에 기술수출되었습니다. 2020년에 권리가 돌아왔고, 2023년 7월 한미약품은 목표를 비만 치료제로 바꿨습니다. 그리고 2026년 10월 7일 허가를 받았습니다.\n즉 한 기술의 제품 한 세대가 나오기까지 10년이 넘게 걸렸습니다. 해마다 용량이 두 배로 늘던 낸드와 비교하면 차이가 분명합니다. 다만 한 제품의 사례로 제약산업 전체를 증명할 수는 없습니다.",
-      notes: "· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다. 질문이 나오면 '수업 범위 밖이라 다루지 않았다'고 답한다.\n· 2015.11 기술수출·2020 권리 반환: Korea Biomedical Review·데일리팜(2020.05.14). 2023.07 비만 치료제 전환: 데일리팜·머니투데이(2023.07.31). 권리 반환 확정 월은 기사마다 달라 연도만 썼다.\n· 방향키를 누를 때마다 개발 경로가 하나씩 나타난다."
+      script: "두 번째 사례는 한미약품입니다. 지난 10월 7일 한미약품의 비만 신약 '에페'가 허가를 받았습니다. 아시아경제에 따르면 국내에서 개발된 GLP-1 계열 비만치료제가 허가된 것은 처음입니다.\n개발 경로를 보면, 2015년 11월 랩스커버리 기술 기반 당뇨병 치료제로 사노피에 기술수출되었고, 2020년 권리가 반환되었습니다. 2023년 7월에는 목표를 비만 치료제로 바꿨고, 올해 허가를 받았습니다.\n즉 2015년 기술수출 이후 허가까지 장기간의 개발 과정이 이어졌습니다. 다만 이것은 한 제품의 개발 과정이고, 제약산업의 기술 사이클 전체를 잰 결과는 아닙니다.",
+      notes: "· 2015년 기술수출은 연구 시작이나 기술 탄생 시점이 아니다. '기술 탄생부터 10년' 같은 표현을 쓰지 않는다.\n· 수업 범위 밖인 임상·허가 절차는 설명하지 않는다.\n· 2015.11 기술수출·2020 권리 반환: Korea Biomedical Review(2020.05.14). 2023.07 비만 치료제 전환: 데일리팜(2023.07.31)."
     },
     {
-      id: "s10", type: "factors", duration: 65,
+      id: "s10", type: "factors", duration: 70,
       title: "기술주기 길이에 영향을 주는 요인",
-      lead: "주기의 길이는 사이클의 각 단계가 얼마나 걸리느냐에 달려 있다",
-      badge: "개념을 사례에 적용한 우리 조의 분석",
-      ring: ["단속적 기술의\n출현", "배양기 →\n지배적 디자인", "기술의 한계\n근접", "점진적 개선의\n시기"],
+      lead: "기술주기의 길이에 영향을 줄 수 있는 네 가지 조건",
+      badge: "강의 33·35·39~41쪽 개념을 이용한 우리 조의 분석",
+      ring: ["새 기술의\n등장", "디자인 경쟁 →\n지배적 디자인", "점진적 개선", "다음 기술로의\n전환"],
       factors: [
-        { title: "새로운 단속적 기술이\n얼마나 자주 나타나는가", link: "반도체: CTF(2006) → 3D V낸드(2013) → 10세대(2026), 새 방식이 짧은 간격으로 등장", icon: "break" },
-        { title: "지배적 디자인이 정해지기까지\n얼마나 걸리는가", link: "Anderson & Tushman: 격동기(디자인 경쟁)가 길수록 사이클도 길어짐", icon: "converge" },
-        { title: "기존 기술이 한계에\n얼마나 빨리 가까워지는가", link: "S-곡선의 모양은 시장·부품 기술·보완 기술의 변화에 따라 달라짐", icon: "ceiling" },
-        { title: "점진적 개선이\n얼마나 오래 이어지는가", link: "제약: 에페, 2015 기술수출 → 2026 허가, 한 세대에 10년 넘게", icon: "steps" }
+        { title: "새로운 기술의 등장", link: "기존 기술을 대체할 새 지식·방식이 나오면 다음 사이클이 시작될 수 있다 (33쪽) · 예: 삼성 평면 → 3D", icon: "break" },
+        { title: "디자인 경쟁과 불확실성", link: "불확실성이 크고 디자인 경쟁이 이어지면 지배적 디자인이 정해지기까지 시간이 걸릴 수 있다 (39~40쪽)", icon: "converge" },
+        { title: "기존 기술의 개선 여지", link: "개선 여지가 남아 있으면 기존 기술에 대한 투자와 개선이 이어질 수 있다. 실제 한계는 미리 알기 어렵다 (32·35쪽)", icon: "ceiling" },
+        { title: "신기술 전환의 부담", link: "신기술의 초기 성과가 낮거나 비용 부담이 크면 기업이 전환을 미룰 수 있다 (33쪽)", icon: "branch" }
       ],
-      strip: "반도체: 황의 법칙 ‘해마다 집적도 2배’  ·  제약: 에페 한 세대에 10년 이상",
-      sources: [{ label: "개념: Foster (1986) · Anderson & Tushman (1990). 네 요인과 사례 연결은 우리 조 분석", url: "" }],
-      script: "그렇다면 기술주기의 길이는 무엇이 정할까요? 여기서부터는 개념을 사례에 적용한 저희 조의 분석입니다.\n첫째, 새로운 단속적 기술이 얼마나 자주 나타나는가입니다. 반도체는 CTF, 3D 낸드처럼 새 방식이 짧은 간격으로 등장했습니다.\n둘째, 배양기를 거쳐 지배적 디자인이 정해지기까지 얼마나 걸리는가입니다. 이 시기가 길수록 사이클도 길어집니다.\n셋째, 기존 기술이 한계에 얼마나 빨리 가까워지는가입니다. S-곡선의 모양은 시장의 변화, 부품 기술의 변화, 보완 기술의 변화에 따라 달라지고, 한계에 다다르면 새 기술로 옮겨 가게 됩니다.\n넷째, 점진적 개선이 얼마나 오래 이어지는가입니다. 제약은 에페처럼 한 기술의 제품 한 세대가 나오는 데 10년이 넘게 걸렸습니다. 반대로 반도체는 황의 법칙처럼 해마다 집적도가 두 배로 늘었습니다.",
-      notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 단계가 강조된다.\n· 사례 연결은 '보였다', '볼 수 있다' 정도로 말하고 단정하지 않는다."
+      strip: "네 가지는 주기의 길이에 영향을 ‘줄 수 있는’ 조건이며, 무조건 성립하는 법칙은 아니다",
+      sources: [{ label: "개념: " + LECTURE + " 32·33·35·39~41쪽. 네 요인의 정리는 우리 조의 분석", url: "" }],
+      script: "그렇다면 기술주기의 길이는 무엇에 영향을 받을까요? 강의 개념을 이용해 저희 조가 네 가지 조건으로 정리했습니다.\n첫째, 새로운 기술의 등장입니다. 기존 기술을 대체할 새 지식과 방식이 나오면 다음 사이클이 시작될 수 있습니다. 삼성의 평면에서 3D로의 변화가 저희가 본 예입니다.\n둘째, 디자인 경쟁과 불확실성입니다. 불확실성이 크고 여러 디자인의 경쟁이 이어지면 지배적 디자인이 정해지기까지 시간이 걸릴 수 있습니다.\n셋째, 기존 기술의 개선 여지입니다. 개선할 여지가 남아 있으면 기업은 기존 기술에 계속 투자할 수 있습니다. 다만 실제 한계는 미리 알기 어렵습니다.\n넷째, 신기술 전환의 부담입니다. 신기술의 초기 성과가 낮거나 비용이 크면 전환을 미룰 수 있습니다.\n이 네 가지는 영향을 줄 수 있는 조건이지, 항상 성립하는 법칙은 아닙니다.",
+      notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 해당 단계가 강조된다.\n· 원은 기술 사이클(새 기술 등장 → 디자인 경쟁·지배적 디자인 → 점진적 개선 → 다음 기술로 전환)이고, 각 요인이 주로 작용하는 단계를 표시한 것이다.\n· 에페의 개발 기간은 이 장의 요인과 연결하지 않는다."
     },
     {
-      id: "s11", type: "window", duration: 45,
-      title: "우리 조의 답",
-      lead: "같은 사이클의 단계를\n반도체는 빠르게 지나고, 제약은 오래 걸린다",
-      mark: "반도체는 빠르게 지나고, 제약은 오래 걸린다",
-      span: "같은 S-곡선 · 다른 속도",
+      id: "s11", type: "window", duration: 55,
+      title: "두 사례에서 확인한 기술 변화의 모습",
+      lead: "삼성은 기술 방식의 전환과 이후 개선을,\n한미약품은 장기간의 제품 개발 과정을 보여 준다",
+      span: "서로 다른 과정",
       cols: [
-        { name: "반도체 · 삼성전자 V낸드", verdict: "기술주기가 짧은 편", stat: "약 2년", statLabel: "다음 세대까지 (2022 → 2024 → 2026)", rows: [
-          { when: "2006 → 2013", what: "새 S-곡선: CTF → 3D V낸드" },
-          { when: "2022 → 2024", what: "점진적 개선: 8세대 → 9세대" },
-          { when: "2024 → 2026", what: "점진적 개선: 9세대 → 10세대(공개)" }
-        ], why: "한계에 닿으면 새 방식으로 넘어가고,\n그 위의 개선도 2년 단위로 빠르다" },
-        { name: "제약 · 한미약품 '에페'", verdict: "기술주기가 긴 편", stat: "10년+", statLabel: "한 기술이 첫 제품이 되기까지 (2015 → 2026)", rows: [
-          { when: "2015.11", what: "당뇨병 치료제로 사노피에 기술수출" },
-          { when: "2020", what: "사노피 권리 반환" },
-          { when: "2023.07", what: "비만 치료제로 목표 변경" },
-          { when: "2026.10", what: "첫 제품 '에페' 허가" }
-        ], why: "한 기술이 첫 제품이 되는 단계에만\n10년 넘게 걸려 사이클 하나가 길다" }
+        { name: "사례 1 · 삼성전자 NAND", verdict: "기술 방식 전환 + 이후 개선", rows: [
+          { when: "2013", what: "평면에서 수직 적층으로 기술 방식 변화" },
+          { when: "2015~2024", what: "이후 제품의 용량·밀도·성능 개선" }
+        ], why: "기술 방식의 전환과\n그 이후 개선을 설명하는 사례" },
+        { name: "사례 2 · 한미약품 '에페'", verdict: "제품 개발 과정", rows: [
+          { when: "2015~2023", what: "기술수출 이후 개발 경로와 목표 변화" },
+          { when: "2026", what: "장기간 개발을 거쳐 특정 제품 허가" }
+        ], why: "한 제품의 개발 과정을\n설명하는 사례" }
       ],
-      limit: "두 기업의 사례이므로 산업 전체의 정확한 주기 연수는 말하지 않는다. 단계 구분과 해석은 우리 조의 분석이다.",
-      sources: [{ label: "삼성: 머니투데이 (2006.09.11) · Samsung Newsroom (2013.08.06 · 2022.11.06 · 2024.04.23 · 2026.08.05)", url: "" }, { label: "한미약품: Korea Biomedical Review (2020.05.14) · 데일리팜 (2023.07.31) · 한미약품 보도자료 (2026.10.07)", url: "" }],
-      script: "그럼 저희 조의 답입니다. 두 사례를 기술 사이클의 단계에 맞춰 놓고 보면 차이가 분명합니다.\n삼성은 2006년 CTF에서 2013년 3D V낸드로 새로운 S-곡선으로 넘어갔고, 그 위의 점진적 개선도 2022년 8세대, 2024년 9세대, 2026년 10세대처럼 약 2년마다 다음 세대가 나왔습니다. 단계를 빠르게 지나기 때문에 반도체는 기술주기가 짧은 편입니다.\n반면 에페는 한 기술이 첫 제품이 되는 단계에만 2015년부터 2026년까지 10년이 넘게 걸렸습니다. 사이클 하나가 길기 때문에 제약은 기술주기가 긴 편입니다.\n다만 두 기업의 사례이므로 산업 전체의 정확한 연수는 말하지 않겠습니다.",
-      notes: "· 세대 번호와 연도는 모두 삼성 뉴스룸·기사 표현이다. 10세대는 2026년 8월 '공개'이며 양산 발표는 아니다.\n· '세대가 자주 바뀌는 것 = 주기가 짧다'가 아니라, 새 S-곡선 전환과 점진적 개선이 모두 빠르다는 점을 강조한다(제품 출시 간격 ≠ 기술주기)."
+      limit: "두 사례의 기간은 측정 기준이 달라 기술주기의 길이로 직접 비교하지 않았다.",
+      sources: [{ label: "삼성: Samsung Newsroom (2013.08.06 · 2015.08.11 · 2022.11.06) · 보도자료 (2024.04.23)", url: "" }, { label: "한미약품: Korea Biomedical Review (2020.05.14) · 데일리팜 (2023.07.31) · 한미약품 보도자료 (2026.10.07)", url: "" }],
+      script: "두 사례를 정리하면 이렇습니다.\n삼성 사례는 2013년 평면에서 수직 적층으로 기술 방식이 바뀌고, 그 뒤 같은 구조 위에서 용량과 밀도가 개선된 모습을 보여 줍니다. 기술 방식의 전환과 그 이후 개선을 설명하는 사례입니다.\n한미약품 사례는 2015년 기술수출 이후 권리 반환과 목표 변경을 거쳐 2026년에 특정 제품이 허가된 과정입니다. 제품 개발 과정을 설명하는 사례입니다.\n두 사례의 기간은 측정 기준이 달라서, 저희는 이것을 기술주기의 길이로 직접 비교하지 않았습니다. 산업 간 비교는 앞에서 말씀드린 문헌 근거를 따랐습니다.",
+      notes: "· 세대 간격(약 2년)과 개발 기간(2015~2026)을 같은 지표처럼 말하지 않는다.\n· 산업 간 비교 근거는 Lee(2024)이며, 두 기업 사례는 그 비교를 직접 입증하는 자료가 아니다."
     },
     {
-      id: "s12", type: "conclusion", duration: 30,
+      id: "s12", type: "conclusion", duration: 45,
       title: "결론",
-      lead: "산업마다 기술주기의 길이가 다른 이유는\n기술 사이클의 각 단계를 지나는 속도가 다르기 때문이다",
-      mark: "기술 사이클의 각 단계를 지나는 속도",
+      lead: "반도체를 포함한 IT는 상대적으로 짧은 편,\n제약은 긴 편으로 보았다",
+      mark: "상대적으로 짧은 편",
       takeaways: [
-        "짧은 산업 · 반도체\n한계에 닿으면 새 S-곡선으로 옮겨 가고(2006 → 2013), 그 위의 개선도 약 2년 단위로 빠르다",
-        "긴 산업 · 제약\n한 기술이 첫 제품이 되는 단계에만 10년 넘게 걸려 사이클 하나가 길다",
-        "기술주기를 보는 법\n제품 출시 간격이 아니라 단속적 기술 → 지배적 디자인 → 점진적 개선의 흐름으로 봐야 한다"
+        "짧은 산업 · 긴 산업\nLee(2024)의 산업 비교를 근거로 반도체를 포함한 IT를 짧은 편, 제약을 긴 편의 예로 제시했다",
+        "주기의 길이를 보려면\n새 기술의 등장, 디자인 경쟁과 지배적 디자인의 형성, 기존 기술의 개선 여지와 전환 부담을 함께 봐야 한다",
+        "두 기업 사례의 역할\n서로 다른 기술 변화 과정을 보여 주지만, 세대 간격이나 개발 기간만으로 산업 전체의 주기를 계산할 수는 없다"
       ],
       closing: "들어 주셔서 감사합니다 · 질문 받겠습니다",
       sources: [],
-      script: "결론입니다. 토론 문제 4번에 대한 저희 조의 답은 이것입니다. 산업마다 기술주기의 길이가 다른 이유는, 기술 사이클의 각 단계를 지나는 속도가 다르기 때문입니다.\n반도체는 한계에 닿으면 새로운 S-곡선으로 옮겨 가고, 그 위의 개선도 빠르기 때문에 주기가 짧습니다. 제약은 한 기술이 첫 제품이 되는 단계에만 10년 넘게 걸리기 때문에 주기가 깁니다.\n그래서 기술주기를 볼 때는 제품이 얼마나 자주 나오느냐가 아니라, 단속적 기술에서 지배적 디자인, 점진적 개선으로 이어지는 흐름을 봐야 한다는 것이 저희 조의 결론입니다. 들어 주셔서 감사합니다.",
-      notes: "· 첫 문장(우리 조의 답)을 또박또박 읽는다.\n· 마지막 문장 후 2초 쉬고 질문을 받는다."
+      script: "결론입니다. 저희 조는 상대적으로 짧은 기술주기의 예로 반도체를 포함한 IT 분야를, 긴 분야의 예로 제약을 제시했습니다. 이 구분은 산업별 기술순환주기를 비교한 문헌을 근거로 했습니다.\n그리고 기술주기의 길이를 이해하려면 새로운 기술의 등장, 디자인 경쟁과 지배적 디자인의 형성, 기존 기술의 개선 여지와 전환 부담을 함께 살펴봐야 한다고 정리했습니다.\n삼성과 한미 사례는 서로 다른 기술 변화 과정을 보여 줍니다. 다만 제품 세대 간격이나 개발 기간만으로 산업 전체의 기술주기를 계산할 수는 없습니다. 들어 주셔서 감사합니다.",
+      notes: "· 산업 비교의 근거(문헌)와 기업 사례의 역할(과정 설명)을 구분해서 말한다.\n· 마지막 문장 후 2초 쉬고 질문을 받는다."
     },
     {
       id: "s13", type: "refs", duration: 10,
       title: "참고문헌",
       lead: "참고문헌",
       refs: [
-        { group: "개념", label: SRC_FOSTER, url: URL_FOSTER },
-        { group: "개념", label: SRC_AT, url: "" },
-        { group: "개념", label: SRC_TA86, url: "" },
-        { group: "개념", label: SRC_UA, url: URL_UA },
+        { group: "강의자료 (제5강 혁신의 원천 및 유형과 패턴)", label: "32쪽 · 기술 수준의 S-곡선 (4장)", url: "" },
+        { group: "강의자료 (제5강 혁신의 원천 및 유형과 패턴)", label: "33쪽 · 불연속 기술, 신기술 전환을 꺼리는 이유 (5·10장)", url: "" },
+        { group: "강의자료 (제5강 혁신의 원천 및 유형과 패턴)", label: "35쪽 · S-곡선 사용의 한계, 실제 한계를 미리 알기 어려움 (4·10장)", url: "" },
+        { group: "강의자료 (제5강 혁신의 원천 및 유형과 패턴)", label: "39~41쪽 · 기술의 사이클, 유동기·구체기, 지배적 디자인 (3·6·10장)", url: "" },
+        { group: "강의자료 (제5강 혁신의 원천 및 유형과 패턴)", label: "43쪽 · 토론 문제 4번 (2장)", url: "" },
+        { group: "개념 · 산업 비교 문헌", label: SRC_AT + " — 강의 39~41쪽 기술 사이클의 원 연구", url: "" },
+        { group: "개념 · 산업 비교 문헌", label: "Lee, K. (2024). Economics of technology cycle time (TCT) and catch-up by latecomers: Micro-, meso-, and macro-analyses and implications. Journal of Evolutionary Economics, 34, 319–349 — 특허 인용 기반 지표로, 강의의 사이클 기간을 직접 잰 자료는 아님", url: URL_LEE },
         { group: "사례 1 · 삼성전자", label: SRC_SAMSUNG, url: URL_SAMSUNG },
         { group: "사례 1 · 삼성전자", label: SRC_MT_CTF, url: URL_MT_CTF },
         { group: "사례 1 · 삼성전자", label: SRC_SS_VNAND, url: URL_SS_VNAND },
@@ -1014,12 +1028,11 @@ const DEFAULT_DECK = {
         { group: "사례 2 · 한미약품", label: SRC_KBR, url: URL_KBR },
         { group: "사례 2 · 한미약품", label: SRC_DP23, url: URL_DP23 },
         { group: "사례 2 · 한미약품", label: SRC_ASIAE, url: URL_ASIAE },
-        { group: "사례 2 · 한미약품", label: SRC_EFE, url: URL_HANMI_EFE },
-        { group: "강의자료", label: LECTURE + ", 기술 수준의 S-곡선 · 기술의 사이클 · 43쪽 토론 문제", url: "" }
+        { group: "사례 2 · 한미약품", label: SRC_EFE, url: URL_HANMI_EFE }
       ],
       sources: [],
-      script: "참고문헌입니다. 질문 시간에 필요하면 이 화면을 띄워 둡니다.",
-      notes: "· 발표 중에는 넘기기만 하고, 질문 시간에 띄워 둔다."
+      script: "참고문헌입니다. 질문 시간 동안 이 화면을 띄워 둡니다.",
+      notes: "· 발표 중에는 넘기기만 하고, 질문 시간에 띄워 둔다.\n· 원문을 직접 확인하지 못한 문장은 인용하지 않았다."
     }
   ]
 };
@@ -1284,6 +1297,7 @@ R.jump = (s, i) => {
   const cross = 0.62;
   return `${head(s, i)}<div class="s-body"><div class="split">
     <div class="chart-box rise"${rise(0)}>
+      ${c.badge ? `<div class="chart-title"><span></span><span class="tag blue">${icon("info")}${ed(s, "chart.badge")}</span></div>` : ""}
       <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="기존 기술과 불연속 기술의 두 S-곡선 개념도">
         <path class="axis" d="M${L} ${T - 10}V${B}H${Rr + 10}"/>
         <path class="axis" d="M${L - 7} ${T - 2}L${L} ${T - 14}L${L + 7} ${T - 2}M${Rr + 2} ${B - 7}L${Rr + 14} ${B}L${Rr + 2} ${B + 7}"/>
@@ -1309,7 +1323,7 @@ R.jump = (s, i) => {
 };
 R.timeline = (s, i) => {
   const c = s.chart || {};
-  const pts = (s.points || []).map(p => ({ year: +p.year, value: +p.value, label: p.label })).filter(p => isFinite(p.year) && isFinite(p.value) && p.value > 0).sort((a, b) => a.year - b.year);
+  const pts = (s.points || []).map(p => ({ year: +p.year, value: +p.value, label: p.label, kind: p.kind || "", below: !!p.below, src: p.src || "" })).filter(p => isFinite(p.year) && isFinite(p.value) && p.value > 0).sort((a, b) => a.year - b.year);
   const W = 940, H = 520, L = 84, Rr = 910, B = 440, T = (c.events || []).length ? 104 : 56;
   const STOPS = ["#12A594", "#1AA3E8", "#2F6BFF", "#7B5CFA"];
   const gid = "tg-" + esc(s.id);
@@ -1358,10 +1372,12 @@ R.timeline = (s, i) => {
     svg += pts.map((p, k) => {
       const t = ((xs(p.year) - xs(y0)) / Math.max(1, xs(y1) - xs(y0))) * dur;
       const col = mixHex(STOPS, pts.length > 1 ? k / (pts.length - 1) : 0);
-      const label = someLabels ? String(p.label || "") : fmt(p.value), w = 26 + label.length * 14, x = xs(p.year), y = ys(p.value), py = someLabels && p.value === vMax ? y + 76 : y;
-      if (someLabels && !label) return `<circle class="pt-dot" cx="${x}" cy="${y}" r="8" fill="${col}" style="--d:${t.toFixed(2)}s"><title>${p.year} · ${fmt(p.value)}</title></circle>`;
+      const label = someLabels ? String(p.label || "") : fmt(p.value), w = 26 + label.length * 14, x = xs(p.year), y = ys(p.value), py = someLabels && (p.below || p.value === vMax) ? y + 76 : y;
+      const hollow = /개발/.test(p.kind), tip = `<title>${p.year} · ${fmt(p.value)}${esc(c.unit || "")}${p.kind ? " · " + esc(p.kind) : ""}${p.src ? " · " + esc(p.src) : ""}</title>`;
+      const dotStyle = hollow ? `fill="#fff" stroke="${col}" stroke-width="4"` : `fill="${col}"`;
+      if (someLabels && !label) return `<circle class="pt-dot" cx="${x}" cy="${y}" r="8" ${dotStyle} style="--d:${t.toFixed(2)}s">${tip}</circle>`;
       const cnt = someLabels ? "" : ` data-count="${p.value}" data-delay="${Math.round(t * 1000)}"`;
-      return `<circle class="pt-dot" cx="${x}" cy="${y}" r="10" fill="${col}" style="--d:${t.toFixed(2)}s"/>
+      return `<circle class="pt-dot" cx="${x}" cy="${y}" r="10" ${dotStyle} style="--d:${t.toFixed(2)}s">${tip}</circle>
         <rect class="pt-bg" x="${x - w / 2}" y="${py - 52}" width="${w}" height="32" rx="16" fill="${col}" style="--d:${t.toFixed(2)}s"/>
         <text class="pt-val" x="${x}" y="${py - 29}" fill="#fff" style="--d:${t.toFixed(2)}s"${cnt}>${esc(label)}</text>`;
     }).join("");
@@ -1396,7 +1412,8 @@ R.shift = (s, i) => {
         <span class="st-year" data-k="stages.${k}.year">${esc(x.year)}</span>
         <span class="st-name" data-k="stages.${k}.name">${esc(x.name)}</span>
         <span class="st-text" data-k="stages.${k}.text">${esc(x.text)}</span>
-        <svg class="st-curve" viewBox="0 0 200 90" aria-hidden="true"><path class="curve draw" pathLength="1" d="M4 84 C70 84 70 8 196 6" style="--dur:.9s;stroke:${cols[k % cols.length]};stroke-width:5"/></svg>
+        ${x.tag ? `<span class="st-tag" data-k="stages.${k}.tag">${esc(x.tag)}</span>` : ""}
+        ${x.kind === "improve" ? `<svg class="st-curve" viewBox="0 0 200 90" aria-hidden="true"><path class="curve draw" pathLength="1" d="M4 70 H196" style="--dur:.6s;stroke:${cols[k % cols.length]};stroke-width:5;stroke-dasharray:1;opacity:.5"/><path d="M150 52 L196 70 L150 88" fill="none" style="stroke:${cols[k % cols.length]}" stroke-width="5"/></svg>` : `<svg class="st-curve" viewBox="0 0 200 90" aria-hidden="true"><path class="curve draw" pathLength="1" d="M4 84 C70 84 70 8 196 6" style="--dur:.9s;stroke:${cols[k % cols.length]};stroke-width:5"/></svg>`}
       </div>`).join("")}
     </div>
     <div class="shift-side">
@@ -1422,8 +1439,8 @@ R.factors = (s, i) => {
   const fs = s.factors || [];
   const ring = s.ring || [];
   const cx = 210, cy = 210, r = 150;
-  const ang = [-135, -45, 135, 45];
-  const cyc = [0, 1, 3, 2];
+  const ang = [-135, -45, 45, 135];
+  const cyc = [0, 1, 2, 3];
   const pos = ang.map(a => [cx + r * Math.cos(a * Math.PI / 180), cy + r * Math.sin(a * Math.PI / 180)]);
   const colOf = k => COL[(fs[k] || {}).icon] || PAL[k % PAL.length];
   const text = (t, x) => String(t || "").split("\n").map((ln, k) => `<tspan x="${x}" dy="${k ? 24 : 0}">${esc(ln)}</tspan>`).join("");
@@ -1448,7 +1465,7 @@ R.factors = (s, i) => {
   return `<header class="s-head" style="margin-bottom:18px"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${ed(s, "lead", "h2", "lead lead-sm")}
       <span class="tag teal analysis">${icon("info")}${ed(s, "badge")}</span></header>
     <div class="s-body"><div class="factors">
-      ${card(0, "left")}${card(1, "right")}${card(2, "left")}${card(3, "right")}
+      ${card(0, "left")}${card(1, "right")}${card(2, "right")}${card(3, "left")}
       <div class="ring rise"${rise(0)}>${ringSvg}</div>
     </div>
     <div class="strip rise"${rise(2)}>${icon("ceiling")}${ed(s, "strip")}</div></div>${foot(s, i)}`;
@@ -1704,13 +1721,13 @@ const SCHEMA = {
     { k: "chart.title", label: "그래프 제목" }, { k: "chart.legend", label: "범례" },
     { k: "chart.xLabel", label: "가로축 이름" }, { k: "chart.yLabel", label: "세로축 이름" }, { k: "chart.unit", label: "단위" },
     { k: "chart.scale", label: "세로축 눈금", select: [["log", "로그 눈금 (2배 간격)"], ["linear", "선형 눈금"]] },
-    { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }, { key: "label", label: "값 표시(비우면 점만)" }], blank: { year: 2008, value: 1, label: "" } },
+    { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }, { key: "label", label: "값 표시(비우면 점만)" }, { key: "kind", label: "발표 종류(개발/양산/상용화)" }, { key: "src", label: "출처" }], blank: { year: 2008, value: 1, label: "", kind: "양산", src: "" } },
     { k: "chart.events", label: "전환 시점 표시", list: [{ key: "year", label: "연도", num: true }, { key: "name", label: "이름" }], blank: { year: 2020, name: "" } },
     { k: "photo", label: "제품 사진", image: true },
     { k: "bigLabel", label: "큰 숫자 설명" }, { k: "warn", label: "주의 문구", area: true }, { k: "link", label: "수업 연결 문구", area: true }
   ],
   shift: [
-    { k: "stages", label: "기술 방식 단계", list: [{ key: "year", label: "연도" }, { key: "name", label: "이름" }, { key: "text", label: "설명", area: true }], blank: { year: "", name: "새 방식", text: "" }, max: 5 },
+    { k: "stages", label: "기술 방식 단계", list: [{ key: "year", label: "연도" }, { key: "name", label: "이름" }, { key: "text", label: "설명", area: true }, { key: "tag", label: "구분 표시" }, { key: "kind", label: "종류(base/shift/improve)" }], blank: { year: "", name: "새 단계", text: "", tag: "② 이후 개선", kind: "improve" }, max: 5 },
     { k: "photo", label: "사진·그림", image: true },
     { k: "insight", label: "해석 문구", area: true }
   ],
