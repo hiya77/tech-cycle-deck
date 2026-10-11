@@ -1165,6 +1165,10 @@ function foot(s, i) {
   }).join("");
   return `<footer class="s-foot"><div class="src">${src}</div><span class="pg">${pad(i + 1)} / ${pad(deck.slides.length)}</span></footer>`;
 }
+/* v8.1: photos are served from the deck's own img/ folder first, original URL as fallback */
+const LOCAL_IMG = {"https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/1.-Samsung-Electronics-Pyeongtaek-Line-1.jpg": "img/p01.jpg", "https://hanmi.co.kr/file/editor/1754970686072.jpg": "img/p02.jpg", "https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=1200&q=80&auto=format&fit=crop": "img/p03.jpg", "https://images.unsplash.com/photo-1618034100983-e1d78be0dc80?w=1200&q=80&auto=format&fit=crop": "img/p04.jpg", "https://images.unsplash.com/photo-1577639389657-e33f4c461e4e?w=1200&q=80&auto=format&fit=crop": "img/p05.jpg", "https://images.unsplash.com/photo-1563137391-0030ae24bc35?w=1200&q=80&auto=format&fit=crop": "img/p06.jpg", "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_2.jpg?$ORIGIN_JPG$": "img/p07.jpg", "https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/4.-Samsung%E2%80%99s-fourth-generation-V-NAND_01.jpg": "img/p08.jpg", "https://img.global.news.samsung.com/global/wp-content/uploads/2024/04/9th-Generation-V-NAND_dl1.jpg": "img/p09.jpg", "https://www.hanmi.co.kr/file/editor/1791367079321.jpg": "img/p10.jpg"};
+const ALT_JS = "if(this.dataset.alt){var a=this.dataset.alt;this.removeAttribute('data-alt');this.src=a;return;}";
+const imgSrc = u => LOCAL_IMG[u] ? `src="${esc(LOCAL_IMG[u])}" data-alt="${esc(u)}"` : `src="${esc(u)}"`;
 const COL = { break: "var(--c-coral)", branch: "var(--c-orange)", converge: "var(--c-violet)", steps: "var(--c-teal)", ceiling: "var(--c-blue)" };
 const PAL = ["var(--c-blue)", "var(--c-teal)", "var(--c-violet)", "var(--c-orange)", "var(--c-coral)", "var(--c-sky)"];
 const PHASE_COL = ["var(--c-orange)", "var(--c-blue)", "var(--c-violet)", "var(--c-teal)"];
@@ -1182,7 +1186,7 @@ function figure(s, key, cls = "", tag = "", color = "") {
   const im = getPath(s, key) || {};
   const u = safeUrl(resolveSrc(im.src));
   const fb = FALLBACK[im.fallback] ? `<div class="fb">${FALLBACK[im.fallback]()}</div>` : "";
-  const media = u ? `<img src="${esc(u)}" alt="${esc(im.caption || "")}" referrerpolicy="no-referrer" onerror="var m=this.parentNode;m.classList.add('img-fail');if(!m.querySelector('.fb'))m.closest('figure').style.display='none'">` : "";
+  const media = u ? `<img ${imgSrc(u)} alt="${esc(im.caption || "")}" referrerpolicy="no-referrer" onerror="${ALT_JS}var m=this.parentNode;m.classList.add('img-fail');if(!m.querySelector('.fb'))m.closest('figure').style.display='none'">` : "";
   return `<figure class="fig ${cls}"><div class="media${u ? "" : " no-img"}">${media}${fb}${tag ? `<span class="chip-tag" style="--c:${color}">${esc(tag)}</span>` : ""}<button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></div>
     <figcaption>${ed(s, key + ".caption")}${ed(s, key + ".credit", "span", "credit")}</figcaption></figure>`;
 }
@@ -1321,7 +1325,7 @@ R.jump = (s, i) => {
     </div>
     <div class="side">
       <div class="ex-title rise"${rise(1)}>불연속 기술의 예</div>
-      <ul class="examples">${(s.examples || []).map((e, k) => `<li class="rise${e.imgFrom || e.imgTo ? " has-img" : ""}" style="--i:${k + 2}">${e.imgFrom || e.imgTo ? `<span class="ex-imgs">${[e.imgFrom, e.imgTo].map((u, j) => safeUrl(u) ? `<img class="ex-img${j ? " to" : ""}" src="${esc(safeUrl(u))}" alt="" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">` : "<span class=ex-img></span>").join("")}</span>` : ""}<span class="ex-from" data-k="examples.${k}.from">${esc(e.from)}</span><span class="ex-arrow">→</span><span class="ex-to" data-k="examples.${k}.to">${esc(e.to)}</span>${e.note != null ? `<small data-k="examples.${k}.note">${esc(e.note)}</small>` : ""}</li>`).join("")}</ul>
+      <ul class="examples">${(s.examples || []).map((e, k) => `<li class="rise${e.imgFrom || e.imgTo ? " has-img" : ""}" style="--i:${k + 2}">${e.imgFrom || e.imgTo ? `<span class="ex-imgs">${[e.imgFrom, e.imgTo].map((u, j) => safeUrl(u) ? `<img class="ex-img${j ? " to" : ""}" ${imgSrc(safeUrl(u))} alt="" referrerpolicy="no-referrer" onerror="${ALT_JS}this.style.visibility='hidden'">` : "<span class=ex-img></span>").join("")}</span>` : ""}<span class="ex-from" data-k="examples.${k}.from">${esc(e.from)}</span><span class="ex-arrow">→</span><span class="ex-to" data-k="examples.${k}.to">${esc(e.to)}</span>${e.note != null ? `<small data-k="examples.${k}.note">${esc(e.note)}</small>` : ""}</li>`).join("")}</ul>
       <div class="caveat soft rise"${rise(5)}>${icon("info")}${ed(s, "insight")}</div>
     </div>
   </div></div>${foot(s, i)}`;
