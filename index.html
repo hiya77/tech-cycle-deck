@@ -669,6 +669,23 @@ body.editing .cover-q{color:var(--ink);background:none}
 .quote.compact::before{display:none}
 .quote.compact p{font-size:19px;line-height:1.45;color:var(--ink-2)}
 .quote.compact cite{margin:0;font-size:14px}
+/* v11: slide 7 puts the 2013 structure change first, capacity numbers second */
+.era rect{fill:var(--c-orange);opacity:.06}
+.era.era-b rect{fill:var(--c-violet);opacity:.07}
+.era-t{font-size:18px;font-weight:700;fill:var(--ink-3)}
+.tl-ev-t.strong{font-size:21px}
+.key-shift{display:flex;flex-direction:column;gap:6px;padding:22px 28px;border-radius:20px;background:color-mix(in srgb,var(--c-violet) 10%,var(--surface));border:2px solid color-mix(in srgb,var(--c-violet) 40%,transparent)}
+.key-shift .ks-label{font-size:20px;font-weight:700;color:var(--c-violet)}
+.key-shift .ks-big{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+.key-shift .ks-big b{font-weight:800;color:var(--ink)}
+.key-shift .ks-big .to{color:var(--c-violet)}
+.key-shift .ks-big .arrow{color:var(--ink-3);font-weight:400;margin:0 16px}
+.key-shift .ks-text{font-size:18px;line-height:1.5;color:var(--ink-2);white-space:pre-line}
+.big-num.sm{padding:14px 22px;gap:2px}
+.big-num.sm .bn-label{font-size:16px}
+.big-num.sm .bn{font-size:40px}
+.big-num.sm .bn small{font-size:20px}
+.big-num.sm .bn .arrow{margin:0 8px}
 
 </style>
 </head><body>
@@ -727,7 +744,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "tech-cycle-deck.v10";
+const STORE_KEY = "tech-cycle-deck.v11";
 const SAM_BASE = "https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_";
 const IMG_SAMSUNG_12 = SAM_BASE + "2.jpg?$ORIGIN_JPG$";
 const IMG_SAMSUNG_TECH = SAM_BASE + "3.jpg?$ORIGIN_JPG$";
@@ -818,7 +835,7 @@ const DEFAULT_DECK = {
         { n: "12–13", t: "결론", d: "우리 조의 답 · 참고문헌" }
       ],
       sources: [{ label: "문제: " + LECTURE + " 43쪽", url: "" }, { label: "산업 비교: Lee (2024), Journal of Evolutionary Economics 34", url: URL_LEE }],
-      script: "오늘 답할 질문은 세 가지입니다. 기술주기가 비교적 짧은 산업은 무엇인지, 긴 산업은 무엇인지, 그리고 그 차이를 만드는 이유는 무엇인지입니다. 짧은 쪽의 예로 삼성전자의 반도체 IT 분야를, 긴 쪽의 예로 한미약품의 제약 사업을 예로 들겠습니다. 먼저 기술주기가 무엇인지 설명한 뒤 두 기업 사례를 보고, 마지막에 주기의 길이에 영향을 주는 요인을 정리하겠습니다.",
+      script: "오늘 답할 질문은 세 가지입니다. 기술주기가 비교적 짧은 산업은 무엇인지, 긴 산업은 무엇인지, 그리고 그 차이를 만드는 이유는 무엇인지입니다. 저희는 기술주기가 비교적 짧은 산업의 예로 반도체를 포함한 IT를, 긴 산업의 예로 제약을 골랐습니다. 삼성전자와 한미약품은 각각 기술 변화의 모습을 살펴볼 사례입니다. 먼저 기술주기가 무엇인지 설명한 뒤 두 기업 사례를 보고, 마지막에 주기의 길이에 영향을 주는 요인을 정리하겠습니다.",
       notes: "· 방향키를 누를 때마다 질문 하나씩 답이 강조된다(3단계).\n· 산업 비교의 근거 문헌은 화면 하단과 13장에만 표시했다. 말로는 출처를 읽지 않는다.\n· 질문이 나오면: 산업 평균을 직접 계산한 것이 아니라 문헌에 근거한 상대적 사례 선택이라고 답한다."
     },
     {
@@ -896,7 +913,8 @@ const DEFAULT_DECK = {
       title: "사례 1 · 삼성전자 반도체",
       lead: "삼성 NAND 플래시: 주요 발표 시점의 용량 변화",
       chart: { title: "주요 발표 시점의 삼성 NAND 용량 변화", xLabel: "연도 (5년 단위)", yLabel: "칩 1개 용량 (Gb, 로그 축)", legend: "● 양산·상용화 ○ 개발 · 선은 발표 시점 연결", unit: "Gb", scale: "log", tickEvery: 5, xMin: 1998, xMax: 2027,
-        events: [{ year: 2013, name: "3D V낸드 양산", row: 1 }, { year: 2026, name: "10세대 공개 · 용량 비공개", row: 0 }] },
+        eras: [{ from: 1998, to: 2013, name: "평면 구조" }, { from: 2013, to: 2027, name: "3D 구조" }],
+        events: [{ year: 2013, name: "평면 → 3D 구조 변화", row: 1, strong: true }, { year: 2026, name: "10세대 공개 · 용량 비공개", row: 0 }] },
       points: [
         { year: 1999, value: 1, kind: "개발", label: "1Gb 개발", src: "삼성반도체 블로그" },
         { year: 2002, value: 2, kind: "개발", label: "", src: "삼성반도체 블로그" },
@@ -911,12 +929,13 @@ const DEFAULT_DECK = {
         { year: 2024, value: 1024, kind: "양산", label: "", src: "Samsung 보도자료 2024" }
       ],
       photo: { src: IMG_SAMSUNG_12, fallback: "none", caption: "삼성전자 1Gb(왼쪽)·2Gb(오른쪽) 낸드 플래시", credit: "사진: 삼성반도체 기술 블로그 © Samsung" },
-      bigLabel: "주요 발표 시점의 칩 용량",
+      bigLabel: "참고 · 주요 발표 시점의 칩 용량",
+      keyShift: { label: "핵심 변화 · 2013년", from: "평면", to: "3D", text: "셀을 평면에만 배열하던 방식에서\n위로 쌓는 3D V낸드 양산으로" },
       warn: "칩 용량의 변화이며, 기술주기의 길이를 잰 값이 아닙니다.\n선은 주요 발표 시점을 연결한 것입니다.",
-      link: "황의 법칙: 1999~2007년 개발 발표 흐름을 당시 언론이 ‘해마다 집적도 2배’로 부른 표현 (머니투데이, 2006). 2026년 10세대는 400단 이상, 비트 밀도 약 58%↑로 공개",
+      link: "",
       sources: [{ label: "1999~2007: 삼성반도체 기술 블로그 (2024.05.17)", url: URL_SAMSUNG }, { label: "황의 법칙: 머니투데이 (2006.09.11)", url: URL_MT_CTF }, { label: "2013~2026: Samsung Newsroom (2013.08.06 · 2015.08.11 · 2022.11.06 · 2026.08.05) · 보도자료 (2024.04.23) — 13장 참고", url: "" }],
-      script: "첫 번째는 삼성전자의 낸드 플래시입니다. 이 그래프는 삼성이 발표한 주요 시점의 칩 용량을 보여 줍니다. 왼쪽에서 오른쪽으로 갈수록 더 큰 용량의 칩이 등장한 것을 볼 수 있습니다. 특히 2013년에는 정보를 저장하는 셀을 평면에만 배열하는 대신, 위로 쌓는 3D V낸드가 양산됐습니다. 이후에도 용량과 밀도가 계속 높아졌습니다.\n여기서 그래프의 숫자만큼 중요한 것은 2013년에 표시된 방식의 변화입니다. 그래프에는 개발 발표와 양산 발표가 함께 있으며, 점 사이의 선은 주요 발표 시점을 연결한 것입니다. 저희가 주목한 것은 ‘얼마나 자주 제품을 발표했는가’보다 ‘어떤 시점에 만드는 방식이 달라졌는가’입니다.",
-      notes: "· ‘2013년’ 부분에서 그래프의 3D V낸드 양산 표시선을 가리킨다.\n· 빈 점은 개발 발표, 채운 점은 양산·상용화 발표. 1Tb = 1,024Gb로 통일했다.\n· 질문이 나오면: 이 그래프는 칩 용량의 변화이며 기술주기의 길이를 잰 값이 아니다. 로그 축이지만 기울기를 따로 재지 않아 ‘연 2배’라고 단정하지 않는다."
+      script: "첫 번째는 삼성전자의 낸드 플래시입니다. 이 그래프는 삼성이 발표한 주요 시점의 칩 용량을 보여 줍니다. 전체적으로 더 큰 용량의 칩이 등장한 것을 볼 수 있습니다. 특히 2013년에는 정보를 저장하는 셀을 평면에만 배열하는 대신, 위로 쌓는 3D V낸드가 양산됐습니다. 이후에도 용량과 밀도가 계속 높아졌습니다.\n여기서 그래프의 숫자보다 중요한 것은 2013년에 표시된 방식의 변화입니다. 그래프에는 개발 발표와 양산 발표가 함께 있으며, 점 사이의 선은 주요 발표 시점을 연결한 것입니다. 저희가 주목한 것은 ‘얼마나 자주 제품을 발표했는가’보다 ‘어떤 시점에 만드는 방식이 달라졌는가’입니다.",
+      notes: "· ‘2013년’ 부분에서 그래프의 3D V낸드 양산 표시선을 가리킨다.\n· 빈 점은 개발 발표, 채운 점은 양산·상용화 발표. 1Tb = 1,024Gb로 통일했다.\n· 황의 법칙: 1999~2007년 개발 발표 흐름을 당시 언론이 ‘해마다 집적도 2배’로 부른 표현(머니투데이, 2006). 2026년 10세대는 400단 이상, 비트 밀도 약 58%↑로 공개. 질문이 나올 때만 언급한다.\n· 질문이 나오면: 이 그래프는 칩 용량의 변화이며 기술주기의 길이를 잰 값이 아니다. 로그 축이지만 기울기를 따로 재지 않아 ‘연 2배’라고 단정하지 않는다."
     },
     {
       id: "s8", type: "shift", duration: 55,
@@ -953,47 +972,47 @@ const DEFAULT_DECK = {
         { when: "2026.10.07", what: "식약처 허가 · 국내 개발 GLP-1 비만 치료제로 처음" }
       ],
       pipeline: "아시아경제(2026.10.07): ‘국내에서 개발된 GLP-1 계열 비만치료제가 허가된 것은 이번이 처음’",
-      insight: "하나의 물질과 기반 기술을 활용하며 개발 목표를 바꿔 제품으로 이어 간 과정",
-      caveat: "한 제품의 개발 기간이며, 제약산업 전체의 기술주기는 아닙니다.",
+      insight: "확보한 기반 기술과 물질을 활용해 개발 목표를 조정하고 제품 허가로 이어 간 과정",
+      caveat: "제약산업의 기술주기 길이를 증명하는 자료가 아니라, 기술을 제품으로 이어 간 사례입니다.",
       sources: [{ label: SRC_KBR, url: URL_KBR }, { label: SRC_DP23, url: URL_DP23 }, { label: SRC_ASIAE, url: URL_ASIAE }, { label: SRC_EFE, url: URL_HANMI_EFE }],
-      script: "두 번째는 한미약품의 비만치료제 ‘에페’입니다. 이 제품에는 한미약품의 랩스커버리 기술이 적용됐습니다. 2015년에는 당뇨병 치료제로 개발되던 후보물질이 해외 기업에 기술수출됐고, 이후 권리가 한미약품으로 돌아왔습니다. 2023년에는 비만치료제로 개발 방향을 바꿨고, 올해 10월 국내 시판허가를 받았습니다.\n이 사례에서 볼 부분은 하나의 물질과 기반 기술을 활용하면서, 개발 목표를 바꾸고 계속 발전시켜 왔다는 점입니다. 삼성 사례가 만드는 방식의 큰 변화를 보여 준다면, 한미약품 사례는 기존의 연구 성과를 오래 활용하며 제품으로 이어 가는 모습을 보여 줍니다.",
-      notes: "· 타임라인의 네 시점을 차례로 가리킨다.\n· 2015년 기술수출은 연구 시작 시점이 아니다. 수업 범위 밖인 임상·허가 절차는 설명하지 않는다.\n· 화면 하단의 주의 문구(산업 전체의 기술주기를 잰 값이 아님)는 읽지 않아도 된다. 같은 말은 11장에서 한 번만 한다."
+      script: "두 번째는 한미약품의 비만치료제 ‘에페’입니다. 이 제품에는 한미약품의 랩스커버리 기술이 적용됐습니다. 2015년에는 당뇨병 치료제로 개발되던 후보물질이 해외 기업에 기술수출됐고, 이후 권리가 한미약품으로 돌아왔습니다. 2023년에는 비만치료제로 개발 방향을 바꿨고, 2026년 10월 7일 국내 시판허가를 받았습니다.\n이 사례에서 볼 부분은 확보한 기반 기술과 물질을 활용하면서 개발 목표를 조정하고, 제품 허가까지 이어 갔다는 점입니다. 그래서 저희는 이 사례를 제약산업의 기술주기가 길다는 증거라기보다, 이미 가진 기술을 활용해 제품으로 이어 간 사례로 보았습니다.",
+      notes: "· 타임라인의 네 시점을 차례로 가리킨다.\n· 2015년 기술수출은 연구 시작 시점이 아니다. 수업 범위 밖인 임상·허가 절차는 설명하지 않는다.\n· ‘시판허가’는 허가 시점이며 실제 출시 시점과 다르다. ‘출시’라고 말하지 않는다.\n· 9장에서는 ‘증명 자료가 아니다’까지만 말하고, 연수를 계산할 수 없다는 말은 11장에서 한 번만 한다."
     },
     {
       id: "s10", type: "factors", duration: 70,
       title: "기술주기 길이에 영향을 주는 요인",
       lead: "기술주기의 길이에 영향을 줄 수 있는 네 가지 조건",
-      badge: "강의 33·35·39~41쪽 개념을 이용한 우리 조의 분석",
+      badge: "",
       ring: ["새 기술의\n등장", "디자인 경쟁 →\n지배적 디자인", "점진적 개선", "다음 기술로의\n전환"],
       factors: [
-        { title: "새로운 기술의 등장", link: "기존 기술을 대체할 새 지식·방식이 나오면 다음 사이클이 시작될 수 있다 (33쪽) · 예: 삼성 평면 → 3D", icon: "break" },
-        { title: "디자인 경쟁과 불확실성", link: "불확실성이 크고 디자인 경쟁이 이어지면 지배적 디자인이 정해지기까지 시간이 걸릴 수 있다 (39~40쪽)", icon: "converge" },
-        { title: "기존 기술의 개선 여지", link: "개선 여지가 남아 있으면 기존 기술에 대한 투자와 개선이 이어질 수 있다. 실제 한계는 미리 알기 어렵다 (32·35쪽)", icon: "ceiling" },
-        { title: "신기술 전환의 부담", link: "신기술의 초기 성과가 낮거나 비용 부담이 크면 기업이 전환을 미룰 수 있다 (33쪽)", icon: "branch" }
+        { title: "새로운 기술의 등장", link: "기존 문제를 다른 방법으로 푸는 새 기술이 나와 전환이 일어나면 주기가 바뀔 수 있다 · 예: 삼성 평면 → 3D", icon: "break" },
+        { title: "디자인 경쟁과 불확실성", link: "어떤 방식이 자리 잡을지 정해지기 전까지 경쟁과 실험이 이어지고, 지배적 디자인이 자리 잡는 시점에 따라 흐름이 달라질 수 있다", icon: "converge" },
+        { title: "기존 기술의 개선 여지", link: "더 개선할 여지가 있으면 기업은 기존 방식에 계속 투자할 수 있어 기존 방식이 이어질 수 있다", icon: "ceiling" },
+        { title: "신기술 전환의 부담", link: "새 기술의 초기 성능이 낮거나 비용이 크면 전환을 미뤄 기존 방식이 이어질 수 있다", icon: "branch" }
       ],
-      strip: "네 가지는 주기의 길이에 영향을 ‘줄 수 있는’ 조건이며, 무조건 성립하는 법칙은 아니다",
+      strip: "새 기술의 등장과 전환은 주기를 바꿀 수 있고, 개선 여지와 전환 부담은 기존 방식이 이어지는 데 영향을 줄 수 있다 · 모든 산업에 똑같이 적용되는 법칙은 아니다",
       sources: [{ label: "개념: " + LECTURE + " 32·33·35·39~41쪽. 네 요인의 정리는 우리 조의 분석", url: "" }],
-      script: "그렇다면 기술주기의 길이는 왜 달라질까요? 저희는 네 가지를 생각했습니다.\n첫째, 기존 문제를 다른 방법으로 해결하는 새 기술이 얼마나 자주 등장하는가입니다. 새로운 방식이 등장하면 기존 방식에서 다음 단계로 넘어갈 가능성이 생깁니다.\n둘째, 여러 디자인 사이의 경쟁입니다. 어떤 방식이 널리 쓰일지 정해지지 않으면 경쟁과 실험이 이어집니다. 지배적 디자인이 자리 잡는 시점에 따라 흐름도 달라질 수 있습니다.\n셋째, 기존 기술을 더 개선할 여지가 얼마나 남아 있는가입니다. 계속 성능을 높일 수 있다면 기업은 기존 방식에 투자할 이유가 있습니다.\n넷째, 새 기술로 바꾸는 데 드는 부담입니다. 초기 성능이 낮거나 비용이 크면, 새 기술이 나와도 기업이 바로 전환하지 않을 수 있습니다. 결국 주기의 길이는 달력처럼 정해진 값이라기보다 이런 조건들이 함께 작용한 결과로 볼 수 있습니다.",
+      script: "그렇다면 기술주기의 길이는 왜 달라질까요? 저희는 네 가지 요인을 생각했습니다.\n첫째, 기존 문제를 다른 방법으로 해결하는 새 기술의 등장입니다. 새로운 방식이 나와 기업들이 그쪽으로 옮겨 가면, 하나의 흐름이 끝나고 다음 흐름이 시작될 수 있습니다.\n둘째, 여러 디자인 사이의 경쟁입니다. 어떤 방식이 널리 쓰일지 정해지지 않으면 경쟁과 실험이 이어지고, 지배적 디자인이 자리 잡는 시점에 따라 흐름도 달라질 수 있습니다.\n셋째, 기존 기술을 더 개선할 여지입니다. 계속 성능을 높일 수 있다면 기업은 기존 방식에 투자할 이유가 있습니다.\n넷째, 새 기술로 바꾸는 데 드는 부담입니다. 초기 성능이 낮거나 비용이 크면, 새 기술이 나와도 기업이 바로 전환하지 않을 수 있습니다.\n정리하면, 새 기술의 등장과 전환은 주기를 바꿀 수 있고, 기존 기술의 개선 여지와 전환 부담은 기존 방식이 얼마나 이어지는지에 영향을 줄 수 있습니다. 다만 이것은 모든 산업에 똑같이 적용되는 법칙이라기보다, 주기의 차이를 이해할 때 함께 살펴볼 조건입니다.",
       notes: "· 방향키를 누를 때마다 요인이 하나씩 나타나고 원 위의 해당 단계가 강조된다.\n· 원은 기술 변화의 단계이며, 각 요인이 주로 작용하는 단계를 표시한 것이다."
     },
     {
       id: "s11", type: "window", duration: 55,
       title: "두 사례에서 확인한 기술 변화의 모습",
-      lead: "삼성은 기술 방식의 전환과 이후 개선을,\n한미약품은 장기간의 제품 개발 과정을 보여 준다",
+      lead: "삼성은 새 방식으로의 전환과 이후 개선을,\n한미약품은 확보한 기술을 제품으로 이어 간 과정을 보여 준다",
       span: "서로 다른 과정",
       cols: [
         { name: "사례 1 · 삼성전자 NAND", verdict: "기술 방식 전환 + 이후 개선", rows: [
           { when: "2013", what: "평면에서 수직 적층으로 기술 방식 변화" },
           { when: "2015~2024", what: "이후 제품의 용량·밀도·성능 개선" }
         ], why: "기술 방식의 전환과\n그 이후 개선을 설명하는 사례" },
-        { name: "사례 2 · 한미약품 '에페'", verdict: "제품 개발 과정", rows: [
+        { name: "사례 2 · 한미약품 '에페'", verdict: "기술 활용 · 제품화 과정", rows: [
           { when: "2015~2023", what: "기술수출 이후 개발 경로와 목표 변화" },
-          { when: "2026", what: "장기간 개발을 거쳐 특정 제품 허가" }
-        ], why: "한 제품의 개발 과정을\n설명하는 사례" }
+          { when: "2026.10.07", what: "확보한 기술을 활용한 제품의 국내 시판허가" }
+        ], why: "확보한 기술을 활용해\n제품으로 이어 간 사례" }
       ],
-      limit: "세대 발표 간격과 신약 개발 기간은 서로 다른 종류의 시간이라 기술주기 길이로 직접 비교하지 않았다.",
+      limit: "두 기업 사례만으로 산업 전체의 기술주기 연수를 계산할 수는 없다.",
       sources: [{ label: "삼성: Samsung Newsroom (2013.08.06 · 2015.08.11 · 2022.11.06) · 보도자료 (2024.04.23)", url: "" }, { label: "한미약품: Korea Biomedical Review (2020.05.14) · 데일리팜 (2023.07.31) · 한미약품 보도자료 (2026.10.07)", url: "" }],
-      script: "이제 두 사례를 함께 보겠습니다. 삼성전자는 평면 구조에서 3D 구조로 만드는 방식이 바뀐 뒤, 그 구조를 계속 개선해 온 사례입니다. 한미약품은 이미 확보한 기술과 후보물질을 활용하면서 개발 목표를 조정하고 제품 허가까지 이어 간 사례입니다.\n두 사례는 기술 변화가 항상 똑같은 모습으로 나타나지 않는다는 점을 보여 줍니다. 다만 삼성의 제품 발표 간격과 한미약품의 신약 개발 기간은 서로 다른 종류의 시간입니다. 따라서 이 숫자만 놓고 ‘어느 산업의 기술주기가 몇 년 더 길다’고 계산하지는 않았습니다. 사례는 산업을 이해하는 데 사용했습니다.",
+      script: "이제 두 사례를 함께 보겠습니다. 삼성에서는 평면에서 3D 구조라는 새 방식으로의 전환과, 그 뒤 같은 구조 위에서 이어진 개선을 확인했습니다. 한미약품에서는 확보한 기반 기술과 후보물질을 활용해 개발 목표를 조정하고 제품으로 이어 간 과정을 확인했습니다.\n두 사례는 기술 변화가 항상 같은 모습으로 나타나지 않는다는 점을 보여 줍니다. 다만 삼성의 제품 세대 간격과 한미약품의 개발 기간은 서로 다른 종류의 시간이어서, 두 기업 사례만으로 산업 전체의 기술주기 연수를 계산할 수는 없습니다.",
       notes: "· 두 기간을 같은 지표처럼 비교하지 않는다는 점은 이 장에서 한 번만 말한다."
     },
     {
@@ -1002,13 +1021,13 @@ const DEFAULT_DECK = {
       lead: "반도체를 포함한 IT는 상대적으로 짧은 편,\n제약은 긴 편으로 보았다",
       mark: "상대적으로 짧은 편",
       takeaways: [
-        "짧은 산업 · 긴 산업\n반도체를 포함한 IT를 비교적 짧은 편, 제약을 긴 편의 예로 제시했다 (문헌 근거)",
-        "주기의 길이를 보려면\n새 기술의 등장, 디자인 경쟁, 기존 기술의 개선 가능성, 전환 부담을 함께 봐야 한다",
-        "두 기업 사례\n제품 출시 횟수보다, 기술 방식이 언제 바뀌고 그 뒤 어떻게 개선되는지를 살펴봐야 한다"
+        "짧은 산업의 예 · IT\n반도체를 포함한 IT를 기술주기가 비교적 짧은 산업의 예로 골랐다",
+        "긴 산업의 예 · 제약\n제약을 기술주기가 비교적 긴 산업의 예로 골랐다",
+        "길이에 영향을 주는 네 요인\n새 기술의 등장 · 디자인 경쟁 · 기존 기술의 개선 여지 · 전환 부담"
       ],
       closing: "들어 주셔서 감사합니다 · 질문 받겠습니다",
-      sources: [],
-      script: "정리하면, 저희는 기술이 비교적 빠르게 바뀌는 분야의 예로 반도체를 포함한 IT를, 긴 편의 예로 제약을 제시했습니다. 기술주기의 차이를 생각할 때는 새 기술의 등장, 디자인 경쟁, 기존 기술의 개선 가능성, 그리고 전환 부담을 함께 봐야 합니다.\n삼성과 한미약품은 그 과정이 서로 다른 모습으로 나타날 수 있음을 보여 주었습니다. 결국 중요한 것은 제품이 몇 번 출시됐는지만 세는 것이 아니라, 기술의 방식이 언제 바뀌고 그 뒤 어떻게 개선되는지를 살펴보는 것입니다. 감사합니다.",
+      sources: [{ label: "산업 구분: Lee (2024), Journal of Evolutionary Economics 34 — 산업 평균을 직접 계산한 결과는 아님", url: URL_LEE }],
+      script: "정리하면, 처음에 드린 세 가지 질문에 이렇게 답할 수 있습니다. 기술주기가 비교적 짧은 산업의 예로는 반도체를 포함한 IT를, 긴 산업의 예로는 제약을 골랐습니다. 그리고 주기의 길이에 영향을 주는 요인으로 새 기술의 등장, 디자인 경쟁, 기존 기술의 개선 여지, 전환 부담의 네 가지를 정리했습니다.\n삼성전자와 한미약품 사례는 기술 변화가 서로 다른 모습으로 나타날 수 있음을 보여 주었습니다. 결국 중요한 것은 제품이 몇 번 출시됐는지만 세는 것이 아니라, 기술의 방식이 언제 바뀌고 그 뒤 어떻게 개선되는지를 살펴보는 것입니다. 감사합니다.",
       notes: "· 마지막 문장 후 2초 쉬고 13장으로 넘긴다."
     },
     {
@@ -1367,12 +1386,14 @@ R.timeline = (s, i) => {
     svg += `<defs><linearGradient id="${gid}" x1="${xs(y0)}" x2="${xs(y1)}" y1="0" y2="0" gradientUnits="userSpaceOnUse">${STOPS.map((c2, k) => `<stop offset="${k / (STOPS.length - 1)}" stop-color="${c2}"/>`).join("")}</linearGradient>
       <linearGradient id="${gid}a" x1="0" x2="0" y1="${T}" y2="${B}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2F6BFF" stop-opacity=".18"/><stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/></linearGradient></defs>`;
     svg += yt.map(v => `<line class="grid-line" x1="${L}" x2="${Rr}" y1="${ys(v)}" y2="${ys(v)}"/><text class="tick" x="${L - 12}" y="${ys(v) + 6}" text-anchor="end">${fmt(v)}</text>`).join("");
+    if (every5) svg += (c.eras || []).filter(e => isFinite(+e.from) && isFinite(+e.to)).map((e, k) => { const a1 = xs(Math.max(x0, +e.from)), a2 = xs(Math.min(x1, +e.to));
+      return `<g class="era${k ? " era-b" : ""}"><rect x="${a1}" y="${T - 16}" width="${Math.max(0, a2 - a1)}" height="${B - T + 16}"/><text class="era-t" x="${(a1 + a2) / 2}" y="${B - 16}" text-anchor="middle">${esc(e.name || "")}</text></g>`; }).join("");
     svg += `<path class="area-fill" d="${area}" fill="url(#${gid}a)"/>`;
     svg += `<path class="axis" d="M${L} ${T - 16}V${B}H${Rr}"/>`;
     if (every5) {
       for (let y = Math.ceil(x0 / every5) * every5; y <= x1; y += every5) svg += `<line class="grid-line" x1="${xs(y)}" x2="${xs(y)}" y1="${T - 16}" y2="${B}" opacity=".6"/><text class="tick" x="${xs(y)}" y="${B + 30}" text-anchor="middle">${y}</text>`;
       svg += evs.map((e, k) => { const x = xs(+e.year), col = e.color || PAL[k % PAL.length], ty = 50 + (e.row != null ? +e.row : k % 2) * 28;
-        return `<g class="tl-ev" style="--d:${(0.4 + k * 0.35).toFixed(2)}s"><line x1="${x}" x2="${x}" y1="${ty + 6}" y2="${B}" stroke="${col}" stroke-width="2.5" stroke-dasharray="6 6"/><text class="tl-ev-t" x="${x}" y="${ty}" text-anchor="${+e.year >= x1 - 4 ? "end" : "middle"}" fill="${col}">${esc(e.year)} ${esc(e.name || "")}</text></g>`; }).join("");
+        return `<g class="tl-ev" style="--d:${(0.4 + k * 0.35).toFixed(2)}s"><line x1="${x}" x2="${x}" y1="${ty + 6}" y2="${B}" stroke="${col}" stroke-width="${e.strong ? 4 : 2.5}"${e.strong ? "" : ' stroke-dasharray="6 6"'}/><text class="tl-ev-t${e.strong ? " strong" : ""}" x="${x}" y="${ty}" text-anchor="${+e.year >= x1 - 4 ? "end" : "middle"}" fill="${col}">${esc(e.year)} ${esc(e.name || "")}</text></g>`; }).join("");
     }
     const years = []; if (!every5) for (let y = y0; y <= y1; y++) years.push(y);
     const showAll = years.length <= 12;
@@ -1404,10 +1425,13 @@ R.timeline = (s, i) => {
       <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.title)}">${svg}</svg>
     </div>
     <div class="side">
-      ${first ? `<div class="big-num rise"${rise(1)}><span class="bn-label">${ed(s, "bigLabel")} · ${first.year}–${last.year}</span>
+      ${s.keyShift ? `<div class="key-shift rise"${rise(1)}><span class="ks-label" data-k="keyShift.label">${esc(s.keyShift.label)}</span>
+        <span class="ks-big"><b data-k="keyShift.from">${esc(s.keyShift.from)}</b><span class="arrow">→</span><b class="to" data-k="keyShift.to">${esc(s.keyShift.to)}</b></span>
+        <span class="ks-text" data-k="keyShift.text">${esc(s.keyShift.text)}</span></div>` : ""}
+      ${first ? `<div class="big-num${s.keyShift ? " sm" : ""} rise"${rise(s.keyShift ? 3 : 1)}><span class="bn-label">${ed(s, "bigLabel")} · ${first.year}–${last.year}</span>
         <span class="bn"><span class="from">${first.value}</span><span class="arrow">→</span><span class="to" data-count="${last.value}" data-delay="200">${last.value}</span><small>${unit}</small></span></div>` : ""}
       <div class="tag warn rise"${rise(2)}>${icon("info")}${ed(s, "warn")}</div>
-      <div class="tag teal rise"${rise(3)}>${icon("link")}${ed(s, "link")}</div>
+      ${s.link ? `<div class="tag teal rise"${rise(3)}>${icon("link")}${ed(s, "link")}</div>` : ""}
       ${hasPhoto ? `<div class="rise" style="--i:4">${figure(s, "photo", "mini-photo")}</div>` : ""}
     </div>
   </div></div>${foot(s, i)}`;
@@ -1472,7 +1496,7 @@ R.factors = (s, i) => {
       <div class="fh">${icon(fs[k].icon || "steps")}<span class="fn">요인 ${k + 1}</span></div>
       ${ed(s, `factors.${k}.title`, "div", "ft")}${ed(s, `factors.${k}.link`, "div", "fl")}</div>` : "";
   return `<header class="s-head" style="margin-bottom:18px"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${ed(s, "lead", "h2", "lead lead-sm")}
-      <span class="tag teal analysis">${icon("info")}${ed(s, "badge")}</span></header>
+      ${s.badge ? `<span class="tag teal analysis">${icon("info")}${ed(s, "badge")}</span>` : ""}</header>
     <div class="s-body"><div class="factors">
       ${card(0, "left")}${card(1, "right")}${card(2, "right")}${card(3, "left")}
       <div class="ring rise"${rise(0)}>${ringSvg}</div>
@@ -1732,6 +1756,8 @@ const SCHEMA = {
     { k: "chart.scale", label: "세로축 눈금", select: [["log", "로그 눈금 (2배 간격)"], ["linear", "선형 눈금"]] },
     { k: "points", label: "데이터 (연도 · 값)", list: [{ key: "year", label: "연도", num: true }, { key: "value", label: "값", num: true }, { key: "label", label: "값 표시(비우면 점만)" }, { key: "kind", label: "발표 종류(개발/양산/상용화)" }, { key: "src", label: "출처" }], blank: { year: 2008, value: 1, label: "", kind: "양산", src: "" } },
     { k: "chart.events", label: "전환 시점 표시", list: [{ key: "year", label: "연도", num: true }, { key: "name", label: "이름" }], blank: { year: 2020, name: "" } },
+    { k: "chart.eras", label: "구조 구간 표시", list: [{ key: "from", label: "시작 연도", num: true }, { key: "to", label: "끝 연도", num: true }, { key: "name", label: "이름" }], blank: { from: 2020, to: 2027, name: "" } },
+    { k: "keyShift.label", label: "핵심 변화 제목" }, { k: "keyShift.from", label: "핵심 변화 · 이전" }, { k: "keyShift.to", label: "핵심 변화 · 이후" }, { k: "keyShift.text", label: "핵심 변화 설명", area: true },
     { k: "photo", label: "제품 사진", image: true },
     { k: "bigLabel", label: "큰 숫자 설명" }, { k: "warn", label: "주의 문구", area: true }, { k: "link", label: "수업 연결 문구", area: true }
   ],
