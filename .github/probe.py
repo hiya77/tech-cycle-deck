@@ -8,9 +8,12 @@ for line in open(".github/pages.txt",encoding="utf-8"):
     line=line.strip()
     if not line or line.startswith("#"): continue
     tag,url=line.split(None,1)
-    try:
+    if re.search(r'\.(jpe?g|png|webp)$',url,re.I):
+        html='<img src="%s">'%url; r=type('R',(),{'status_code':0})()
+    else:
+      try:
         r=requests.get(url,headers=UA,timeout=25); html=r.text
-    except Exception as e:
+      except Exception as e:
         out.write(f"{tag}\tFAILPAGE\t{url}\t{e}\n"); continue
     cands=re.findall(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]+content=["\']([^"\']+)',html)
     cands+=re.findall(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']og:image',html)
@@ -28,6 +31,6 @@ for line in open(".github/pages.txt",encoding="utf-8"):
         name=f"{tag}_{hashlib.md5(u.encode()).hexdigest()[:6]}.jpg"
         im=im.convert("RGB"); im.thumbnail((2000,2000)); im.save("probe/img/"+name,quality=88)
         out.write(f"{tag}\t{name}\t{w}x{h}\t{u}\t{url}\n"); n+=1
-        if n>=4: break
+        if n>=8: break
     if n==0: out.write(f"{tag}\tNONE\t{url}\t{r.status_code} {len(html)}\n")
 out.close()
