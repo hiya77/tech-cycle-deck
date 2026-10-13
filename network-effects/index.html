@@ -785,19 +785,7 @@ body.editing .cover-q{color:var(--ink);background:none}
 .slide.has-hl .srow.hl{border-color:var(--c);box-shadow:0 0 0 2px var(--c)}
 .bchart{display:flex;flex-direction:column;background:var(--surface);border-radius:22px;padding:28px 32px 22px;min-width:0;transition:opacity .3s}
 .slide.has-hl .bchart:not(.hl){opacity:.32}
-.bc-t{font-size:24px;font-weight:800}
-.bc-u{font-size:16px;color:var(--ink-3);margin-top:4px}
-.bc-drop{display:flex;align-items:baseline;gap:12px;margin-top:18px;font-size:19px;color:var(--ink-2)}
-.bc-pct{font-size:60px;font-weight:800;color:var(--c-coral);letter-spacing:-.03em;font-family:var(--font-display)}
-.bc-plot{flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:space-around;gap:40px;border-bottom:2px solid var(--line-2);margin-top:14px;padding:0 20px}
-.bc-col{position:relative;height:100%;width:130px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
-.bc-bar{display:block;width:100%;height:var(--h);background:#9AA5B8;border-radius:6px 6px 0 0;transform-origin:bottom}
-.bc-bar.hot{background:var(--c-coral)}
-.slide.play .bc-bar{animation:growY 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--k) * 500ms + 300ms)}
-@keyframes growY{from{transform:scaleY(0)}to{transform:none}}
-.bc-v{font-family:var(--font-mono);font-weight:600;font-size:24px;margin-bottom:8px}
-.bc-x{position:absolute;bottom:-34px;font-size:18px;color:var(--ink-2)}
-.bchart{padding-bottom:50px}
+
 
 /* 6장 배달의민족 */
 .platform{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
@@ -900,14 +888,6 @@ body.editing .cover-q{color:var(--ink);background:none}
 .slide.play .hl-item.rise{animation-fill-mode:backwards}
 .ag-ic{position:absolute;right:26px;top:34px;color:var(--c);opacity:.18}
 .ag-ic .ic{width:110px;height:110px}
-.rc-ph.apps{display:flex;align-items:center;justify-content:center;gap:28px;background:linear-gradient(135deg,color-mix(in srgb,var(--c-blue) 14%,white),color-mix(in srgb,var(--c-violet) 12%,white))}
-.phone{width:112px;height:168px;border-radius:20px;background:#0F1A2C;padding:16px 12px;box-sizing:border-box;box-shadow:0 10px 24px rgba(15,26,44,.25)}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.pgrid i{display:block;aspect-ratio:1;border-radius:7px;background:var(--c)}
-.slide.play .pgrid i{animation:pop .4s cubic-bezier(.2,.7,.2,1.3) both;animation-delay:calc(var(--k) * 70ms + 500ms)}
-.apps-side{display:flex;flex-direction:column;align-items:flex-start;gap:2px;font-size:20px;color:var(--ink-2)}
-.apps-side b{background:#fff;border-radius:999px;padding:4px 14px;font-size:19px;color:var(--c-blue)}
-.apps-side span{padding-left:14px;color:var(--ink-3);font-weight:700;line-height:1}
 .ub-ph{height:175px}
 .ub{padding:20px 24px;gap:14px}
 .ul-t li{font-family:var(--font-body)}
@@ -915,6 +895,111 @@ body.editing .cover-q{color:var(--ink);background:none}
 .ub-law{flex-wrap:nowrap}
 .sumt{font-size:26px}
 .sumt th,.sumt td{padding:24px 26px}
+
+/* ================= v2: 차분하고 고급스러운 톤 ================= */
+:root{--ink:#0B1626;--ink-2:#465469;--ink-3:#8A94A6;--surface:#F6F7F9;--line:#E6E9EF;--line-2:#CDD3DD;
+  --c-blue:#2453D6;--c-teal:#0E9F8E;--teal:#0B8A7C;--teal-soft:#E8F6F3;--c-violet:#4F5BD5;--c-orange:#E07A2F;--c-coral:#E5484D;--c-sky:#2A8FD3;
+  --accent:#2453D6;--accent-ink:#2453D6;--accent-soft:#EDF2FD;--navy:#0B1626;--mint:#7FE0D2;
+  --card-sh:0 1px 2px rgba(11,22,38,.04),0 12px 32px rgba(11,22,38,.07)}
+.slide::before{display:none}
+.eyebrow .no{background:transparent;color:var(--teal);border:1.5px solid color-mix(in srgb,var(--teal) 45%,white);padding:3px 11px}
+.eyebrow [data-k]{color:var(--ink-3);font-weight:600;letter-spacing:.01em}
+.lead{color:var(--ink)}
+.s-foot{border-top-color:var(--line)}
+
+/* 표지 · 전면 사진 */
+.slide.t-cover,.slide.t-closing{background:var(--navy);padding:0}
+.cv{position:relative;height:100%;color:#fff}
+.cv-hero{position:absolute;top:0;right:0;bottom:0;width:58%}
+.cv-ph{position:absolute;inset:0;background:#16233A}
+.cv-ph img{object-position:25% 50%}
+.cv-shade{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,22,38,.82) 12%,rgba(11,22,38,.25) 36%,rgba(11,22,38,0) 60%),linear-gradient(0deg,rgba(11,22,38,.55),rgba(11,22,38,0) 30%);pointer-events:none}
+.cv-cap{position:absolute;right:40px;bottom:40px;display:flex;gap:10px;align-items:center;font-size:17px;color:rgba(255,255,255,.88);background:rgba(11,22,38,.5);backdrop-filter:blur(8px);padding:9px 16px;border-radius:999px}
+.cv-cap b{color:var(--mint);font-weight:700}
+.cv-l{position:relative;z-index:2;width:54%;height:100%;box-sizing:border-box;padding:70px 0 60px 96px;display:flex;flex-direction:column}
+.cv-eye{display:flex;gap:14px;align-items:center;font-size:20px;color:rgba(255,255,255,.62);font-weight:600}
+.cv-eye .no{font-family:var(--font-mono);font-size:17px;color:var(--mint);border:1.5px solid rgba(127,224,210,.5);border-radius:999px;padding:3px 11px}
+.t-cover .cover-q{font-size:62px;line-height:1.2;margin:34px 0 0;background:linear-gradient(100deg,#fff 50%,var(--mint) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%}
+body.editing .t-cover .cover-q{color:#fff;background:none}
+.cv-meta{margin-top:30px;display:flex;flex-direction:column;gap:8px;padding-left:20px;border-left:3px solid var(--mint)}
+.t-cover .cover-title{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.t-cover .cover-sub{font-size:21px;color:rgba(255,255,255,.62)}
+.cv-tiles{margin-top:auto;display:flex;gap:16px}
+.cv-tile{display:flex;flex-direction:column;gap:10px;width:220px}
+.cv-tph{height:124px;border-radius:14px;background:#16233A}
+.cv-tile span{font-size:17px;font-weight:600;color:rgba(255,255,255,.78)}
+.t-cover .cover-by{margin-top:26px;font-size:21px;font-weight:700;color:#fff}
+
+/* 목차 */
+.ag{background:#fff;border:1px solid var(--line);box-shadow:var(--card-sh)}
+.ag-n{font-size:56px;color:var(--c)}
+.ag-ic{opacity:.12}
+.ag-bar{height:4px}
+
+/* 카드 · 행 */
+.rcard{background:#fff;border:1px solid var(--line);box-shadow:var(--card-sh)}
+.rc-ph{height:196px;border-bottom:1px solid var(--line)}
+.rc-ic{width:40px;height:40px;background:color-mix(in srgb,var(--c) 12%,white);color:var(--c)}
+.rc-ic .ic{width:22px;height:22px}
+.rc-ex{background:color-mix(in srgb,var(--c) 7%,white);border-color:color-mix(in srgb,var(--c) 18%,white)}
+.slide.has-hl .rcard.hl{box-shadow:0 0 0 2px var(--c),0 22px 48px rgba(11,22,38,.14)}
+.srow{box-shadow:var(--card-sh);border-color:var(--line)}
+.sr-ph,.sr-ic{width:150px;height:112px;border-radius:12px}
+.sr-ph{border:1px solid var(--line)}
+
+/* 5장 그래프: 2010년 → 2025년 */
+.bchart{background:#fff;border:1px solid var(--line);box-shadow:var(--card-sh);border-radius:22px;padding:26px 32px 24px;--p:0;--h:100%}
+.bc-head{display:flex;flex-direction:column;gap:4px}
+.bc-t{font-size:24px;font-weight:800}
+.bc-u{font-size:16px;color:var(--ink-3)}
+.bt-read{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.bt-track{flex:1;display:flex;align-items:center;gap:14px;font-size:21px;color:var(--ink-2);max-width:330px}
+.bt-track b{font-weight:700;white-space:nowrap}
+.bt-track .bt-b{color:color-mix(in srgb,var(--c-coral) calc(var(--p) * 100%),var(--ink-3))}
+.bt-line{position:relative;flex:1;height:4px;border-radius:2px;background:var(--line)}
+.bt-fill{position:absolute;left:0;top:0;bottom:0;width:calc(var(--p) * 100%);border-radius:2px;background:var(--c-coral)}
+.bt-dot{position:absolute;top:50%;left:calc(var(--p) * 100%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid color-mix(in srgb,var(--c-coral) calc(var(--p) * 100%),#8B96A9);transform:translate(-50%,-50%);box-sizing:border-box}
+.bt-price{display:flex;align-items:baseline;gap:8px}
+.bt-p{font-family:var(--font-mono);font-size:54px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);transition:color .4s}
+.bchart.hl .bt-p,.bchart.done .bt-p{color:var(--c-coral)}
+.bt-price small{font-size:17px;color:var(--ink-3);font-weight:600}
+.bt-plot{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:34px 30px 0;margin-bottom:38px;border-bottom:2px solid var(--line-2)}
+.bt-ref{position:absolute;left:0;right:0;top:34px;border-top:2px dashed var(--line-2);opacity:var(--p)}
+.bt-col{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;min-height:0}
+.bt-bar{display:block;width:118px;border-radius:8px 8px 0 0}
+.bt-col.ghost{opacity:var(--p)}
+.bt-col.ghost .bt-bar{height:100%;background:#D5DBE4}
+.bt-col.live .bt-bar{height:var(--h);background:#8B96A9;transition:background .4s}
+.bchart.hl .bt-col.live .bt-bar,.bchart.done .bt-col.live .bt-bar{background:var(--c-coral)}
+.bt-v{font-family:var(--font-mono);font-size:23px;font-weight:700;margin-bottom:8px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.bchart.hl .bt-col.live .bt-v,.bchart.done .bt-col.live .bt-v{color:var(--c-coral)}
+.bt-x{position:absolute;bottom:-34px;font-size:18px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.bt-badge{position:absolute;left:50%;right:0;top:30%;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:16px;color:var(--ink-3);opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.bt-badge b{font-size:56px;font-weight:800;color:var(--c-coral);letter-spacing:-.03em;font-family:var(--font-display);line-height:1}
+.bchart.done .bt-badge{opacity:1;transform:none}
+
+/* 6장 사진 */
+.pf-r{gap:18px}
+.pf-photo{position:relative;height:180px;border-radius:16px;overflow:hidden;box-shadow:var(--card-sh)}
+.pf-ph{position:absolute;inset:0}
+.pf-photo span{position:absolute;left:0;right:0;bottom:0;padding:26px 18px 12px;font-size:16px;font-weight:600;color:#fff;background:linear-gradient(0deg,rgba(11,22,38,.7),rgba(11,22,38,0))}
+.keybox{margin-top:0}
+
+/* 7장 · 8장 · 9장 */
+.ub.before{background:var(--surface)}
+.ub.after{background:var(--accent-soft)}
+.ub-ph{border:1px solid var(--line);background:#fafafa}
+.ub-law{box-shadow:var(--card-sh)}
+.side{background:#fff;border:1px solid var(--line);border-left:4px solid var(--c);box-shadow:var(--card-sh)}
+.dd{background:linear-gradient(100deg,color-mix(in srgb,var(--c-violet) 7%,white),color-mix(in srgb,var(--c-teal) 8%,white));border-color:color-mix(in srgb,var(--c-violet) 18%,white)}
+
+/* 10장 마무리 */
+.t-closing .closing{padding:0 96px;box-sizing:border-box}
+.cl-line{display:block;width:64px;height:4px;border-radius:2px;background:var(--mint);margin-bottom:34px}
+.t-closing .cl-big{background:linear-gradient(100deg,#fff 45%,var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+body.editing .t-closing .cl-big{color:#fff;background:none}
+.t-closing .cl-sub{color:var(--mint);opacity:.85}
+.t-closing .cl-cred{left:96px;right:96px;bottom:40px;color:rgba(255,255,255,.45)}
 
 </style>
 </head><body>
@@ -973,17 +1058,21 @@ body.editing .cover-q{color:var(--ink);background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "network-effects-deck.v1";
+const STORE_KEY = "network-effects-deck.v2";
 const WM = "https://upload.wikimedia.org/wikipedia/commons/";
-const IMG_PHONES = WM + "5/55/Smartphone_use_at_railway_station.jpg";
 const IMG_USBC_PORT = WM + "thumb/7/7e/USB-C_connector_and_receptacle.webp/1280px-USB-C_connector_and_receptacle.webp";
-const IMG_SWITCH = WM + "thumb/8/8e/Photograph_of_Women_Working_at_a_Bell_System_Telephone_Switchboard_%283660047829%29.jpg/1280px-Photograph_of_Women_Working_at_a_Bell_System_Telephone_Switchboard_%283660047829%29.jpg";
-const IMG_HOME = WM + "thumb/9/9d/OnePlus_Nord_smartphone_displaying_Android_home_screen.jpg/1280px-OnePlus_Nord_smartphone_displaying_Android_home_screen.jpg";
-const IMG_SHARE = WM + "thumb/d/d0/Young_people_texting_on_smartphones_using_thumbs.JPG/1280px-Young_people_texting_on_smartphones_using_thumbs.JPG";
-const IMG_BATTERY = WM + "thumb/5/56/18650_and_21700_lithium_ion_battery_cell.jpg/1280px-18650_and_21700_lithium_ion_battery_cell.jpg";
-const IMG_EV = WM + "thumb/b/b5/Electric_vehicle_charging_stations_in_Stuttgart_1X7A6287.jpg/1280px-Electric_vehicle_charging_stations_in_Stuttgart_1X7A6287.jpg";
 const IMG_OLDPLUGS = WM + "thumb/0/07/Lighting%2C_Mini%2C_Micro%2C_%26_USB_3.0_plugs.jpg/1280px-Lighting%2C_Mini%2C_Micro%2C_%26_USB_3.0_plugs.jpg";
-const IMG_USBC_CABLE = WM + "thumb/3/3c/USB_Type-C_Cable_-_iPad_USB-C_Charger_%2845640822114%29.jpg/1280px-USB_Type-C_Cable_-_iPad_USB-C_Charger_%2845640822114%29.jpg";
+
+const KR_KAKAO_USE = "https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/news/c925bfc6018c00001.jpeg";
+const KR_KAKAO_TALK = "https://cdn.byline.network/wp-content/uploads/2025/03/katalk25_2.jpg";
+const KR_GALAXY = "https://cdn.www.smarttoday.co.kr/w1800/q80/article-images/202501/71016_64269_357.jpg";
+const KR_REVIEW = "http://newsroom.etomato.com/userfiles/naver%20(3).png";
+const KR_TMAP = "https://image.fnnews.com/resource/media/image/2026/06/29/202606291145340489_e.png";
+const KR_LGES = "https://image.fnnews.com/resource/media/image/2025/02/25/202502251826323166_e.jpg";
+const KR_EPIT = "https://cdn.www.smarttoday.co.kr/w1800/q80/article-images/202110/21621_12190_114.jpg";
+const KR_BAEMIN_BOX = "https://image.fnnews.com/resource/media/image/2023/05/09/202305091644315825_e.jpg";
+const KR_BAEMIN_RIDER = "https://cdn.byline.network/wp-content/uploads/2019/07/baemin-friends.jpg";
+const KR_IPHONE15 = "https://www.apple.com/newsroom/images/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/tile/Apple-iPhone-15-lineup-hero-230912.jpg.og.jpg";
 
 /* ================= 기본 데이터 ================= */
 const DEFAULT_DECK = {
@@ -1000,12 +1089,13 @@ const DEFAULT_DECK = {
       presenter: "발표 · 박태하",
       cases: ["사례 1 · 배달의민족", "사례 2 · USB-C"],
       images: [
-        { src: IMG_PHONES, fallback: "", tag: "함께 쓰는 사람", caption: "같은 기술을 함께 쓰는 사람들", credit: "" },
-        { src: IMG_USBC_PORT, fallback: "", tag: "같은 규격", caption: "USB-C 충전 단자", credit: "" }
+        { src: KR_KAKAO_USE, fallback: "", tag: "카카오톡", caption: "친구들이 다 쓰니까 나도 쓰는 메신저", credit: "" },
+        { src: KR_BAEMIN_RIDER, fallback: "", tag: "배달의민족", caption: "배민라이더스", credit: "" },
+        { src: IMG_USBC_PORT, fallback: "", tag: "USB-C", caption: "USB-C 충전 단자", credit: "" }
       ],
       sources: [],
       script: "안녕하세요. 발표를 맡은 박태하입니다.\n오늘 발표 주제는 ‘기술이 널리 사용될수록 효용이 증가하는 이유에는 어떠한 것이 있는가’입니다.\n시작하기 전에 하나만 생각해 보시면 좋겠습니다. 우리는 왜 친구들과 같은 메신저를 쓰고, 비슷한 충전 케이블을 쓰고, 같은 배달 앱을 쓰게 될까요? 오늘 발표가 이 질문에 대한 답이 될 것 같습니다.",
-      notes: "· 마지막 질문을 던진 뒤 1~2초 멈춘다.\n· 사진: Wikimedia Commons (마지막 장에 사진 출처 표시)."
+      notes: "· 마지막 질문을 던진 뒤 1~2초 멈춘다.\n· 사진 출처는 마지막 장에 한 줄로 표시했다."
     },
     {
       id: "n2", type: "agenda", duration: 30,
@@ -1046,15 +1136,15 @@ const DEFAULT_DECK = {
       lead: "사용자가 많다는 사실 자체가 효용을 키운다",
       cards: [
         { k: "이유 1", name: "직접 네트워크 효과", desc: "같은 기술을 쓰는 사람이 많을수록\n연결할 수 있는 상대가 늘어난다", ex: "예) 전화, 메신저", lec: "수업 · 네트워크 외부성", icon: "phone",
-          img: { src: IMG_SWITCH, caption: "초기 전화 교환대" },
+          img: { src: KR_KAKAO_TALK, caption: "카카오톡", pos: "50% 50%" },
           stats: [{ n: 10, l: "명이면", v: 45, u: "쌍" }, { n: 100, l: "명이면", v: 4950, u: "쌍" }] },
         { k: "이유 2", name: "간접 네트워크 효과", desc: "사용자가 많을수록 앱·콘텐츠·입점 가게\n같은 보완재가 늘어난다", ex: "예) 스마트폰 앱, 배달 앱", lec: "수업 · 보완재 · 자기강화 사이클", icon: "grid",
-          art: "apps", img: { src: "", caption: "" } },
+          img: { src: KR_GALAXY, caption: "갤럭시 스마트폰과 앱 생태계", pos: "50% 35%" } },
         { k: "이유 3", name: "정보·기대 효과", desc: "후기와 사용법이 풍부하고, 앞으로도\n계속 지원될 거라 믿고 고를 수 있다", ex: "예) 사용 후기, 사용법 자료", lec: "수업 · 가치의 인식과 기대", icon: "badge",
-          img: { src: IMG_SHARE, caption: "서로 정보를 나누는 사용자들" } }
+          img: { src: KR_REVIEW, caption: "네이버 플레이스 리뷰", pos: "50% 0%" } }
       ],
       sources: [],
-      script: "먼저 사용자 쪽 이유입니다. 기술 자체는 그대로여도, 쓰는 사람이 많다는 사실만으로 효용이 커지는 경우입니다.\n(엔터) 첫째, 직접 네트워크 효과입니다. 전화를 떠올려 보면 쉽습니다. 세상에 전화기가 한 대뿐이라면 아무 쓸모가 없겠죠. 가입자가 늘수록 통화할 수 있는 상대가 늘어나는데, 연결 가능한 조합은 사람 수보다 훨씬 빠르게 늘어납니다. 10명이면 연결할 수 있는 쌍이 45개지만, 100명이면 4,950개가 됩니다. 우리가 친구들이 쓰는 메신저를 따라 쓰게 되는 것도 같은 이유입니다.\n(엔터) 둘째, 간접 네트워크 효과입니다. 이번에는 사용자끼리 직접 연결되는 것이 아니라, 사용자가 많아지면 그 기술과 함께 쓰는 보완재가 늘어나는 경우입니다. 예를 들어 사용자가 많은 스마트폰 운영체제에는 개발자들이 앱을 먼저 만들고, 앱이 많아지면 그 스마트폰을 쓰려는 사람이 다시 늘어납니다. 뒤에서 볼 배달의민족이 바로 이 경우입니다.\n(엔터) 셋째, 정보·기대 효과입니다. 많이 쓰이는 기술은 이미 많은 사람이 써 봤기 때문에 후기와 사용법, 문제 해결 방법이 풍부합니다. 앞으로도 업데이트와 지원이 계속될 거라고 믿을 수도 있습니다. 그래서 처음 고르는 사람은 실패할 위험이 적은, 많이 쓰이는 기술을 고르게 되고, 이것이 다시 사용자를 늘립니다.",
+      script: "먼저 사용자 쪽 이유입니다. 기술 자체는 그대로여도, 쓰는 사람이 많다는 사실만으로 효용이 커지는 경우입니다.\n(엔터) 첫째, 직접 네트워크 효과입니다. 전화를 떠올려 보면 쉽습니다. 세상에 전화기가 한 대뿐이라면 아무 쓸모가 없겠죠. 가입자가 늘수록 통화할 수 있는 상대가 늘어나는데, 연결 가능한 조합은 사람 수보다 훨씬 빠르게 늘어납니다. 10명이면 연결할 수 있는 쌍이 45개지만, 100명이면 4,950개가 됩니다. 우리가 대부분 카카오톡을 쓰는 것도 주변 사람들이 다 카카오톡을 쓰기 때문입니다.\n(엔터) 둘째, 간접 네트워크 효과입니다. 이번에는 사용자끼리 직접 연결되는 것이 아니라, 사용자가 많아지면 그 기술과 함께 쓰는 보완재가 늘어나는 경우입니다. 예를 들어 사용자가 많은 스마트폰 운영체제에는 개발자들이 앱을 먼저 만들고, 앱이 많아지면 그 스마트폰을 쓰려는 사람이 다시 늘어납니다. 뒤에서 볼 배달의민족이 바로 이 경우입니다.\n(엔터) 셋째, 정보·기대 효과입니다. 많이 쓰이는 기술은 이미 많은 사람이 써 봤기 때문에 후기와 사용법, 문제 해결 방법이 풍부합니다. 앞으로도 업데이트와 지원이 계속될 거라고 믿을 수도 있습니다. 그래서 처음 고르는 사람은 실패할 위험이 적은, 많이 쓰이는 기술을 고르게 되고, 이것이 다시 사용자를 늘립니다.",
       notes: "· 엔터를 누를 때마다 이유 1 → 2 → 3 카드가 차례로 강조된다.\n· 45와 4,950은 n(n−1)/2로 계산한 값.\n· 카드 아래 ‘수업’ 표시는 6강에서 배운 용어와의 연결이다. 읽지 않아도 된다."
     },
     {
@@ -1062,15 +1152,15 @@ const DEFAULT_DECK = {
       title: "02  효용이 증가하는 이유 · 공급 쪽",
       lead: "기술이 좋아지고 싸지며, 주변 환경이 갖춰진다",
       rows: [
-        { k: "이유 4", name: "사용에 의한 학습", desc: "실제로 많이 쓰일수록 문제점이 드러나고 데이터가 쌓여 기술이 개선된다", ex: "예) 검색·내비게이션 앱", lec: "수업 · 학습 효과", icon: "data", img: { src: "", caption: "" } },
-        { k: "이유 5", name: "규모의 경제", desc: "많이 만들수록 개발비가 나뉘고 생산 경험이 쌓여 단가가 내려간다", ex: "예) 배터리 가격 (오른쪽 그래프)", lec: "수업 · 학습곡선", icon: "factory", img: { src: IMG_BATTERY, caption: "리튬이온 배터리 셀" } },
-        { k: "이유 6", name: "기술적 상호연관성", desc: "널리 쓰이는 기술에 맞춰 인프라·표준·제도가 갖춰진다", ex: "예) 주유소·충전소, 충전 규격", lec: "수업 · 보완재 · 정부 규제", icon: "network", img: { src: IMG_EV, caption: "전기차 충전소" } }
+        { k: "이유 4", name: "사용에 의한 학습", desc: "실제로 많이 쓰일수록 문제점이 드러나고 데이터가 쌓여 기술이 개선된다", ex: "예) 티맵 같은 내비게이션 앱", lec: "수업 · 학습 효과", icon: "data", img: { src: KR_TMAP, caption: "티맵 내비게이션 화면", pos: "50% 30%" } },
+        { k: "이유 5", name: "규모의 경제", desc: "많이 만들수록 개발비가 나뉘고 생산 경험이 쌓여 단가가 내려간다", ex: "예) 배터리 가격 (오른쪽 그래프)", lec: "수업 · 학습곡선", icon: "factory", img: { src: KR_LGES, caption: "LG에너지솔루션 배터리 셀", pos: "50% 55%" } },
+        { k: "이유 6", name: "기술적 상호연관성", desc: "널리 쓰이는 기술에 맞춰 인프라·표준·제도가 갖춰진다", ex: "예) 주유소·충전소, 충전 규격", lec: "수업 · 보완재 · 정부 규제", icon: "network", img: { src: KR_EPIT, caption: "현대자동차그룹 E-pit 충전소", pos: "45% 60%" } }
       ],
       chart: { title: "리튬이온 배터리 팩 평균 가격", unit: "단위: 달러/kWh · 2025년 달러 기준", drop: 93, dropLabel: "하락 (2010년 → 2025년)",
         bars: [{ x: "2010년", v: 1474 }, { x: "2025년", v: 108 }] },
       sources: [],
-      script: "다음은 공급 쪽 이유입니다. 이번에는 기술 자체와 그 기술을 둘러싼 환경이 좋아지면서 효용이 커지는 경우입니다.\n(엔터) 넷째, 사용에 의한 학습입니다. 기술은 실제로 쓰이면서 더 좋아집니다. 많은 사람이 쓰면 문제점이 그만큼 빨리 드러나고, 무엇을 고쳐야 할지 알려 주는 데이터도 쌓입니다. 내비게이션 앱은 이용자가 많을수록 실시간 교통 정보가 쌓여 길 안내가 정확해지고, 검색 서비스도 쓰는 사람이 많을수록 결과가 나아집니다.\n(엔터) 다섯째, 규모의 경제입니다. 새로운 기술을 개발하려면 처음에 큰 비용이 듭니다. 그런데 제품이 많이 팔리면 이 개발비가 더 많은 제품에 나뉘고, 생산 경험도 쌓여서 하나를 만드는 비용이 내려갑니다. 오른쪽 그래프가 그 예입니다. 리튬이온 배터리 팩 가격은 물가를 반영해 비교하면 2010년 kWh당 약 1,474달러였는데, 2025년에는 108달러로 93%나 내려갔습니다. 전기차와 에너지 저장장치가 보급되면서 배터리 생산이 크게 늘어난 것이 큰 이유로 꼽힙니다. 배터리가 싸지면 전기차도 싸지고, 전기차가 더 팔리면 배터리를 더 많이 만들게 되는 선순환이 생깁니다.\n(엔터) 여섯째, 기술적 상호연관성입니다. 한 기술이 널리 쓰이면 그 기술에 맞춰 인프라와 표준, 제도가 함께 갖춰집니다. 자동차가 보급되면서 주유소와 정비소, 도로가 함께 늘어난 것이 대표적이고, 요즘 전기차 충전소가 늘어나는 것도 같은 흐름입니다. 이렇게 주변 환경이 갖춰질수록 그 기술은 더 쓰기 편해집니다. 뒤에서 볼 USB-C가 이 경우입니다.",
-      notes: "· 엔터를 누를 때마다 이유 4 → 5 → 6이 차례로 강조된다. 이유 5에서는 그래프도 함께 강조된다.\n· 그래프 자료: BloombergNEF, Lithium-Ion Battery Pack Price Survey (2025). 화면에는 출처를 넣지 않았다. 질문이 나오면 말한다."
+      script: "다음은 공급 쪽 이유입니다. 이번에는 기술 자체와 그 기술을 둘러싼 환경이 좋아지면서 효용이 커지는 경우입니다.\n(엔터) 넷째, 사용에 의한 학습입니다. 기술은 실제로 쓰이면서 더 좋아집니다. 많은 사람이 쓰면 문제점이 그만큼 빨리 드러나고, 무엇을 고쳐야 할지 알려 주는 데이터도 쌓입니다. 티맵 같은 내비게이션 앱은 이용자가 많을수록 실시간 교통 정보가 쌓여 길 안내가 정확해지고, 검색 서비스도 쓰는 사람이 많을수록 결과가 나아집니다.\n(엔터) 다섯째, 규모의 경제입니다. 새로운 기술을 개발하려면 처음에 큰 비용이 듭니다. 그런데 제품이 많이 팔리면 이 개발비가 더 많은 제품에 나뉘고, 생산 경험도 쌓여서 하나를 만드는 비용이 내려갑니다. 오른쪽 그래프가 그 예입니다. 리튬이온 배터리 팩 가격은 물가를 반영해 비교하면 2010년 kWh당 약 1,474달러였는데, 2025년에는 108달러로 93%나 내려갔습니다. 전기차와 에너지 저장장치가 보급되면서 배터리 생산이 크게 늘어난 것이 큰 이유로 꼽힙니다. 배터리가 싸지면 전기차도 싸지고, 전기차가 더 팔리면 배터리를 더 많이 만들게 되는 선순환이 생깁니다.\n(엔터) 여섯째, 기술적 상호연관성입니다. 한 기술이 널리 쓰이면 그 기술에 맞춰 인프라와 표준, 제도가 함께 갖춰집니다. 자동차가 보급되면서 주유소와 정비소, 도로가 함께 늘어난 것이 대표적이고, 요즘 전기차 충전소가 늘어나는 것도 같은 흐름입니다. 이렇게 주변 환경이 갖춰질수록 그 기술은 더 쓰기 편해집니다. 뒤에서 볼 USB-C가 이 경우입니다.",
+      notes: "· 엔터를 누를 때마다 이유 4 → 5 → 6이 차례로 강조된다. 이유 5에서는 그래프도 함께 강조된다.\n· 그래프 자료: BloombergNEF, Lithium-Ion Battery Pack Price Survey (2025). 화면에는 출처를 넣지 않았다. 질문이 나오면 말한다.\n· 이유 5에서 엔터를 누르면 막대와 가격이 2010년 값에서 2025년 값으로 줄어든다. 중간에 바뀌는 숫자는 두 해를 잇는 움직임일 뿐, 연도별 실제 가격은 아니다."
     },
     {
       id: "n6", type: "platform", duration: 95,
@@ -1078,6 +1168,7 @@ const DEFAULT_DECK = {
       lead: "이용자와 가게가 서로를 끌어들인다",
       nodes: ["이용자 증가", "입점 가게 증가", "선택 폭 증가"],
       center: "배달의민족",
+      img: { src: KR_BAEMIN_BOX, caption: "거리에서 흔히 보는 배민 배달통", pos: "88% 40%" },
       reasonTag: "해당 이유",
       reason: "간접 네트워크 효과 (보완재)",
       points: ["이용자가 많으면 → 손님을 만나려는 가게가 더 많이 들어온다", "가게가 많으면 → 이용자가 고를 수 있는 선택 폭이 넓어진다"],
@@ -1096,7 +1187,7 @@ const DEFAULT_DECK = {
         rows: [{ dev: "안드로이드 폰", port: "마이크로 5핀" }, { dev: "아이폰", port: "라이트닝" }, { dev: "노트북", port: "전용 단자" }],
         result: "충전기를 기기마다 따로 챙겨야 했다" },
       arrow: "같은 규격으로",
-      after: { label: "지금 · USB-C 하나로", img: { src: IMG_USBC_CABLE, caption: "USB-C 케이블" },
+      after: { label: "지금 · USB-C 하나로", img: { src: KR_IPHONE15, caption: "아이폰 15부터 USB-C", pos: "50% 0%" },
         hub: "충전기 1개", devices: ["휴대폰", "태블릿", "노트북", "이어폰"],
         result: "충전기 하나로 여러 기기, 친구 충전기도 그대로" },
       reasonTag: "해당 이유",
@@ -1145,7 +1236,7 @@ const DEFAULT_DECK = {
       title: "Q & A",
       big: "감사합니다",
       sub: "Q & A",
-      credits: "사진 · Wikimedia Commons: Rawpixel(CC0), Wikideas1(CC0), U.S. National Archives, Gannu03(CC BY-SA 4.0), Tomwsulcer(CC0), Sevenethics(CC0), Alexander Migl(CC BY-SA 4.0), Algr(CC BY-SA 3.0), Tony Webster(CC BY 2.0)",
+      credits: "사진 · 카카오, 우아한형제들, 삼성전자, 네이버, 티맵모빌리티, LG에너지솔루션, 현대자동차그룹, Apple, 파이낸셜뉴스, 바이라인네트워크, Wikimedia Commons(Wikideas1 CC0 · Algr CC BY-SA 3.0)",
       sources: [],
       script: "이상으로 발표를 마치겠습니다. 들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.",
       notes: "[예상 질문]\nQ. 배달의민족을 다른 이유로도 설명할 수 있지 않나요?\nA. 후기가 쌓이면서 가게를 고르기 쉬워지는 정보 효과도 있다고 볼 수 있습니다. 다만 이 사례의 핵심은 이용자와 가게가 서로를 끌어들이는 구조라서 간접 네트워크 효과에 초점을 맞췄습니다.\n\nQ. 직접 네트워크 효과와 간접 네트워크 효과는 어떻게 다른가요?\nA. 직접 네트워크 효과는 전화나 메신저처럼 사용자끼리 바로 연결되면서 가치가 커지는 것입니다. 간접 네트워크 효과는 사용자가 늘면서 앱이나 입점 가게 같은 보완재가 늘어나 가치가 커지는 것입니다.\n\nQ. 가장 좋은 기술이 항상 지배적 디자인이 되나요?\nA. 꼭 그렇지는 않습니다. 먼저 많이 쓰인 기술이 선순환으로 앞서 나가면, 기술의 우열과 관계없이 지배적 디자인이 될 수 있습니다. 수업에서 본 드보락 자판과 QWERTY 자판이 자주 드는 예입니다.\n\nQ. 배달의민족은 앞으로도 계속 1위일까요?\nA. 꼭 그렇다고 할 수는 없습니다. 2026년 3월 월간 이용자 수는 배달의민족이 약 2,410만 명, 쿠팡이츠가 약 1,356만 명으로 배민이 앞서지만, 쿠팡이츠가 빠르게 늘고 있습니다. 저희는 배민을 선순환이 한 서비스로 사용자를 모은 예로 들었습니다."
@@ -1275,12 +1366,14 @@ function foot(s, i) {
 }
 /* photos are served from the deck's own img/ folder first, original URL as fallback */
 const LOCAL_IMG = {
-  [IMG_PHONES]: "img/cover-phones.jpg", [IMG_USBC_PORT]: "img/usbc-port.jpg", [IMG_SWITCH]: "img/switchboard.jpg",
-  [IMG_HOME]: "img/home-screen.jpg", [IMG_SHARE]: "img/sharing.jpg", [IMG_BATTERY]: "img/battery.jpg",
-  [IMG_EV]: "img/ev-charging.jpg", [IMG_OLDPLUGS]: "img/old-plugs.jpg", [IMG_USBC_CABLE]: "img/usbc-cable.jpg"
+  [KR_KAKAO_USE]: "img/kr-kakaotalk-use.jpg", [KR_KAKAO_TALK]: "img/kr-kakao-talk.jpg", [KR_GALAXY]: "img/kr-galaxy.jpg",
+  [KR_REVIEW]: "img/kr-naver-review.jpg", [KR_TMAP]: "img/kr-tmap.jpg", [KR_LGES]: "img/kr-lges-cells.jpg", [KR_EPIT]: "img/kr-epit.jpg",
+  [KR_BAEMIN_BOX]: "img/kr-baemin-boxes.jpg", [KR_BAEMIN_RIDER]: "img/kr-baemin-rider.jpg", [KR_IPHONE15]: "img/kr-iphone15-usbc.jpg",
+  [IMG_USBC_PORT]: "img/usbc-port.jpg", [IMG_OLDPLUGS]: "img/old-plugs.jpg"
 };
 const ALT_JS = "if(this.dataset.alt){var a=this.dataset.alt;this.removeAttribute('data-alt');this.src=a;return;}";
 const imgSrc = u => LOCAL_IMG[u] ? `src="${esc(LOCAL_IMG[u])}" data-alt="${esc(u)}"` : `src="${esc(u)}"`;
+const posAttr = im => /^[\d.]+% [\d.]+%$/.test(im.pos || "") ? ` style="object-position:${im.pos}"` : "";
 const PAL = ["var(--c-blue)", "var(--c-teal)", "var(--c-violet)", "var(--c-orange)", "var(--c-coral)", "var(--c-sky)"];
 const resolveSrc = src => src;
 const rise = (i) => ` style="--i:${i}"`;
@@ -1315,7 +1408,7 @@ function figure(s, key, cls = "", tag = "", color = "") {
 function photo(s, key, cls = "") {
   const im = getPath(s, key) || {};
   const u = safeUrl(im.src);
-  return `<div class="ph ${cls}${u ? "" : " no-img"}">${u ? `<img ${imgSrc(u)} alt="${esc(im.caption || "")}" referrerpolicy="no-referrer" onerror="${ALT_JS}this.parentNode.classList.add('img-fail')">` : ""}<button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></div>`;
+  return `<div class="ph ${cls}${u ? "" : " no-img"}">${u ? `<img ${imgSrc(u)}${posAttr(im)} alt="${esc(im.caption || "")}" referrerpolicy="no-referrer" onerror="${ALT_JS}this.parentNode.classList.add('img-fail')">` : ""}<button class="img-edit edit-only" data-imgedit="${key}">이미지 바꾸기</button></div>`;
 }
 function markHL(s, html) {
   const m = s.mark && esc(s.mark);
@@ -1356,19 +1449,42 @@ function appsArt() {
   return `<div class="rc-ph apps" aria-hidden="true"><div class="phone"><div class="pgrid">${C.map((c, k) => `<i style="--c:${c};--k:${k}"></i>`).join("")}</div></div>
     <div class="apps-side"><b>앱</b><span>+</span><b>콘텐츠</b><span>+</span><b>입점 가게</b></div></div>`;
 }
+/* 5장 배터리 그래프: 이유 5 단계에서 2010년 → 2025년으로 움직인다 */
+function stepHook(el, s) {
+  if (s.type !== "supply") return;
+  const ch = el.querySelector(".bchart"); if (!ch) return;
+  const bars = (s.chart || {}).bars || [], A = bars[0] || { x: "", v: 0 }, Z = bars[bars.length - 1] || A;
+  const v0 = +A.v || 1, v1 = +Z.v || 0;
+  const target = (mode.edit || step >= 2) ? 1 : 0;
+  const instant = mode.edit || reduceMotion() || ch._p == null && target === 1 && step !== 2;
+  const draw = p => {
+    const v = v0 + (v1 - v0) * p;
+    ch.style.setProperty("--p", p.toFixed(4)); ch.style.setProperty("--h", (v / v0 * 100).toFixed(2) + "%");
+    ch.querySelector(".bt-p").textContent = Math.round(v).toLocaleString("ko-KR");
+    ch.querySelector(".bt-lv").textContent = Math.round(v).toLocaleString("ko-KR"); ch.querySelector(".bt-lx").textContent = p >= 1 ? Z.x : p <= 0 ? A.x : "";
+    ch.classList.toggle("done", p >= 1);
+  };
+  cancelAnimationFrame(ch._raf);
+  const from = ch._p == null ? 0 : ch._p;
+  if (instant || from === target) { ch._p = target; draw(target); return; }
+  const dur = 2600 * Math.abs(target - from), t0 = performance.now() + (target ? 350 : 0);
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const tick = now => { const t = Math.min(1, Math.max(0, (now - t0) / dur)); ch._p = from + (target - from) * ease(t); draw(ch._p); if (t < 1) ch._raf = requestAnimationFrame(tick); };
+  ch._raf = requestAnimationFrame(tick);
+}
 const R = {};
 R.cover = (s, i) => {
-  const cases = Array.isArray(s.cases) ? s.cases : [];
+  const cases = Array.isArray(s.cases) ? s.cases : [], ims = s.images || [];
   return `
-  <div class="cover">
-    <div class="cover-l">
-      <div class="eyebrow rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+  <div class="cv">
+    <div class="cv-hero">${photo(s, "images.0", "cv-ph")}<span class="cv-shade"></span>
+      ${(ims[0] || {}).caption ? `<span class="cv-cap rise" style="--i:3"><b data-k="images.0.tag">${esc(ims[0].tag || "")}</b>${ed(s, "images.0.caption")}</span>` : ""}</div>
+    <div class="cv-l">
+      <div class="cv-eye rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
       ${ed(s, "question", "h1", "cover-q rise").replace("<h1", `<h1 style="--i:1"`)}
-      <div class="cover-cases rise"${rise(2)}>${cases.map((c, k) => `<span class="tint" style="--c:${[PAL[1], PAL[0]][k % 2]};color:${[PAL[1], PAL[0]][k % 2]}" data-k="cases.${k}">${esc(c)}</span>`).join("")}</div>
-      <div class="cover-meta rise"${rise(3)}>${ed(s, "deckTitle", "div", "cover-title")}${ed(s, "subtitle", "div", "cover-sub")}${ed(s, "presenter", "div", "cover-by")}</div>
-    </div>
-    <div class="cover-r">
-      ${(s.images || []).map((im, k) => `<div class="rise" style="--i:${k + 1};display:flex;min-height:0">${figure(s, "images." + k, "", im.tag || "", [PAL[1], PAL[0]][k % 2])}</div>`).join("")}
+      <div class="cv-meta rise"${rise(2)}>${ed(s, "deckTitle", "div", "cover-title")}${ed(s, "subtitle", "div", "cover-sub")}</div>
+      <div class="cv-tiles">${[1, 2].filter(k => ims[k]).map((k, j) => `<div class="cv-tile rise" style="--i:${j + 3}">${photo(s, "images." + k, "cv-tph")}<span data-k="cases.${j}">${esc(cases[j] || ims[k].tag || "")}</span></div>`).join("")}</div>
+      ${ed(s, "presenter", "div", "cover-by rise").replace("<div", `<div style="--i:5"`)}
     </div>
   </div>`;
 };
@@ -1403,9 +1519,14 @@ R.supply = (s, i) => {
       <div class="sr-f">${ed(s, `rows.${k}.ex`, "span", "sr-ex")}${ed(s, `rows.${k}.lec`, "span", "lec")}</div></div></li>`).join("")}
   </ul>
   <div class="bchart hl-item rise" data-hl="2" style="--i:2">
-    ${ed(s, "chart.title", "b", "bc-t")}${ed(s, "chart.unit", "span", "bc-u")}
-    <div class="bc-drop"><span class="bc-pct"><b data-count="${+c.drop || 0}" data-delay="900">${+c.drop || 0}</b>%</span>${ed(s, "chart.dropLabel", "span")}</div>
-    <div class="bc-plot">${bars.map((b, k) => `<div class="bc-col" style="--h:${Math.max(3, (+b.v || 0) / mx * 100)}%;--k:${k}"><span class="bc-v" data-count="${+b.v || 0}" data-delay="${300 + k * 500}">${(+b.v || 0).toLocaleString("ko-KR")}</span><i class="bc-bar ${k === bars.length - 1 ? "hot" : ""}"></i><span class="bc-x" data-k="chart.bars.${k}.x">${esc(b.x)}</span></div>`).join("")}</div>
+    <div class="bc-head">${ed(s, "chart.title", "b", "bc-t")}${ed(s, "chart.unit", "span", "bc-u")}</div>
+    <div class="bt-read"><div class="bt-track"><b>${esc((bars[0] || {}).x)}</b><span class="bt-line"><i class="bt-fill"></i><i class="bt-dot"></i></span><b class="bt-b">${esc((bars[bars.length - 1] || {}).x)}</b></div><span class="bt-price"><b class="bt-p">${(+(bars[0] || {}).v || 0).toLocaleString("ko-KR")}</b><small>달러/kWh</small></span></div>
+    <div class="bt-plot">
+      <span class="bt-ref"></span>
+      <div class="bt-col ghost"><span class="bt-v">${(+(bars[0] || {}).v || 0).toLocaleString("ko-KR")}</span><i class="bt-bar"></i><span class="bt-x" data-k="chart.bars.0.x">${esc((bars[0] || {}).x)}</span></div>
+      <div class="bt-col live"><span class="bt-v bt-lv">${(+(bars[0] || {}).v || 0).toLocaleString("ko-KR")}</span><i class="bt-bar"></i><span class="bt-x bt-lx">${esc((bars[0] || {}).x)}</span></div>
+      <div class="bt-badge"><b>−<span data-k="chart.drop">${+c.drop || 0}</span>%</b>${ed(s, "chart.dropLabel", "span")}</div>
+    </div>
   </div>
 </div>${foot(s, i)}`;
 };
@@ -1415,6 +1536,7 @@ R.platform = (s, i) => `${head(s, i)}<div class="s-body platform">
     <span class="pill rise"${rise(1)} data-k="reasonTag">${esc(s.reasonTag)}</span>
     ${ed(s, "reason", "h3", "pf-reason rise").replace("<h3", `<h3 style="--i:2"`)}
     <ul class="pf-pts">${(s.points || []).map((p, k) => `<li class="rise" style="--i:${k + 3}">${ed(s, `points.${k}`)}</li>`).join("")}</ul>
+    ${safeUrl((s.img || {}).src) ? `<div class="pf-photo rise"${rise(4)}>${photo(s, "img", "pf-ph")}<span data-k="img.caption">${esc((s.img || {}).caption || "")}</span></div>` : ""}
     <div class="keybox rise"${rise(5)}><div>${ed(s, "keyLabel", "span", "kb-l")}${ed(s, "keyTitle", "b")}</div>${ed(s, "keyText", "p")}</div>
   </div>
 </div>${foot(s, i)}`;
@@ -1460,16 +1582,16 @@ R.wrap = (s, i) => `${head(s, i)}<div class="s-body wrap">
   </div>
 </div>${foot(s, i)}`;
 R.closing = (s, i) => `<div class="closing">
-  ${ed(s, "big", "h1", "cl-big rise").replace("<h1", `<h1 style="--i:0"`)}
-  ${ed(s, "sub", "p", "cl-sub rise").replace("<p", `<p style="--i:1"`)}
-  <div class="cl-loop rise"${rise(2)}><i></i><i></i><i></i></div>
+  <span class="cl-line rise"${rise(0)}></span>
+  ${ed(s, "big", "h1", "cl-big rise").replace("<h1", `<h1 style="--i:1"`)}
+  ${ed(s, "sub", "p", "cl-sub rise").replace("<p", `<p style="--i:2"`)}
   ${ed(s, "credits", "p", "cl-cred")}
 </div>`;
 R.text = (s, i) => `${head(s, i)}<div class="s-body"><ul class="bullets">${(s.bullets || []).map((b, k) => `<li class="rise" style="--i:${k}">${ed(s, `bullets.${k}`)}</li>`).join("")}</ul></div>${foot(s, i)}`;
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
-  return `<section class="slide" data-sid="${esc(s.id)}" aria-label="${i + 1}번 슬라이드">${markHL(s, fn(s, i))}</section>`;
+  return `<section class="slide t-${esc(s.type)}" data-sid="${esc(s.id)}" aria-label="${i + 1}번 슬라이드">${markHL(s, fn(s, i))}</section>`;
 }
 
 const stage = $("#stage");
@@ -1508,6 +1630,7 @@ function applyStep(el) {
   const hlOn = !showAll && step > 0 && ["cards", "supply"].includes(s.type);
   el.classList.toggle("has-hl", hlOn);
   $$(".hl-item", el).forEach(h => h.classList.toggle("hl", hlOn && +h.dataset.hl === step));
+  stepHook(el, s);
   updateChrome();
 }
 function runCounts(el) {
@@ -1640,7 +1763,7 @@ const SCHEMA = {
     { k: "question", label: "질문 문구", area: true },
     { k: "deckTitle", label: "발표 제목" }, { k: "subtitle", label: "부제" }, { k: "presenter", label: "발표자" },
     { k: "cases", label: "사례 표시", strlist: true, blank: "새 사례" },
-    { k: "images.0", label: "사진 1", image: true }, { k: "images.1", label: "사진 2", image: true }
+    { k: "images.0", label: "큰 사진", image: true }, { k: "images.0.tag", label: "큰 사진 표시" }, { k: "images.1", label: "사례 1 사진", image: true }, { k: "images.2", label: "사례 2 사진", image: true }
   ],
   agenda: [
     { k: "items", label: "목차", list: [{ key: "n", label: "번호" }, { key: "t", label: "제목" }, { key: "d", label: "설명" }], blank: { n: "", t: "새 항목", d: "" }, max: 5 }
@@ -1658,7 +1781,7 @@ const SCHEMA = {
   ],
   supply: [
     { k: "rows", label: "이유", list: [{ key: "k", label: "번호" }, { key: "name", label: "이름" }, { key: "desc", label: "설명", area: true }, { key: "ex", label: "예시" }, { key: "lec", label: "수업 연결" }], blank: { k: "이유", name: "새 이유", desc: "", ex: "", lec: "", icon: "data", img: { src: "", caption: "" } }, max: 3 },
-    { k: "rows.1.img", label: "이유 5 사진", image: true }, { k: "rows.2.img", label: "이유 6 사진", image: true },
+    { k: "rows.0.img", label: "이유 4 사진", image: true }, { k: "rows.1.img", label: "이유 5 사진", image: true }, { k: "rows.2.img", label: "이유 6 사진", image: true },
     { k: "chart.title", label: "그래프 제목" }, { k: "chart.unit", label: "단위 문구" },
     { k: "chart.drop", label: "하락률 (%)", num: true }, { k: "chart.dropLabel", label: "하락률 설명" },
     { k: "chart.bars", label: "막대", list: [{ key: "x", label: "이름" }, { key: "v", label: "값", num: true }], blank: { x: "", v: 0 }, max: 4 }
@@ -1666,7 +1789,7 @@ const SCHEMA = {
   platform: [
     { k: "nodes", label: "순환 단계 (3개)", strlist: true, blank: "새 단계" }, { k: "center", label: "가운데 문구" },
     { k: "reasonTag", label: "작은 표시" }, { k: "reason", label: "해당 이유" },
-    { k: "points", label: "설명", strlist: true, blank: "새 설명" },
+    { k: "points", label: "설명", strlist: true, blank: "새 설명" }, { k: "img", label: "사진", image: true },
     { k: "keyLabel", label: "핵심 표시" }, { k: "keyTitle", label: "핵심 제목" }, { k: "keyText", label: "핵심 설명", area: true }
   ],
   usbc: [
@@ -1689,7 +1812,7 @@ const SCHEMA = {
     { k: "ddLabel", label: "아래 영역 표시" }, { k: "ddChain", label: "지배적 디자인 흐름", strlist: true, blank: "새 단계" }, { k: "ddText", label: "아래 설명", area: true }
   ],
   closing: [
-    { k: "big", label: "큰 문구" }, { k: "sub", label: "작은 문구" }, { k: "credits", label: "사진 출처", area: true }
+    { k: "big", label: "큰 문구" }, { k: "loop", label: "순환 단계 (3개)", strlist: true, blank: "새 단계" }, { k: "loopCenter", label: "순환 가운데 문구" }, { k: "sub", label: "작은 문구" }, { k: "credits", label: "사진 출처", area: true }
   ],
   text: [
     { k: "bullets", label: "본문 항목", strlist: true, blank: "새 항목" }
