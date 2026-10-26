@@ -1,4 +1,4 @@
-import re, os, io, json, requests, hashlib
+import re, os, time, io, json, requests, hashlib
 from urllib.parse import urljoin, quote
 from PIL import Image
 UA={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36","Accept-Language":"ko-KR,ko;q=0.9"}
@@ -7,7 +7,8 @@ os.makedirs("probe/img",exist_ok=True)
 out=open("probe/index.tsv","w")
 def save(tag,u,ref,extra=""):
     try:
-        ir=requests.get(u,headers={**(WUA if 'wikimedia' in u else UA),"Referer":ref},timeout=30)
+        time.sleep(0.5); ir=requests.get(u,headers={**(WUA if 'wikimedia' in u else UA),"Referer":ref},timeout=40)
+        if ir.status_code!=200: out.write(f"{tag}\tHTTP{ir.status_code}\t{u}\n"); return False
         im=Image.open(io.BytesIO(ir.content)); w,h=im.size
     except Exception: return False
     if w<MINW or h<500: return False
@@ -27,7 +28,7 @@ for line in open(".github/pages.txt",encoding="utf-8"):
         else:
             api="https://unsplash.com/napi/search/photos?per_page=12&query="+quote(q)
         try:
-            rr=requests.get(api,headers=UA,timeout=30); data=rr.json()
+            time.sleep(4); rr=requests.get(api,headers=UA,timeout=60); data=rr.json()
         except Exception as e:
             out.write(f"{tag}\tFAILAPI\t{q}\t{rr.status_code if 'rr' in dir() else ''} {str(e)[:80]} {rr.text[:120] if 'rr' in dir() else ''}\n"); continue
         n=0
@@ -43,7 +44,7 @@ for line in open(".github/pages.txt",encoding="utf-8"):
         continue
     if url.startswith("commons:"):
         q=url[8:]
-        api="https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1800&gsrsearch="+quote(q)
+        api="https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1920&gsrsearch="+quote(q)
         try:
             rr=requests.get(api,headers=WUA,timeout=30); data=rr.json()
         except Exception as e: out.write(f"{tag}\tFAILAPI\t{q}\t{rr.status_code} {rr.text[:150]}\n"); continue
@@ -53,7 +54,10 @@ for line in open(".github/pages.txt",encoding="utf-8"):
             lic=md.get("LicenseShortName",{}).get("value",""); art=re.sub("<[^>]+>","",md.get("Artist",{}).get("value",""))[:80]
             u=ii.get("thumburl") or ii.get("url")
             if not u or not re.search(r'\.(jpe?g|png)$',ii.get("url",""),re.I): continue
-            if save(tag,u,ii.get("descriptionurl",""),f"{p.get('title')} | {lic} | {art}"): n+=1
+            ok=save(tag,u,ii.get("descriptionurl",""),f"{p.get('title')} | {lic} | {art}")
+            if not ok and ii.get("size",0)<12e6: ok=save(tag,ii.get("url"),ii.get("descriptionurl",""),f"{p.get('title')} | {lic} | {art}")
+            if not ok: out.write(f"{tag}\tSKIP\t{u}\n")
+            if ok: n+=1
             if n>=6: break
         if n==0: out.write(f"{tag}\tNONE\t{url}\t{str(data)[:200]}\n")
         continue
