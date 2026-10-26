@@ -7,7 +7,7 @@ os.makedirs("probe/img",exist_ok=True)
 out=open("probe/index.tsv","w")
 def save(tag,u,ref,extra=""):
     try:
-        time.sleep(0.5); ir=requests.get(u,headers={**(WUA if 'wikimedia' in u else UA),"Referer":ref},timeout=40)
+        time.sleep(6 if 'wikimedia' in u else 0.5); ir=requests.get(u,headers={**(WUA if 'wikimedia' in u else UA),"Referer":ref},timeout=40)
         if ir.status_code!=200: out.write(f"{tag}\tHTTP{ir.status_code}\t{u}\n"); return False
         im=Image.open(io.BytesIO(ir.content)); w,h=im.size
     except Exception: return False
@@ -28,7 +28,7 @@ for line in open(".github/pages.txt",encoding="utf-8"):
         else:
             api="https://unsplash.com/napi/search/photos?per_page=12&query="+quote(q)
         try:
-            time.sleep(4); rr=requests.get(api,headers=UA,timeout=60); data=rr.json()
+            time.sleep(10); rr=requests.get(api,headers=UA,timeout=60); data=rr.json()
         except Exception as e:
             out.write(f"{tag}\tFAILAPI\t{q}\t{rr.status_code if 'rr' in dir() else ''} {str(e)[:80]} {rr.text[:120] if 'rr' in dir() else ''}\n"); continue
         n=0
@@ -39,7 +39,7 @@ for line in open(".github/pages.txt",encoding="utf-8"):
                 u=(it.get("urls") or {}).get("regular","").replace("w=1080","w=1800"); ref=(it.get("links") or {}).get("html",""); extra=f"{it.get('alt_description','')} | Unsplash | {(it.get('user') or {}).get('name','')} | premium={it.get('premium')} plus={it.get('plus')}"
             if not u: continue
             if save(tag,u,ref,extra.replace("\t"," ").replace("\n"," ")): n+=1
-            if n>=6: break
+            if n>=3: break
         if n==0: out.write(f"{tag}\tNONE\t{url}\t{str(data)[:150]}\n")
         continue
     if url.startswith("commons:"):

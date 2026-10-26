@@ -1,18 +1,7 @@
-slide commons:Keuffel Esser slide rule
-slide commons:slide rule
-lab commons:laboratory pipette research
-lab commons:pharmaceutical research laboratory
-glass commons:Google Glass
-printer commons:3D printer
-printer commons:3D printing Prusa
-shelf commons:supermarket shelves products
-shelf commons:instant noodles supermarket
-proto commons:product prototype industrial design
-idea commons:brainstorming sticky notes
-factory commons:assembly line factory electronics
-flip commons:Galaxy Z Flip
-fold7 commons:Galaxy Z Fold
-buldak commons:Buldak
-buldak commons:Samyang ramen
-glass ov:google glass
-printer ov:3d printer
+flip https://news.samsung.com/global/the-future-changes-shape-express-yourself-with-galaxy-z-flip
+flip https://www.samsungmobilepress.com/press-releases/the-future-changes-shape-express-yourself-with-galaxy-z-flip
+printer ov:3d printer printing
+slide ov:slide rule
+lab ov:laboratory pipette
+shelf ov:supermarket shelf
+proto ov:industrial design prototype
