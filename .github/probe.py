@@ -10,19 +10,43 @@ def save(tag,u,ref,extra=""):
         ir=requests.get(u,headers={**(WUA if 'wikimedia' in u else UA),"Referer":ref},timeout=30)
         im=Image.open(io.BytesIO(ir.content)); w,h=im.size
     except Exception: return False
-    if w<900 or h<500: return False
+    if w<MINW or h<500: return False
     name=f"{tag}_{hashlib.md5(u.encode()).hexdigest()[:6]}.jpg"
     im=im.convert("RGB"); im.thumbnail((2000,2000)); im.save("probe/img/"+name,quality=88)
     out.write(f"{tag}\t{name}\t{w}x{h}\t{u}\t{ref}\t{extra}\n"); return True
+MINW=900
 for line in open(".github/pages.txt",encoding="utf-8"):
     line=line.strip()
     if not line or line.startswith("#"): continue
     tag,url=line.split(None,1)
+    if tag=='MINW': MINW=int(url); continue
+    if url.startswith("ov:") or url.startswith("us:"):
+        q=url[3:]
+        if url.startswith("ov:"):
+            api="https://api.openverse.org/v1/images/?page_size=12&size=large&q="+quote(q)
+        else:
+            api="https://unsplash.com/napi/search/photos?per_page=12&query="+quote(q)
+        try:
+            rr=requests.get(api,headers=UA,timeout=30); data=rr.json()
+        except Exception as e:
+            out.write(f"{tag}\tFAILAPI\t{q}\t{rr.status_code if 'rr' in dir() else ''} {str(e)[:80]} {rr.text[:120] if 'rr' in dir() else ''}\n"); continue
+        n=0
+        for it in data.get("results",[]):
+            if url.startswith("ov:"):
+                u=it.get("url"); ref=it.get("foreign_landing_url",""); extra=f"{it.get('title','')} | {it.get('license','')} {it.get('license_version','')} | {it.get('creator','')} | {it.get('source','')}"
+            else:
+                u=(it.get("urls") or {}).get("regular","").replace("w=1080","w=1800"); ref=(it.get("links") or {}).get("html",""); extra=f"{it.get('alt_description','')} | Unsplash | {(it.get('user') or {}).get('name','')} | premium={it.get('premium')} plus={it.get('plus')}"
+            if not u: continue
+            if save(tag,u,ref,extra.replace("\t"," ").replace("\n"," ")): n+=1
+            if n>=6: break
+        if n==0: out.write(f"{tag}\tNONE\t{url}\t{str(data)[:150]}\n")
+        continue
     if url.startswith("commons:"):
         q=url[8:]
         api="https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1800&gsrsearch="+quote(q)
-        try: data=requests.get(api,headers=WUA,timeout=30).json()
-        except Exception as e: out.write(f"{tag}\tFAILAPI\t{q}\t{e}\n"); continue
+        try:
+            rr=requests.get(api,headers=WUA,timeout=30); data=rr.json()
+        except Exception as e: out.write(f"{tag}\tFAILAPI\t{q}\t{rr.status_code} {rr.text[:150]}\n"); continue
         n=0
         for p in (data.get("query",{}).get("pages",{}) or {}).values():
             ii=(p.get("imageinfo") or [{}])[0]; md=ii.get("extmetadata",{})
@@ -31,7 +55,7 @@ for line in open(".github/pages.txt",encoding="utf-8"):
             if not u or not re.search(r'\.(jpe?g|png)$',ii.get("url",""),re.I): continue
             if save(tag,u,ii.get("descriptionurl",""),f"{p.get('title')} | {lic} | {art}"): n+=1
             if n>=6: break
-        if n==0: out.write(f"{tag}\tNONE\t{url}\n")
+        if n==0: out.write(f"{tag}\tNONE\t{url}\t{str(data)[:200]}\n")
         continue
     if re.search(r'\.(jpe?g|png|webp)$',url,re.I):
         if not save(tag,url,url): out.write(f"{tag}\tNONE\t{url}\n")

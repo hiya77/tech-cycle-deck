@@ -1,24 +1,27 @@
-slide commons:Keuffel Esser slide rule
-lab commons:pharmaceutical laboratory research scientist pipette
-lab commons:drug discovery laboratory
-glass commons:Google Glass
-printer commons:3D printer printing
-design commons:product design prototype sketch
-earbud commons:wireless earbuds
-earbud commons:Galaxy Buds
-shelf commons:instant noodles supermarket shelf
-shelf commons:Buldak
-flip https://news.samsung.com/global/galaxy-s20-z-flip
-flip commons:Samsung Galaxy Z Flip
-trifold https://img.kr.news.samsung.com/kr/wp-content/uploads/2025/12/02092032/Samsung_mobile_galaxyZtrifold_KV_PC.jpg
-trifold https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EA%B0%A4%EB%9F%AD%EC%8B%9C-z-%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%8F%B4%EB%93%9C-%EA%B3%B5%EA%B0%9C
-trifold https://news.samsung.com/medialibrary/kr/photo/61075
-fold7 commons:Galaxy Z Fold7
-fold7 commons:Samsung Galaxy Z Fold
+slide ov:slide rule
+slide us:slide rule
+slide commons:slide rule
+lab us:laboratory scientist pipette
+lab ov:pharmaceutical laboratory
+glass ov:Google Glass
+glass us:google glass
+printer us:3d printer
+printer ov:3D printer
+earbud us:wireless earbuds
+earbud ov:wireless earbuds
+shelf us:supermarket shelf products
+shelf us:instant noodles
+idea us:brainstorming sticky notes
+proto us:product design prototype sketch
+launch us:product launch
+factory us:factory production line
+spicy us:spicy ramen
+flip https://news.samsung.com/medialibrary/kr/photo/48058
+flip https://news.samsung.com/medialibrary/kr/photo/48059
+flip https://news.samsung.com/kr/tag/%ea%b0%a4%eb%9f%ad%ec%8b%9c-%ec%96%b8%ed%8c%a9-2020
+MINW 700
 bvar https://news.mtn.co.kr/news-detail/2023092615285053368
 bvar https://www.segye.com/newsView/20240116515186
 bvar https://www.newsis.com/view/NISX20221111_0002082675
 bvar https://www.fnnews.com/news/202607131823323610
-bvar https://www.mt.co.kr/living/2023/06/22/2023062209181935148
-idea commons:brainstorming sticky notes team
-launch commons:product launch event stage
+bvar https://www.inews24.com/view/1242004
