@@ -1,7 +1,0 @@
-flip https://news.samsung.com/global/the-future-changes-shape-express-yourself-with-galaxy-z-flip
-flip https://www.samsungmobilepress.com/press-releases/the-future-changes-shape-express-yourself-with-galaxy-z-flip
-printer ov:3d printer printing
-slide ov:slide rule
-lab ov:laboratory pipette
-shelf ov:supermarket shelf
-proto ov:industrial design prototype

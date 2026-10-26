@@ -1177,6 +1177,354 @@ body.editing .t-closing .cl-big{color:#fff;background:none}
 .slide.has-hl .wy-c.hl{box-shadow:0 0 0 2px var(--c),0 18px 40px rgba(11,22,38,.12)}
 .ev-bars{grid-template-columns:repeat(var(--n,7),1fr)}
 
+
+/* ================= v4: 디자인·애니메이션 개편 ================= */
+/* 전체 분위기: 머리말 아래 색 막대, 은은한 배경 빛, 사진 천천히 확대 */
+.slide:not(.t-cover):not(.t-closing):not(.t-why)::before{content:"";position:absolute;right:-180px;top:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(47,107,255,.10)),rgba(47,107,255,0) 68%);pointer-events:none}
+.slide:not(.t-cover):not(.t-closing):not(.t-why)::after{content:"";position:absolute;left:-200px;bottom:-260px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(18,165,148,.07),rgba(18,165,148,0) 70%);pointer-events:none}
+.slide .s-head{position:relative}
+.slide .s-head .lead{position:relative}
+.slide .s-head .lead::after{content:"";display:block;width:84px;height:5px;border-radius:3px;margin-top:14px;background:linear-gradient(90deg,var(--c-blue),var(--c-teal));transform-origin:left}
+.slide.play .s-head .lead::after{animation:grow .8s .35s cubic-bezier(.2,.7,.2,1) both}
+.slide .s-head{margin-bottom:26px}
+.ph img{transition:transform .6s ease}
+.slide.play .ph img{animation:kenburns 14s ease-out both}
+
+/* ---------- 01 왜 만드는가 ---------- */
+.slide.t-why{padding:0;background:#fff}
+.wy2{display:grid;grid-template-columns:600px 1fr;height:100%}
+.wy2-l{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.wy2-ph{position:absolute;inset:0;background:#16233A}
+.wy2-ph img{opacity:.55}
+.wy2-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,38,.55),rgba(11,22,38,.25) 40%,rgba(11,22,38,.92));pointer-events:none}
+.wy2-in{position:relative;z-index:2;height:100%;box-sizing:border-box;padding:64px 56px 56px 96px;display:flex;flex-direction:column}
+.wy2-big{font-size:64px;line-height:1.18;font-weight:800;letter-spacing:-.03em;margin:auto 0 0;white-space:pre-line;background:linear-gradient(100deg,#fff 55%,var(--mint) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.editing .wy2-big{color:#fff;background:none}
+.wy2-hint{font-size:21px;color:rgba(255,255,255,.7);margin:22px 0 0;padding-left:18px;border-left:3px solid var(--mint)}
+.wy2-cap{position:absolute;left:96px;bottom:22px;font-size:13px;color:rgba(255,255,255,.45)}
+.slide.play .wy2-big{animation:rise .9s .25s cubic-bezier(.2,.7,.2,1) both,shimmer 6s 1.2s ease-in-out infinite alternate;background-size:200% 100%}
+.wy2-r{display:flex;flex-direction:column;padding:64px 96px 50px 64px;min-width:0}
+.wy2-lead{font-size:38px;font-weight:800;letter-spacing:-.025em;margin:0 0 26px;color:var(--ink)}
+.wy2-cards{display:flex;flex-direction:column;gap:20px;flex:1;min-height:0;justify-content:center}
+.wy2-c{position:relative;display:grid;grid-template-columns:76px 1fr auto;gap:22px;align-items:center;padding:28px 28px;border-radius:20px;background:#fff;border:1.5px solid var(--line);box-shadow:0 14px 40px -20px rgba(15,26,44,.25);overflow:hidden}
+.wy2-c::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.wy2-c.on{animation:cardIn .7s cubic-bezier(.2,.8,.2,1.15) both}
+@keyframes cardIn{0%{opacity:0;transform:translateX(60px) scale(.96)}100%{opacity:1;transform:none}}
+.wy2-ic{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);position:relative}
+.wy2-ic svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wy2-ic span{position:absolute;top:-8px;right:-8px;font:600 13px var(--font-mono);background:var(--c);color:#fff;border-radius:999px;padding:2px 7px}
+.wy2-h{display:block;font-size:32px;font-weight:800;color:var(--c);letter-spacing:-.02em}
+.wy2-t{font-size:22px;color:var(--ink);margin:4px 0 10px;font-weight:600}
+.wy2-q{margin:0;padding:10px 14px;border-radius:12px;background:var(--surface)}
+.wy2-q p{margin:0;font-size:18px;color:var(--ink-2);line-height:1.5}
+.wy2-q p::before{content:"“"}.wy2-q p::after{content:"”"}
+.wy2-q cite{display:block;font-style:normal;font-size:13px;color:var(--ink-3);margin-top:4px}
+.wy2-ex{width:230px;display:flex;flex-direction:column;gap:8px}
+.wy2-exph{height:140px;border-radius:14px}
+.wy2-ex span{font-size:13px;line-height:1.4;color:var(--ink-3)}
+.wy2-bottom{display:flex;align-items:center;gap:14px;margin-top:20px;padding:20px 26px;border-radius:16px;background:var(--navy);color:#fff;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.wy2-bottom svg{width:28px;height:28px;fill:none;stroke:var(--mint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wy2-bottom.on{animation:popQ .8s .25s cubic-bezier(.2,.8,.2,1.2) both}
+@keyframes popQ{0%{opacity:0;transform:translateY(20px) scale(.97)}100%{opacity:1;transform:none}}
+.wy2-r .s-foot{margin-top:18px}
+
+/* ---------- 02 혁신의 터널 ---------- */
+.funnel2{display:grid;grid-template-columns:1fr 470px;gap:30px;align-items:stretch}
+.tn2{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px 28px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px -30px rgba(15,26,44,.35)}
+.tn2-svg{width:100%;height:auto;overflow:visible}
+.tn2-shape{stroke:none}
+.tn2-edge{fill:none;stroke:var(--c-blue);stroke-opacity:.35;stroke-width:2;stroke-dasharray:1;stroke-dashoffset:0}
+.slide.play .tn2-edge{animation:draw 1.4s .2s ease-out both}
+.tn-p{fill:var(--c-blue);fill-opacity:.55}
+.tn-p.win{fill:var(--c-teal);fill-opacity:1;filter:drop-shadow(0 0 6px rgba(18,165,148,.8))}
+.tn2-c{fill:var(--c-blue);fill-opacity:.85;stroke:#fff;stroke-width:3}
+.tn2-node:last-of-type .tn2-c{fill:var(--c-teal);fill-opacity:1}
+.tn2-node{opacity:1;transform-box:fill-box;transform-origin:center}
+.slide.play .tn2-node{animation:nodePop .6s cubic-bezier(.2,.8,.2,1.4) both;animation-delay:calc(.7s + var(--k) * .55s)}
+@keyframes nodePop{0%{opacity:0;transform:scale(.2)}100%{opacity:1;transform:none}}
+.tn2-ring{fill:none;stroke:var(--c-teal);stroke-width:2.5;transform-box:fill-box;transform-origin:center;animation:pulse 2s 2.6s ease-out infinite}
+.tn2-glow{opacity:.9}
+.tn2-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0;padding:0;list-style:none}
+.tn2-steps li{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 8px;border-radius:14px;background:var(--surface);position:relative}
+.tn2-steps li:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-size:16px}
+.tn2-steps b{font:700 30px var(--font-display);color:var(--ink);letter-spacing:-.02em}
+.tn2-steps span{font-size:17px;color:var(--ink-2)}
+.tn2-steps li:last-child{background:var(--teal-soft)}
+.tn2-steps li:last-child b{color:var(--c-teal)}
+.slide.play .tn2-steps li{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.8s + var(--k) * .55s)}
+.tn2-r{display:flex;flex-direction:column;gap:14px;min-width:0}
+.tn2-ph{position:relative;height:118px;border-radius:18px;overflow:hidden}
+.tn2-phi{position:absolute;inset:0}
+.tn2-ph span{position:absolute;left:12px;bottom:10px;font-size:13px;color:#fff;background:rgba(11,22,38,.55);padding:4px 10px;border-radius:999px}
+.tn2-r .nw{margin:0}
+.tn2-r .fn-bottom{margin-top:auto}
+
+/* ---------- 02 캐즘 ---------- */
+.chasm{gap:16px}
+.cz-wrap{position:relative;flex:1;min-height:0;padding:10px 20px 0;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px -30px rgba(15,26,44,.35)}
+.cz-svg{display:block;width:100%;height:auto;max-height:350px}
+.cz-seg{fill:var(--c);fill-opacity:.82;stroke:#fff;stroke-width:2}
+.slide.play .cz-seg{animation:segIn .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.3s + var(--k) * .26s);transform-origin:50% 300px;transform-box:view-box}
+@keyframes segIn{0%{opacity:0;transform:scaleY(0)}100%{opacity:1;transform:none}}
+.cz-cum{fill:none;stroke:var(--ink-3);stroke-width:2;stroke-dasharray:6 6;opacity:.5}
+.cz-axis{stroke:var(--line-2);stroke-width:2}
+.cz-left,.cz-right{transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.slide.cz-open .cz-left{animation:shake .5s .2s ease-in-out 2}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-4px) rotate(-.4deg)}75%{transform:translateX(3px) rotate(.3deg)}}
+.cz-gaprect{fill:url(#none);fill:var(--navy);opacity:0;transition:opacity .6s}
+.slide.cz-open .cz-gaprect{opacity:.92}
+.cz-crack{fill:none;stroke:var(--c-coral);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s .2s}
+.slide.cz-open .cz-crack{stroke-dashoffset:0}
+.cz-gt{font:800 17px var(--font-display);fill:var(--c-coral);text-anchor:middle;letter-spacing:.04em;opacity:0;transition:opacity .5s .5s}
+.slide.cz-open .cz-gt{opacity:1}
+.cz-labels{position:relative;height:84px;margin:0 20px}
+.cz-lb{position:absolute;top:4px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1px}
+.cz-lb b{font:800 26px var(--font-display);color:var(--c)}
+.cz-lb .en{font-size:15px;font-weight:600;color:var(--ink)}
+.cz-lb .ko{font-size:14px;color:var(--ink-3)}
+.slide.play .cz-lb{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.6s + var(--k) * .26s)}
+.cz-fail{position:absolute;left:36px;top:18px;width:360px;padding:16px 18px;border-radius:18px;background:#fff;border:2px solid var(--c-coral);box-shadow:0 20px 50px -24px rgba(242,84,91,.55)}
+.cz-ft{display:flex;align-items:center;gap:8px;font-size:22px;color:var(--c-coral);font-weight:800}
+.cz-ft svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cz-ex{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cz-ex figure{margin:0;display:flex;flex-direction:column;gap:6px}
+.cz-exph{height:92px;border-radius:12px;background:var(--surface)}
+.cz-ex figcaption{font-size:15px;font-weight:700;color:var(--ink);text-align:center}
+.cz-fs{display:block;margin-top:8px;font-size:13px;color:var(--ink-3)}
+.cz-ok{position:absolute;right:40px;top:26px}
+.cz-ok b{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:800;color:var(--c-teal);padding:10px 18px;border-radius:999px;background:var(--teal-soft)}
+.cz-ok svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linejoin:round}
+.cz-chasm-lb{position:absolute;top:150px;transform:translateX(-50%);writing-mode:horizontal-tb;font-size:16px;font-weight:800;color:#fff;background:var(--c-coral);padding:6px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(242,84,91,.8)}
+.cz-fail.on{animation:cardIn .7s .25s cubic-bezier(.2,.8,.2,1.1) both}
+.cz-bottom{display:flex;align-items:center;gap:14px;padding:16px 24px;border-radius:16px;background:var(--navy);color:#fff;font-size:22px;font-weight:700}
+.cz-bottom svg{width:24px;height:24px;fill:none;stroke:var(--mint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- 03 세부 절차 예시 ---------- */
+.example{gap:16px}
+.ex-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr 1.15fr;gap:18px;flex:1;min-height:0}
+.ex-col{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:20px;background:var(--surface);position:relative;min-width:0}
+.ex-col:not(:last-child)::after{content:"";position:absolute;right:-15px;top:50%;width:12px;height:12px;border-top:3px solid var(--line-2);border-right:3px solid var(--line-2);transform:translateY(-50%) rotate(45deg)}
+.ex-h{display:flex;gap:12px;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ex-n{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--c-blue);color:#fff;font:700 17px var(--font-mono)}
+.ex-h b{display:block;font-size:20px;font-weight:800}
+.ex-h span{font-size:14px;color:var(--ink-3)}
+.ex-voice{position:relative;display:flex;gap:10px;align-items:center;padding:14px 16px;border-radius:16px 16px 16px 4px;background:#fff;font-size:18px;font-weight:600;color:var(--ink);box-shadow:0 8px 24px -16px rgba(15,26,44,.4);min-height:64px;box-sizing:border-box}
+.ex-voice svg{width:24px;height:24px;flex:none;fill:none;stroke:var(--c-blue);stroke-width:2;stroke-linejoin:round}
+.slide.play .ex-voice{animation:bubble .6s cubic-bezier(.2,.8,.2,1.3) both;animation-delay:calc(.5s + var(--k) * .3s)}
+@keyframes bubble{0%{opacity:0;transform:scale(.6) translateY(10px)}100%{opacity:1;transform:none}}
+.ex-spec{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:#fff;border-left:5px solid var(--c);min-height:64px;box-sizing:border-box}
+.ex-spec b{font-size:17px;color:var(--c);font-weight:800}
+.ex-spec span{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.ex-spec em{font:600 13px var(--font-mono);font-style:normal;color:var(--ink-3);background:var(--surface);border-radius:999px;padding:2px 8px}
+.frag.on .ex-spec,.frag.on .ex-con{animation:cardIn .55s cubic-bezier(.2,.8,.2,1.1) both;animation-delay:calc(var(--k) * .14s)}
+.ex-con{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:#fff;min-height:64px;box-sizing:border-box;border:2px solid transparent}
+.ex-cn{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;font:800 20px var(--font-display);background:var(--raise);color:var(--ink-2)}
+.ex-con b{display:block;font-size:18px}
+.ex-con span{font-size:14px;color:var(--ink-2)}
+.ex-score{display:flex;flex-direction:column;gap:14px;padding-top:4px}
+.ex-bar{display:grid;grid-template-columns:28px 1fr 44px;gap:10px;align-items:center;position:relative;min-height:50px}
+.ex-bn{font:800 20px var(--font-display);color:var(--ink-2)}
+.ex-track{height:26px;border-radius:8px;background:#fff;overflow:hidden}
+.ex-track i{display:block;height:100%;width:var(--w);border-radius:8px;background:var(--line-2);transform-origin:left;transform:scaleX(0)}
+.frag.on .ex-track i{animation:grow .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.2s + var(--k) * .18s)}
+.ex-bar b{font:700 22px var(--font-mono);color:var(--ink-2)}
+.ex-bar.best .ex-track i{background:linear-gradient(90deg,var(--c-blue),var(--c-teal))}
+.ex-bar.best b,.ex-bar.best .ex-bn{color:var(--c-blue)}
+.ex-crown{position:absolute;right:-6px;top:-18px;color:var(--c-orange)}
+.ex-crown svg{width:28px;height:28px;fill:color-mix(in srgb,var(--c-orange) 25%,#fff);stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.frag.on .ex-crown{animation:pop .5s 1.1s cubic-bezier(.2,.8,.2,1.6) both}
+.frag.on ~ .ex-col .ex-con.best,.ex-grid:has(.ex-col.frag.on:last-child) .ex-con.best{border-color:var(--c-blue);box-shadow:0 10px 30px -16px rgba(47,107,255,.6)}
+.ex-grid:has(.ex-col.frag.on:last-child) .ex-con.best .ex-cn{background:var(--c-blue);color:#fff}
+.ex-calc{margin:auto 0 0;font:500 14px var(--font-mono);color:var(--ink-2);background:#fff;border-radius:10px;padding:8px 10px}
+.ex-foot{display:flex;gap:16px;align-items:center}
+.ex-next{display:flex;gap:12px;align-items:center;padding:14px 20px;border-radius:14px;background:var(--navy);color:#fff;font-size:19px;font-weight:700;flex:1}
+.ex-next svg{width:22px;height:22px;fill:none;stroke:var(--mint);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ex-note{display:flex;gap:8px;align-items:center;margin:0;font-size:14px;color:var(--ink-3);max-width:420px}
+.ex-note svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2}
+
+/* ---------- 04 불닭 그 후 ① 지도 ---------- */
+.world{display:grid;grid-template-columns:400px 1fr;gap:26px}
+.wl-l{display:flex;flex-direction:column;gap:16px;min-width:0}
+.wl-line{padding:20px 22px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px -30px rgba(15,26,44,.35)}
+.wl-tl{list-style:none;margin:12px 0 0;padding:0;position:relative}
+.wl-tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--c-coral),var(--c-orange))}
+.wl-tl li{position:relative;display:flex;flex-direction:column;gap:2px;padding:0 0 16px 30px}
+.wl-tl li::before{content:"";position:absolute;left:0;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--c-coral)}
+.wl-tl li:last-child{padding-bottom:0}
+.wl-when{font:600 14px var(--font-mono);color:var(--c-coral)}
+.wl-tl li>div{display:flex;flex-direction:column;gap:2px}
+.wl-tl b{font-size:20px;font-weight:800}
+.wl-tl li span:not(.wl-when){font-size:15px;color:var(--ink-2)}
+.frag.on .wl-tl li{animation:cardIn .5s cubic-bezier(.2,.8,.2,1.1) both;animation-delay:calc(var(--k) * .18s)}
+.wl-chips{display:flex;flex-wrap:wrap;gap:8px}
+.wl-chips span{font-size:16px;font-weight:700;padding:8px 14px;border-radius:999px;background:color-mix(in srgb,var(--c-coral) 10%,#fff);color:var(--c-coral);border:1px solid color-mix(in srgb,var(--c-coral) 30%,#fff)}
+.frag.on .wl-chips span,.wl-chips.on span{animation:pop .45s cubic-bezier(.2,.8,.2,1.5) both;animation-delay:calc(.4s + var(--k) * .1s)}
+.wl-map{position:relative;padding:18px 20px;border-radius:20px;background:linear-gradient(160deg,#0E1B30,#13284A);color:#fff;min-width:0}
+.wl-map .kicker{color:var(--mint)}
+.wm{position:relative;margin-top:8px}
+.wm-svg{display:block;width:100%;height:auto}
+.wm-base{fill:none;stroke:rgba(255,255,255,.2);stroke-width:1.15;stroke-linecap:round}
+.wm-hl path{fill:none;stroke:var(--c-coral);stroke-width:1.25;stroke-linecap:round;opacity:.75}
+.wm-lead{stroke:rgba(255,255,255,.4);stroke-width:.18;stroke-dasharray:.6 .5}
+.wm-pin{fill:#fff;stroke:var(--c-coral);stroke-width:.5}
+.wm-pin.home{fill:var(--mint);stroke:#fff}
+.wm-pulse{fill:none;stroke:var(--c-coral);stroke-width:.35;transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite;animation-delay:calc(var(--k) * .3s)}
+.wm-ret{fill:none;stroke:var(--c-coral);stroke-width:.5;stroke-dasharray:1.4 1;animation:dashflow 1.6s linear infinite}
+.wm-lb{position:absolute;max-width:190px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.96);color:var(--ink);box-shadow:0 10px 24px -12px rgba(0,0,0,.6);transform:translateY(-2px)}
+.wm-lb.ar{transform:translate(-100%,-2px)}
+.wm-lb b{display:block;font-size:15px;font-weight:800;color:var(--c-coral)}
+.wm-lb span{display:block;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.wm-lb.home{background:var(--mint)}
+.wm-lb.home b{color:var(--navy)}
+.wm-lb.on{animation:pop .45s cubic-bezier(.2,.8,.2,1.5) both;animation-delay:calc(var(--k) * .12s)}
+.wm-ret-lb{position:absolute;left:0;bottom:0;display:flex;gap:8px;align-items:center;max-width:62%;font-size:15px;font-weight:700;color:#fff;background:rgba(242,84,91,.9);padding:8px 14px;border-radius:12px}
+.wm-ret-lb svg{width:18px;height:18px;flex:none;fill:none;stroke:#fff;stroke-width:2.2}
+.wl-cav{margin:10px 0 0}
+
+/* ---------- 04 불닭 그 후 ② 숫자 ---------- */
+.growth{gap:16px}
+.gr-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1;min-height:0}
+.gr-card{display:flex;flex-direction:column;gap:8px;padding:18px 22px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px -30px rgba(15,26,44,.35);min-height:0}
+.gr-line{width:100%;height:auto;max-height:250px;overflow:visible}
+.gr-path{fill:none;stroke:var(--c-coral);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.slide.play .gr-path{animation:draw 1.8s .4s cubic-bezier(.4,0,.2,1) both}
+.slide.play .gr-area{animation:fadein 1s 1.6s both}
+.gr-pt circle{fill:#fff;stroke:var(--c-coral);stroke-width:3.5}
+.gr-pt:last-child circle{fill:var(--c-coral)}
+.slide.play .gr-pt{animation:pop .4s cubic-bezier(.2,.8,.2,1.6) both;animation-delay:calc(.5s + var(--k) * .28s)}
+.gr-v{font:700 17px var(--font-display);fill:var(--ink);text-anchor:middle}
+.gr-v.last{font-size:24px;fill:var(--c-coral)}
+.gr-x{font-size:13px;fill:var(--ink-3);text-anchor:middle}
+.gr-note{margin:auto 0 0;font-size:13px;color:var(--ink-3)}
+.gr-bars{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:end;height:250px}
+.gr-b{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.gr-bv{font:700 14px var(--font-display);color:var(--ink-2);white-space:nowrap}
+.gr-b.last .gr-bv{font-size:17px;color:var(--c-orange)}
+.gr-bar{position:relative;width:100%;height:calc(var(--h) * 1.7px);border-radius:10px 10px 4px 4px;overflow:hidden}
+.gr-bar i{position:absolute;inset:0;background:color-mix(in srgb,var(--c-orange) 55%,#fff);transform-origin:bottom}
+.gr-b.last .gr-bar i{background:linear-gradient(180deg,var(--c-orange),var(--c-coral))}
+.frag.on .gr-bar i{animation:evGrow .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--k) * .14s)}
+.gr-bar em{position:absolute;left:0;right:0;top:8px;text-align:center;font:700 15px var(--font-mono);font-style:normal;color:#fff}
+.gr-bx{font-size:14px;color:var(--ink-3)}
+.gr-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gr-f{display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:16px;background:var(--surface);border-left:5px solid var(--c)}
+.gr-fi{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:#fff;color:var(--c)}
+.gr-fi svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.gr-fw{display:block;font:600 13px var(--font-mono);color:var(--c)}
+.gr-f b{display:block;font-size:18px;font-weight:800}
+.gr-f div>span:last-child{font-size:14px;color:var(--ink-2)}
+.frag.on .gr-f{animation:cardIn .55s cubic-bezier(.2,.8,.2,1.1) both;animation-delay:calc(var(--k) * .15s)}
+
+/* ---------- 04 폴드 그 후 ---------- */
+.foldgen{display:grid;grid-template-columns:1fr 430px;gap:24px}
+.fg-l{position:relative;display:flex;flex-direction:column;padding:18px 22px 10px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px -30px rgba(15,26,44,.35);min-width:0}
+.fg-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.fg-kpi{display:flex;align-items:center;gap:12px}
+.fg-kpi span{display:flex;align-items:baseline;gap:3px}
+.fg-kpi b{font:800 30px var(--font-display);color:var(--ink-3);letter-spacing:-.02em}
+.fg-kpi .to b{font-size:42px;color:var(--c-blue)}
+.fg-kpi small{font-size:15px;color:var(--ink-3)}
+.fg-kpi svg{width:26px;height:26px;fill:none;stroke:var(--ink-3);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fg-kpi em{font-style:normal;font-size:16px;font-weight:800;color:#fff;background:linear-gradient(90deg,var(--c-blue),var(--c-teal));padding:6px 12px;border-radius:999px}
+.fg-svg{width:100%;height:auto;max-height:360px;overflow:visible}
+.fg-ref{stroke:var(--c-coral);stroke-width:1.5;stroke-dasharray:6 6;opacity:.7}
+.fg-reft{font-size:13px;fill:var(--c-coral);text-anchor:end;font-weight:700}
+.fg-base{stroke:var(--line-2);stroke-width:2}
+.fg-slab{fill:color-mix(in srgb,var(--c-blue) calc(30% + var(--t) * 60%),#C9D2E0);transform-box:fill-box;transform-origin:bottom;transition:fill .3s,filter .3s}
+.fg-m:first-child .fg-slab{fill:#B7C0CF}
+.slide.play .fg-slab{animation:evGrow .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.3s + var(--k) * .16s)}
+.fg-hinge{stroke:rgba(255,255,255,.7);stroke-width:2;stroke-linecap:round}
+.fg-v{font:700 17px var(--font-mono);fill:var(--ink);text-anchor:middle}
+.fg-m:last-child .fg-v{font-size:21px;fill:var(--c-blue)}
+.fg-n{font-size:16px;font-weight:700;fill:var(--ink);text-anchor:middle}
+.fg-s{font-size:12.5px;fill:var(--ink-3);text-anchor:middle}
+.fg-curve{fill:none;stroke:var(--c-teal);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:0;opacity:.7}
+.slide.play .fg-curve{animation:draw 1.4s 1.5s ease-out both}
+.fg-m{transition:opacity .3s}
+.foldgen:has(.fg-m.on) .fg-m:not(.on){opacity:.35}
+.fg-m.on .fg-slab{fill:var(--c-orange);filter:drop-shadow(0 6px 12px rgba(255,138,43,.45))}
+.fg-chart{position:relative}
+.fg-tags{position:absolute;left:0;right:0;top:0;height:0}
+.fg-tag{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 12px;border-radius:12px;background:var(--navy);color:#fff;white-space:nowrap;box-shadow:0 12px 26px -12px rgba(11,22,38,.7)}
+.fg-tag::after{content:"";position:absolute;bottom:-7px;left:50%;width:12px;height:12px;background:var(--navy);transform:translateX(-50%) rotate(45deg)}
+.fg-tag b{font-size:15px;color:var(--c-orange)}
+.fg-tag span{font-size:14px}
+.fg-tag{display:none}
+.fg-tag.cur{display:flex;animation:pop .45s cubic-bezier(.2,.8,.2,1.5) both}
+.slide.show-all .fg-tags{position:static;height:auto;display:flex;gap:10px;justify-content:center;margin-top:8px}
+.slide.show-all .fg-tag{display:flex;position:relative;left:auto!important;transform:none;top:0}
+.slide.show-all .fg-tag::after{display:none}
+.fg-r{display:flex;flex-direction:column;gap:12px;min-width:0}
+.fg-new{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:10px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 34px -24px rgba(15,26,44,.45)}
+.fg-np{height:96px;border-radius:12px;background:var(--surface)}
+.fg-nw{display:block;font:600 13px var(--font-mono);color:var(--c-violet)}
+.fg-new b{display:block;font-size:19px;font-weight:800}
+.fg-new div>span:last-child{font-size:14px;color:var(--ink-2);line-height:1.4}
+.fg-new.on{animation:cardIn .6s cubic-bezier(.2,.8,.2,1.1) both;animation-delay:calc(var(--k) * .15s)}
+.fg-lesson{margin-top:14px}
+
+/* ---------- 05 결론 ---------- */
+.concl2{gap:26px;justify-content:center}
+.cn2-w{position:relative;padding:26px 28px 14px;border-radius:22px;background:linear-gradient(160deg,#0E1B30,#152C52);color:#fff}
+.cn2-track{position:absolute;left:calc(28px + (100% - 56px) / 12);right:calc(28px + (100% - 56px) / 12);top:68px;height:5px;border-radius:2px;background:rgba(255,255,255,.14)}
+.cn2-fill{position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,var(--c-blue),var(--c-teal),var(--c-orange));transform-origin:left}
+.slide.play .cn2-fill{animation:grow 2.2s .3s cubic-bezier(.4,0,.2,1) both}
+.cn2-dot{position:absolute;top:50%;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(127,224,210,.25),0 0 18px 4px rgba(127,224,210,.8);opacity:0}
+.slide.play .cn2-dot{animation:cnDot 3.2s 2.6s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes cnDot{0%{left:0;opacity:0}8%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+.cn2-chain{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n),1fr);gap:10px}
+.cn2-chain li{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.cn2-n{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font:800 34px var(--font-display);background:#0E1B30;border:3px solid var(--c);color:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.04)}
+.slide.play .cn2-n{animation:cnPop .7s cubic-bezier(.2,.8,.2,1.5) both,cnLit .6s both;animation-delay:calc(.3s + var(--k) * .36s),calc(.5s + var(--k) * .36s)}
+@keyframes cnPop{0%{opacity:0;transform:scale(.3)}100%{opacity:1;transform:none}}
+@keyframes cnLit{to{background:var(--c)}}
+.cn2-chain li .cn2-n{background:var(--c)}
+.cn2-t{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.slide.play .cn2-t{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.45s + var(--k) * .36s)}
+.cn2-back{position:relative;margin:4px 0 0;height:66px}
+.cn2-back svg{position:absolute;left:0;right:0;top:0;width:100%;height:46px}
+.cn2-bp{fill:none;stroke:var(--c-coral);stroke-width:3;stroke-dasharray:9 9;vector-effect:non-scaling-stroke;animation:dashflow 1.2s linear infinite reverse}
+.cn2-ah{fill:none;stroke:var(--c-coral);stroke-width:3;vector-effect:non-scaling-stroke}
+.cn2-back>span{position:absolute;left:50%;top:26px;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:#13284A;padding:4px 14px;border-radius:999px;font-size:16px;font-weight:700;color:#FFB4B8;white-space:nowrap}
+.cn2-back svg+span svg,.cn2-back>span svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2}
+.cn2-pts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cn2-p{position:relative;display:flex;flex-direction:column;gap:10px;padding:28px 28px 30px;border-radius:20px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);box-shadow:0 18px 44px -26px rgba(15,26,44,.45)}
+.cn2-pn{position:absolute;right:18px;top:12px;font:800 44px var(--font-display);color:color-mix(in srgb,var(--c) 18%,#fff)}
+.cn2-p b{font-size:27px;font-weight:800;color:var(--c)}
+.cn2-p span:last-child{font-size:20px;line-height:1.5;color:var(--ink)}
+.cn2-p.on{animation:cnCard .7s cubic-bezier(.2,.8,.2,1.25) both}
+@keyframes cnCard{0%{opacity:0;transform:translateY(40px) scale(.94)}100%{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion: reduce){
+  .tn2-parts,.cn2-dot,.wm-pulse{display:none}
+  .slide.play .tn2-node,.slide.play .tn2-steps li,.slide.play .cz-seg,.slide.play .cz-lb,.slide.play .gr-path,.slide.play .gr-pt,.slide.play .fg-slab,.slide.play .cn2-n,.slide.play .cn2-t,.slide.play .cn2-fill,.slide.play .ex-voice{animation:none!important}
+}
+@media print{
+  .tn2-parts,.cn2-dot{display:none}
+  .fg-tags{position:static!important;height:auto!important;display:flex;gap:10px;justify-content:center;margin-top:8px}
+  .fg-tag{display:flex!important;position:relative!important;left:auto!important;transform:none!important}
+  .fg-tag::after{display:none}
+}
+
+/* 머리말 오른쪽 사진 */
+.hd-ph{position:absolute;right:0;top:-8px;width:300px;height:124px;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px -22px rgba(15,26,44,.55)}
+.hd-phi{position:absolute;inset:0}
+.hd-ph span{position:absolute;left:10px;bottom:8px;right:10px;font-size:12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,22,38,.6),rgba(11,22,38,0) 55%);pointer-events:none}
+.hd-ph span{z-index:2}
+.sumt thead th .th-ph{display:inline-block;vertical-align:middle;width:40px;height:40px;border-radius:10px;margin-right:10px}
+.sumt thead th span{vertical-align:middle}
+
+.wy2-r{position:relative}
+.wy2-r::before{content:"?";position:absolute;right:120px;top:120px;font:900 420px/1 var(--font-display);color:var(--surface);transition:opacity .5s;pointer-events:none}
+.wy2-r:has(.wy2-c.on)::before{opacity:0}
+.wy2-r>*{position:relative}
+.slide.show-all .fg-chart{display:flex;flex-direction:column-reverse}
+.slide.show-all .fg-tags{margin:4px 0 6px}
+.slide.show-all .fg-tag{padding:5px 10px}
+.slide.show-all .fg-svg{max-height:300px}
+@media print{.fg-chart{display:flex;flex-direction:column-reverse}.fg-svg{max-height:300px}}
+
 </style>
 </head><body>
 
@@ -1234,13 +1582,25 @@ body.editing .t-closing .cl-big{color:#fff;background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "npd-deck.v2";
-/* 사진: 언론·기업 보도사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
+const STORE_KEY = "npd-deck.v4";
+/* 사진: 언론·기업 보도사진과 위키미디어 공용 사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
 const P_BULDAK = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975724_web.jpg";
 const P_BULDAK2 = "https://image.fnnews.com/resource/media/image/2025/06/11/202506111003480912_l.jpg";
 const P_FACTORY = "https://thumb.mt.co.kr/cdn-cgi/image/f=avif/21/2025/06/2025061114381061331_4.jpg";
 const P_FOLD = "https://img.kr.news.samsung.com/kr/wp-content/uploads/2019/09/0905-pr-fold-3.jpg";
 const P_FOLD2 = "https://img.kr.news.samsung.com/kr/wp-content/uploads/2019/09/0905-pr-fold-1.jpg";
+const P_GLASS = "https://upload.wikimedia.org/wikipedia/commons/b/be/Google_Glass_with_frame.jpg";
+const P_PRINTER = "https://upload.wikimedia.org/wikipedia/commons/b/b8/Felix_3D_Printer_-_Printing_Head.JPG";
+const P_SLIDE = "https://upload.wikimedia.org/wikipedia/commons/4/43/1967_model_A_W_Faber_Castell_1_54_Darmstadt_slide_rule_made_in_Germany.jpg";
+
+const P_LAB = "https://upload.wikimedia.org/wikipedia/commons/5/5a/Laboratory_pipettes.jpg";
+const P_BUDS = "https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23154817/thumb_PC.jpg";
+const P_BULDAK_POP = "https://img1.newsis.com/2022/11/11/NISI20221111_0001127301_web.jpg";
+const P_BULDAK_SHOP = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975726_web.jpg";
+const P_MIRYANG2 = "https://thumb.mt.co.kr/cdn-cgi/image/f=avif/21/2025/06/2025061114381061331_1.jpg";
+const P_FLIP = "https://img.global.news.samsung.com/global/wp-content/uploads/2020/02/Press-Thumbnail-1000x563-Galaxy-Z-Flip.jpg";
+const P_TRIFOLD = "https://img.kr.news.samsung.com/kr/wp-content/uploads/2025/12/02091913/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EB%AA%A8%EB%B0%94%EC%9D%BC-%EA%B0%A4%EB%9F%AD%EC%8B%9CZ%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%8F%B4%EB%93%9C-%EA%B3%B5%EA%B0%9C-1.jpg";
+const P_FOLD8 = "https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/22141046/Galaxy-Z-Fold8_PC_1022.jpg";
 
 /* 내용 출처 (대본 끝에 목록으로 붙는다) */
 const U_BULDAK = "https://www.newsis.com/view/NISX20220415_0001834542";
@@ -1256,9 +1616,17 @@ const U_BULDAK80 = "https://sateconomy.co.kr/news/view/1065588939427354";
 const U_FOLD_HIST = "https://news.samsung.com/kr/갤럭시-히스토리-①-z-폴드-더욱-얇게-빈틈없이-그리";
 const U_FOLD3 = "https://m.seoul.co.kr/news/2021/08/11/20210811500149";
 const U_FOLD7 = "https://www.dailian.co.kr/news/view/1520379";
+const U_SEGYE = "https://www.segye.com/newsView/20240116515186";
+const U_MTN = "https://news.mtn.co.kr/news-detail/2023092615285053368";
+const U_NEWSIS_K = "https://www.newsis.com/view/NISX20221111_0002082675";
+const U_MT_REV = "https://www.mt.co.kr/living/2025/12/04/2025120217480910864";
+const U_FN_REV = "https://www.fnnews.com/news/202607131823323610";
+const U_FLIP = "https://www.inews24.com/view/1242004";
+const U_TRIFOLD = "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EA%B0%A4%EB%9F%AD%EC%8B%9C-z-%ED%8A%B8%EB%9D%BC%EC%9D%B4%ED%8F%B4%EB%93%9C-%EA%B3%B5%EA%B0%9C";
+const U_FOLD8 = "https://www.fnnews.com/news/202607221825230263";
 const SOURCES = [
   { group: "이론", items: [
-    { t: "제5강 혁신의 원천 및 유형과 패턴 (강의자료)", d: "9장 소비자에 의한 혁신(제조업자는 판매로부터 이익을 얻기 위해 혁신), 29장 핵심역량 소실혁신(Keuffel & Esser)" },
+    { t: "제5강 혁신의 원천 및 유형과 패턴 (강의자료)", d: "9장 소비자에 의한 혁신(제조업자는 판매로부터 이익을 얻기 위해 혁신), 29장 핵심역량 소실혁신(Keuffel & Esser), 42장 기술의 확산 곡선 & Chasm" },
     { t: "제6강 표준경쟁, 모듈화 그리고 플랫폼 경쟁 (강의자료)", d: "9장·12장 왜 지배적 디자인이 선택되는가(동태적 경쟁, 도태, 새로운 제품과 이윤)" },
     { t: "제5강 경영프로젝트의 개발 (강의자료)", d: "31장 기술혁신 단계·혁신의 터널, 35장 신제품 개발 단계와 단계별 핵심 활동, 36장 신제품 개발 세부 절차, 37장 제품 컨셉 선정·점수 매트릭스, 65장 토론 문제 4번" }
   ] },
@@ -1267,7 +1635,12 @@ const SOURCES = [
     { t: "아시아경제 「까르보불닭, 편의점 컵라면 1위 명단 바꿨다…농심 ‘육개장사발면’ 굴욕」", d: "2018.04.03", u: U_CARBO },
     { t: "데일리안 「삼양식품, 밀양공장 본격 가동 “해외사업 박차”」", d: "2022.05.02", u: U_MIRYANG },
     { t: "데일리안 「삼양식품, 불닭볶음면 출시 10년만에 40억개 판매」", d: "2022.08.01", u: U_BULDAK40 },
-    { t: "토요경제 「불닭볶음면 누적 판매 80억개 돌파…K-푸드 대표 글로벌 브랜드로」", d: "2025.09.24", u: U_BULDAK80 }
+    { t: "뉴시스 「[K-푸드 해외공략④]한국의 매운맛 세계에 보여준 K-라면 ‘불닭볶음면’」", d: "2022.11.13", u: U_NEWSIS_K },
+    { t: "머니투데이방송(MTN) 「글로벌 불닭의 진화...이번엔 ‘똠얌’ 볶음탕면으로 해외 공략」", d: "2023.09.27", u: U_MTN },
+    { t: "세계일보 「중독성 강한 매운맛에 국내 넘어 해외로」", d: "2024.01.16", u: U_SEGYE },
+    { t: "토요경제 「불닭볶음면 누적 판매 80억개 돌파…K-푸드 대표 글로벌 브랜드로」", d: "2025.09.24", u: U_BULDAK80 },
+    { t: "머니투데이 「‘불닭’ 해외 매출만 1.3조..삼양식품 중국·미주 찍고 유럽 공략 가속화」", d: "2025.12.04", u: U_MT_REV },
+    { t: "파이낸셜뉴스 「해외서 먼저 뜨고 국내로… 식품업계 ‘역출시’ 늘어」", d: "2026.07.13", u: U_FN_REV }
   ] },
   { group: "사례 2 · 갤럭시 폴드", items: [
     { t: "서울신문 「10번째 갤럭시 공개 현장…호스트는 ‘S10’ 주인공은 ‘폴드’」", d: "2019.02.21", u: U_FOLD_REVEAL },
@@ -1275,24 +1648,34 @@ const SOURCES = [
     { t: "Samsung Newsroom (미국) 「Galaxy Fold Ready for Launch starting from September」", d: "2019.07.24 (미국 시간)", u: U_FOLD_FIX },
     { t: "바이라인네트워크 「갤럭시 폴드 문제점 보완해 9월 출시」", d: "2019.07.25", u: U_FOLD_FIX_KR },
     { t: "삼성전자 뉴스룸 「삼성전자, 새로운 모바일 카테고리를 여는 ‘갤럭시 폴드 5G’ 국내 출시」", d: "2019.09.05", u: U_FOLD_LAUNCH },
+    { t: "아이뉴스24 「[갤럭시 언팩] 베일 벗은 갤럭시 Z플립…‘갤럭시 Z’ 시리즈 첫 제품」", d: "2020.02.12", u: U_FLIP },
     { t: "서울신문 「‘숨김 카메라·방수·S펜’…갤폴드3, ‘최초 3종 세트’로 무장했다」", d: "2021.08.11", u: U_FOLD3 },
     { t: "삼성전자 뉴스룸 「[갤럭시 히스토리 ①] Z 폴드: 더욱 얇게, 빈틈없이 그리고 단단하게」", d: "2024.06.27", u: U_FOLD_HIST },
-    { t: "데일리안 「“5년 만에 절반 두께” 폴더블 단점 정면 돌파한 ‘갤럭시Z폴드7’」", d: "2025.07.09", u: U_FOLD7 }
+    { t: "데일리안 「“5년 만에 절반 두께” 폴더블 단점 정면 돌파한 ‘갤럭시Z폴드7’」", d: "2025.07.09", u: U_FOLD7 },
+    { t: "삼성전자 뉴스룸 「삼성전자, ‘갤럭시 Z 트라이폴드’ 공개」", d: "2025.12.02", u: U_TRIFOLD },
+    { t: "파이낸셜뉴스 「‘4대 3 화면비’ 갤Z폴드8, 여권처럼 넓게 펼쳐 [갤럭시 언팩 2026]」", d: "2026.07.22", u: U_FOLD8 }
+  ] },
+  { group: "사진", items: [
+    { t: "뉴시스, 파이낸셜뉴스, 머니투데이, 삼성전자 뉴스룸 보도사진", d: "각 슬라이드 사진 아래 표시" },
+    { t: "Google Glass with frame (Mikepanhu, CC BY-SA 3.0, 위키미디어 공용)", d: "4장", u: "https://commons.wikimedia.org/w/index.php?curid=32348020" },
+    { t: "Felix 3D Printer - Printing Head (Jonathan Juursema, CC BY-SA 3.0, 위키미디어 공용)", d: "4장", u: "https://commons.wikimedia.org/wiki/File:Felix_3D_Printer_-_Printing_Head.JPG" },
+    { t: "Laboratory pipettes (J.N. Eskra, CC BY-SA 4.0, 위키미디어 공용)", d: "3장", u: "https://commons.wikimedia.org/wiki/File:Laboratory_pipettes.jpg" },
+    { t: "1967 model A.W. Faber-Castell 1/54 Darmstadt slide rule (CC BY 4.0, 위키미디어 공용)", d: "2장", u: "https://commons.wikimedia.org/wiki/File:1967_model_A_W_Faber_Castell_1_54_Darmstadt_slide_rule_made_in_Germany.jpg" }
   ] }
 ];
 
 /* ================= 기본 데이터 ================= */
 const DEFAULT_DECK = {
-  version: 2,
+  version: 4,
   meta: { deckTitle: "신제품 개발 절차", presenter: "고채현, 박민준" },
   slides: [
     {
-      id: "p1", type: "cover", duration: 20,
+      id: "p1", type: "cover", duration: 15,
       title: "5강 토론 문제 4번",
       question: "신제품 개발 절차를\n간략하게 제시하여라",
       deckTitle: "아이디어가 상품이 되기까지",
       mark: "",
-      subtitle: "강의자료의 신제품 개발 6단계와 국내 기업 사례",
+      subtitle: "왜 만드는가 · 어떻게 만드는가 · 출시 그 후",
       presenter: "고채현, 박민준",
       cases: ["사례 1 · 불닭볶음면", "사례 2 · 갤럭시 폴드"],
       images: [
@@ -1301,46 +1684,30 @@ const DEFAULT_DECK = {
         { src: P_FOLD, fallback: "", tag: "갤럭시 폴드", caption: "갤럭시 폴드", credit: "" }
       ],
       sources: [],
-      script: "안녕하세요. 저희 조는 5강 토론 문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 맡았습니다.\n강의자료에 나온 신제품 개발 6단계를 중심으로 답하고, 불닭볶음면과 갤럭시 폴드 사례에 적용해 보겠습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 토론 문제 원문: 강의자료 65장 ‘4. 신제품 개발 절차를 간략하게 제시하여라.’\n· 사진과 내용 출처는 마지막 장과 대본 끝에 정리했다."
+      script: "안녕하세요. 저희 조는 5강 토론 문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 맡았습니다. 먼저 질문 하나로 시작하겠습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 토론 문제 원문: 강의자료 65장 ‘4. 신제품 개발 절차를 간략하게 제시하여라.’\n· 사진과 내용 출처는 각 장 아래와 대본 끝에 정리했다."
     },
     {
-      id: "p2", type: "agenda", duration: 22,
-      title: "발표 순서",
-      lead: "목차",
-      items: [
-        { n: "01", t: "왜 신제품과 절차가 필요한가", d: "이윤·도태 · 혁신의 터널" },
-        { n: "02", t: "신제품 개발 6단계", d: "단계별 핵심 활동 · 세부 절차 · 35~37장" },
-        { n: "03", t: "사례 적용", d: "불닭볶음면 · 갤럭시 폴드, 출시 그 후까지" },
-        { n: "04", t: "결론", d: "질문에 대한 답" }
-      ],
-      sources: [],
-      script: "발표는 네 부분입니다. 먼저 기업이 왜 신제품을 만들고, 왜 절차가 필요한지 보겠습니다. 다음으로 신제품 개발 6단계와 세부 절차를 정리하고, 두 사례에 출시 이후까지 적용해 본 뒤 질문에 대한 답을 드리겠습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 네 카드를 왼쪽부터 차례로 가리킨다."
-    },
-    {
-      id: "pw", type: "why", duration: 50,
-      title: "01  왜 신제품을 만드는가",
-      lead: "기업은 이윤을 내야 하고, 경쟁에서 도태되지 않아야 한다",
+      id: "pw", type: "why", duration: 49,
+      title: "01  왜 만드는가",
+      question: "기업은 신제품을\n왜 만들까요?",
+      hint: "강의자료에서 찾은 두 가지 답",
+      img: { src: P_BULDAK_SHOP, caption: "매장에 진열된 불닭볶음면 (사진: 뉴시스)", pos: "50% 50%" },
+      lead: "이윤을 얻고, 도태되지 않기 위해서",
       cards: [
-        { h: "이윤을 얻기 위해", quotes: [
-          { q: "제조업자는 판매로부터 이익을 얻기 위해 혁신을 만듦", src: "5강 혁신의 원천 및 유형과 패턴 · 9장" },
-          { q: "새로운 제품을 생산하여 이윤을 올릴 가능성 … 새로운 투자를 요구한다", src: "6강 표준경쟁, 모듈화 그리고 플랫폼 경쟁 · 12장" }
-        ] },
-        { h: "도태되지 않기 위해", quotes: [
-          { q: "경쟁시스템은 … 꾸준히 오류를 범하는 기업은 시장에서 도태시키거나 개혁을 강요한다", src: "6강 표준경쟁, 모듈화 그리고 플랫폼 경쟁 · 9장" },
-          { q: "Keuffel & Esser는 전자계산기에 필요한 전기부품 지식이 없었고, 새로운 기술로 인해 도태됨", src: "5강 혁신의 원천 및 유형과 패턴 · 29장" }
-        ] }
+        { h: "이윤을 얻기 위해", t: "새 제품을 팔아야 이익이 생긴다", q: "제조업자는 판매로부터 이익을 얻기 위해 혁신을 만듦", src: "5강 혁신의 원천 및 유형과 패턴 · 9장" },
+        { h: "도태되지 않기 위해", t: "새 기술에 대응하지 못한 기업은 시장에서 밀려난다", q: "꾸준히 오류를 범하는 기업은 시장에서 도태시키거나 개혁을 강요한다", src: "6강 표준경쟁, 모듈화 그리고 플랫폼 경쟁 · 9장",
+          img: { src: P_SLIDE, caption: "계산자: Keuffel & Esser는 계산자 회사였지만 전자계산기 기술이 없어 도태 (5강 혁신의 원천 29장 · 사진은 다른 회사 계산자)", pos: "50% 50%" } }
       ],
-      bottom: "그래서 기업은 신제품을 계속 개발한다. 하지만 아이디어가 모두 상품이 되지는 않는다",
-      sources: [{ label: "강의자료 5강(혁신의 원천) 9·29장, 6강 9·12장", url: "" }],
-      script: "먼저 기업이 왜 신제품을 만드는지 보겠습니다. 수업에서 기업은 이윤을 내는 조직이라고 배웠습니다.\n[엔터 ⏎ 이윤] 5강 ‘혁신의 원천’에서는 제조업자가 판매로부터 이익을 얻기 위해 혁신을 만든다고 했고, 6강에서는 새로운 제품으로 이윤을 올릴 가능성이 새로운 투자를 요구한다고 했습니다.\n[엔터 ⏎ 도태 방지] 또 경쟁 시장은 꾸준히 오류를 범하는 기업을 도태시킵니다. Keuffel & Esser라는 회사가 전자계산기에 필요한 기술이 없어 도태된 것이 수업에서 본 예입니다.\n그래서 기업은 신제품을 계속 만들어야 합니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: 이윤 카드 → 엔터 2: 도태 카드.\n· 이 장은 토론 문제 4번 자료(5강 경영프로젝트의 개발)가 아니라, 같은 수업의 다른 강의자료에서 가져온 배경 설명이다. 인용은 강의자료 원문을 줄인 것이다(‘…’는 생략).\n· 원문: 5강 「혁신의 원천 및 유형과 패턴」 9장 ‘제조업자는 판매로부터 이익을 얻기 위해 혁신을 만드는 반면, 소비자 혁신가는 순전히 자신의 사용을 위해 혁신을 만드는 경향이 있음’, 29장 ‘Keuffel & Esser은 전자계산기를 만드는 데 필요한 전기부품에 대한 지식이 하나도 없었으며 새로운 기술로 인해 도태됨’. 6강 9장 ‘장기적으로 경쟁시스템은 평균적으로 좋은 선택을 한 기업을 계속 승승장구하게 만들고, 꾸준히 오류를 범하는 기업은 시장에서 도태시키거나 개혁을 강요한다’, 12장 ‘새로운 제품을 생산하여 이윤을 올릴 가능성, 낡은 제품을 더 값싸게 생산하여 이윤을 올릴 가능성 등이 한결같이 발생하며 새로운 투자를 요구한다’."
+      bottom: "그런데, 만든다고 모두 성공할까요?",
+      sources: [{ label: "강의자료 5강(혁신의 원천) 9·29장, 6강 9장", url: "" }],
+      script: "기업은 신제품을 왜 만들까요? 강의자료에서 두 가지 답을 찾았습니다.\n[엔터 ⏎ 이윤] 첫째는 이윤입니다. 5강 ‘혁신의 원천’에서는 제조업자가 판매로부터 이익을 얻기 위해 혁신을 만든다고 했습니다.\n[엔터 ⏎ 도태 · 마지막 질문] 둘째는 도태되지 않기 위해서입니다. 6강에서는 꾸준히 오류를 범하는 기업을 시장이 도태시킨다고 했습니다. 계산자를 만들던 Keuffel & Esser가 전자계산기 기술이 없어 도태된 것이 수업에서 본 예입니다.\n그런데 만든다고 모두 성공할까요?\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1: 이윤 카드 → 엔터 2: 도태 카드와 아래 질문.\n· 이 장은 토론 문제 4번 자료(5강 경영프로젝트의 개발)가 아니라, 같은 수업의 다른 강의자료에서 가져온 배경 설명이다. 카드 위의 짧은 문장(‘새 제품을 팔아야 이익이 생긴다’ 등)은 저희 조가 쉽게 풀어 쓴 말이고, 따옴표 안이 강의자료 원문이다.\n· 원문: 5강 「혁신의 원천 및 유형과 패턴」 9장 ‘제조업자는 판매로부터 이익을 얻기 위해 혁신을 만드는 반면, 소비자 혁신가는 순전히 자신의 사용을 위해 혁신을 만드는 경향이 있음’, 29장 ‘Keuffel & Esser은 전자계산기를 만드는 데 필요한 전기부품에 대한 지식이 하나도 없었으며 새로운 기술로 인해 도태됨’. 6강 9장 ‘장기적으로 경쟁시스템은 평균적으로 좋은 선택을 한 기업을 계속 승승장구하게 만들고, 꾸준히 오류를 범하는 기업은 시장에서 도태시키거나 개혁을 강요한다’. 6강 12장에도 ‘새로운 제품을 생산하여 이윤을 올릴 가능성 … 새로운 투자를 요구한다’는 문장이 있다(질문이 나오면 덧붙인다).\n· ‘기업은 이윤을 내는 조직’이라는 문장은 강의자료에 그대로 적혀 있지 않으므로 강의자료 인용처럼 말하지 않는다."
     },
     {
-      id: "p3", type: "funnel", duration: 45,
-      title: "01  왜 절차가 필요한가",
-      lead: "많은 아이디어 가운데 일부만 상품이 된다",
+      id: "p3", type: "funnel", duration: 40,
+      title: "02  모두 성공하지는 않는다 ① 혁신의 터널",
+      lead: "많은 아이디어 가운데 극히 일부만 상품이 된다",
       tunnelLabel: "혁신의 터널 · 강의자료 31장 그림 (제약산업 예시)",
       tunnel: [
         { n: "5,000개", t: "화합물" },
@@ -1349,6 +1716,7 @@ const DEFAULT_DECK = {
         { n: "1개", t: "약품" }
       ],
       tunnelNote: "제약산업의 예시이며, 모든 산업의 신제품 성공률을 뜻하지 않는다",
+      img: { src: P_LAB, caption: "연구실의 피펫 (이해를 돕는 사진 · 위키미디어 공용)", pos: "50% 50%" },
       newLabel: "강의자료 31장의 설명",
       news: [
         { h: "혁신의 터널", t: "대부분의 혁신적인 아이디어는 성공적인 신제품으로 이어지지 않음" },
@@ -1356,14 +1724,37 @@ const DEFAULT_DECK = {
       ],
       bottom: "그래서 아이디어를 단계에 따라 개발·검증하는 절차가 필요하다",
       sources: [{ label: "강의자료 5강 31장", url: "" }],
-      script: "하지만 신제품을 만든다고 다 성공하지는 않습니다. 강의자료 31장의 ‘혁신의 터널’ 그림을 보면, 제약산업에서는 5,000개의 화합물이 125개의 선행 약품, 2~3개의 시험 약품을 거쳐 1개의 약품이 됩니다. 제약산업의 예시라서 모든 산업의 성공률은 아닙니다.\n다만 강의자료 설명처럼 대부분의 혁신적인 아이디어는 성공적인 신제품으로 이어지지 않기 때문에, 신중하게 설계된 전략과 구현 프로세스, 즉 절차가 필요합니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 강의자료 31장 원문: ‘성공적인 혁신: 신중하게 설계된 전략과 구현 프로세스가 필요함’, ‘혁신의 터널: 대부분의 혁신적인 아이디어는 성공적인 신제품으로 이어지지 않음’, 그림 1.3 ‘제약산업에서의 신제품 개발 터널’(5,000개의 화합물 → 125개의 선행 약품 → 2~3개의 시험 약품 → 1개의 약품).\n· 그림 아래의 기간(발견과 사전임상시험 3~6년, 임상시험 6~7년, 허가 1/2~2년)은 질문에 직접 필요하지 않아 화면에서 뺐다.\n· 그림의 숫자를 다른 산업의 성공률로 말하지 않는다."
+      script: "강의자료 31장의 ‘혁신의 터널’입니다. 제약산업에서는 화합물 5,000개가 선행 약품 125개, 시험 약품 2~3개를 거쳐 약품 1개가 됩니다. 제약산업 예시라서 모든 산업의 성공률은 아닙니다.\n[엔터 ⏎ 강의자료 설명] 강의자료는 대부분의 혁신적인 아이디어가 성공적인 신제품으로 이어지지 않기 때문에, 신중하게 설계된 전략과 구현 프로세스가 필요하다고 설명합니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 입장하면 점(아이디어)들이 터널로 흘러 들어가 대부분 사라지고 일부만 빠져나가는 애니메이션이 반복된다. 점의 개수는 장식이며 실제 비율이 아니다.\n· 엔터 1: 오른쪽 강의자료 설명과 아래 문구.\n· 강의자료 31장 원문: ‘성공적인 혁신: 신중하게 설계된 전략과 구현 프로세스가 필요함’, ‘혁신의 터널: 대부분의 혁신적인 아이디어는 성공적인 신제품으로 이어지지 않음’, 그림 1.3 ‘제약산업에서의 신제품 개발 터널’(5,000개의 화합물 → 125개의 선행 약품 → 2~3개의 시험 약품 → 1개의 약품).\n· 그림의 숫자를 다른 산업의 성공률로 말하지 않는다."
     },
     {
-      id: "p4", type: "stages", duration: 70,
-      title: "02  신제품 개발 6단계",
+      id: "pc", type: "chasm", duration: 53,
+      title: "02  모두 성공하지는 않는다 ② 캐즘",
+      lead: "출시한 뒤에도 ‘캐즘’을 넘지 못하면 대중화에 실패한다",
+      segs: [
+        { p: "2.5", en: "Innovators", ko: "혁신가" },
+        { p: "13.5", en: "Early Adopters", ko: "얼리어답터" },
+        { p: "34", en: "Early Majority", ko: "초기 다수" },
+        { p: "34", en: "Late Majority", ko: "후기 다수" },
+        { p: "16", en: "Late Mass", ko: "후기 수용자" }
+      ],
+      chasmLabel: "캐즘 (변곡점)",
+      fail: { h: "대중화 실패", src: "강의자료의 예: Google Glass, 3D 프린터 등", ex: [
+        { name: "Google Glass", img: { src: P_GLASS, caption: "Google Glass", pos: "50% 50%" } },
+        { name: "3D 프린터", img: { src: P_PRINTER, caption: "3D 프린터", pos: "50% 50%" } }
+      ] },
+      okLabel: "대중화 본격화",
+      bottom: "그래서 고객 니즈에서 출발해 단계마다 검증하는 절차가 중요하다 (조 해석)",
+      sources: [{ label: "강의자료 5강(혁신의 원천) 42장 · 사진: Google Glass(Mikepanhu, CC BY-SA 3.0), 3D 프린터(Jonathan Juursema, CC BY-SA 3.0)", url: "" }],
+      script: "터널을 지나 출시해도 끝이 아닙니다. 5강 ‘혁신의 원천’ 42장의 기술 확산 곡선입니다. 새 기술은 혁신가 2.5%와 얼리어답터 13.5%가 먼저 받아들이고, 초기 다수와 후기 다수 34%씩, 마지막 16%로 퍼집니다.\n[엔터 ⏎ 캐즘] 그런데 얼리어답터와 초기 다수 사이에 ‘캐즘’이라는 틈이 있습니다. 이 틈을 넘지 못하면 대중화에 실패하는데, 강의자료는 구글 글라스와 3D 프린터를 예로 들었습니다.\n[엔터 ⏎ 조 해석] 그래서 저희는 고객 니즈에서 출발해 단계마다 검증하는 절차가 중요하다고 생각했습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 입장하면 곡선이 그려지고 구간 비율이 차례로 나타난다. 엔터 1: 캐즘 틈이 갈라지고 대중화 실패 예시가 나타난다. 엔터 2: 아래 문구.\n· 강의자료 42장 ‘기술의 확산 곡선 & Chasm’ 그림을 다시 그린 것이다. 원 그림의 구분: Innovators 2.5%, Early Adopters 13.5%, THE CHASM(변곡점), Early Majority 34%, Late Majority 34%, Late Mass 16%. 왼쪽에 ‘대중화 실패 Ex. Google Glass, 3D 프린터 등’, 오른쪽에 ‘대중화 본격화’. 아래 줄의 Technologists, Visionaries, Pragmatists, Conservatives, Sceptic은 화면에서 뺐다.\n· 한글 구간 이름(혁신가, 얼리어답터 등)은 이해를 돕기 위해 저희 조가 붙인 것이다.\n· 아래 문구(절차가 중요하다)는 강의자료 문장이 아니라 저희 조의 해석이다. 캐즘을 넘는 방법은 강의자료에 나오지 않는다."
+    },
+    {
+      id: "p4", type: "stages", duration: 57,
+      title: "03  신제품 개발 절차 · 6단계",
       lead: "신제품은 여섯 단계를 거쳐 시장에 나온다",
       groups: ["무엇을 만들까", "어떻게 만들까", "어떻게 시장에 공급할까"],
+      headImg: { src: P_MIRYANG2, caption: "불닭볶음면 생산 공장 (사진: 머니투데이)", pos: "50% 50%" },
       groupNote: "세 묶음은 이해를 돕기 위한 조의 구분이며, 강의자료의 단계명은 아래 여섯 단계다",
       stages: [
         { n: "1", name: "개념 정립", act: "상품기획", goal: "개발상품의 니즈에 적합한\n신제품의 개념 설정" },
@@ -1374,44 +1765,41 @@ const DEFAULT_DECK = {
         { n: "6", name: "대량 생산", act: "생산 · 영업", goal: "생산·영업 체제의\n조기 확립과 안정화" }
       ],
       sources: [{ label: "강의자료 5강 35장", url: "" }],
-      script: "강의자료 35장의 신제품 개발 절차는 여섯 단계입니다. 위의 세 묶음은 설명하기 쉽게 저희 조가 나눈 것입니다.\n[엔터 ⏎ 1·2단계 · 무엇을 만들까] 1단계 개념 정립에서는 상품기획으로 니즈에 맞는 신제품 개념을 정합니다. 2단계 제품 설계에서는 최적 설계안과 목표 스펙을 정하고, 외관과 디자인을 포함한 기본설계를 합니다.\n[엔터 ⏎ 3·4단계 · 어떻게 만들까] 3단계 제품 엔지니어링은 제품 자체를 다듬는 단계로, 상세 설계와 설계 품질을 확보하고 기능, 성능, 신뢰성을 개선합니다. 4단계 공정 엔지니어링은 만드는 과정을 준비하는 단계로, 양산 라인에서 시험생산을 해서 제조품질을 확립합니다.\n[엔터 ⏎ 5·6단계 · 어떻게 시장에 공급할까] 5단계 시장진출 준비에서는 시장 도입에 필요한 영업을 준비하고, 6단계 대량 생산에서는 생산과 영업 체제를 빨리 확립하고 안정시킵니다.\n[엔터 ⏎ 다음 장]",
+      script: "이제 질문의 답인 신제품 개발 절차입니다. 강의자료 35장은 여섯 단계로 나눕니다. 위의 세 묶음은 설명하기 쉽게 저희 조가 나눈 것입니다.\n[엔터 ⏎ 1·2단계] 1단계 개념 정립에서 니즈에 맞는 신제품 개념을 정하고, 2단계 제품 설계에서 최적 설계안과 목표 스펙을 정합니다.\n[엔터 ⏎ 3·4단계] 3단계 제품 엔지니어링은 상세 설계로 제품의 기능, 성능, 신뢰성을 다듬고, 4단계 공정 엔지니어링은 양산 라인에서 시험생산을 해서 제조품질을 확립합니다.\n[엔터 ⏎ 5·6단계] 5단계에서 시장 도입에 필요한 영업을 준비하고, 6단계 대량 생산에서 생산과 영업 체제를 안정시킵니다.\n[엔터 ⏎ 다음 장]",
       notes: "· 강의자료 35장 표의 단계명·핵심 활동·활동 목적을 그대로 옮겼다. 양산설계 Ⅱ의 원문은 ‘양산설계 Ⅰ에서 확보한 기능, 성능, 신뢰성 등의 개선 및 양산성의 향상’이다.\n· ‘무엇을 만들까 / 어떻게 만들까 / 어떻게 시장에 공급할까’ 세 묶음은 강의자료의 용어가 아니라 저희 조가 설명용으로 나눈 것이다."
     },
     {
-      id: "p5", type: "detail", duration: 58,
-      title: "02  신제품 개발 6단계 · 세부 절차",
-      lead: "개념 정립과 제품 설계는 이렇게 구체화된다",
-      flow: [
-        { h: "고객 니즈 파악", t: "생활용어 → 공학용어로 전환" },
-        { h: "목표 스펙 설정", t: "니즈별 메트릭, 기술적·경제적 기준" },
-        { h: "복수의 제품 컨셉 도출", t: "목표 스펙을 기준으로" },
-        { h: "최종 제품 컨셉 선정", t: "점수 매트릭스 (37장)" },
-        { h: "설계 작업", t: "산업설계와 제조설계" },
-        { h: "시제품 제작", t: "알파 · 베타 시제품" }
+      id: "p5", type: "example", duration: 51,
+      title: "03  신제품 개발 절차 · 세부 절차를 예시로",
+      lead: "무선 이어폰을 만든다면? (가상 예시)",
+      headImg: { src: P_BUDS, caption: "무선 이어폰 (사진: 삼성전자 뉴스룸 · 이해를 돕는 사진)", pos: "50% 50%" },
+      cols: [
+        { h: "고객 니즈 파악", t: "고객의 말을 듣는다" },
+        { h: "목표 스펙 설정", t: "공학 용어와 숫자로" },
+        { h: "복수의 컨셉 도출", t: "후보를 여러 개" },
+        { h: "최종 컨셉 선정", t: "가중평점의 합계" }
       ],
-      matrixTitle: "제품 컨셉 선정 · 점수 매트릭스 (강의자료 37장)",
-      matrix: {
-        cols: ["가중치", "A", "B", "C"],
-        rows: [
-          { k: "사용 편의성", w: 5, v: [3, 3, 4] },
-          { k: "이동 편의성", w: 15, v: [2, 5, 2] },
-          { k: "내구성", w: 10, v: [3, 3, 2] },
-          { k: "정확도", w: 15, v: [3, 4, 4] }
-        ],
-        total: [3.0, 3.5, 3.2],
-        best: 1,
-        note: "일부 평가항목 생략 · 합계는 강의자료 기준",
-        calc: "계산 예 · 이동 편의성 B: 평점 5 × 가중치 15% = 0.75"
-      },
-      sources: [{ label: "강의자료 5강 36~37장", url: "" }],
-      script: "36장의 세부 절차는 6단계 가운데 개념 정립과 제품 설계를 더 자세히 나눈 것입니다.\n먼저 고객 니즈를 파악하면서 생활용어를 공학용어로 바꿉니다. ‘가볍다’를 ‘무게 몇 그램 이하’로 바꾸는 식입니다. 그다음 목표 스펙을 정하고, 그 스펙을 기준으로 컨셉을 여러 개 만듭니다.\n[엔터 ⏎ 점수 매트릭스] 컨셉은 37장의 점수 매트릭스로 고릅니다. 평점에 가중치를 곱해서 더하는데, 이동 편의성에서 B는 5 곱하기 15%로 0.75입니다. 일부 항목이 생략된 표라서 합계는 강의자료 값을 그대로 썼고, B가 3.5로 1위입니다.\n마지막으로 설계를 하고 알파, 베타 시제품을 만듭니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 강의자료 36장(세부 절차)과 37장(점수 매트릭스)을 옮겼다. 36장의 목표 스펙 설정에는 ‘스펙의 개선’도 함께 적혀 있다.\n· 37장 원문: 평가기준의 설정은 기술적 분석과 경제적 분석, 평가방식은 가중평점의 합계. 표 가운데 ‘…’ 행으로 일부 항목이 생략돼 있어, 보이는 네 항목만으로는 합계(A 3.0, B 3.5, C 3.2)가 나오지 않는다.\n· 원자료 표에서 컨셉 C의 정확도 가중평점은 0.45로 적혀 있는데, 평점 4 × 15%로 계산하면 0.6이다. 그래서 합계를 다시 계산하지 않고, 계산 예는 이동 편의성 B 한 항목만 들었다.\n· ‘무게 몇 그램 이하’는 이해를 돕기 위한 예시이며 특정 기업의 목표 수치가 아니다."
+      voices: [
+        { q: "귀가 안 아팠으면 좋겠어요", need: "착용감", spec: "한쪽 무게 5g 이하", w: 40 },
+        { q: "하루 종일 들었으면 좋겠어요", need: "배터리", spec: "연속 재생 8시간 이상", w: 30 },
+        { q: "너무 비싸지 않았으면 해요", need: "가격", spec: "판매가 15만 원 이하", w: 30 }
+      ],
+      concepts: [
+        { n: "A", name: "초경량형", d: "가볍고 싸지만 배터리는 보통", sc: [4, 3, 5] },
+        { n: "B", name: "균형형", d: "착용감이 좋고 배터리도 충분", sc: [5, 4, 3] },
+        { n: "C", name: "대용량형", d: "배터리는 최고, 조금 무겁다", sc: [3, 5, 4] }
+      ],
+      next: "고른 컨셉으로 설계 작업(산업설계·제조설계) → 알파·베타 시제품 제작",
+      note: "숫자는 설명을 위해 만든 가상 예시입니다 · 절차와 평가 방법은 강의자료 36~37장",
+      sources: [{ label: "강의자료 5강 36~37장 (예시는 조가 만든 가상 사례)", url: "" }],
+      script: "6단계 중 앞부분은 36장에서 더 자세히 나옵니다. 쉽게 무선 이어폰을 만든다고 가정해 보겠습니다.\n고객은 ‘귀가 안 아팠으면’, ‘오래 갔으면’, ‘비싸지 않았으면’ 하고 말합니다.\n[엔터 ⏎ 목표 스펙] 이 생활용어를 공학용어로 바꾸면 무게 5g 이하, 연속 재생 8시간 이상, 15만 원 이하가 됩니다.\n[엔터 ⏎ 컨셉 A·B·C] 이 스펙을 기준으로 컨셉을 여러 개 만들고,\n[엔터 ⏎ 점수] 37장의 방법대로 평점에 가중치를 곱해 더합니다. 균형형 B가 4.1점으로 뽑힙니다. 그다음 설계를 하고 알파, 베타 시제품을 만듭니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1: 목표 스펙 → 엔터 2: 컨셉 A·B·C → 엔터 3: 점수와 선택, 다음 단계.\n· 이 장의 무선 이어폰 예시와 숫자는 모두 저희 조가 이해를 돕기 위해 만든 가상 예시이며, 특정 기업의 실제 자료가 아니다. 사진도 이해를 돕기 위한 것이다.\n· 절차는 강의자료 36장(고객 니즈 파악: 생활용어 → 공학용어, 목표 스펙 설정, 복수의 제품 컨셉 도출, 최종 제품 컨셉 선정, 설계 작업: 산업설계와 제조설계, 시제품 제작: 알파·베타 시제품)을, 평가 방법은 37장(평가기준: 기술적·경제적 분석, 평가방식: 가중평점의 합계)을 따랐다.\n· 계산: A = 4×0.4 + 3×0.3 + 5×0.3 = 4.0, B = 5×0.4 + 4×0.3 + 3×0.3 = 4.1, C = 3×0.4 + 5×0.3 + 4×0.3 = 3.9.\n· 강의자료 37장의 원래 표(사용 편의성·이동 편의성 등, 합계 A 3.0 / B 3.5 / C 3.2)는 일부 항목이 생략돼 있고 C 정확도 칸(0.45, 계산상 0.6)이 맞지 않아, 쉬운 예시로 바꿔 설명했다. 질문이 나오면 이 점을 말한다."
     },
     {
-      id: "p6", type: "case", duration: 63,
-      title: "03  사례 적용 · ① 삼양식품 불닭볶음면",
+      id: "p6", type: "case", duration: 45,
+      title: "04  사례 ① 삼양식품 불닭볶음면",
       lead: "고객의 매운맛 수요를 제품으로 구체화했다",
-      img: { src: P_BULDAK, caption: "불닭볶음면", pos: "50% 50%" },
+      img: { src: P_BULDAK, caption: "불닭볶음면 (사진: 뉴시스)", pos: "50% 50%" },
       stats: [{ n: 1, u: "년 (약)", l: "개발 기간" }, { n: 2, u: "톤", l: "매운 소스" }, { n: 1200, u: "마리", l: "닭" }],
       steps: [
         { stage: "개념 정립", when: "2011", what: "명동 음식점에서 매운 음식을 먹는 젊은이들을 보고 더 매운 라면 개발에 착수" },
@@ -1423,37 +1811,63 @@ const DEFAULT_DECK = {
       caveat: "기사로 확인한 사실 · 단계 연결은 조 해석 · 공정 엔지니어링·시장진출 준비 과정은 공개 자료에서 확인하지 못함",
       lesson: "출시 전에 시식과 수정을 반복했다",
       sources: [{ label: "뉴시스 2022.04.17", url: U_BULDAK }],
-      script: "첫 번째 사례는 삼양식품의 불닭볶음면입니다. 수업 단계와의 연결은 저희 조의 해석입니다.\n[엔터 ⏎ 개념 정립 · 니즈 구체화] 2011년 김정수 부회장이 명동 음식점에서 젊은 사람들이 땀을 흘리며 매운 음식을 먹는 모습을 보고 더 매운 라면 개발을 시작했습니다. 고객의 매운맛 수요를 제품 개념으로 잡은 것입니다. 이어서 직원들이 전국의 불닭, 불곱창 맛집을 다니며 목표로 할 매운맛을 파악했습니다.\n[엔터 ⏎ 제품 개발 · 개선] 약 1년 동안 소스 2톤과 닭 1,200마리를 쓰며 출시 전에 시식과 수정을 반복했습니다.\n[엔터 ⏎ 출시 · 시장 반응] 2012년 4월 출시 후, 출시 초기 국내 월 7~8억 원이던 매출이 1년 뒤 월 30억 원대가 됐습니다. 공정이나 영업 준비 과정은 기사에서 확인하지 못했습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: 개념 정립·니즈 구체화 → 엔터 2: 제품 개발·개선 → 엔터 3: 출시·시장 반응.\n· 자료: 뉴시스 「[장수브랜드 탄생비화] K-푸드 아이콘이 된 ‘불닭볶음면’」(2022.04.17) " + U_BULDAK + "\n· 기사 원문: ‘2011년 김 부회장은 우연히 방문한 명동 소재 음식점에서 젊은이들이 땀을 뻘뻘 흘리면서도’ 매운 음식을 먹는 모습을 보고 ‘더 매운 맛을 느낄 수 있는 라면 개발에 착수했다’, ‘마케팅 부서와 연구소 직원들과 함께 전국 유명 불닭, 불곱창 맛집들을 일제히 탐방했다’, ‘개발에만 약 1년이 소요됐고 매운소스 2t과 닭 1200마리가 투입됐다’, ‘출시 초기 국내 매출은 월 7~8억원 정도’, ‘출시 1년에는 월 30억원대 매출’.\n· 단계 연결(개념 정립, 니즈 구체화, 제품 개발·개선)은 저희 조의 해석이다. 맛집 탐방을 ‘제품 설계’라고 단정하지 않는다.\n· 매출은 시장 반응을 보여 주는 숫자일 뿐, 공정 엔지니어링이나 대량 생산 안정화의 근거로 쓰지 않는다."
+      script: "이제 사례입니다. 첫 번째는 불닭볶음면이고, 단계 연결은 저희 조의 해석입니다.\n[엔터 ⏎ 개념 정립 · 니즈 구체화] 2011년 김정수 부회장이 명동에서 젊은 사람들이 땀을 흘리며 매운 음식을 먹는 모습을 보고 더 매운 라면 개발을 시작했습니다. 직원들은 전국 맛집을 다니며 목표 매운맛을 찾았습니다.\n[엔터 ⏎ 제품 개발 · 개선] 약 1년 동안 소스 2톤과 닭 1,200마리를 쓰며 시식과 수정을 반복했고,\n[엔터 ⏎ 출시 · 시장 반응] 2012년 4월 출시 후 1년 만에 월 매출이 30억 원대가 됐습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1: 개념 정립·니즈 구체화 → 엔터 2: 제품 개발·개선 → 엔터 3: 출시·시장 반응.\n· 자료: 뉴시스 「[장수브랜드 탄생비화] K-푸드 아이콘이 된 ‘불닭볶음면’」(2022.04.17) " + U_BULDAK + "\n· 기사 원문: ‘2011년 김 부회장은 우연히 방문한 명동 소재 음식점에서 젊은이들이 땀을 뻘뻘 흘리면서도’ 매운 음식을 먹는 모습을 보고 ‘더 매운 맛을 느낄 수 있는 라면 개발에 착수했다’, ‘마케팅 부서와 연구소 직원들과 함께 전국 유명 불닭, 불곱창 맛집들을 일제히 탐방했다’, ‘개발에만 약 1년이 소요됐고 매운소스 2t과 닭 1200마리가 투입됐다’, ‘출시 초기 국내 매출은 월 7~8억원 정도’, ‘출시 1년에는 월 30억원대 매출’.\n· 단계 연결(개념 정립, 니즈 구체화, 제품 개발·개선)은 저희 조의 해석이다. 공정 엔지니어링이나 영업 준비 과정은 기사에 나오지 않아 말하지 않는다."
     },
     {
-      id: "p6b", type: "evolve", duration: 50,
-      title: "03  사례 적용 · ① 불닭볶음면, 출시 그 후",
-      lead: "시장 반응을 보고 후속 제품과 생산을 넓혀 갔다",
-      chartLabel: "불닭 브랜드 누적 판매량 (억 개)",
-      dec: 0,
-      models: [
-        { name: "2017", sub: "", v: 10, hl: 1 },
-        { name: "2019", sub: "", v: 20, hl: 0 },
-        { name: "2021", sub: "", v: 30, hl: 0 },
-        { name: "2022", sub: "", v: 40, hl: 2 },
-        { name: "2025", sub: "상반기", v: 80, hl: 3 }
+      id: "p6b", type: "world", duration: 42,
+      title: "04  사례 ① 불닭볶음면, 출시 그 후 · 맛과 나라를 넓히다",
+      lead: "19종의 시리즈와 나라별 버전으로 커졌다",
+      headImg: { src: P_BULDAK_POP, caption: "불닭볶음면 해외 홍보 현장 (사진: 뉴시스 2022.11)", pos: "50% 50%" },
+      lineLabel: "국내 · 맛을 넓히다",
+      line: [
+        { when: "2012.04", h: "불닭볶음면 출시", t: "" },
+        { when: "2017 → 2018", h: "까르보불닭", t: "한정판으로 냈다가 소비자 요구로 정식 제품" },
+        { when: "2024.01", h: "시리즈 19종", t: "치즈·핵불닭·커리·불닭볶음탕면 등" }
       ],
-      fixes: [
-        { tag: "후속 제품", who: "2017.12 ~ 2018", t: "까르보불닭을 한정판으로 냈다가, 소비자 요구로 정식 제품 출시 결정" },
-        { tag: "생산", who: "2022.05", t: "수출 전용 밀양공장 준공 · 연간 최대 6억 개 생산" },
-        { tag: "시장 확대", who: "2022 ~ 2025", t: "현지 입맛에 맞춘 수출 전용 제품 · 약 100개국에 판매" }
+      flavors: ["치즈", "핵불닭", "커리", "까르보", "불닭볶음탕면", "…"],
+      mapLabel: "해외 · 나라별로 바꾸다",
+      pins: [
+        { name: "한국", t: "출발점 · 수출 전용 밀양공장", lon: 127.5, lat: 37, lx: 133, ly: 5, al: "r", home: 1 },
+        { name: "미주", t: "하바네로라임 · 콘불닭", lon: -98, lat: 39, lx: 8, ly: 25 },
+        { name: "일본", t: "야키소바불닭", lon: 138, lat: 36, lx: 133, ly: 20, al: "r" },
+        { name: "중국", t: "양념치킨불닭 · 마라불닭", lon: 104, lat: 35, lx: 86, ly: 2 },
+        { name: "태국", t: "똠얌 불닭볶음탕면 (2023, 수출용)", lon: 101, lat: 15, lx: 74, ly: 30 },
+        { name: "동남아", t: "커리불닭 · 3xSpicy 핵불닭", lon: 110, lat: 2, lx: 98, ly: 44 },
+        { name: "유럽", t: "네덜란드 슈퍼마켓 최고 신제품 선정 (까르보, 2024)", lon: 5, lat: 52, lx: 44, ly: 2 }
       ],
-      lesson: "시장 반응 → 후속 제품과 생산 확대 (조 해석)",
-      sources: [{ label: "아시아경제 2018.04.03", url: U_CARBO }, { label: "데일리안 2022.05.02 · 2022.08.01", url: U_BULDAK40 }, { label: "토요경제 2025.09.24", url: U_BULDAK80 }],
-      script: "출시 이후도 보겠습니다. 왼쪽은 불닭 브랜드의 누적 판매량입니다.\n[엔터 ⏎ 후속 제품] 2017년 12월 까르보불닭을 한정판으로 냈는데, 소비자들이 일반 제품으로 내 달라고 해서 정식 출시를 결정했습니다.\n[엔터 ⏎ 생산] 2022년에는 연간 최대 6억 개를 만들 수 있는 수출 전용 밀양공장을 지었고,\n[엔터 ⏎ 시장 확대] 현지 입맛에 맞춘 수출 전용 제품도 내서 지금은 약 100개국에서 팔립니다. 누적 판매량은 2025년 상반기까지 80억 개입니다.\n저희는 이것을 시장 반응을 보고 후속 제품과 생산을 넓혀 간 과정으로 봤습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: 후속 제품(2017 막대) → 엔터 2: 생산(2022) → 엔터 3: 시장 확대(2025 상반기).\n· 누적 판매량: 데일리안 「삼양식품, 불닭볶음면 출시 10년만에 40억개 판매」(2022.08.01) ‘2017년 누적 판매량 10억개, 2019년 20억개, 2021년 30억개’, 2022년 40억 개 돌파(불닭브랜드 면 제품 기준), ‘90여개국에 수출’, ‘하바네로라임불닭볶음면과 같이 현지 소비자들의 입맛에 맞는 수출 전용 제품’. 토요경제 「불닭볶음면 누적 판매 80억개 돌파」(2025.09.24) ‘올 상반기까지’ 누적 80억 개, ‘전 세계 100여 개국’. 두 기사의 집계 범위(불닭브랜드 면 제품 / 불닭볶음면 시리즈)가 표현상 조금 다를 수 있다.\n· 까르보불닭: 아시아경제(2018.04.03) ‘지난해 12월 불닭볶음면 10억개 판매를 기념해 출시’, ‘한정판으로 출시돼 3월 말 단종 예정이었지만’ ‘소비자들의 일반 제품 출시 요구에’ ‘일반 제품으로 정식 출시할 예정’. 뉴시스(2022.04.17) 출시 후 3개월간 3,600만 개 판매.\n· 밀양공장: 데일리안 「삼양식품, 밀양공장 본격 가동 “해외사업 박차”」(2022.05.02) 준공, ‘연간 최대 6억개’, 수출 제품 생산 전담.\n· ‘시장 반응을 보고 후속 제품과 생산을 넓혔다’는 연결은 저희 조의 해석이다. 2017년 이후 막대는 연도별 누적값이며 연도 간격이 고르지 않다."
+      returns: [1, 2],
+      returnLabel: "역출시: 해외에서 먼저 낸 하바네로라임·야키소바를 2023년 국내에도 출시",
+      caveat: "기사로 확인한 제품만 표시 · 나라별 제품은 기사 시점 기준이며 전체 목록이 아님",
+      sources: [{ label: "세계일보 2024.01.16", url: U_SEGYE }, { label: "MTN 2023.09.27", url: U_MTN }, { label: "머니투데이 2025.12.04", url: U_MT_REV }],
+      script: "출시 이후 불닭은 두 방향으로 넓어졌습니다.\n[엔터 ⏎ 국내 맛 확장] 국내에서는 맛을 넓혔습니다. 까르보불닭은 한정판으로 냈다가 소비자 요구로 정식 제품이 됐고, 2024년에는 시리즈가 19종이 됐습니다.\n[엔터 ⏎ 나라별 버전] 해외에서는 나라별로 맛을 바꿨습니다. 미주는 하바네로라임, 일본은 야키소바, 중국은 마라와 양념치킨, 태국은 똠얌 맛을 냈습니다.\n[엔터 ⏎ 역출시] 해외에서 먼저 낸 맛이 거꾸로 국내에 출시되기도 했습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1: 국내 맛 확장 → 엔터 2: 나라별 버전(지도) → 엔터 3: 역출시 화살표.\n· 세계일보(2024.01.16): ‘2017년 국내 한정판으로 출시한 까르보불닭볶음면은 출시 3개월간 3600만개가 판매됐고, 인기에 힘입어 2018년 정식 제품이 됐다’, ‘치즈불닭볶음면과 불닭볶음탕면, 커리불닭볶음면, 핵불닭볶음면, 까르보불닭볶음면 등 19종으로 확장’, ‘미주 지역에선 … 하바네로라임불닭볶음면, 일본에선 야키소바불닭볶음면, 중국에선 양념치킨불닭볶음면’, ‘현재 100여개국에 수출’. (같은 기사 사진 설명에는 출시 연도가 2014년으로 잘못 적혀 있고, 본문은 2012년 4월이다.)\n· MTN(2023.09.27): 수출용 똠얌 불닭볶음탕면을 태국에 먼저 출시 예정, 야키소바(일본에서 먼저)·하바네로라임(미국에서 먼저)을 6월 국내 출시, 커리·3xSpicy 핵불닭(동남아), 마라(중국), 콘불닭(미국).\n· 파이낸셜뉴스(2026.07.13) ‘역출시’ 기사: 푸팟퐁커리·야끼소바·하바네로라임 불닭볶음면을 해외 판매 후 국내 출시.\n· 머니투데이(2025.12.04): 까르보불닭볶음면이 ‘지난해 네덜란드 슈퍼마켓에서 출시된 모든 신제품 중 최고의 제품으로 선정’.\n· 밀양공장: 데일리안(2022.05.02) 수출 전용, 연간 최대 6억 개.\n· 아시아경제(2018.04.03)는 까르보불닭 한정판 출시를 ‘지난해 12월’로 적었다.\n· 지도 위 표시는 기사로 확인한 제품만이며 판매 국가 전체가 아니다. ‘한정판 → 정식 제품’을 시장 반응에 따른 결정으로 본 것은 기사 내용이고, 이를 신제품 개발 절차와 연결하는 것은 저희 조의 해석이다."
     },
     {
-      id: "p7", type: "case", duration: 66,
-      title: "03  사례 적용 · ② 삼성전자 갤럭시 폴드",
+      id: "p6c", type: "growth", duration: 39,
+      title: "04  사례 ① 불닭볶음면, 출시 그 후 · 숫자로 보기",
+      lead: "해외 매출이 커지자 생산도 해외로 넓혔다",
+      headImg: { src: P_BULDAK2, caption: "불닭볶음면 생산 라인 (사진: 파이낸셜뉴스)", pos: "50% 50%" },
+      cumLabel: "불닭 누적 판매량 (억 개)",
+      cum: [{ x: "2017", v: 10 }, { x: "2019", v: 20 }, { x: "2021", v: 30 }, { x: "2022", v: 40 }, { x: "2023.3Q", v: 53 }, { x: "2025 상반기", v: 80 }],
+      cumNote: "기사마다 집계 기준(브랜드 면 제품 / 시리즈)이 조금 다를 수 있음",
+      revLabel: "삼양식품 해외 매출과 비중",
+      rev: [{ x: "2020", v: 3703, label: "3,703억", share: 57 }, { x: "2021", v: 3885, label: "3,885억", share: 61 }, { x: "2022", v: 6050, label: "6,050억", share: 67 }, { x: "2023", v: 8093, label: "8,093억", share: 68 }, { x: "2024", v: 13359, label: "1조 3,359억", share: 77 }],
+      revNote: "막대 안 % = 전체 매출 중 해외 비중 (자료: 삼양식품, 머니투데이 그래픽)",
+      facts: [
+        { when: "2022.05", h: "밀양공장 준공", t: "수출 전용 · 연간 최대 6억 개" },
+        { when: "2025.12 보도", h: "중국 자싱 첫 해외 공장 건립 중", t: "국내외 5개 공장 연 38억 개 생산 예정" },
+        { when: "2025", h: "약 100개국 판매", t: "누적 80억 개 (2025 상반기)" }
+      ],
+      sources: [{ label: "데일리안 2022.08.01", url: U_BULDAK40 }, { label: "세계일보 2024.01.16", url: U_SEGYE }, { label: "토요경제 2025.09.24", url: U_BULDAK80 }, { label: "머니투데이 2025.12.04", url: U_MT_REV }],
+      script: "숫자로도 보겠습니다. 누적 판매량은 2017년 10억 개에서 2025년 상반기 80억 개가 됐습니다.\n[엔터 ⏎ 해외 매출] 해외 매출은 2020년 3,703억 원에서 2024년 1조 3,359억 원으로 늘었고, 전체 매출의 77%가 됐습니다.\n[엔터 ⏎ 생산 확대] 그래서 생산도 넓혔습니다. 2022년 수출 전용 밀양공장을 지었고, 지금은 중국에 첫 해외 공장을 짓고 있습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 입장하면 누적 판매량 선이 그려진다. 엔터 1: 해외 매출 막대 → 엔터 2: 생산·시장 카드.\n· 누적 판매량: 데일리안(2022.08.01) 2017년 10억, 2019년 20억, 2021년 30억, 2022년 40억 개(불닭브랜드 면 제품). 세계일보(2024.01.16) ‘지난해 3분기까지 … 누적 판매량 53억개’. 토요경제(2025.09.24) 2025년 상반기 누적 80억 개(불닭볶음면 시리즈), 100여 개국. 연도 간격이 고르지 않다.\n· 해외 매출: 머니투데이(2025.12.04) 그래픽 ‘삼양식품 해외 매출과 비중’(자료: 삼양식품) 2020년 3703억원 57%, 2021년 3885억원 61%, 2022년 6050억원 67%, 2023년 8093억원 68%, 2024년 1조3359억원 77%. 이 수치는 삼양식품 전체의 해외 매출이며 불닭만의 매출은 아니다(세계일보: 해외 매출의 80%가 불닭 브랜드).\n· 생산: 데일리안(2022.05.02) 밀양공장 수출 전용, 연간 최대 6억 개. 머니투데이(2025.12.04) ‘2014억원을 투자해 중국 자싱시에 첫 해외 생산공장을 건립 중’, ‘자싱공장을 포함해 국내·외 5개 공장의 연간 불닭볶음면 생산량은 38억개로 늘어난다’.\n· ‘해외 매출이 커지자 생산을 넓혔다’는 연결은 기사 내용을 바탕으로 한 저희 조의 정리다."
+    },
+    {
+      id: "p7", type: "case", duration: 51,
+      title: "04  사례 ② 삼성전자 갤럭시 폴드",
       lead: "출시 직전 문제가 드러나 설계 보완과 추가 검증으로 돌아갔다",
-      img: { src: P_FOLD2, caption: "갤럭시 폴드", pos: "50% 50%" },
+      img: { src: P_FOLD2, caption: "갤럭시 폴드 (사진: 삼성전자 뉴스룸)", pos: "50% 50%" },
       stats: [{ n: 4, u: "가지", l: "공식 발표의 주요 설계 보강" }],
       steps: [
         { stage: "제품 공개", when: "2019.02", what: "화면을 접는 스마트폰 갤럭시 폴드 공개" },
@@ -1466,76 +1880,82 @@ const DEFAULT_DECK = {
       caveat: "기사·공식 발표로 확인한 사실 · 설계 보완을 제품 엔지니어링에 연결한 것은 조 해석",
       lesson: "검증에서 문제가 드러나자 출시를 미루고 설계를 보완했다",
       sources: [{ label: "뉴시스 2019.04.23", url: U_FOLD_DELAY }, { label: "Samsung Newsroom 2019.07.24", url: U_FOLD_FIX }, { label: "삼성전자 뉴스룸 2019.09.05", url: U_FOLD_LAUNCH }],
-      script: "두 번째는 삼성전자의 갤럭시 폴드입니다. 불닭이 고객 수요에서 출발했다면, 폴드는 접는 화면이라는 새 기술에서 출발했습니다.\n[엔터 ⏎ 공개 · 문제 발견 · 출시 연기] 2019년 2월 공개 후 4월 26일 미국 출시를 앞두고 있었는데, 리뷰용 제품에서 화면 손상이 나왔습니다. 원인은 접히는 부분 위아래의 충격과 이물질이었고, 삼성전자는 4월 23일 내부 테스트를 추가하겠다며 출시를 미뤘습니다.\n[엔터 ⏎ 설계 보완 · 추가 검증] 7월에 발표한 주요 설계 보강은 네 가지입니다. 보호막을 베젤 밖까지 늘리고, 힌지에 보호 캡을, 디스플레이 뒷면에 금속층을 넣고, 힌지와 본체 사이 틈을 줄였습니다. 저희는 이것을 제품 엔지니어링으로 돌아간 것으로 해석했습니다.\n[엔터 ⏎ 국내 첫 출시] 그리고 2019년 9월 6일 국내에 처음 출시됐습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: 제품 공개·문제 발견·출시 연기 → 엔터 2: 설계 보완·추가 검증 → 엔터 3: 국내 첫 출시.\n· 제품 공개: 서울신문 「10번째 갤럭시 공개 현장…호스트는 ‘S10’ 주인공은 ‘폴드’」(2019.02.21) " + U_FOLD_REVEAL + "\n· 출시 연기: 뉴시스 「‘출격 늦춘’ 갤럭시 폴드…삼성전자 “완성도 높이겠다”(종합)」(2019.04.23) " + U_FOLD_DELAY + " 연기 사유 ‘갤럭시 폴드 리뷰 과정에서 드러난 문제를 점검하고 내부 테스트를 추가로 진행하기 위해’, 원인 ‘접히는 부분의 상·하단 디스플레이 노출부 충격과 이물질에 의한 디스플레이 손상’. 원래 일정은 미국 4월 26일, 유럽 5월 3일, 국내 5월 중순.\n· 설계 보강: Samsung Newsroom(미국) 「Galaxy Fold Ready for Launch starting from September」(2019.07.24, 미국 시간) " + U_FOLD_FIX + " 공식 발표의 주요 설계 보강 4가지: 디스플레이 상단 보호막을 베젤 밖까지 연장, 힌지 위아래에 보호 캡 추가, 디스플레이 아래에 금속층 추가, 힌지와 본체 사이 틈 축소. 이 밖에 외부 입자를 막는 보강이 있었고, 최종 제품 테스트를 진행 중이라고 밝혔다. 국내 보도: 바이라인네트워크 「갤럭시 폴드 문제점 보완해 9월 출시」(2019.07.25) " + U_FOLD_FIX_KR + "\n· 국내 첫 출시: 삼성전자 뉴스룸 보도자료(2019.09.05) " + U_FOLD_LAUNCH + " ‘6일 국내에서 첫 출시’.\n· 삼성전자 한국 뉴스룸의 7월 설계 보강 안내 글은 찾지 못해, 미국 뉴스룸 공식 발표와 국내 보도를 함께 적었다.\n· 리뷰용 제품을 알파·베타 시제품이라고 말하지 않는다. 미국 출시 예정일과 국내 출시일은 서로 다른 시장이라 지연 기간을 계산하지 않았다."
+      script: "두 번째는 갤럭시 폴드입니다. 불닭이 고객 수요에서 출발했다면, 폴드는 접는 화면이라는 새 기술에서 출발했습니다.\n[엔터 ⏎ 공개 · 문제 발견 · 출시 연기] 2019년 2월 공개 후 미국 출시를 앞두고 리뷰용 제품에서 화면 손상이 나왔습니다. 삼성전자는 4월 23일 내부 테스트를 더 하겠다며 출시를 미뤘습니다.\n[엔터 ⏎ 설계 보완 · 추가 검증] 7월에는 보호막 연장, 힌지 보호 캡, 금속층 추가, 틈 축소의 네 가지 보강을 발표했습니다. 저희는 제품 엔지니어링으로 돌아간 것으로 봤습니다.\n[엔터 ⏎ 국내 첫 출시] 그리고 9월 6일 국내에 처음 출시됐습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1: 제품 공개·문제 발견·출시 연기 → 엔터 2: 설계 보완·추가 검증 → 엔터 3: 국내 첫 출시.\n· 제품 공개: 서울신문(2019.02.21) " + U_FOLD_REVEAL + "\n· 출시 연기: 뉴시스(2019.04.23) " + U_FOLD_DELAY + " 연기 사유 ‘갤럭시 폴드 리뷰 과정에서 드러난 문제를 점검하고 내부 테스트를 추가로 진행하기 위해’, 원인 ‘접히는 부분의 상·하단 디스플레이 노출부 충격과 이물질에 의한 디스플레이 손상’. 원래 일정은 미국 4월 26일.\n· 설계 보강: Samsung Newsroom(미국, 2019.07.24) " + U_FOLD_FIX + " 디스플레이 상단 보호막을 베젤 밖까지 연장, 힌지 위아래에 보호 캡 추가, 디스플레이 아래에 금속층 추가, 힌지와 본체 사이 틈 축소. 국내 보도: 바이라인네트워크(2019.07.25) " + U_FOLD_FIX_KR + "\n· 국내 첫 출시: 삼성전자 뉴스룸(2019.09.05) ‘6일 국내에서 첫 출시’.\n· 리뷰용 제품을 알파·베타 시제품이라고 말하지 않는다."
     },
     {
-      id: "p7b", type: "evolve", duration: 46,
-      title: "03  사례 적용 · ② 갤럭시 폴드, 출시 그 후",
-      lead: "이전 세대의 약점을 다음 세대에서 개선했다",
+      id: "p7b", type: "foldgen", duration: 51,
+      title: "04  사례 ② 갤럭시 폴드, 출시 그 후",
+      lead: "이전 세대의 약점을 고치고, 새로운 모양의 제품으로 이어졌다",
       chartLabel: "접었을 때 두께 (mm)",
-      dec: 1,
       models: [
-        { name: "폴드", sub: "2019 · 276g", v: 17.1, hl: 0 },
-        { name: "Z폴드2", sub: "2020 · 282g", v: 16.8, hl: 1 },
-        { name: "Z폴드3", sub: "2021 · 271g", v: 16.0, hl: 2 },
-        { name: "Z폴드4", sub: "2022 · 263g", v: 15.8, hl: 3 },
-        { name: "Z폴드5", sub: "2023 · 253g", v: 13.4, hl: 3 },
-        { name: "Z폴드6", sub: "2024 · 239g", v: 12.1, hl: 3 },
-        { name: "Z폴드7", sub: "2025 · 215g", v: 8.9, hl: 3 }
+        { name: "폴드", sub: "2019 · 276g", v: 17.1 },
+        { name: "Z폴드2", sub: "2020 · 282g", v: 16.8 },
+        { name: "Z폴드3", sub: "2021 · 271g", v: 16.0 },
+        { name: "Z폴드4", sub: "2022 · 263g", v: 15.8 },
+        { name: "Z폴드5", sub: "2023 · 253g", v: 13.4 },
+        { name: "Z폴드6", sub: "2024 · 239g", v: 12.1 },
+        { name: "Z폴드7", sub: "2025 · 215g", v: 8.9 }
       ],
       fixes: [
-        { tag: "이물질", who: "Z폴드2 · 2020", t: "힌지 틈의 먼지를 쓸어 내는 솔 ‘스위퍼’ 적용" },
-        { tag: "물 · 충격", who: "Z폴드3 · 2021", t: "폴더블폰 최초 방수(IPX8), 더 단단한 아머 알루미늄" },
-        { tag: "두께 · 주름", who: "Z폴드4 ~ Z폴드7", t: "힌지 재설계, 화면을 물방울 모양으로 접어 빈틈과 주름 개선" }
+        { tag: "약점: 이물질", t: "Z폴드2 · 힌지 먼지를 쓸어 내는 ‘스위퍼’", at: [1] },
+        { tag: "약점: 물·충격", t: "Z폴드3 · 폴더블 최초 방수(IPX8)", at: [2] },
+        { tag: "약점: 두께·주름", t: "Z폴드4~7 · 힌지 재설계", at: [3, 4, 5, 6] }
       ],
-      lesson: "이전 세대의 약점 → 다음 세대의 목표 (조 해석)",
-      sources: [{ label: "삼성전자 뉴스룸 2024.06.27", url: U_FOLD_HIST }, { label: "서울신문 2021.08.11", url: U_FOLD3 }, { label: "데일리안 2025.07.09", url: U_FOLD7 }],
-      script: "폴드도 출시 뒤에 개선이 이어졌습니다. 왼쪽은 세대별로 접었을 때의 두께입니다.\n[엔터 ⏎ 이물질 · Z폴드2] 첫 폴드의 문제였던 이물질은 2020년 Z폴드2에서 힌지 틈의 먼지를 쓸어 내는 ‘스위퍼’로 막았고,\n[엔터 ⏎ 물·충격 · Z폴드3] 2021년 Z폴드3는 폴더블폰 최초로 방수를 지원했습니다.\n[엔터 ⏎ 두께·주름 · Z폴드4~7] 이후 힌지를 다시 설계하면서, 17.1mm에 276g이던 폴드가 Z폴드7에서는 8.9mm에 215g이 됐습니다.\n저희는 이전 세대의 약점이 다음 세대 개발의 목표가 된 것으로 해석했습니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: Z폴드2 → 엔터 2: Z폴드3 → 엔터 3: Z폴드4~7. 그래프 막대도 함께 강조된다.\n· 자료: 삼성전자 뉴스룸 「[갤럭시 히스토리 ①] Z 폴드: 더욱 얇게, 빈틈없이 그리고 단단하게」(2024.06.27): 폴드~Z폴드5의 두께·무게, Z폴드2 스위퍼, Z폴드3 방수, Z폴드4 힌지를 직선 운동 방식으로 재설계, Z폴드5 물방울 형태의 플렉스 힌지(화면 주름과 빈틈 개선). 서울신문(2021.08.11): Z폴드3 폴더블폰 최초 IPX8 방수, 아머 알루미늄. 데일리안(2025.07.09): Z폴드7 접었을 때 8.9mm·215g, 전작보다 3.2mm 얇고 24g 가볍다.\n· 두께는 접었을 때 가장 두꺼운 곳 기준. Z폴드6 값(12.1mm·239g)은 기사에 직접 나온 값이 아니라 데일리안 기사의 ‘전작 대비’ 수치로 계산한 것이다.\n· ‘이전 세대의 약점이 다음 세대의 목표가 됐다’는 연결은 저희 조의 해석이다(36장의 목표 스펙 설정과 연결해 생각해 볼 수 있다)."
+      newLabel: "새로운 모양의 신제품으로",
+      news: [
+        { when: "2020.02", name: "갤럭시 Z 플립", t: "‘Z 시리즈’ 첫 제품 · 세계 최초 UTG 적용", img: { src: P_FLIP, caption: "갤럭시 Z 플립", pos: "50% 50%" } },
+        { when: "2025.12", name: "갤럭시 Z 트라이폴드", t: "두 번 접는 10형 화면 · 접으면 12.9mm", img: { src: P_TRIFOLD, caption: "갤럭시 Z 트라이폴드", pos: "50% 50%" } },
+        { when: "2026.07", name: "갤럭시 Z 폴드8", t: "4:3 비율의 넓은 화면 · 201g", img: { src: P_FOLD8, caption: "갤럭시 Z 폴드8", pos: "50% 50%" } }
+      ],
+      lesson: "이전 세대의 약점 → 다음 세대의 목표 → 새로운 신제품 (조 해석)",
+      sources: [{ label: "삼성전자 뉴스룸 2024.06.27 · 2025.12.02", url: U_FOLD_HIST }, { label: "데일리안 2025.07.09", url: U_FOLD7 }, { label: "아이뉴스24 2020.02.12", url: U_FLIP }, { label: "파이낸셜뉴스 2026.07.22", url: U_FOLD8 }],
+      script: "폴드는 출시 뒤에도 계속 개선됐습니다. 세대별로 접었을 때의 두께입니다.\n[엔터 ⏎ 이물질] 첫 폴드의 문제였던 이물질은 Z폴드2의 ‘스위퍼’로 막았고,\n[엔터 ⏎ 물·충격] Z폴드3는 폴더블폰 최초로 방수를 지원했습니다.\n[엔터 ⏎ 두께] 이후 힌지를 다시 설계해 17.1mm였던 두께가 Z폴드7에서 8.9mm, 약 절반이 됐습니다.\n[엔터 ⏎ 새로운 신제품] 그리고 새로운 모양의 제품으로도 이어졌습니다. 2020년 Z 시리즈의 첫 제품인 Z플립, 2025년 두 번 접는 트라이폴드, 2026년 7월 넓은 화면의 Z폴드8이 나왔습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 엔터 1~3: 약점과 개선이 해당 세대 위에 나타나고 그 막대가 강조된다. 엔터 4: 오른쪽 새 제품 3개.\n· 두께·무게: 삼성전자 뉴스룸 「[갤럭시 히스토리 ①] Z 폴드」(2024.06.27) 폴드~Z폴드5, Z폴드2 스위퍼, Z폴드3 방수, Z폴드4 힌지 재설계, Z폴드5 물방울 형태 힌지. 서울신문(2021.08.11) Z폴드3 폴더블폰 최초 IPX8 방수. 데일리안(2025.07.09) Z폴드7 8.9mm·215g, 전작보다 3.2mm 얇고 24g 가볍다. Z폴드6 값(12.1mm·239g)은 이 ‘전작 대비’ 수치로 계산한 값이다. 두께는 접었을 때 가장 두꺼운 곳 기준. (17.1 − 8.9) ÷ 17.1 ≈ 48%.\n· Z플립: 아이뉴스24(2020.02.12) ‘11일(현지시간) … 갤럭시 언팩 2020에서 공개’, ‘갤럭시 Z 시리즈의 첫 제품이라는 것이 회사 측의 설명’, ‘세계 최초로 UTG(울트라 씬 글래스)를 적용’, 국내 출시 14일.\n· Z 트라이폴드: 삼성전자 뉴스룸(2025.12.02) 메인 253.1mm(10.0형), 커버 6.5형, 접었을 때 12.9mm, 309g, 12일 국내 출시, 359만 400원.\n· Z폴드8: 파이낸셜뉴스(2026.07.22) 22일(현지시간) 영국 런던 ‘갤럭시 언팩 2026’에서 공개, 4대 3 화면비, 무게 201g. 같은 날 공개된 Z폴드8 울트라는 접었을 때 8.9mm, 215g이라 두께 그래프에는 넣지 않았다.\n· ‘이전 세대의 약점이 다음 세대의 목표가 됐다’는 연결은 저희 조의 해석이다(36장의 목표 스펙 설정과 연결해 생각해 볼 수 있다)."
     },
     {
-      id: "p8", type: "table", duration: 38,
-      title: "03  사례 적용 · 정리",
-      lead: "두 사례에서 확인한 반복 개선의 중요성",
+      id: "p8", type: "table", duration: 23,
+      title: "04  사례 · 정리",
+      lead: "두 사례 모두 출시 전 검증, 출시 후 개선이 이어졌다",
       cols: ["불닭볶음면", "갤럭시 폴드"],
+      colImgs: [{ src: P_BULDAK, caption: "불닭볶음면" }, { src: P_FOLD2, caption: "갤럭시 폴드" }],
       rows: [
         { h: "출발점", a: "고객의 매운맛 수요", b: "새로운 기술 (접는 화면)" },
-        { h: "출시 전 (확인한 사실)", a: "약 1년간 시식·수정 반복", b: "출시 직전 문제 발견 → 출시 연기, 설계 보완, 추가 테스트" },
-        { h: "출시 후 (확인한 사실)", a: "까르보불닭 정식 출시 결정, 수출 전용 공장, 약 100개국", b: "Z폴드2~7 세대마다 내구성·두께 개선" },
+        { h: "출시 전 (확인한 사실)", a: "약 1년간 시식·수정 반복", b: "문제 발견 → 출시 연기, 설계 보완, 추가 테스트" },
+        { h: "출시 후 (확인한 사실)", a: "19종 시리즈, 나라별 버전, 해외 매출 비중 77%", b: "세대마다 두께·내구성 개선, Z플립·트라이폴드 등 새 제품" },
         { h: "확인하지 못한 것", a: "첫 제품의 공정 엔지니어링·시장진출 준비", b: "공정 엔지니어링·시장진출 준비 과정" },
         { h: "수업 단계 연결 (조 해석)", a: "개념 정립 → 제품 개발·개선", b: "제품 엔지니어링으로 돌아가 설계·신뢰성 보완" }
       ],
       commonLabel: "시사점 (조 해석)",
-      common: "개발 과정에는 검증과 개선이 필요하고, 문제가 있으면 이전 단계로 돌아가 보완하며, 출시 뒤에도 개선이 이어질 수 있다",
+      common: "개발 과정에는 검증과 개선이 필요하고, 문제가 있으면 이전 단계로 돌아가며, 출시 뒤의 개선은 다음 신제품으로 이어진다",
       sources: [],
-      script: "두 사례를 정리하면, 출발점은 고객 수요와 새 기술로 달랐습니다. 출시 전에는 불닭이 시식과 수정을 반복했고, 폴드는 문제를 발견해 설계를 보완했습니다. 출시 뒤에도 두 제품 모두 후속 제품과 다음 세대로 개선을 이어 갔습니다.\n그래서 저희 조가 얻은 시사점은, 개발 과정에는 검증과 개선이 필요하고, 문제가 있으면 이전 단계로 돌아가 보완할 수 있다는 점입니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· ‘수업 단계 연결’과 ‘시사점’ 줄은 저희 조의 해석이며 강의자료의 문구가 아니다.\n· 두 회사가 모든 단계를 빠짐없이 수행했다거나 단계별 검증을 모두 마쳤다고 말하지 않는다."
+      script: "두 사례를 정리하면, 출발점은 고객 수요와 새 기술로 달랐지만, 둘 다 출시 전에 검증하고 고쳤습니다. 출시 뒤에도 불닭은 맛과 나라를 넓혔고, 폴드는 세대마다 약점을 고쳐 새 제품으로 이어졌습니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· ‘수업 단계 연결’과 ‘시사점’ 줄은 저희 조의 해석이며 강의자료의 문구가 아니다.\n· 두 회사가 모든 단계를 빠짐없이 수행했다고 말하지 않는다."
     },
     {
-      id: "p9", type: "concl", duration: 52,
-      title: "04  결론",
+      id: "p9", type: "concl", duration: 44,
+      title: "05  결론",
       lead: "신제품 개발 절차는 개념 정립부터 대량 생산까지 6단계다",
       chain: ["개념 정립", "제품 설계", "제품 엔지니어링", "공정 엔지니어링", "시장진출 준비", "대량 생산"],
       backLabel: "문제가 발견되면 관련 이전 단계로 (조 해석)",
       points: [
-        { h: "강의자료로 본 답", t: "니즈에 적합한 개념을 정하고, 설계와 제품·공정 준비를 거쳐 시장진출과 대량 생산으로 이어진다" },
-        { h: "세부 절차 (36~37장)", t: "니즈를 스펙으로 바꾸고, 컨셉을 비교해 고른 뒤, 시제품을 만든다" },
-        { h: "사례에서 얻은 점 (조 해석)", t: "검증과 반복 개선이 필요하고, 출시 뒤에도 개선은 다음 제품으로 이어질 수 있다" }
+        { h: "왜 만드는가", t: "이윤을 얻고 도태되지 않기 위해서다 (5강·6강)" },
+        { h: "어떻게 만드는가", t: "니즈를 스펙으로 바꾸고, 컨셉을 비교해 고르고, 시제품으로 확인한다 (35~37장)" },
+        { h: "출시 그 후 (조 해석)", t: "모두 성공하지는 않기에 검증과 개선이 필요하고, 개선은 다음 신제품으로 이어진다" }
       ],
       sources: [{ label: "강의자료 5강 35~37장", url: "" }],
-      script: "질문에 대한 저희 조의 답입니다. 신제품 개발 절차는 개념 정립, 제품 설계, 제품 엔지니어링, 공정 엔지니어링, 시장진출 준비, 대량 생산의 여섯 단계입니다.\n[엔터 ⏎ 정리 세 가지] 즉 니즈에 맞는 개념을 정하고, 설계와 제품·공정 준비를 거쳐 시장진출과 대량 생산으로 이어집니다. 앞부분은 니즈를 스펙으로 바꾸고 컨셉을 골라 시제품을 만드는 세부 절차로 구체화됩니다.\n여기에 사례를 보고 덧붙이면, 이 과정에서 검증과 반복 개선이 중요하고, 출시 뒤에도 개선은 다음 제품으로 이어질 수 있다는 것이 저희 조의 생각입니다.\n[엔터 ⏎ 다음 장]",
-      notes: "· 엔터 1: 아래 세 가지 정리 카드가 나타난다.\n· 1·2번 카드는 강의자료 35~37장의 내용이고, 3번 카드와 되돌아가는 화살표는 두 사례를 보고 저희 조가 덧붙인 해석이다.\n· ‘절차를 지키면 반드시 성공한다’고 말하지 않는다."
+      script: "질문에 대한 저희 조의 답입니다. 신제품 개발 절차는 개념 정립, 제품 설계, 제품 엔지니어링, 공정 엔지니어링, 시장진출 준비, 대량 생산의 여섯 단계입니다.\n[엔터 ⏎ 되돌아가는 화살표] 사례에서 보듯 문제가 생기면 이전 단계로 돌아가기도 합니다.\n[엔터 ⏎ 정리 세 가지] 기업은 이윤과 생존을 위해 신제품을 만들고, 니즈를 스펙으로 바꿔 시제품으로 확인하며, 모두 성공하지는 않기에 출시 뒤에도 개선을 이어 가야 한다는 것이 저희의 결론입니다.\n[엔터 ⏎ 다음 장]",
+      notes: "· 입장하면 6단계가 차례로 켜지고 점이 흐른다. 엔터 1: 되돌아가는 화살표 → 엔터 2: 정리 세 가지.\n· 1·2번 카드는 강의자료(5강 혁신의 원천 9·29장, 6강 9장, 5강 경영프로젝트의 개발 35~37장) 내용이고, 3번 카드와 되돌아가는 화살표는 두 사례를 보고 저희 조가 덧붙인 해석이다.\n· ‘절차를 지키면 반드시 성공한다’고 말하지 않는다."
     },
     {
-      id: "p10", type: "closing", duration: 10,
+      id: "p10", type: "closing", duration: 9,
       title: "Q & A",
       big: "감사합니다",
       sub: "Q & A",
-      credits: "내용 · 강의자료 5강(경영프로젝트의 개발, 혁신의 원천 및 유형과 패턴), 6강, 뉴시스, 아시아경제, 데일리안, 토요경제, 서울신문, 삼성전자 뉴스룸, 바이라인네트워크 (링크는 대본 끝 출처 목록)\n사진 · 뉴시스, 파이낸셜뉴스, 머니투데이, 삼성전자 뉴스룸",
+      credits: "내용 · 강의자료 5강(경영프로젝트의 개발, 혁신의 원천 및 유형과 패턴), 6강, 뉴시스, 아시아경제, 데일리안, 세계일보, MTN, 토요경제, 머니투데이, 파이낸셜뉴스, 서울신문, 아이뉴스24, 삼성전자 뉴스룸, 바이라인네트워크 (링크는 대본 끝 출처 목록)\n사진 · 뉴시스, 파이낸셜뉴스, 머니투데이, 삼성전자 뉴스룸, 위키미디어 공용(Google Glass: Mikepanhu CC BY-SA 3.0 · 3D 프린터: Jonathan Juursema CC BY-SA 3.0 · 피펫: J.N. Eskra CC BY-SA 4.0 · 계산자: CC BY 4.0)",
       sources: [],
       script: "이상으로 발표를 마치겠습니다. 들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.",
-      notes: "[예상 질문]\nQ. 혁신의 터널의 숫자는 신제품 성공률인가요?\nA. 아닙니다. 강의자료 31장 그림은 제약산업의 예시이고, 많은 후보 가운데 일부만 상품이 된다는 뜻으로 사용했습니다.\n\nQ. 불닭볶음면은 6단계 중 어디까지 확인할 수 있나요?\nA. 공개 기사에서는 개념을 잡은 계기, 맛집 탐방, 약 1년간의 시식·수정, 출시 후 매출이 확인됩니다. 단계별로 시간이 얼마나 걸렸는지, 공정 엔지니어링이나 영업 준비는 어땠는지는 기사에 나오지 않아 분석에 넣지 않았습니다.\n\nQ. 갤럭시 폴드는 실패 사례 아닌가요?\nA. 리뷰용 제품에서 문제가 나온 것은 아쉬운 점입니다. 다만 출시를 미루고 설계를 보완한 뒤 추가 테스트를 거쳐 출시했기 때문에, 문제가 발견됐을 때 이전 단계로 돌아가 보완한 예로 봤습니다.\n\nQ. 점수 매트릭스의 가중치는 어떻게 정하나요?\nA. 강의자료 37장에는 평가기준을 기술적 분석과 경제적 분석으로 설정하고, 가중평점의 합계로 평가한다고 나옵니다. 가중치를 정하는 구체적인 방법은 강의자료에 나오지 않습니다.\n\nQ. 알파 시제품과 베타 시제품은 어떻게 다른가요?\nA. 강의자료 36장에는 시제품 제작 단계에서 알파 시제품과 베타 시제품을 만든다고 나옵니다. 두 시제품의 자세한 차이는 강의자료에 나오지 않아서, 발표에서는 따로 설명하지 않았습니다."
+      notes: "[예상 질문]\nQ. 혁신의 터널의 숫자는 신제품 성공률인가요?\nA. 아닙니다. 강의자료 31장 그림은 제약산업의 예시이고, 많은 후보 가운데 일부만 상품이 된다는 뜻으로 사용했습니다.\n\nQ. 캐즘은 어떻게 넘을 수 있나요?\nA. 강의자료 42장에는 캐즘을 넘지 못하면 대중화에 실패한다는 그림과 예시(구글 글라스, 3D 프린터)만 있고, 넘는 방법은 나오지 않습니다. 저희는 고객 니즈에서 출발해 검증하는 절차가 중요하다고 해석했습니다.\n\nQ. 무선 이어폰 예시는 실제 자료인가요?\nA. 아닙니다. 36~37장의 절차와 가중평점 방법을 쉽게 설명하려고 저희가 만든 가상 예시입니다. 강의자료 37장의 원래 표는 일부 항목이 생략돼 있어 예시로 바꿨습니다.\n\nQ. 불닭볶음면은 6단계 중 어디까지 확인할 수 있나요?\nA. 공개 기사에서는 개념을 잡은 계기, 맛집 탐방, 약 1년간의 시식·수정, 출시 후 매출과 후속 제품이 확인됩니다. 공정 엔지니어링이나 영업 준비는 기사에 나오지 않아 분석에 넣지 않았습니다.\n\nQ. 갤럭시 폴드는 실패 사례 아닌가요?\nA. 리뷰용 제품에서 문제가 나온 것은 아쉬운 점입니다. 다만 출시를 미루고 설계를 보완한 뒤 출시했고, 그 뒤 세대마다 약점을 고쳤기 때문에 문제가 발견됐을 때 이전 단계로 돌아가 보완한 예로 봤습니다."
     }
   ]
 };
@@ -1645,14 +2065,20 @@ function steps(s) {
     case "stages": return 3;
     case "detail": return 1;
     case "case": return Math.max(1, ...(s.groupAt || [1]).map(Number));
-    case "concl": return 1;
+    case "concl": return 2;
     case "evolve": return (s.fixes || []).length;
     case "why": return (s.cards || []).length;
+    case "funnel": return 1;
+    case "chasm": return 2;
+    case "example": return 3;
+    case "world": return 3;
+    case "growth": return 2;
+    case "foldgen": return (s.fixes || []).length + 1;
     default: return 0;
   }
 }
 function head(s, i) {
-  return `<header class="s-head"><div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${s.lead != null ? ed(s, "lead", "h2", "lead") : ""}</header>`;
+  return `<header class="s-head">${s.headImg && s.headImg.src ? `<div class="hd-ph rise" style="--i:2">${photo(s, "headImg", "hd-phi")}<span data-k="headImg.caption">${esc(s.headImg.caption || "")}</span></div>` : ""}<div class="eyebrow"><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>${s.lead != null ? ed(s, "lead", "h2", "lead") : ""}</header>`;
 }
 function foot(s, i) {
   const src = (s.sources || []).filter(x => x && (x.label || x.url)).map(x => {
@@ -1664,7 +2090,10 @@ function foot(s, i) {
 /* photos are served from the deck's own img/ folder first, original URL as fallback */
 const LOCAL_IMG = {
   [P_BULDAK]: "img/buldak.jpg", [P_BULDAK2]: "img/buldak-line.jpg", [P_FACTORY]: "img/buldak-factory.jpg",
-  [P_FOLD]: "img/fold.jpg", [P_FOLD2]: "img/fold-hero.jpg"
+  [P_FOLD]: "img/fold.jpg", [P_FOLD2]: "img/fold-hero.jpg",
+  [P_GLASS]: "img/glass.jpg", [P_PRINTER]: "img/printer.jpg", [P_SLIDE]: "img/sliderule.jpg", [P_LAB]: "img/lab.jpg",
+  [P_BUDS]: "img/buds.jpg", [P_BULDAK_POP]: "img/buldak-pop.jpg", [P_BULDAK_SHOP]: "img/buldak-shop.jpg", [P_MIRYANG2]: "img/miryang2.jpg",
+  [P_FLIP]: "img/flip.jpg", [P_TRIFOLD]: "img/trifold.jpg", [P_FOLD8]: "img/fold8.jpg"
 };
 const ALT_JS = "if(this.dataset.alt){var a=this.dataset.alt;this.removeAttribute('data-alt');this.src=a;return;}";
 const imgSrc = u => LOCAL_IMG[u] ? `src="${esc(LOCAL_IMG[u])}" data-alt="${esc(u)}"` : `src="${esc(u)}"`;
@@ -1758,6 +2187,12 @@ function stepHook(el, s) {
   if (s.type === "detail") {
     const m = el.querySelector(".mx"); if (m) m.classList.toggle("pick", mode.edit || step >= 1);
   }
+  const all = el.classList.contains("show-all");
+  if (s.type === "chasm") el.classList.toggle("cz-open", all || step >= 1);
+  if (s.type === "foldgen") {
+    el.querySelectorAll(".fg-m").forEach(g => g.classList.toggle("on", !all && step > 0 && +g.dataset.g === step));
+    el.querySelectorAll(".fg-tag").forEach(g => g.classList.toggle("cur", !all && +g.dataset.f === step));
+  }
 }
 const R = {};
 R.funnel = (s, i) => {
@@ -1850,7 +2285,7 @@ R.agenda = (s, i) => `${head(s, i)}<div class="s-body"><ol class="agenda">
     <span class="ag-n" data-k="items.${k}.n">${esc(it.n)}</span><span class="ag-ic">${icon(["flask", "list", "target", "check"][k % 4])}</span>${ed(s, `items.${k}.t`, "b", "ag-t")}${ed(s, `items.${k}.d`, "span", "ag-d")}<i class="ag-bar"></i></li>`).join("")}
   </ol></div>${foot(s, i)}`;
 R.table = (s, i) => `${head(s, i)}<div class="s-body">
-  <table class="sumt"><thead><tr><th></th>${(s.cols || []).map((c, k) => `<th class="rise" style="--i:${k + 1};--c:${[PAL[1], PAL[0]][k % 2]}" data-k="cols.${k}">${esc(c)}</th>`).join("")}</tr></thead>
+  <table class="sumt"><thead><tr><th></th>${(s.cols || []).map((c, k) => `<th class="rise" style="--i:${k + 1};--c:${[PAL[1], PAL[0]][k % 2]}">${(s.colImgs || [])[k] ? photo(s, `colImgs.${k}`, "th-ph") : ""}<span data-k="cols.${k}">${esc(c)}</span></th>`).join("")}</tr></thead>
   <tbody>${(s.rows || []).map((r, k) => `<tr class="rise${k === (s.rows || []).length - 1 ? " last" : ""}" style="--i:${k + 2}"><th data-k="rows.${k}.h">${esc(r.h)}</th><td data-k="rows.${k}.a">${esc(r.a)}</td><td data-k="rows.${k}.b">${esc(r.b)}</td></tr>`).join("")}</tbody></table>
   <div class="common rise"${rise(7)}>${icon("link")}${ed(s, "commonLabel", "b")}${ed(s, "common", "span")}</div>
 </div>${foot(s, i)}`;
@@ -1887,6 +2322,256 @@ R.why = (s, i) => `${head(s, i)}<div class="s-body why">
   </div>`).join("")}</div>
   <div class="fn-bottom rise"${rise(4)}>${icon("arrow")}${ed(s, "bottom", "span")}</div>
 </div>${foot(s, i)}`;
+
+/* ================= v4: 디자인·애니메이션 개편 ================= */
+const WORLD = {"w": 144, "h": 55, "base": "M27 0h0M28 0h0M34 0h0M37 0h0M38 0h0M39 0h0M40 0h0M41 0h0M44 0h0M45 0h0M46 0h0M47 0h0M48 0h0M49 0h0M50 0h0M51 0h0M52 0h0M53 0h0M54 0h0M55 0h0M56 0h0M57 0h0M58 0h0M59 0h0M60 0h0M61 0h0M62 0h0M63 0h0M64 0h0M78 0h0M79 0h0M81 0h0M82 0h0M112 0h0M26 1h0M27 1h0M28 1h0M29 1h0M32 1h0M33 1h0M34 1h0M35 1h0M36 1h0M37 1h0M38 1h0M39 1h0M40 1h0M49 1h0M50 1h0M51 1h0M52 1h0M53 1h0M54 1h0M55 1h0M56 1h0M57 1h0M58 1h0M59 1h0M60 1h0M61 1h0M62 1h0M63 1h0M64 1h0M95 1h0M96 1h0M108 1h0M109 1h0M110 1h0M111 1h0M112 1h0M113 1h0M114 1h0M115 1h0M116 1h0M117 1h0M127 1h0M128 1h0M129 1h0M130 1h0M131 1h0M23 2h0M24 2h0M26 2h0M29 2h0M30 2h0M32 2h0M34 2h0M35 2h0M37 2h0M38 2h0M39 2h0M41 2h0M50 2h0M51 2h0M52 2h0M53 2h0M54 2h0M55 2h0M56 2h0M57 2h0M58 2h0M59 2h0M60 2h0M61 2h0M62 2h0M63 2h0M94 2h0M100 2h0M101 2h0M102 2h0M105 2h0M106 2h0M107 2h0M108 2h0M109 2h0M110 2h0M111 2h0M112 2h0M113 2h0M114 2h0M115 2h0M116 2h0M117 2h0M118 2h0M119 2h0M120 2h0M121 2h0M122 2h0M123 2h0M21 3h0M28 3h0M29 3h0M30 3h0M31 3h0M34 3h0M35 3h0M37 3h0M38 3h0M39 3h0M40 3h0M41 3h0M42 3h0M43 3h0M44 3h0M51 3h0M52 3h0M53 3h0M54 3h0M55 3h0M56 3h0M57 3h0M58 3h0M59 3h0M60 3h0M61 3h0M82 3h0M83 3h0M84 3h0M99 3h0M100 3h0M101 3h0M102 3h0M103 3h0M104 3h0M105 3h0M106 3h0M107 3h0M108 3h0M109 3h0M110 3h0M111 3h0M112 3h0M113 3h0M114 3h0M115 3h0M116 3h0M117 3h0M118 3h0M119 3h0M120 3h0M121 3h0M122 3h0M123 3h0M124 3h0M125 3h0M126 3h0M127 3h0M128 3h0M129 3h0M130 3h0M131 3h0M132 3h0M133 3h0M134 3h0M135 3h0M136 3h0M1 4h0M17 4h0M18 4h0M19 4h0M20 4h0M21 4h0M22 4h0M23 4h0M24 4h0M25 4h0M26 4h0M28 4h0M29 4h0M30 4h0M31 4h0M33 4h0M34 4h0M35 4h0M36 4h0M38 4h0M39 4h0M42 4h0M43 4h0M44 4h0M45 4h0M46 4h0M51 4h0M52 4h0M53 4h0M54 4h0M55 4h0M56 4h0M57 4h0M58 4h0M59 4h0M79 4h0M80 4h0M81 4h0M82 4h0M83 4h0M84 4h0M85 4h0M86 4h0M87 4h0M88 4h0M90 4h0M93 4h0M94 4h0M95 4h0M96 4h0M97 4h0M98 4h0M99 4h0M100 4h0M101 4h0M103 4h0M104 4h0M105 4h0M106 4h0M107 4h0M108 4h0M109 4h0M110 4h0M111 4h0M112 4h0M113 4h0M114 4h0M115 4h0M116 4h0M117 4h0M118 4h0M119 4h0M120 4h0M121 4h0M122 4h0M123 4h0M124 4h0M125 4h0M126 4h0M127 4h0M128 4h0M129 4h0M130 4h0M131 4h0M132 4h0M133 4h0M134 4h0M135 4h0M136 4h0M137 4h0M138 4h0M139 4h0M140 4h0M141 4h0M142 4h0M143 4h0M144 4h0M2 5h0M3 5h0M17 5h0M18 5h0M19 5h0M20 5h0M21 5h0M22 5h0M23 5h0M24 5h0M25 5h0M26 5h0M27 5h0M28 5h0M29 5h0M30 5h0M31 5h0M32 5h0M33 5h0M34 5h0M35 5h0M36 5h0M37 5h0M38 5h0M41 5h0M42 5h0M43 5h0M44 5h0M45 5h0M52 5h0M53 5h0M54 5h0M55 5h0M56 5h0M64 5h0M65 5h0M66 5h0M77 5h0M78 5h0M79 5h0M80 5h0M83 5h0M84 5h0M85 5h0M86 5h0M89 5h0M90 5h0M91 5h0M92 5h0M93 5h0M94 5h0M95 5h0M96 5h0M97 5h0M98 5h0M99 5h0M100 5h0M101 5h0M102 5h0M103 5h0M104 5h0M105 5h0M106 5h0M107 5h0M108 5h0M109 5h0M110 5h0M111 5h0M112 5h0M113 5h0M114 5h0M115 5h0M116 5h0M117 5h0M118 5h0M119 5h0M120 5h0M121 5h0M122 5h0M123 5h0M124 5h0M125 5h0M126 5h0M127 5h0M128 5h0M129 5h0M130 5h0M131 5h0M132 5h0M133 5h0M134 5h0M135 5h0M136 5h0M137 5h0M138 5h0M139 5h0M140 5h0M141 5h0M142 5h0M143 5h0M144 5h0M17 6h0M18 6h0M19 6h0M20 6h0M21 6h0M22 6h0M23 6h0M24 6h0M25 6h0M26 6h0M27 6h0M28 6h0M29 6h0M30 6h0M31 6h0M32 6h0M33 6h0M34 6h0M35 6h0M39 6h0M44 6h0M45 6h0M46 6h0M52 6h0M53 6h0M54 6h0M55 6h0M75 6h0M76 6h0M77 6h0M78 6h0M79 6h0M81 6h0M82 6h0M83 6h0M84 6h0M85 6h0M86 6h0M87 6h0M88 6h0M89 6h0M90 6h0M91 6h0M92 6h0M93 6h0M94 6h0M95 6h0M96 6h0M97 6h0M98 6h0M99 6h0M100 6h0M101 6h0M102 6h0M103 6h0M104 6h0M105 6h0M106 6h0M107 6h0M108 6h0M109 6h0M110 6h0M111 6h0M112 6h0M113 6h0M114 6h0M115 6h0M116 6h0M117 6h0M118 6h0M119 6h0M120 6h0M121 6h0M122 6h0M123 6h0M124 6h0M125 6h0M126 6h0M127 6h0M128 6h0M129 6h0M130 6h0M131 6h0M132 6h0M133 6h0M134 6h0M135 6h0M136 6h0M137 6h0M138 6h0M139 6h0M140 6h0M141 6h0M142 6h0M143 6h0M17 7h0M19 7h0M20 7h0M21 7h0M22 7h0M23 7h0M24 7h0M25 7h0M26 7h0M27 7h0M28 7h0M29 7h0M30 7h0M31 7h0M32 7h0M33 7h0M34 7h0M42 7h0M43 7h0M44 7h0M54 7h0M75 7h0M76 7h0M77 7h0M78 7h0M79 7h0M82 7h0M84 7h0M85 7h0M86 7h0M87 7h0M88 7h0M89 7h0M90 7h0M91 7h0M92 7h0M93 7h0M94 7h0M95 7h0M96 7h0M97 7h0M98 7h0M99 7h0M100 7h0M101 7h0M102 7h0M103 7h0M104 7h0M105 7h0M106 7h0M107 7h0M108 7h0M109 7h0M110 7h0M111 7h0M112 7h0M113 7h0M114 7h0M115 7h0M116 7h0M117 7h0M118 7h0M119 7h0M120 7h0M121 7h0M122 7h0M123 7h0M124 7h0M125 7h0M126 7h0M127 7h0M128 7h0M129 7h0M130 7h0M131 7h0M132 7h0M133 7h0M134 7h0M137 7h0M138 7h0M139 7h0M140 7h0M20 8h0M21 8h0M22 8h0M23 8h0M24 8h0M25 8h0M26 8h0M27 8h0M28 8h0M29 8h0M30 8h0M31 8h0M32 8h0M33 8h0M34 8h0M35 8h0M42 8h0M43 8h0M44 8h0M45 8h0M46 8h0M47 8h0M77 8h0M78 8h0M82 8h0M83 8h0M84 8h0M85 8h0M86 8h0M87 8h0M88 8h0M89 8h0M90 8h0M91 8h0M92 8h0M93 8h0M94 8h0M95 8h0M96 8h0M97 8h0M98 8h0M99 8h0M100 8h0M101 8h0M102 8h0M103 8h0M104 8h0M105 8h0M106 8h0M107 8h0M108 8h0M109 8h0M110 8h0M111 8h0M112 8h0M113 8h0M114 8h0M115 8h0M116 8h0M117 8h0M118 8h0M119 8h0M120 8h0M121 8h0M122 8h0M123 8h0M124 8h0M125 8h0M126 8h0M127 8h0M128 8h0M135 8h0M136 8h0M137 8h0M21 9h0M22 9h0M23 9h0M24 9h0M25 9h0M26 9h0M27 9h0M28 9h0M29 9h0M30 9h0M31 9h0M32 9h0M33 9h0M34 9h0M35 9h0M36 9h0M37 9h0M38 9h0M41 9h0M42 9h0M43 9h0M44 9h0M45 9h0M46 9h0M47 9h0M48 9h0M77 9h0M81 9h0M82 9h0M83 9h0M84 9h0M85 9h0M86 9h0M87 9h0M88 9h0M89 9h0M90 9h0M91 9h0M92 9h0M93 9h0M94 9h0M95 9h0M96 9h0M97 9h0M98 9h0M99 9h0M100 9h0M101 9h0M102 9h0M103 9h0M104 9h0M105 9h0M106 9h0M107 9h0M108 9h0M109 9h0M110 9h0M111 9h0M112 9h0M113 9h0M114 9h0M115 9h0M116 9h0M117 9h0M118 9h0M119 9h0M120 9h0M121 9h0M122 9h0M123 9h0M124 9h0M125 9h0M126 9h0M135 9h0M136 9h0M21 10h0M22 10h0M23 10h0M24 10h0M25 10h0M26 10h0M27 10h0M28 10h0M29 10h0M30 10h0M31 10h0M32 10h0M33 10h0M34 10h0M35 10h0M36 10h0M37 10h0M38 10h0M39 10h0M41 10h0M42 10h0M43 10h0M44 10h0M45 10h0M46 10h0M47 10h0M48 10h0M49 10h0M69 10h0M79 10h0M80 10h0M81 10h0M82 10h0M83 10h0M84 10h0M85 10h0M86 10h0M87 10h0M88 10h0M89 10h0M90 10h0M91 10h0M92 10h0M93 10h0M94 10h0M95 10h0M96 10h0M97 10h0M98 10h0M99 10h0M100 10h0M101 10h0M102 10h0M103 10h0M104 10h0M105 10h0M106 10h0M107 10h0M108 10h0M109 10h0M110 10h0M111 10h0M112 10h0M113 10h0M114 10h0M115 10h0M116 10h0M117 10h0M118 10h0M119 10h0M123 10h0M124 10h0M125 10h0M126 10h0M127 10h0M128 10h0M129 10h0M135 10h0M21 11h0M22 11h0M23 11h0M24 11h0M25 11h0M26 11h0M27 11h0M28 11h0M29 11h0M30 11h0M31 11h0M32 11h0M33 11h0M34 11h0M35 11h0M36 11h0M37 11h0M38 11h0M39 11h0M40 11h0M41 11h0M42 11h0M43 11h0M44 11h0M45 11h0M46 11h0M47 11h0M48 11h0M79 11h0M80 11h0M81 11h0M82 11h0M83 11h0M84 11h0M85 11h0M86 11h0M87 11h0M88 11h0M89 11h0M90 11h0M91 11h0M92 11h0M93 11h0M94 11h0M95 11h0M96 11h0M97 11h0M98 11h0M99 11h0M100 11h0M101 11h0M102 11h0M103 11h0M104 11h0M105 11h0M106 11h0M107 11h0M108 11h0M109 11h0M110 11h0M111 11h0M112 11h0M113 11h0M114 11h0M115 11h0M116 11h0M117 11h0M118 11h0M124 11h0M125 11h0M126 11h0M127 11h0M128 11h0M129 11h0M38 12h0M39 12h0M40 12h0M41 12h0M42 12h0M43 12h0M44 12h0M45 12h0M46 12h0M49 12h0M50 12h0M51 12h0M78 12h0M79 12h0M80 12h0M81 12h0M82 12h0M83 12h0M84 12h0M85 12h0M86 12h0M87 12h0M88 12h0M89 12h0M90 12h0M91 12h0M92 12h0M93 12h0M94 12h0M95 12h0M96 12h0M97 12h0M98 12h0M99 12h0M100 12h0M101 12h0M102 12h0M103 12h0M104 12h0M105 12h0M106 12h0M109 12h0M110 12h0M111 12h0M112 12h0M113 12h0M114 12h0M115 12h0M116 12h0M117 12h0M118 12h0M127 12h0M128 12h0M129 12h0M40 13h0M41 13h0M46 13h0M47 13h0M76 13h0M77 13h0M78 13h0M79 13h0M80 13h0M81 13h0M82 13h0M83 13h0M84 13h0M86 13h0M88 13h0M89 13h0M90 13h0M91 13h0M93 13h0M94 13h0M95 13h0M96 13h0M97 13h0M98 13h0M99 13h0M100 13h0M101 13h0M102 13h0M103 13h0M110 13h0M111 13h0M112 13h0M113 13h0M114 13h0M115 13h0M116 13h0M126 13h0M127 13h0M69 14h0M70 14h0M71 14h0M77 14h0M80 14h0M81 14h0M82 14h0M83 14h0M89 14h0M90 14h0M91 14h0M94 14h0M95 14h0M96 14h0M97 14h0M98 14h0M99 14h0M100 14h0M101 14h0M102 14h0M103 14h0M114 14h0M69 15h0M70 15h0M71 15h0M72 15h0M76 15h0M79 15h0M80 15h0M81 15h0M84 15h0M85 15h0M86 15h0M87 15h0M88 15h0M89 15h0M90 15h0M91 15h0M92 15h0M94 15h0M95 15h0M96 15h0M97 15h0M98 15h0M99 15h0M100 15h0M101 15h0M123 15h0M69 16h0M70 16h0M71 16h0M78 16h0M81 16h0M83 16h0M84 16h0M85 16h0M86 16h0M87 16h0M88 16h0M89 16h0M90 16h0M91 16h0M94 16h0M95 16h0M96 16h0M97 16h0M98 16h0M99 16h0M100 16h0M101 16h0M70 17h0M72 17h0M73 17h0M74 17h0M75 17h0M76 17h0M82 17h0M87 17h0M88 17h0M89 17h0M90 17h0M91 17h0M92 17h0M93 17h0M94 17h0M95 17h0M96 17h0M97 17h0M98 17h0M99 17h0M100 17h0M101 17h0M102 17h0M69 18h0M70 18h0M71 18h0M72 18h0M73 18h0M74 18h0M75 18h0M76 18h0M77 18h0M87 18h0M88 18h0M89 18h0M90 18h0M91 18h0M92 18h0M93 18h0M94 18h0M95 18h0M96 18h0M97 18h0M98 18h0M99 18h0M100 18h0M101 18h0M102 18h0M103 18h0M26 19h0M27 19h0M28 19h0M29 19h0M69 19h0M70 19h0M71 19h0M72 19h0M73 19h0M74 19h0M75 19h0M76 19h0M77 19h0M78 19h0M79 19h0M80 19h0M81 19h0M82 19h0M83 19h0M84 19h0M85 19h0M86 19h0M87 19h0M88 19h0M89 19h0M90 19h0M91 19h0M92 19h0M93 19h0M94 19h0M95 19h0M96 19h0M97 19h0M98 19h0M99 19h0M100 19h0M101 19h0M102 19h0M103 19h0M27 20h0M28 20h0M29 20h0M30 20h0M31 20h0M67 20h0M68 20h0M69 20h0M70 20h0M71 20h0M72 20h0M73 20h0M74 20h0M75 20h0M76 20h0M77 20h0M78 20h0M79 20h0M80 20h0M81 20h0M82 20h0M83 20h0M84 20h0M85 20h0M87 20h0M88 20h0M89 20h0M90 20h0M91 20h0M93 20h0M94 20h0M95 20h0M96 20h0M97 20h0M98 20h0M99 20h0M100 20h0M101 20h0M102 20h0M103 20h0M104 20h0M105 20h0M106 20h0M110 20h0M29 21h0M30 21h0M31 21h0M32 21h0M67 21h0M68 21h0M69 21h0M70 21h0M71 21h0M72 21h0M73 21h0M74 21h0M75 21h0M76 21h0M77 21h0M78 21h0M79 21h0M80 21h0M81 21h0M82 21h0M83 21h0M84 21h0M85 21h0M86 21h0M87 21h0M88 21h0M89 21h0M90 21h0M91 21h0M92 21h0M96 21h0M97 21h0M98 21h0M99 21h0M100 21h0M101 21h0M102 21h0M103 21h0M104 21h0M105 21h0M106 21h0M107 21h0M108 21h0M109 21h0M110 21h0M30 22h0M31 22h0M32 22h0M33 22h0M39 22h0M40 22h0M66 22h0M67 22h0M68 22h0M69 22h0M70 22h0M71 22h0M72 22h0M73 22h0M74 22h0M75 22h0M76 22h0M77 22h0M78 22h0M79 22h0M80 22h0M81 22h0M82 22h0M83 22h0M84 22h0M85 22h0M86 22h0M88 22h0M89 22h0M90 22h0M91 22h0M92 22h0M95 22h0M100 22h0M101 22h0M102 22h0M103 22h0M104 22h0M105 22h0M106 22h0M107 22h0M108 22h0M109 22h0M110 22h0M111 22h0M30 23h0M31 23h0M32 23h0M33 23h0M36 23h0M37 23h0M42 23h0M66 23h0M67 23h0M68 23h0M69 23h0M70 23h0M71 23h0M72 23h0M73 23h0M74 23h0M75 23h0M76 23h0M77 23h0M78 23h0M79 23h0M80 23h0M81 23h0M82 23h0M83 23h0M84 23h0M85 23h0M86 23h0M89 23h0M90 23h0M91 23h0M92 23h0M93 23h0M94 23h0M95 23h0M102 23h0M103 23h0M104 23h0M105 23h0M106 23h0M110 23h0M111 23h0M113 23h0M32 24h0M33 24h0M34 24h0M35 24h0M36 24h0M41 24h0M66 24h0M67 24h0M68 24h0M69 24h0M70 24h0M71 24h0M72 24h0M73 24h0M74 24h0M75 24h0M76 24h0M77 24h0M78 24h0M79 24h0M80 24h0M81 24h0M82 24h0M83 24h0M84 24h0M85 24h0M86 24h0M87 24h0M89 24h0M90 24h0M91 24h0M92 24h0M93 24h0M94 24h0M102 24h0M103 24h0M104 24h0M105 24h0M110 24h0M35 25h0M36 25h0M37 25h0M38 25h0M66 25h0M67 25h0M68 25h0M69 25h0M70 25h0M71 25h0M72 25h0M73 25h0M74 25h0M75 25h0M76 25h0M77 25h0M78 25h0M79 25h0M80 25h0M81 25h0M82 25h0M83 25h0M84 25h0M85 25h0M86 25h0M87 25h0M88 25h0M90 25h0M91 25h0M92 25h0M102 25h0M103 25h0M104 25h0M38 26h0M66 26h0M67 26h0M68 26h0M69 26h0M70 26h0M71 26h0M72 26h0M73 26h0M74 26h0M75 26h0M76 26h0M77 26h0M78 26h0M79 26h0M80 26h0M81 26h0M82 26h0M83 26h0M84 26h0M85 26h0M86 26h0M87 26h0M88 26h0M89 26h0M90 26h0M103 26h0M104 26h0M114 26h0M38 27h0M42 27h0M43 27h0M44 27h0M45 27h0M47 27h0M67 27h0M68 27h0M69 27h0M70 27h0M71 27h0M72 27h0M73 27h0M74 27h0M75 27h0M76 27h0M77 27h0M78 27h0M79 27h0M80 27h0M81 27h0M82 27h0M83 27h0M84 27h0M85 27h0M86 27h0M87 27h0M88 27h0M89 27h0M90 27h0M91 27h0M92 27h0M103 27h0M104 27h0M40 28h0M41 28h0M42 28h0M43 28h0M44 28h0M45 28h0M46 28h0M47 28h0M48 28h0M67 28h0M68 28h0M69 28h0M70 28h0M71 28h0M72 28h0M73 28h0M74 28h0M75 28h0M76 28h0M77 28h0M78 28h0M79 28h0M80 28h0M81 28h0M82 28h0M83 28h0M84 28h0M85 28h0M86 28h0M87 28h0M88 28h0M89 28h0M90 28h0M91 28h0M92 28h0M104 28h0M42 29h0M43 29h0M44 29h0M45 29h0M46 29h0M47 29h0M48 29h0M49 29h0M50 29h0M51 29h0M69 29h0M70 29h0M71 29h0M75 29h0M76 29h0M77 29h0M78 29h0M79 29h0M80 29h0M81 29h0M82 29h0M83 29h0M84 29h0M85 29h0M86 29h0M87 29h0M88 29h0M89 29h0M90 29h0M91 29h0M41 30h0M42 30h0M43 30h0M44 30h0M45 30h0M46 30h0M47 30h0M48 30h0M49 30h0M50 30h0M51 30h0M77 30h0M78 30h0M79 30h0M80 30h0M81 30h0M82 30h0M83 30h0M84 30h0M85 30h0M86 30h0M87 30h0M88 30h0M89 30h0M90 30h0M41 31h0M42 31h0M43 31h0M44 31h0M45 31h0M46 31h0M47 31h0M48 31h0M49 31h0M50 31h0M51 31h0M52 31h0M76 31h0M77 31h0M78 31h0M79 31h0M80 31h0M81 31h0M82 31h0M83 31h0M84 31h0M85 31h0M86 31h0M87 31h0M88 31h0M89 31h0M40 32h0M41 32h0M42 32h0M43 32h0M44 32h0M45 32h0M46 32h0M47 32h0M48 32h0M49 32h0M50 32h0M51 32h0M52 32h0M53 32h0M54 32h0M76 32h0M77 32h0M78 32h0M79 32h0M80 32h0M81 32h0M82 32h0M83 32h0M84 32h0M85 32h0M86 32h0M87 32h0M88 32h0M40 33h0M41 33h0M42 33h0M43 33h0M44 33h0M45 33h0M46 33h0M47 33h0M48 33h0M49 33h0M50 33h0M51 33h0M52 33h0M53 33h0M54 33h0M55 33h0M56 33h0M57 33h0M77 33h0M78 33h0M79 33h0M80 33h0M81 33h0M82 33h0M83 33h0M84 33h0M85 33h0M86 33h0M87 33h0M129 33h0M130 33h0M133 33h0M41 34h0M42 34h0M43 34h0M44 34h0M45 34h0M46 34h0M47 34h0M48 34h0M49 34h0M50 34h0M51 34h0M52 34h0M53 34h0M54 34h0M55 34h0M56 34h0M57 34h0M58 34h0M78 34h0M79 34h0M80 34h0M81 34h0M82 34h0M83 34h0M84 34h0M85 34h0M86 34h0M87 34h0M129 34h0M130 34h0M131 34h0M135 34h0M41 35h0M42 35h0M43 35h0M44 35h0M45 35h0M46 35h0M47 35h0M48 35h0M49 35h0M50 35h0M51 35h0M52 35h0M53 35h0M54 35h0M55 35h0M56 35h0M57 35h0M78 35h0M79 35h0M80 35h0M81 35h0M82 35h0M83 35h0M84 35h0M85 35h0M86 35h0M87 35h0M88 35h0M132 35h0M136 35h0M42 36h0M43 36h0M44 36h0M45 36h0M46 36h0M47 36h0M48 36h0M49 36h0M50 36h0M51 36h0M52 36h0M53 36h0M54 36h0M55 36h0M56 36h0M57 36h0M78 36h0M79 36h0M80 36h0M81 36h0M82 36h0M83 36h0M84 36h0M85 36h0M86 36h0M87 36h0M88 36h0M126 36h0M129 36h0M42 37h0M43 37h0M44 37h0M45 37h0M46 37h0M47 37h0M48 37h0M49 37h0M50 37h0M51 37h0M52 37h0M53 37h0M54 37h0M55 37h0M56 37h0M77 37h0M78 37h0M79 37h0M80 37h0M81 37h0M82 37h0M83 37h0M84 37h0M85 37h0M86 37h0M87 37h0M88 37h0M92 37h0M123 37h0M124 37h0M125 37h0M126 37h0M129 37h0M130 37h0M44 38h0M45 38h0M46 38h0M47 38h0M48 38h0M49 38h0M50 38h0M51 38h0M52 38h0M53 38h0M54 38h0M55 38h0M56 38h0M77 38h0M78 38h0M79 38h0M80 38h0M81 38h0M82 38h0M83 38h0M84 38h0M85 38h0M86 38h0M87 38h0M90 38h0M91 38h0M122 38h0M123 38h0M124 38h0M125 38h0M126 38h0M127 38h0M129 38h0M130 38h0M45 39h0M46 39h0M47 39h0M48 39h0M49 39h0M50 39h0M51 39h0M52 39h0M53 39h0M54 39h0M55 39h0M56 39h0M78 39h0M79 39h0M80 39h0M81 39h0M82 39h0M83 39h0M84 39h0M85 39h0M86 39h0M90 39h0M91 39h0M121 39h0M122 39h0M123 39h0M124 39h0M125 39h0M126 39h0M127 39h0M128 39h0M129 39h0M130 39h0M131 39h0M45 40h0M46 40h0M47 40h0M48 40h0M49 40h0M50 40h0M51 40h0M52 40h0M53 40h0M54 40h0M55 40h0M78 40h0M79 40h0M80 40h0M81 40h0M82 40h0M83 40h0M84 40h0M85 40h0M86 40h0M90 40h0M91 40h0M118 40h0M119 40h0M120 40h0M121 40h0M122 40h0M123 40h0M124 40h0M125 40h0M126 40h0M127 40h0M128 40h0M129 40h0M130 40h0M131 40h0M132 40h0M139 40h0M44 41h0M45 41h0M46 41h0M47 41h0M48 41h0M49 41h0M50 41h0M51 41h0M52 41h0M53 41h0M78 41h0M79 41h0M80 41h0M81 41h0M82 41h0M83 41h0M84 41h0M85 41h0M86 41h0M90 41h0M91 41h0M118 41h0M119 41h0M120 41h0M121 41h0M122 41h0M123 41h0M124 41h0M125 41h0M126 41h0M127 41h0M128 41h0M129 41h0M130 41h0M131 41h0M132 41h0M133 41h0M44 42h0M45 42h0M46 42h0M47 42h0M48 42h0M49 42h0M50 42h0M51 42h0M52 42h0M79 42h0M80 42h0M81 42h0M82 42h0M83 42h0M84 42h0M85 42h0M118 42h0M119 42h0M120 42h0M121 42h0M122 42h0M123 42h0M124 42h0M125 42h0M126 42h0M127 42h0M128 42h0M129 42h0M130 42h0M131 42h0M132 42h0M133 42h0M44 43h0M45 43h0M46 43h0M47 43h0M48 43h0M49 43h0M50 43h0M51 43h0M52 43h0M79 43h0M80 43h0M81 43h0M82 43h0M84 43h0M119 43h0M120 43h0M121 43h0M122 43h0M123 43h0M124 43h0M125 43h0M126 43h0M127 43h0M128 43h0M129 43h0M130 43h0M131 43h0M132 43h0M133 43h0M44 44h0M45 44h0M46 44h0M47 44h0M48 44h0M49 44h0M50 44h0M51 44h0M80 44h0M81 44h0M82 44h0M83 44h0M119 44h0M120 44h0M121 44h0M122 44h0M123 44h0M126 44h0M127 44h0M128 44h0M129 44h0M130 44h0M131 44h0M132 44h0M133 44h0M44 45h0M45 45h0M46 45h0M47 45h0M48 45h0M50 45h0M80 45h0M119 45h0M128 45h0M129 45h0M130 45h0M131 45h0M132 45h0M43 46h0M44 46h0M45 46h0M46 46h0M47 46h0M48 46h0M49 46h0M129 46h0M130 46h0M131 46h0M132 46h0M142 46h0M43 47h0M44 47h0M45 47h0M46 47h0M47 47h0M142 47h0M43 48h0M44 48h0M45 48h0M46 48h0M131 48h0M141 48h0M43 49h0M44 49h0M45 49h0M46 49h0M140 49h0M43 50h0M44 50h0M45 50h0M42 51h0M43 51h0M44 51h0M45 51h0M100 51h0M43 52h0M44 52h0M48 52h0M44 53h0M45 53h0M46 53h0", "hl": {"KOR": "M123 16h0M124 16h0M123 17h0M124 17h0", "USA": "M7 3h0M8 3h0M9 3h0M10 3h0M11 3h0M12 3h0M13 3h0M14 3h0M15 3h0M6 4h0M7 4h0M8 4h0M9 4h0M10 4h0M11 4h0M12 4h0M13 4h0M14 4h0M15 4h0M16 4h0M5 5h0M6 5h0M7 5h0M8 5h0M9 5h0M10 5h0M11 5h0M12 5h0M13 5h0M14 5h0M15 5h0M16 5h0M4 6h0M6 6h0M7 6h0M8 6h0M9 6h0M10 6h0M11 6h0M12 6h0M13 6h0M14 6h0M15 6h0M16 6h0M6 7h0M7 7h0M8 7h0M9 7h0M10 7h0M11 7h0M12 7h0M13 7h0M14 7h0M15 7h0M16 7h0M18 7h0M9 8h0M10 8h0M11 8h0M17 8h0M18 8h0M19 8h0M7 9h0M8 9h0M9 9h0M20 9h0M23 12h0M24 12h0M25 12h0M26 12h0M27 12h0M28 12h0M29 12h0M30 12h0M31 12h0M32 12h0M33 12h0M34 12h0M35 12h0M36 12h0M37 12h0M23 13h0M24 13h0M25 13h0M26 13h0M27 13h0M28 13h0M29 13h0M30 13h0M31 13h0M32 13h0M33 13h0M34 13h0M35 13h0M36 13h0M37 13h0M38 13h0M39 13h0M42 13h0M43 13h0M44 13h0M45 13h0M23 14h0M24 14h0M25 14h0M26 14h0M27 14h0M28 14h0M29 14h0M30 14h0M31 14h0M32 14h0M33 14h0M34 14h0M35 14h0M36 14h0M37 14h0M38 14h0M39 14h0M40 14h0M41 14h0M42 14h0M43 14h0M44 14h0M23 15h0M24 15h0M25 15h0M26 15h0M27 15h0M28 15h0M29 15h0M30 15h0M31 15h0M32 15h0M33 15h0M34 15h0M35 15h0M36 15h0M37 15h0M38 15h0M39 15h0M40 15h0M41 15h0M42 15h0M43 15h0M23 16h0M24 16h0M25 16h0M26 16h0M27 16h0M28 16h0M29 16h0M30 16h0M31 16h0M32 16h0M33 16h0M34 16h0M35 16h0M36 16h0M37 16h0M38 16h0M39 16h0M40 16h0M41 16h0M42 16h0M24 17h0M25 17h0M26 17h0M27 17h0M28 17h0M29 17h0M30 17h0M31 17h0M32 17h0M33 17h0M34 17h0M35 17h0M36 17h0M37 17h0M38 17h0M39 17h0M40 17h0M41 17h0M42 17h0M25 18h0M26 18h0M27 18h0M28 18h0M29 18h0M30 18h0M31 18h0M32 18h0M33 18h0M34 18h0M35 18h0M36 18h0M37 18h0M38 18h0M39 18h0M40 18h0M30 19h0M31 19h0M32 19h0M33 19h0M34 19h0M35 19h0M36 19h0M37 19h0M38 19h0M39 19h0M32 20h0M33 20h0M39 20h0M40 20h0M33 21h0M40 21h0M10 23h0", "JPN": "M129 13h0M128 14h0M129 14h0M130 14h0M128 15h0M129 15h0M127 16h0M128 16h0M125 17h0M126 17h0M127 17h0M128 17h0M124 18h0M125 18h0M126 18h0", "CHN": "M120 10h0M121 10h0M122 10h0M119 11h0M120 11h0M121 11h0M122 11h0M123 11h0M107 12h0M108 12h0M119 12h0M120 12h0M121 12h0M122 12h0M123 12h0M124 12h0M125 12h0M126 12h0M104 13h0M105 13h0M106 13h0M107 13h0M108 13h0M109 13h0M117 13h0M118 13h0M119 13h0M120 13h0M121 13h0M122 13h0M123 13h0M124 13h0M125 13h0M104 14h0M105 14h0M106 14h0M107 14h0M108 14h0M109 14h0M110 14h0M111 14h0M112 14h0M113 14h0M115 14h0M116 14h0M117 14h0M118 14h0M119 14h0M120 14h0M121 14h0M122 14h0M123 14h0M124 14h0M102 15h0M103 15h0M104 15h0M105 15h0M106 15h0M107 15h0M108 15h0M109 15h0M110 15h0M111 15h0M112 15h0M113 15h0M114 15h0M115 15h0M116 15h0M117 15h0M118 15h0M119 15h0M120 15h0M121 15h0M122 15h0M102 16h0M103 16h0M104 16h0M105 16h0M106 16h0M107 16h0M108 16h0M109 16h0M110 16h0M111 16h0M112 16h0M113 16h0M114 16h0M115 16h0M116 16h0M117 16h0M118 16h0M119 16h0M120 16h0M121 16h0M103 17h0M104 17h0M105 17h0M106 17h0M107 17h0M108 17h0M109 17h0M110 17h0M111 17h0M112 17h0M113 17h0M114 17h0M115 17h0M116 17h0M117 17h0M118 17h0M119 17h0M120 17h0M104 18h0M105 18h0M106 18h0M107 18h0M108 18h0M109 18h0M110 18h0M111 18h0M112 18h0M113 18h0M114 18h0M115 18h0M116 18h0M117 18h0M118 18h0M119 18h0M120 18h0M104 19h0M105 19h0M106 19h0M107 19h0M108 19h0M109 19h0M110 19h0M111 19h0M112 19h0M113 19h0M114 19h0M115 19h0M116 19h0M117 19h0M118 19h0M119 19h0M120 19h0M121 19h0M107 20h0M108 20h0M109 20h0M111 20h0M112 20h0M113 20h0M114 20h0M115 20h0M116 20h0M117 20h0M118 20h0M119 20h0M120 20h0M121 20h0M111 21h0M112 21h0M113 21h0M114 21h0M115 21h0M116 21h0M117 21h0M118 21h0M119 21h0M120 21h0M112 22h0M116 22h0M117 22h0M118 22h0M119 22h0M116 23h0M116 24h0", "THA": "M112 23h0M111 24h0M112 24h0M113 24h0M114 24h0M112 25h0M113 25h0M114 25h0M112 26h0M113 26h0M112 27h0M112 28h0", "SEA": "M113 22h0M114 22h0M115 22h0M114 23h0M115 23h0M115 24h0M121 24h0M115 25h0M120 25h0M121 25h0M115 26h0M116 26h0M121 26h0M122 26h0M114 27h0M115 27h0M120 27h0M121 27h0M122 27h0M119 28h0M121 28h0M122 28h0M123 28h0M111 29h0M112 29h0M113 29h0M119 29h0M120 29h0M122 29h0M111 30h0M112 30h0M113 30h0M117 30h0M118 30h0M119 30h0M112 31h0M113 31h0M116 31h0M117 31h0M118 31h0M119 31h0M120 31h0M121 31h0M122 31h0M123 31h0M113 32h0M114 32h0M116 32h0M117 32h0M118 32h0M119 32h0M120 32h0M121 32h0M125 32h0M126 32h0M127 32h0M128 32h0M113 33h0M114 33h0M120 33h0M121 33h0M126 33h0M127 33h0M128 33h0M115 34h0M116 34h0M117 34h0M126 34h0M128 34h0M119 35h0M120 35h0M122 35h0", "EUR": "M70 8h0M71 8h0M69 9h0M70 9h0M71 9h0M76 9h0M70 10h0M71 10h0M72 10h0M73 10h0M74 10h0M75 10h0M76 10h0M77 10h0M78 10h0M70 11h0M71 11h0M72 11h0M73 11h0M74 11h0M75 11h0M76 11h0M77 11h0M78 11h0M71 12h0M72 12h0M73 12h0M74 12h0M75 12h0M76 12h0M77 12h0M72 13h0M73 13h0M74 13h0M75 13h0M72 14h0M73 14h0M74 14h0M75 14h0M76 14h0", "ARE": "M94 21h0M93 22h0M94 22h0"}, "cent": {"KOR": [123.5, 16.5], "USA": [26.2, 12.5], "JPN": [127.3, 15.9], "CHN": [113.8, 16.4], "THA": [112.5, 25.1], "SEA": [118.6, 29.7], "EUR": [73.5, 11.2], "ARE": [93.7, 21.7]}};
+const rnd1 = k => { const x = Math.sin(k * 12.9898 + 4.1) * 43758.5453; return x - Math.floor(x); };
+const fmtN = (v, d = 0) => (+v).toLocaleString("ko-KR", { minimumFractionDigits: d, maximumFractionDigits: d });
+Object.assign(ICON, {
+  coin: '<circle cx="16" cy="16" r="11"/><path d="M19.5 11.5c-.8-1.2-2.1-1.8-3.6-1.8-2.2 0-3.7 1.2-3.7 2.9 0 4 7.6 2.2 7.6 6.5 0 1.8-1.6 3.1-3.9 3.1-1.7 0-3.1-.7-3.9-2M16 7.5v2.2M16 22.7v2"/>',
+  down: '<path d="M4 8l9 9 5-5 10 12"/><path d="M21 24h7v-7"/>',
+  globe: '<circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 4 20 0 24M16 4c-4 4-4 20 0 24"/>',
+  star: '<path d="M16 4l3.6 7.6 8.4 1-6.2 5.8 1.6 8.3L16 22.6 8.6 26.7l1.6-8.3L4 12.6l8.4-1z"/>',
+  bubble: '<path d="M5 7h22v14H14l-6 5v-5H5z"/><path d="M10 12h12M10 16h8"/>'
+});
+const SEC_C = ["var(--c-blue)", "var(--c-coral)", "var(--c-teal)", "var(--c-orange)", "var(--c-violet)"];
+
+/* 01 왜 만드는가: 큰 질문 + 두 가지 답 */
+R.why = (s, i) => `<div class="wy2">
+  <div class="wy2-l">${photo(s, "img", "wy2-ph")}<span class="wy2-shade"></span>
+    <div class="wy2-in">
+      <div class="cv-eye rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+      ${ed(s, "question", "h2", "wy2-big rise").replace("<h2", `<h2 style="--i:1"`)}
+      ${ed(s, "hint", "p", "wy2-hint rise").replace("<p", `<p style="--i:2"`)}
+      ${(s.img || {}).caption ? `<span class="wy2-cap" data-k="img.caption">${esc(s.img.caption)}</span>` : ""}
+    </div></div>
+  <div class="wy2-r">
+    ${ed(s, "lead", "p", "wy2-lead frag").replace("<p", `<p data-f="1"`)}
+    <div class="wy2-cards">${(s.cards || []).map((c, k) => `<div class="wy2-c frag" data-f="${k + 1}" style="--c:${k ? "var(--c-coral)" : "var(--c-blue)"}">
+      <div class="wy2-ic">${icon(k ? "down" : "coin")}<span>${pad(k + 1)}</span></div>
+      <div class="wy2-body">
+        ${ed(s, `cards.${k}.h`, "b", "wy2-h")}
+        ${ed(s, `cards.${k}.t`, "p", "wy2-t")}
+        <blockquote class="wy2-q"><p data-k="cards.${k}.q">${esc(c.q)}</p><cite data-k="cards.${k}.src">${esc(c.src)}</cite></blockquote>
+      </div>
+      ${c.img ? `<div class="wy2-ex">${photo(s, `cards.${k}.img`, "wy2-exph")}<span data-k="cards.${k}.img.caption">${esc(c.img.caption || "")}</span></div>` : ""}
+    </div>`).join("")}</div>
+    <div class="wy2-bottom frag" data-f="${(s.cards || []).length}">${icon("arrow")}${ed(s, "bottom", "span")}</div>
+    ${foot(s, i)}
+  </div>
+</div>`;
+
+/* 02 혁신의 터널: 아이디어 입자가 흘러 들어가 대부분 사라지고 하나만 빠져나온다 */
+R.funnel = (s, i) => {
+  const T = s.tunnel || [], X = [118, 330, 500, 640], RR = [56, 30, 17, 11];
+  const yAt = (x, y0) => 120 + (y0 - 120) * Math.max(0.05, 1 - Math.max(0, x - 30) / 450);
+  let parts = "";
+  for (let k = 0; k < 44; k++) {
+    const y0 = 22 + rnd1(k) * 196, win = k % 11 === 0;
+    const endX = win ? 720 : 150 + rnd1(k + 50) * 340;
+    const endY = win ? 120 : yAt(endX, y0) + (rnd1(k + 90) > .5 ? 1 : -1) * (18 + rnd1(k + 7) * 34);
+    const midX = (10 + endX) / 2, d = `M-10 ${y0.toFixed(0)} Q${midX.toFixed(0)} ${yAt(midX, y0).toFixed(0)} ${endX.toFixed(0)} ${endY.toFixed(0)}`;
+    const dur = ((win ? 4.2 : 2.6) + rnd1(k + 3) * 1.4).toFixed(2), beg = (rnd1(k + 11) * 4.5).toFixed(2);
+    parts += `<circle r="${win ? 6.5 : 4}" class="tn-p${win ? " win" : ""}" opacity="0"><animateMotion dur="${dur}s" begin="${beg}s" repeatCount="indefinite" path="${d}"/><animate attributeName="opacity" dur="${dur}s" begin="${beg}s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;.08;${win ? ".9;.98" : ".62;.8"};1"/></circle>`;
+  }
+  return `${head(s, i)}<div class="s-body funnel2">
+  <div class="tn2 rise"${rise(1)}>
+    ${ed(s, "tunnelLabel", "span", "kicker")}
+    <svg class="tn2-svg" viewBox="0 0 740 240" aria-hidden="true">
+      <defs><linearGradient id="tng-${s.id}" x1="0" x2="1"><stop offset="0" stop-color="var(--c-blue)" stop-opacity=".16"/><stop offset="1" stop-color="var(--c-teal)" stop-opacity=".1"/></linearGradient>
+      <radialGradient id="tnw-${s.id}"><stop offset="0" stop-color="var(--c-teal)" stop-opacity=".55"/><stop offset="1" stop-color="var(--c-teal)" stop-opacity="0"/></radialGradient></defs>
+      <path class="tn2-shape" fill="url(#tng-${s.id})" d="M30 6 C230 16 340 100 470 106 L720 106 L720 134 L470 134 C340 140 230 224 30 234 Z"/>
+      <path class="tn2-edge" pathLength="1" d="M30 6 C230 16 340 100 470 106 L720 106"/><path class="tn2-edge" pathLength="1" d="M30 234 C230 224 340 140 470 134 L720 134"/>
+      <g class="tn2-parts">${parts}</g>
+      ${T.map((_, k) => `<g class="tn2-node" style="--k:${k}"><circle cx="${X[k % 4]}" cy="120" r="${RR[k % 4]}" class="tn2-c"/>${k === T.length - 1 ? `<circle cx="${X[k % 4]}" cy="120" r="34" fill="url(#tnw-${s.id})" class="tn2-glow"/><circle cx="${X[k % 4]}" cy="120" r="${RR[k % 4]}" class="tn2-ring"/>` : ""}</g>`).join("")}
+    </svg>
+    <ol class="tn2-steps">${T.map((t, k) => `<li style="--k:${k}"><b data-k="tunnel.${k}.n">${esc(t.n)}</b><span data-k="tunnel.${k}.t">${esc(t.t)}</span></li>`).join("")}</ol>
+    <p class="tn-note">${icon("flask")}<span data-k="tunnelNote">${esc(s.tunnelNote)}</span></p>
+  </div>
+  <div class="tn2-r">
+    ${(s.img || {}).src ? `<div class="tn2-ph rise"${rise(2)}>${photo(s, "img", "tn2-phi")}<span data-k="img.caption">${esc(s.img.caption || "")}</span></div>` : ""}
+    ${ed(s, "newLabel", "span", "kicker frag").replace("<span", `<span data-f="1"`)}
+    ${(s.news || []).map((n, k) => `<div class="nw frag" data-f="1" style="--c:${[GC[1], GC[0]][k % 2]};transition-delay:${k * 120}ms"><span class="nw-ic">${icon(k ? "target" : "flask")}</span><div>${ed(s, `news.${k}.h`, "b")}${ed(s, `news.${k}.t`, "span")}</div></div>`).join("")}
+    <div class="fn-bottom frag" data-f="1" style="transition-delay:260ms">${icon("arrow")}${ed(s, "bottom", "span")}</div>
+  </div>
+</div>${foot(s, i)}`;
+};
+
+/* 02 캐즘: 강의자료 42장 기술의 확산 곡선을 다시 그림 */
+R.chasm = (s, i) => {
+  const seg = s.segs || [], G = 64, x0 = 40, x1 = 1000 - 40 - G, sd = (x1 - x0) / 6.4;
+  const X = z => x0 + (z + 3.2) * sd + (z > -1 ? G : 0), base = 300, K = 600;
+  const pdf = z => Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+  const cuts = [-3.2, -2, -1, 0, 1, 3.2];
+  const segPath = k => { const a = cuts[k], b = cuts[k + 1]; let d = `M${X(a + (k === 2 ? 0.0001 : 0)).toFixed(1)} ${base}`;
+    for (let z = a; z <= b + 1e-9; z += 0.05) { const zz = Math.min(z, b); d += ` L${X(k === 2 && zz <= -1 ? -0.9999 : zz).toFixed(1)} ${(base - pdf(zz) * K).toFixed(1)}`; }
+    return d + ` L${X(b).toFixed(1)} ${base} Z`; };
+  const fills = ["var(--c-violet)", "var(--c-blue)", "var(--c-teal)", "var(--c-orange)", "var(--c-coral)"];
+  const cx = X(-1) + G / 2;
+  let cum = ""; for (let z = -3.2; z <= 3.2; z += 0.1) { const c = 0.5 * (1 + erf1(z / Math.SQRT2)); cum += `${cum ? " L" : "M"}${X(z).toFixed(1)} ${(base - 30 - c * 230).toFixed(1)}`; }
+  return `${head(s, i)}<div class="s-body chasm">
+  <div class="cz-wrap rise"${rise(1)}>
+    <svg class="cz-svg" viewBox="0 0 1000 380" aria-hidden="true">
+      <path class="cz-cum" d="${cum}" pathLength="1"/>
+      <g class="cz-left">${[0, 1].map(k => `<path class="cz-seg" d="${segPath(k)}" style="--c:${fills[k]};--k:${k}"/>`).join("")}</g>
+      <g class="cz-right">${[2, 3, 4].map(k => `<path class="cz-seg" d="${segPath(k)}" style="--c:${fills[k]};--k:${k}"/>`).join("")}</g>
+      <line x1="30" x2="970" y1="${base}" y2="${base}" class="cz-axis"/>
+      <g class="cz-gap"><rect x="${(cx - G / 2 + 6).toFixed(1)}" y="40" width="${G - 12}" height="${base - 36}" class="cz-gaprect"/>
+        <path class="cz-crack" d="M${cx} 40 l-8 40 l12 30 l-10 38 l10 40 l-8 44 l6 70" pathLength="1"/>
+        <text x="${cx}" y="34" class="cz-gt">THE CHASM</text></g>
+    </svg>
+    <div class="cz-labels">${seg.map((g, k) => { const a = X(cuts[k] + (k === 2 ? 0.0001 : 0)), b = X(cuts[k + 1]);
+      return `<div class="cz-lb${k < 2 ? " l" : " r"}" style="left:${(a / 10).toFixed(2)}%;width:${((b - a) / 10).toFixed(2)}%;--c:${fills[k]};--k:${k}">
+        <b><span data-count="${+g.p}" data-dec="${String(g.p).includes(".") ? 1 : 0}" data-delay="${600 + k * 260}">${esc(g.p)}</span>%</b><span class="en" data-k="segs.${k}.en">${esc(g.en)}</span><span class="ko" data-k="segs.${k}.ko">${esc(g.ko)}</span></div>`; }).join("")}</div>
+    <div class="cz-fail frag" data-f="1">
+      <b class="cz-ft">${icon("down")}<span data-k="fail.h">${esc((s.fail || {}).h)}</span></b>
+      <div class="cz-ex">${((s.fail || {}).ex || []).map((e, k) => `<figure>${photo(s, `fail.ex.${k}.img`, "cz-exph")}<figcaption data-k="fail.ex.${k}.name">${esc(e.name)}</figcaption></figure>`).join("")}</div>
+      <span class="cz-fs" data-k="fail.src">${esc((s.fail || {}).src || "")}</span>
+    </div>
+    <div class="cz-ok frag" data-f="1"><b>${icon("star")}<span data-k="okLabel">${esc(s.okLabel)}</span></b></div>
+    <span class="cz-chasm-lb frag" data-f="1" style="left:${(cx / 10).toFixed(2)}%" data-k="chasmLabel">${esc(s.chasmLabel)}</span>
+  </div>
+  <div class="cz-bottom frag" data-f="2">${icon("arrow")}${ed(s, "bottom", "span")}</div>
+</div>${foot(s, i)}`;
+};
+function erf1(x) { const t = 1 / (1 + 0.3275911 * Math.abs(x)); const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return x >= 0 ? y : -y; }
+
+/* 03 세부 절차를 쉬운 가상 예시로 */
+R.example = (s, i) => {
+  const V = s.voices || [], C = s.concepts || [], W = V.map(v => +v.w || 0);
+  const tot = C.map(c => (c.sc || []).reduce((a, v, k) => a + v * W[k] / 100, 0));
+  const best = tot.indexOf(Math.max(...tot)), cols = s.cols || [];
+  const colHead = k => `<div class="ex-h"><span class="ex-n">${k + 1}</span><div><b data-k="cols.${k}.h">${esc((cols[k] || {}).h || "")}</b><span data-k="cols.${k}.t">${esc((cols[k] || {}).t || "")}</span></div></div>`;
+  return `${head(s, i)}<div class="s-body example">
+  <div class="ex-grid">
+    <div class="ex-col rise"${rise(1)}>${colHead(0)}${V.map((v, k) => `<div class="ex-voice" style="--k:${k}">${icon("bubble")}<span data-k="voices.${k}.q">${esc(v.q)}</span></div>`).join("")}</div>
+    <div class="ex-col frag" data-f="1">${colHead(1)}${V.map((v, k) => `<div class="ex-spec" style="--k:${k};--c:${PAL[k % 6]}"><b data-k="voices.${k}.need">${esc(v.need)}</b><span data-k="voices.${k}.spec">${esc(v.spec)}</span><em>${esc(v.w)}%</em></div>`).join("")}</div>
+    <div class="ex-col frag" data-f="2">${colHead(2)}${C.map((c, k) => `<div class="ex-con${k === best ? " best" : ""}" style="--k:${k}"><span class="ex-cn">${esc(c.n)}</span><div><b data-k="concepts.${k}.name">${esc(c.name)}</b><span data-k="concepts.${k}.d">${esc(c.d)}</span></div></div>`).join("")}</div>
+    <div class="ex-col frag" data-f="3">${colHead(3)}
+      <div class="ex-score">${C.map((c, k) => `<div class="ex-bar${k === best ? " best" : ""}" style="--k:${k};--w:${(tot[k] / 5 * 100).toFixed(1)}%">
+        <span class="ex-bn">${esc(c.n)}</span><div class="ex-track"><i></i></div><b>${tot[k].toFixed(1)}</b>${k === best ? `<span class="ex-crown">${icon("crown")}</span>` : ""}</div>`).join("")}</div>
+      <p class="ex-calc">${esc(C[best] ? `${C[best].n} = ` + (C[best].sc || []).map((v, k) => `${v}×${(W[k] / 100).toFixed(1)}`).join(" + ") + ` = ${tot[best].toFixed(1)}` : "")}</p>
+    </div>
+  </div>
+  <div class="ex-foot">
+    <div class="ex-next frag" data-f="3">${icon("arrow")}${ed(s, "next", "span")}</div>
+    <p class="ex-note">${icon("chat")}<span data-k="note">${esc(s.note)}</span></p>
+  </div>
+</div>${foot(s, i)}`;
+};
+
+/* 04 불닭 그 후 ①: 맛 확장 + 나라별 버전 지도 */
+const MAPXY = (lon, lat) => [(lon + 180) / 2.5, (78 - lat) / 2.5];
+R.world = (s, i) => {
+  const P = s.pins || [], home = P.find(p => p.home) || P[0] || { lon: 127, lat: 37 };
+  const [hx, hy] = MAPXY(home.lon, home.lat), mw = WORLD.w, mh = WORLD.h;
+  const arcs = (s.returns || []).map((r, k) => { const p = P[r] || {}; const [x, y] = MAPXY(p.lon, p.lat);
+    const mx = (x + hx) / 2, my = Math.min(y, hy) - 9 - Math.abs(x - hx) * .12;
+    return `<path class="wm-ret" d="M${x.toFixed(1)} ${y.toFixed(1)} Q${mx.toFixed(1)} ${my.toFixed(1)} ${hx.toFixed(1)} ${hy.toFixed(1)}" style="--k:${k}" marker-end="url(#wma-${s.id})"/>`; }).join("");
+  return `${head(s, i)}<div class="s-body world">
+  <div class="wl-l">
+    <div class="wl-line frag" data-f="1">${ed(s, "lineLabel", "span", "kicker")}
+      <ol class="wl-tl">${(s.line || []).map((l, k) => `<li style="--k:${k}"><span class="wl-when" data-k="line.${k}.when">${esc(l.when)}</span><div><b data-k="line.${k}.h">${esc(l.h)}</b><span data-k="line.${k}.t">${esc(l.t)}</span></div></li>`).join("")}</ol>
+    </div>
+    <div class="wl-chips frag" data-f="1">${(s.flavors || []).map((f, k) => `<span style="--k:${k}">${esc(f)}</span>`).join("")}</div>
+  </div>
+  <div class="wl-map rise"${rise(1)}>
+    ${ed(s, "mapLabel", "span", "kicker")}
+    <div class="wm">
+      <svg class="wm-svg" viewBox="-1 -1 ${mw + 2} ${mh + 2}" aria-hidden="true">
+        <defs><marker id="wma-${s.id}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--c-coral)"/></marker></defs>
+        <path class="wm-base" d="${WORLD.base}"/>
+        <g class="wm-hl frag" data-f="2">${Object.values(WORLD.hl).map(d => `<path d="${d}"/>`).join("")}</g>
+        <g class="frag" data-f="2">${P.map((p, k) => { const [x, y] = MAPXY(p.lon, p.lat), [lx, ly] = [p.lx, p.ly];
+          return `<line class="wm-lead" x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${lx}" y2="${ly}" style="--k:${k}"/><circle class="wm-pin${p.home ? " home" : ""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.25" style="--k:${k}"/><circle class="wm-pulse" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.25" style="--k:${k}"/>`; }).join("")}</g>
+        <g class="frag" data-f="3">${arcs}</g>
+      </svg>
+      ${P.map((p, k) => `<div class="wm-lb frag${p.home ? " home" : ""}${p.al === "r" ? " ar" : ""}" data-f="2" style="left:${(p.lx / mw * 100).toFixed(2)}%;top:${(p.ly / mh * 100).toFixed(2)}%;--k:${k}"><b data-k="pins.${k}.name">${esc(p.name)}</b><span data-k="pins.${k}.t">${esc(p.t)}</span></div>`).join("")}
+      <div class="wm-ret-lb frag" data-f="3">${icon("refresh")}${ed(s, "returnLabel", "span")}</div>
+    </div>
+  </div>
+</div>
+${s.caveat ? `<p class="cs-caveat wl-cav">${icon("chat")}<span data-k="caveat">${esc(s.caveat)}</span></p>` : ""}${foot(s, i)}`;
+};
+
+/* 04 불닭 그 후 ②: 숫자로 보는 성장 */
+R.growth = (s, i) => {
+  const L = s.cum || [], B = s.rev || [];
+  const lw = 620, lh = 250, lmax = Math.max(...L.map(p => +p.v), 1) * 1.15, n = L.length;
+  const lx = k => 30 + k * (lw - 60) / Math.max(1, n - 1), ly = v => lh - 26 - v / lmax * (lh - 56);
+  const d = L.map((p, k) => `${k ? "L" : "M"}${lx(k).toFixed(1)} ${ly(+p.v).toFixed(1)}`).join(" ");
+  const area = d + ` L${lx(n - 1).toFixed(1)} ${lh - 26} L${lx(0).toFixed(1)} ${lh - 26} Z`;
+  const bmax = Math.max(...B.map(b => +b.v), 1);
+  return `${head(s, i)}<div class="s-body growth">
+  <div class="gr-row">
+    <div class="gr-card rise"${rise(1)}>
+      ${ed(s, "cumLabel", "span", "kicker")}
+      <svg class="gr-line" viewBox="0 0 ${lw} ${lh}" aria-hidden="true">
+        <defs><linearGradient id="gra-${s.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--c-coral)" stop-opacity=".28"/><stop offset="1" stop-color="var(--c-coral)" stop-opacity="0"/></linearGradient></defs>
+        <path d="${area}" fill="url(#gra-${s.id})" class="gr-area"/>
+        <path d="${d}" class="gr-path" pathLength="1"/>
+        ${L.map((p, k) => `<g class="gr-pt" style="--k:${k}"><circle cx="${lx(k).toFixed(1)}" cy="${ly(+p.v).toFixed(1)}" r="${k === n - 1 ? 7 : 5}"/><text x="${lx(k).toFixed(1)}" y="${(ly(+p.v) - 15).toFixed(1)}" class="gr-v${k === n - 1 ? " last" : ""}">${esc(p.v)}</text><text x="${lx(k).toFixed(1)}" y="${lh - 4}" class="gr-x">${esc(p.x)}</text></g>`).join("")}
+      </svg>
+      <p class="gr-note" data-k="cumNote">${esc(s.cumNote || "")}</p>
+    </div>
+    <div class="gr-card frag" data-f="1">
+      ${ed(s, "revLabel", "span", "kicker")}
+      <div class="gr-bars">${B.map((b, k) => `<div class="gr-b${k === B.length - 1 ? " last" : ""}" style="--h:${(+b.v / bmax * 100).toFixed(1)};--k:${k}">
+        <span class="gr-bv">${esc(b.label)}</span><div class="gr-bar"><i></i><em>${esc(b.share)}%</em></div><span class="gr-bx">${esc(b.x)}</span></div>`).join("")}</div>
+      <p class="gr-note" data-k="revNote">${esc(s.revNote || "")}</p>
+    </div>
+  </div>
+  <div class="gr-facts frag" data-f="2">${(s.facts || []).map((f, k) => `<div class="gr-f" style="--k:${k};--c:${[GC[0], GC[1], GC[2]][k % 3]}"><span class="gr-fi">${icon(["factory", "globe", "star"][k % 3])}</span><div><span class="gr-fw" data-k="facts.${k}.when">${esc(f.when)}</span><b data-k="facts.${k}.h">${esc(f.h)}</b><span data-k="facts.${k}.t">${esc(f.t)}</span></div></div>`).join("")}</div>
+</div>${foot(s, i)}`;
+};
+
+/* 04 폴드 그 후: 세대별 두께를 옆모습으로 + 새 폼팩터 */
+R.foldgen = (s, i) => {
+  const M = s.models || [], F = s.fixes || [], n = M.length, w = 820, h = 370, base = 310, sc = 9;
+  const xc = k => 60 + k * (w - 120) / Math.max(1, n - 1);
+  const top = M.map(m => base - (+m.v) * sc);
+  const curve = M.map((m, k) => `${k ? "L" : "M"}${xc(k).toFixed(1)} ${top[k].toFixed(1)}`).join(" ");
+  const first = M[0] || {}, last = M[n - 1] || {}, pct = first.v ? Math.round((1 - last.v / first.v) * 100) : 0;
+  return `${head(s, i)}<div class="s-body foldgen">
+  <div class="fg-l rise"${rise(1)}>
+    <div class="fg-top">${ed(s, "chartLabel", "span", "kicker")}
+      <div class="fg-kpi"><span><b>${esc(first.v)}</b><small>mm</small></span>${icon("arrow")}<span class="to"><b data-count="${+last.v}" data-dec="1" data-delay="1600">${esc(last.v)}</b><small>mm</small></span><em>약 ${pct}% 얇아짐</em></div></div>
+    <div class="fg-chart"><svg class="fg-svg" viewBox="0 0 ${w} ${h}" aria-hidden="true">
+      <line x1="20" x2="${w - 20}" y1="${top[0].toFixed(1)}" y2="${top[0].toFixed(1)}" class="fg-ref"/>
+      <text x="${w - 20}" y="${(top[0] - 8).toFixed(1)}" class="fg-reft">첫 폴드 ${esc(first.v)}mm</text>
+      <line x1="20" x2="${w - 20}" y1="${base}" y2="${base}" class="fg-base"/>
+      ${M.map((m, k) => `<g class="fg-m" data-g="${(F.findIndex(f => (f.at || []).includes(k)) + 1) || 0}" style="--k:${k}">
+        <rect x="${(xc(k) - 24).toFixed(1)}" y="${top[k].toFixed(1)}" width="48" height="${(+m.v * sc).toFixed(1)}" rx="9" class="fg-slab" style="--k:${k};--t:${(k / Math.max(1, n - 1)).toFixed(2)}"/>
+        <line x1="${(xc(k) - 18).toFixed(1)}" x2="${(xc(k) + 18).toFixed(1)}" y1="${(top[k] + m.v * sc / 2).toFixed(1)}" y2="${(top[k] + m.v * sc / 2).toFixed(1)}" class="fg-hinge"/>
+        <text x="${xc(k).toFixed(1)}" y="${(top[k] - 14).toFixed(1)}" class="fg-v">${(+m.v).toFixed(1)}</text>
+        <text x="${xc(k).toFixed(1)}" y="${base + 24}" class="fg-n">${esc(m.name)}</text>
+        <text x="${xc(k).toFixed(1)}" y="${base + 44}" class="fg-s">${esc(m.sub || "")}</text></g>`).join("")}
+      <path d="${curve}" class="fg-curve" pathLength="1"/>
+    </svg>
+    <div class="fg-tags">${F.map((f, k) => { const at = f.at || [0], a = xc(at[0]), b = xc(at[at.length - 1]);
+      return `<div class="fg-tag" data-f="${k + 1}" style="left:${(((a + b) / 2) / w * 100).toFixed(2)}%;--c:${GC[k % 3]};--k:${k}"><b data-k="fixes.${k}.tag">${esc(f.tag)}</b><span data-k="fixes.${k}.t">${esc(f.t)}</span></div>`; }).join("")}</div></div>
+  </div>
+  <div class="fg-r">
+    ${ed(s, "newLabel", "span", "kicker frag").replace("<span", `<span data-f="${F.length + 1}"`)}
+    ${(s.news || []).map((p, k) => `<div class="fg-new frag" data-f="${F.length + 1}" style="--k:${k};transition-delay:${k * 140}ms">${photo(s, `news.${k}.img`, "fg-np")}<div><span class="fg-nw" data-k="news.${k}.when">${esc(p.when)}</span><b data-k="news.${k}.name">${esc(p.name)}</b><span data-k="news.${k}.t">${esc(p.t)}</span></div></div>`).join("")}
+  </div>
+</div>
+<div class="cs-lesson fg-lesson rise"${rise(4)}>${icon("refresh")}${ed(s, "lesson", "span")}</div>${foot(s, i)}`;
+};
+
+/* 05 결론: 6단계가 차례로 켜지고 점이 흐른다 */
+R.concl = (s, i) => {
+  const C = s.chain || [];
+  return `${head(s, i)}<div class="s-body concl2">
+  <div class="cn2-w rise"${rise(1)}>
+    <div class="cn2-track"><i class="cn2-fill"></i><i class="cn2-dot"></i></div>
+    <ol class="cn2-chain" style="--n:${C.length}">${C.map((c, k) => `<li style="--k:${k};--c:${PAL[k % 6]}"><span class="cn2-n">${k + 1}</span><span class="cn2-t" data-k="chain.${k}">${esc(c)}</span></li>`).join("")}</ol>
+    <div class="cn2-back frag" data-f="1"><svg viewBox="0 0 1000 46" preserveAspectRatio="none" aria-hidden="true"><path class="cn2-bp" d="M915 2 C915 38 895 40 860 40 L140 40 C105 40 85 38 85 8"/><path class="cn2-ah" d="M75 20 L85 4 L95 20"/></svg><span>${icon("refresh")}<span data-k="backLabel">${esc(s.backLabel)}</span></span></div>
+  </div>
+  <div class="cn2-pts">${(s.points || []).map((p, k) => `<div class="cn2-p frag" data-f="2" style="--k:${k};--c:${GC[k % 3]};transition-delay:${k * 160}ms"><span class="cn2-pn">${k + 1}</span>${ed(s, `points.${k}.h`, "b")}${ed(s, `points.${k}.t`, "span")}</div>`).join("")}</div>
+</div>${foot(s, i)}`;
+};
+
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
@@ -1926,7 +2611,7 @@ function applyStep(el) {
   const showAll = mode.edit;
   el.classList.toggle("show-all", showAll);
   $$(".frag", el).forEach(f => f.classList.toggle("on", showAll || +f.dataset.f <= step));
-  const hlOn = !showAll && step > 0 && ["stages", "case", "evolve", "why"].includes(s.type);
+  const hlOn = !showAll && step > 0 && ["stages", "case", "evolve"].includes(s.type);
   el.classList.toggle("has-hl", hlOn);
   $$(".hl-item", el).forEach(h => h.classList.toggle("hl", hlOn && +h.dataset.hl === step));
   stepHook(el, s);
@@ -1935,7 +2620,7 @@ function applyStep(el) {
 function runCounts(el) {
   $$("[data-count]", el).forEach(n => {
     const target = +n.dataset.count, delay = +n.dataset.delay || 0;
-    const fmt = v => target >= 1 ? Math.round(v).toLocaleString("ko-KR") : v.toFixed(2);
+    const fmt = v => n.dataset.dec ? v.toFixed(+n.dataset.dec) : target >= 1 ? Math.round(v).toLocaleString("ko-KR") : v.toFixed(2);
     if (reduceMotion() || mode.edit || !isFinite(target)) { n.textContent = fmt(target); return; }
     n.textContent = fmt(0);
     const dur = 700, t0 = performance.now() + delay;
@@ -2068,7 +2753,7 @@ const SCHEMA = {
     { k: "items", label: "목차", list: [{ key: "n", label: "번호" }, { key: "t", label: "제목" }, { key: "d", label: "설명" }], blank: { n: "", t: "새 항목", d: "" }, max: 5 }
   ],
   funnel: [
-    { k: "tunnelLabel", label: "그림 제목" },
+    { k: "tunnelLabel", label: "그림 제목" }, { k: "img", label: "사진", image: true },
     { k: "tunnel", label: "터널 단계", list: [{ key: "n", label: "수" }, { key: "t", label: "이름" }], blank: { n: "", t: "" }, max: 4 },
     { k: "tunnelNote", label: "그림 아래 메모" },
     { k: "newLabel", label: "오른쪽 제목" },
@@ -2096,7 +2781,40 @@ const SCHEMA = {
     { k: "lesson", label: "아래 문구", area: true }
   ],
   why: [
+    { k: "question", label: "큰 질문", area: true }, { k: "hint", label: "질문 아래 문구" }, { k: "img", label: "왼쪽 사진", image: true }, { k: "lead", label: "오른쪽 제목" },
+    { k: "cards", label: "답 카드", list: [{ key: "h", label: "제목" }, { key: "t", label: "쉬운 설명" }, { key: "q", label: "강의자료 인용", area: true }, { key: "src", label: "인용 위치" }], blank: { h: "", t: "", q: "", src: "" }, max: 2 },
     { k: "bottom", label: "아래 문구", area: true }
+  ],
+  chasm: [
+    { k: "segs", label: "구간", list: [{ key: "p", label: "비율(%)" }, { key: "en", label: "영문" }, { key: "ko", label: "한글" }], blank: { p: "", en: "", ko: "" }, max: 5 },
+    { k: "chasmLabel", label: "캐즘 표시" }, { k: "fail.h", label: "실패 쪽 제목" }, { k: "fail.src", label: "실패 쪽 설명" }, { k: "okLabel", label: "오른쪽 표시" },
+    { k: "fail.ex.0.img", label: "예시 사진 1", image: true }, { k: "fail.ex.1.img", label: "예시 사진 2", image: true },
+    { k: "bottom", label: "아래 문구", area: true }
+  ],
+  example: [
+    { k: "voices", label: "고객의 말과 스펙", list: [{ key: "q", label: "고객의 말" }, { key: "need", label: "니즈" }, { key: "spec", label: "목표 스펙" }, { key: "w", label: "가중치(%)", num: true }], blank: { q: "", need: "", spec: "", w: 0 }, max: 3 },
+    { k: "concepts", label: "컨셉", list: [{ key: "n", label: "기호" }, { key: "name", label: "이름" }, { key: "d", label: "설명" }], blank: { n: "", name: "", d: "" }, max: 3 },
+    { k: "next", label: "다음 단계 문구", area: true }, { k: "note", label: "아래 메모", area: true }
+  ],
+  world: [
+    { k: "lineLabel", label: "왼쪽 제목" },
+    { k: "line", label: "국내 흐름", list: [{ key: "when", label: "시점" }, { key: "h", label: "제목" }, { key: "t", label: "설명" }], blank: { when: "", h: "", t: "" }, max: 4 },
+    { k: "flavors", label: "맛 칩", strlist: true, blank: "새 맛" },
+    { k: "mapLabel", label: "지도 제목" },
+    { k: "pins", label: "지도 표시", list: [{ key: "name", label: "지역" }, { key: "t", label: "제품" }], blank: { name: "", t: "" }, max: 8 },
+    { k: "returnLabel", label: "역출시 문구", area: true }, { k: "caveat", label: "근거 표시", area: true }
+  ],
+  growth: [
+    { k: "cumLabel", label: "왼쪽 그래프 제목" }, { k: "cumNote", label: "왼쪽 메모" }, { k: "revLabel", label: "오른쪽 그래프 제목" }, { k: "revNote", label: "오른쪽 메모" },
+    { k: "facts", label: "아래 카드", list: [{ key: "when", label: "시점" }, { key: "h", label: "제목" }, { key: "t", label: "설명" }], blank: { when: "", h: "", t: "" }, max: 3 }
+  ],
+  foldgen: [
+    { k: "chartLabel", label: "그래프 제목" },
+    { k: "models", label: "세대", list: [{ key: "name", label: "이름" }, { key: "sub", label: "아래 작은 글씨" }, { key: "v", label: "두께(mm)", num: true }], blank: { name: "", sub: "", v: 0 }, max: 8 },
+    { k: "fixes", label: "약점과 개선", list: [{ key: "tag", label: "약점" }, { key: "t", label: "개선" }], blank: { tag: "", t: "" }, max: 3 },
+    { k: "newLabel", label: "오른쪽 제목" },
+    { k: "news", label: "새 제품", list: [{ key: "when", label: "시점" }, { key: "name", label: "이름" }, { key: "t", label: "설명" }], blank: { when: "", name: "", t: "" }, max: 3 },
+    { k: "lesson", label: "아래 문구", area: true }
   ],
   table: [
     { k: "cols", label: "열 제목", strlist: true, blank: "새 열" },
