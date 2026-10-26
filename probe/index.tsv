@@ -1,0 +1,51 @@
+slide	FAILAPI	slide rule	 HTTPSConnectionPool(host='api.openverse.org', port=443): Read timed out. (read t 
+slide	FAILAPI	slide rule	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+slide	NONE	commons:slide rule	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'130439377': {'pageid': 130439377, 'ns': 6, 'title': 'File:2023 Suwak logarytmiczny (1).jpg', 'index
+lab	FAILAPI	laboratory scientist pipette	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+lab	FAILAPI	pharmaceutical laboratory	401 HTTPSConnectionPool(host='api.openverse.org', port=443): Read timed out. (read t <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+glass	FAILAPI	Google Glass	401 HTTPSConnectionPool(host='api.openverse.org', port=443): Read timed out. (read t <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+glass	FAILAPI	google glass	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+printer	FAILAPI	3d printer	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+printer	FAILAPI	3D printer	401 HTTPSConnectionPool(host='api.openverse.org', port=443): Read timed out. (read t <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+earbud	FAILAPI	wireless earbuds	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+earbud	earbud_c0c7ae.jpg	3890x2190	https://upload.wikimedia.org/wikipedia/commons/4/4c/Jabra_True_Wireless_Earbuds_Lineup_%28Sep_2023%29.jpg	https://commons.wikimedia.org/w/index.php?curid=145792425	Jabra True Wireless Earbuds Lineup (Sep 2023) | by-sa 4.0 | ScribblingGeek | wikimedia
+earbud	earbud_50fd12.jpg	1536x2048	https://pd.w.org/2025/08/368688e0a7fcf61e4.94540928-1536x2048.jpeg	https://wordpress.org/photos/photo/368688e0a7/	Two rings placed on top of a white wireless earbud case, set on a wooden surface in black and white. | cc0 1.0 | Alina Kakshapati | wordpress
+earbud	earbud_70b2b0.jpg	1920x920	https://upload.wikimedia.org/wikipedia/commons/b/be/Latitude_Wireless_Earbuds.jpg	https://commons.wikimedia.org/w/index.php?curid=74144974	Latitude Wireless Earbuds | by-sa 4.0 | Guolinqiqi | wikimedia
+earbud	earbud_1c5684.jpg	2048x1536	https://pd.w.org/2025/10/14568e4010ec40720.30829568-2048x1536.jpg	https://wordpress.org/photos/photo/14568e4010/	A flat lay of everyday items on a wooden surface, including a smartwatch, a pair of black eyeglasses, a black wireless earbud case, a smartphone displaying a hand reflection on its screen, and a black wallet. | cc0 1.0 | Nur Nobi | wordpress
+earbud	earbud_9a0ba4.jpg	960x640	https://cdn.stocksnap.io/img-thumbs/960w/91KUSHHT4D.jpg	https://stocksnap.io/photo/casual-man-91KUSHHT4D	Casual Man | cc0 1.0 | Burst | stocksnap
+shelf	FAILAPI	supermarket shelf products	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+shelf	FAILAPI	instant noodles	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+idea	FAILAPI	brainstorming sticky notes	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+proto	FAILAPI	product design prototype sketch	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+launch	FAILAPI	product launch	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+factory	FAILAPI	factory production line	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+spicy	FAILAPI	spicy ramen	401 Expecting value: line 1 column 1 (char 0) <!doctype html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-s
+flip	flip_a5ef11.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23180345/kv_1400x524.png	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_432910.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/22141135/Galaxy-Z-Fold8_1400_1022.jpg	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_847f2d.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/20200455/KR_1400x524_KV.png	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_c5b566.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/21180525/1400x524_1021.png	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_dedd82.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/20154053/1020_samsungweek_kv_1400x524.jpg	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_850af3.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/22141046/Galaxy-Z-Fold8_PC_1022.jpg	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_530a65.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23154817/thumb_PC.jpg	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_add9c6.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23180343/kv_932x524.png	https://news.samsung.com/medialibrary/kr/photo/48058	
+flip	flip_a5ef11.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23180345/kv_1400x524.png	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_432910.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/22141135/Galaxy-Z-Fold8_1400_1022.jpg	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_847f2d.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/20200455/KR_1400x524_KV.png	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_c5b566.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/21180525/1400x524_1021.png	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_dedd82.jpg	1400x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/20154053/1020_samsungweek_kv_1400x524.jpg	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_850af3.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/22141046/Galaxy-Z-Fold8_PC_1022.jpg	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_530a65.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23154817/thumb_PC.jpg	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	flip_add9c6.jpg	932x524	https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/23180343/kv_932x524.png	https://news.samsung.com/medialibrary/kr/photo/48059	
+flip	NONE	https://news.samsung.com/kr/tag/%ea%b0%a4%eb%9f%ad%ec%8b%9c-%ec%96%b8%ed%8c%a9-2020	200 116386
+bvar	NONE	https://news.mtn.co.kr/news-detail/2023092615285053368	200 102325
+bvar	NONE	https://www.segye.com/newsView/20240116515186	200 103030
+bvar	bvar_122114.jpg	720x703	https://img1.newsis.com/2022/04/15/NISI20220415_0000975726_web.jpg	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_19ebe2.jpg	720x703	https://img1.newsis.com/2022/04/15/NISI20220415_0000975726_web.jpg?rnd=20220415150338	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_cedc8d.jpg	720x540	https://img1.newsis.com/2022/11/11/NISI20221111_0001127301_web.jpg?rnd=20221111122348	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_d3462c.jpg	720x501	https://img1.newsis.com/2026/10/26/NISI20261026_0021504015_web.jpg?rnd=20261026091900	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_4de096.jpg	719x550	https://img1.newsis.com/2026/10/26/NISI20261026_0021503948_web.jpg?rnd=20261026083939	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_b2d5f6.jpg	720x1080	https://img1.newsis.com/2026/10/22/NISI20261022_0021500308_web.jpg?rnd=20261022160943	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_6ff0aa.jpg	720x1077	https://img1.newsis.com/2026/10/14/NISI20261014_0021489201_web.jpg?rnd=20261014231820	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	bvar_01759c.jpg	720x946	https://img1.newsis.com/2026/10/10/NISI20261010_0021483201_web.jpg?rnd=20261013133751	https://www.newsis.com/view/NISX20221111_0002082675	
+bvar	NONE	https://www.fnnews.com/news/202607131823323610	200 68163
+bvar	NONE	https://www.inews24.com/view/1242004	200 179694
