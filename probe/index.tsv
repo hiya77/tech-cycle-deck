@@ -1,0 +1,53 @@
+slide	NONE	commons:Keuffel Esser slide rule	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'31051840': {'pageid': 31051840, 'ns': 6, 'title': 'File:Keuffel & Esser, Burkhardt Arithmometer - M
+slide	NONE	commons:slide rule	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'130439377': {'pageid': 130439377, 'ns': 6, 'title': 'File:2023 Suwak logarytmiczny (1).jpg', 'index
+lab	NONE	commons:laboratory pipette research	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'88921348': {'pageid': 88921348, 'ns': 6, 'title': 'File:A. Gallenkamp & Сo., Ltd. Laboratory appara
+lab	NONE	commons:pharmaceutical research laboratory	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'150095794': {'pageid': 150095794, 'ns': 6, 'title': 'File:D415-104 INTERIOR OF THE RESEARCH LABORAT
+glass	NONE	commons:Google Glass	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'31239607': {'pageid': 31239607, 'ns': 6, 'title': 'File:GoogleGlassMeetup2014.JPG', 'index': 6, 'im
+printer	NONE	commons:3D printer	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'75491759': {'pageid': 75491759, 'ns': 6, 'title': 'File:3D printer at 35c3 01.jpg', 'index': 10, 'i
+printer	NONE	commons:3D printing Prusa	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'51371242': {'pageid': 51371242, 'ns': 6, 'title': 'File:3D Printed RFB cell frame printed on Prusa 
+shelf	NONE	commons:supermarket shelves products	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'175609369': {'pageid': 175609369, 'ns': 6, 'title': 'File:Candy products displayed in a supermarket
+shelf	NONE	commons:instant noodles supermarket	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'114320140': {'pageid': 114320140, 'ns': 6, 'title': 'File:-2022-01-14 Instant noodles & paster pack
+proto	NONE	commons:product prototype industrial design	{'batchcomplete': '', 'continue': {'gsroffset': 10, 'continue': 'gsroffset||'}, 'query': {'pages': {'92295121': {'pageid': 92295121, 'ns': 6, 'title': 'File:A core product model for representing desig
+idea	FAILAPI	brainstorming sticky notes	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+factory	FAILAPI	assembly line factory electronics	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+flip	FAILAPI	Galaxy Z Flip	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+fold7	FAILAPI	Galaxy Z Fold	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+buldak	FAILAPI	Buldak	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+buldak	FAILAPI	Samyang ramen	429 You are making too many requests to the API.
+Please follow the best practices at https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits.
+If you are
+glass	glass_464a23.jpg	5133x3422	https://upload.wikimedia.org/wikipedia/commons/a/a8/A_Google_Glass_wearer.jpg	https://commons.wikimedia.org/w/index.php?curid=26050963	A Google Glass wearer | by 2.0 | Loïc Le Meur | wikimedia
+glass	glass_e6b98f.jpg	3128x1704	https://upload.wikimedia.org/wikipedia/commons/b/be/Google_Glass_with_frame.jpg	https://commons.wikimedia.org/w/index.php?curid=32348020	Google Glass with frame | by-sa 3.0 | Mikepanhu | wikimedia
+glass	glass_f9f89b.jpg	3264x2448	https://upload.wikimedia.org/wikipedia/commons/7/7b/Google_Glass_photo.JPG	https://commons.wikimedia.org/w/index.php?curid=33220901	Google Glass photo | by-sa 3.0 | Dan Leveille (danlev on Wikimedia) | wikimedia
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/d/dd/Google_Glass_Main.jpg
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/3/36/Google_Glass_Back.jpg
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/4/43/AU_professor_pulling_off_google_glass.JPG
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/9/95/Google_Glass_Model.jpg
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/9/9f/Cirug%C3%ADa_con_google_glass.jpg
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Glass_Front.jpg
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/3/3a/Google_Glass_V2_OOB_Experience_36695.jpg
+glass	glass_7d55b0.jpg	4907x3271	https://upload.wikimedia.org/wikipedia/commons/f/f9/Google_Glass_Package.jpg	https://commons.wikimedia.org/w/index.php?curid=32750283	Google Glass Package | by-sa 3.0 | Tim.Reckmann | wikimedia
+glass	HTTP429	https://upload.wikimedia.org/wikipedia/commons/d/d8/Google_Glass_Sunglasses.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/8/8b/Prusa_i3_3D_Printer_-_Reprap_-_Completed.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/d/d0/Large_delta-style_3D_printer.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/c/ce/Voron_3D_printer.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/9/9a/Shkolla_Nexhmedin_Nixha_-_3D_Printer.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/8/8c/3D_printer_in_a_school_workshop.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/1/17/ParaNorman%2C_Norman%27s_faces%2C_3D_printer.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/8/8a/3d_Printer_at_HackIllinois_2016.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/1/1c/DG_%E6%9D%B1%E8%8E%9E_DongGuan_%E5%8D%97%E5%9F%8E%E5%8D%80_Nancheng_%E9%B4%BB%E7%A6%8F%E8%B7%AF_HongFu_Road_%E6%9D%B1%E8%8E%9E%E4%BA%AC%E6%9D%B1%E5%95%86%E5%A0%B4_JD_Mall_Electronics_Showroom_3D_printers_December_2024_R12S_06_%28cropped%29.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/6/6c/Prusa_i3_-_RepRap_3D_printer_printing.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/f/f0/Printing_with_a_3D_printer_at_Makers_Party_Bangalore_2013_11.JPG
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/8/8a/Make-_3D_Printer_Testing_-_7960539462_%28cropped%29.jpg
+printer	HTTP429	https://upload.wikimedia.org/wikipedia/commons/d/da/SMBND_Peter_Parker_Apartment_-_Suit_3D_Printer.jpg
+printer	NONE	ov:3d printer	{'result_count': 240, 'page_count': 20, 'page_size': 12, 'page': 1, 'results': [{'id': 'e1d9c948-0f0d-46f7-b6c3-8744476896e4', 'title': 'Prusa i3 3D P
