@@ -1,5 +1,7 @@
-img/t-charging.jpg https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_3_Charging_(35418233244).jpg?width=900
-img/t-extrange.jpg https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_3_Extended_Range.jpg?width=900
-img/t-caggiano.jpg https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_3.jpg?width=600
-img/q5.json https://commons.wikimedia.org/w/api.php?format=json&action=query&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=480&iiextmetadatafilter=Artist|LicenseShortName|DateTimeOriginal&generator=search&gsrnamespace=6&gsrlimit=100&gsrsearch=Model%203%20Jurvetson
-img/q6.json https://commons.wikimedia.org/w/api.php?format=json&action=query&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=480&iiextmetadatafilter=Artist|LicenseShortName|DateTimeOriginal&generator=categorymembers&gcmtype=file&gcmlimit=200&gcmtitle=Category:Tesla_Model_3_(2017%E2%80%932023)
+img/u-flotilla.jpg https://commons.wikimedia.org/wiki/Special:FilePath/First_flotilla_of_Model_3_cars.jpg?width=900
+img/u-jer1.jpg https://commons.wikimedia.org/wiki/Special:FilePath/2018_tesla_mode_3_long_range_1.jpg?width=900
+img/u-jer2.jpg https://commons.wikimedia.org/wiki/Special:FilePath/2018_tesla_mode_3_long_range_2.jpg?width=900
+img/u-punk.jpg https://commons.wikimedia.org/wiki/Special:FilePath/2018_Tesla_Model_3.jpg?width=900
+img/u-ray1.jpg https://commons.wikimedia.org/wiki/Special:FilePath/201803_Silver_Tesla_Model_3_01.jpg?width=900
+img/u-ray3.jpg https://commons.wikimedia.org/wiki/Special:FilePath/201803_Silver_Tesla_Model_3_03.jpg?width=900
+img/u-musk.jpg https://commons.wikimedia.org/wiki/Special:FilePath/Elon_Musk_Presenting_the_First_Tesla_Model_3_Cars.jpg?width=900
