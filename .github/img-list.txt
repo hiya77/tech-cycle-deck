@@ -1,2 +1,0 @@
-img/v-jer1.jpg https://commons.wikimedia.org/wiki/Special:FilePath/2018_tesla_mode_3_long_range_1.jpg
-img/v-jer1.json https://commons.wikimedia.org/w/api.php?format=json&action=query&prop=imageinfo&iiprop=url|size|user|extmetadata&titles=File:2018_tesla_mode_3_long_range_1.jpg
