@@ -2051,6 +2051,133 @@ body.editing .t-cover3 .cover-q{color:#fff;background:none}
 .c10-bottom svg{flex:none;width:24px;height:24px;color:var(--mint)}
 .c10-bottom em.kw{color:var(--kw-dark)}
 
+/* ===== v11: B 다크 키노트 ===== */
+.slide{--bg:#0B0F17;--ink:#F4F6FA;--ink-2:#B4BCCB;--ink-3:#8790A1;--line:rgba(255,255,255,.12);--line-2:rgba(255,255,255,.22);
+  --surface:rgba(255,255,255,.05);--raise:rgba(255,255,255,.08);--accent:#5B9BFF;--accent-ink:#5B9BFF;--accent-soft:rgba(91,155,255,.16);
+  --navy:rgba(91,155,255,.14);--mint:#5B9BFF;--kw:#FFB547;--kw-soft:rgba(255,181,71,.14);--kw-dark:#FFB547;--red:#FFB547;
+  --fact:rgba(255,255,255,.05);--fact-line:rgba(255,255,255,.14);--card:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.02));
+  background:radial-gradient(120% 120% at 0 0,#172235 0,#0B0F17 60%)!important;color:var(--ink);color-scheme:dark}
+.stage{background:#0B0F17}
+.eyebrow{color:var(--ink-2)}
+.eyebrow .no{color:var(--accent);border:1px solid var(--line-2);border-radius:99px}
+.eyebrow [data-k]{color:var(--ink-2)}
+.lead{color:var(--ink)}
+.s-foot{border-top-color:var(--line);color:var(--ink-3)}
+/* 키워드: 색만, 밑줄 형광 없음 */
+em.kw{color:var(--kw)!important;background:none!important;font-weight:800;padding:0;animation:none!important}
+.slide.play em.kw{animation:kwGlow 1s ease .5s both!important}
+@keyframes kwGlow{from{color:var(--ink)}to{color:var(--kw)}}
+
+/* 카드 공통 */
+.st2-p,.t10-row li,.c10-row,.f9-row li,.cn2-p,.cn2-w,.r9-g,.t9-list li,.st2-ex{background:var(--card)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+/* 바닥 강조 줄 */
+.st2-bottom,.cn3-final,.c10-bottom{background:rgba(91,155,255,.14)!important;border:1px solid rgba(91,155,255,.4)!important;color:var(--ink)!important}
+.st2-bottom>svg,.cn3-final svg,.c10-bottom svg{color:var(--accent)!important}
+.st2-bottom small{color:var(--ink-3)}
+
+/* 6단계 한눈에 */
+.f9-row li{border-top:1px solid var(--line)!important}
+.f9-n{background:var(--accent);color:#0B0F17;border-radius:16px;font-family:var(--font-mono)}
+.f9-row li:last-child .f9-n{background:var(--accent)}
+.f9-name{color:var(--ink)}
+.f9-act{color:var(--ink-2)}
+.lec-badge{background:var(--accent);color:#0B0F17}
+.f9-groups span{border-top-color:var(--line-2)}
+.f9-note{background:var(--surface);border:1px solid var(--line)}
+
+/* 단계 설명 */
+.st2-p{border-left:1px solid var(--line)!important;border-radius:24px}
+.st2-n{background:var(--accent);color:#0B0F17;border-radius:16px;font-family:var(--font-mono)}
+.st2-ic{color:var(--accent)}
+.st2-tag{background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}
+.st2-t th{color:var(--ink-3);border-bottom-color:var(--line)}
+.st2-t td{border-bottom-color:var(--line);color:var(--ink)}
+.st2-t td:first-child{color:var(--accent)}
+
+/* 목차 */
+.t10-n{color:var(--accent);font-family:var(--font-mono)}
+.t10-ic{background:var(--accent-soft);color:var(--accent)}
+.t10-bar{background:var(--accent)}
+.t10-row li.cs{background:linear-gradient(160deg,rgba(255,181,71,.12),rgba(255,255,255,.02))!important;border-color:rgba(255,181,71,.35)!important}
+.t10-row li.cs .t10-n{color:var(--kw)}
+.t10-row li.cs .t10-ic{background:var(--kw-soft);color:var(--kw)}
+.t10-row li.cs .t10-bar{background:var(--kw)}
+
+/* 사례 */
+.c10-ph{border-radius:24px;border:1px solid var(--line)}
+.c10-st{background:var(--accent);color:#0B0F17}
+.c10-f i{color:var(--accent)}
+.c10-int{border:0;border-left:3px solid var(--kw);border-radius:6px;background:var(--kw-soft);color:var(--ink)}
+.c10-int em{color:var(--kw)}
+.c10-legend .fact::before{background:var(--surface);border:1px solid var(--line-2)}
+.c10-legend .int::before{border:0;border-left:3px solid var(--kw);background:var(--kw-soft)}
+
+/* 결론 */
+.cn2-p{border-top:1px solid var(--line)!important}
+.cn2-p b{color:var(--accent)!important}
+.cn2-w .cn2-t{color:var(--ink)!important}
+.cn3-src{background:var(--surface)!important;border:1px solid var(--line)!important;color:var(--ink-2)!important}
+
+/* 출처 */
+.r9-h em{background:var(--accent);color:#0B0F17}
+.r9-g.cs{background:linear-gradient(160deg,rgba(255,181,71,.10),rgba(255,255,255,.02))!important;border-color:rgba(255,181,71,.3)!important}
+.r9-g.cs .r9-h em{background:var(--kw);color:#0B0F17;border:0}
+.r9-g li a{color:var(--ink-3)}
+.r9-note svg{color:var(--kw)}
+
+/* 표지 (B: 전면 사진 + 왼쪽 그늘) */
+.c9d{background:radial-gradient(120% 120% at 0 0,#172235 0,#0B0F17 60%)}
+.c9d.has-ph .c9d-hero{left:0;width:auto}
+.c9d.has-ph .c9d-shade{background:linear-gradient(90deg,#0B0F17 0%,rgba(11,15,23,.88) 34%,rgba(11,15,23,.25) 62%,rgba(11,15,23,0) 80%),linear-gradient(0deg,rgba(11,15,23,.7),rgba(11,15,23,0) 35%)}
+.c9d-eye .no{color:var(--accent);border-color:var(--line-2)}
+.c9d-sub{border-left-color:var(--accent)!important}
+.c9d-cl{background:var(--kw);color:#0B0F17}
+.c9d-steps li span{background:rgba(255,255,255,.1);border:1px solid var(--line-2);color:var(--accent);font-family:var(--font-mono)}
+.c9d-t{background:var(--card)!important;border:1px solid var(--line)!important}
+.c9d-t::after{display:none}
+.c9d-n{color:var(--accent)!important;font-family:var(--font-mono)}
+.c9d-ic{color:var(--ink-2)!important}
+.c9d-t:nth-child(6){background:linear-gradient(150deg,rgba(91,155,255,.35),rgba(91,155,255,.12))!important;border-color:rgba(91,155,255,.5)!important}
+.c9d-cap b{color:var(--kw)}
+/* 사진 자리 */
+.c9-empty,.c10-ph .ph-empty{border-color:var(--line-2);color:var(--ink-3)}
+/* 등장 애니메이션 보강 */
+.slide.play .st2-p,.slide.play .f9-row li,.slide.play .t10-row li,.slide.play .cn2-p,.slide.play .r9-g{animation:upIn .7s cubic-bezier(.2,.7,.2,1) both}
+.slide.play .st2-p:nth-child(2),.slide.play .r9-g:nth-child(2){animation-delay:.15s}
+.slide.play .f9-row li:nth-child(1),.slide.play .t10-row li:nth-child(1){animation-delay:.1s}
+.slide.play .f9-row li:nth-child(2),.slide.play .t10-row li:nth-child(2){animation-delay:.2s}
+.slide.play .f9-row li:nth-child(3),.slide.play .t10-row li:nth-child(3){animation-delay:.3s}
+.slide.play .f9-row li:nth-child(4),.slide.play .t10-row li:nth-child(4){animation-delay:.4s}
+.slide.play .f9-row li:nth-child(5){animation-delay:.5s}
+.slide.play .f9-row li:nth-child(6){animation-delay:.6s}
+.slide.play .c9d-q,.slide.play .c9d-sub,.slide.play .c9d-steps{animation:upIn .8s cubic-bezier(.2,.7,.2,1) both}
+.slide.play .c9d-sub{animation-delay:.2s}.slide.play .c9d-steps{animation-delay:.4s}
+.slide.play .c9d-ph img{animation:heroZoom 8s ease-out both}
+@keyframes upIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+@media print{.slide *{animation:none!important}}
+/* 발표 구성 (3카드) */
+.t11{justify-content:center}
+.t11-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.t11-i{position:relative;display:grid;grid-template-columns:96px 72px 1fr auto;align-items:center;gap:28px;padding:30px 40px;border-radius:24px;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.t11-n{font:700 56px/1 var(--font-mono);color:var(--accent);letter-spacing:-.03em}
+.t11-ic{width:72px;height:72px;border-radius:18px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}.t11-ic svg{width:38px;height:38px}
+.t11-tx{display:flex;flex-direction:column;gap:8px;min-width:0}
+.t11-tx b{font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1.2;color:var(--ink)}
+.t11-tx span{font-size:24px;color:var(--ink-2)}
+.t11-pg{font:600 20px var(--font-mono);color:var(--accent);padding:8px 18px;border-radius:99px;border:1px solid rgba(91,155,255,.45);background:rgba(91,155,255,.08);white-space:nowrap}
+.t11-bar{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--accent);transform-origin:top;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,.7,.2,1) calc(.3s + var(--i)*.15s)}
+.slide.play .t11-bar,.slide.show-all .t11-bar{transform:scaleY(1)}
+.slide.play .t11-i{animation:upIn .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*.14s)}
+/* 결론 연결선: 단색 + 다시 움직이게 */
+.cn2-fill{background:var(--accent)!important}
+.cn2-n{background:var(--accent)!important;border-color:var(--accent)!important;color:#0B0F17!important;font-family:var(--font-mono)!important}
+.slide.play .cn2-fill{animation:grow11 1.6s .3s cubic-bezier(.4,0,.2,1) both!important}
+.slide.play .cn2-n{animation:popIn11 .6s cubic-bezier(.2,.8,.2,1.4) both!important;animation-delay:calc(.3s + var(--k)*.25s)!important}
+@keyframes grow11{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes popIn11{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+.s-head .lead::after,.lead-bar,.s-head::after{background:var(--accent)!important}
+
 </style>
 </head><body>
 
@@ -2108,7 +2235,7 @@ body.editing .t-cover3 .cover-q{color:#fff;background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "npd-deck.v10";
+const STORE_KEY = "npd-deck.v11";
 /* 사진: 언론·기업 보도사진과 위키미디어 공용 사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
 const P_BULDAK = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975724_web.jpg";
 const P_BULDAK2 = "https://image.fnnews.com/resource/media/image/2025/06/11/202506111003480912_l.jpg";
@@ -2193,7 +2320,7 @@ const SOURCES = [
 ];
 const STAGE_NAMES = ["개념 정립","제품 설계","제품 엔지니어링","공정 엔지니어링","시장진출 준비","대량 생산"];
 const DEFAULT_DECK = {
- "version": 10,
+ "version": 11,
  "meta": {
   "deckTitle": "신제품 개발 절차 · 6단계와 테슬라 모델 3",
   "presenter": "고채현, 박민준"
@@ -2227,38 +2354,39 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t2",
-   "type": "toc10",
-   "duration": 16,
-   "title": "목차",
-   "lead": "오늘 발표 [[순서]]",
+   "type": "toc11",
+   "duration": 26,
+   "title": "발표 구성",
+   "lead": "6단계를 배우고, [[테슬라 모델 3]]에 적용해 봅니다",
    "items": [
     {
-     "t": "교수님 자료의 6단계",
-     "icon": "list"
+     "t": "신제품 개발 절차 6단계",
+     "d": "전체 흐름과 각 단계의 핵심",
+     "icon": "list",
+     "pages": "3 ~ 6장"
     },
     {
-     "t": "단계별 핵심",
-     "icon": "target"
+     "t": "테슬라 모델 3 사례",
+     "d": "강의에서 배운 6단계 적용",
+     "icon": "factory",
+     "pages": "7 ~ 8장"
     },
     {
-     "t": "모델 3 적용",
-     "icon": "gear",
-     "kind": "case"
-    },
-    {
-     "t": "정리",
-     "icon": "check"
+     "t": "핵심 정리",
+     "d": "각 단계의 연결과 결론",
+     "icon": "check",
+     "pages": "9장"
     }
    ],
    "sources": [],
-   "script": "발표 순서입니다. 먼저 교수님 자료의 6단계를 보고, 단계별 핵심을 설명한 뒤, 테슬라 모델 3에 적용해 보고 정리하겠습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 주황색 3번 카드가 사례, 나머지는 강의 내용이다."
+   "script": "발표는 세 부분으로 구성했습니다. 먼저 신제품 개발 절차 6단계의 전체 흐름과 각 단계의 핵심을 설명하고, 이어서 강의에서 배운 6단계를 테슬라 모델 3 사례에 적용해 본 뒤, 마지막으로 각 단계의 연결과 결론을 정리하겠습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 세 카드 오른쪽의 장 번호가 실제 슬라이드 순서와 같다 (3~6장 / 7~8장 / 9장)."
   },
   {
    "id": "t3",
    "type": "flow9",
    "duration": 57,
-   "title": "신제품 개발 절차 한눈에 보기",
+   "title": "01 신제품 개발 절차 6단계 · 한눈에 보기",
    "lead": "신제품 개발은 [[여섯 단계]]로 진행된다",
    "tableTitle": "신제품 개발 단계와 단계별 핵심 활동",
    "stages": [
@@ -2315,8 +2443,8 @@ const DEFAULT_DECK = {
    "id": "t4",
    "type": "stage2",
    "duration": 50,
-   "title": "① 개념 정립 · ② 제품 설계",
-   "lead": "[[무엇을]] 만들지 정하고, [[어떤 설계와 사양]]으로 만들지 정한다",
+   "title": "01 6단계 · ① 개념 정립 · ② 제품 설계",
+   "lead": "[[무엇을]] 만들지 정하고, 어떤 설계와 사양으로 만들지 정한다",
    "stages": [
     {
      "n": "1",
@@ -2324,7 +2452,7 @@ const DEFAULT_DECK = {
      "rows": [
       {
        "act": "상품기획",
-       "goal": "개발상품의 [[니즈]]에 적합한 신제품의 [[개념]]을 설정"
+       "goal": "개발상품의 니즈에 적합한 신제품의 [[개념]]을 설정"
       }
      ]
     },
@@ -2334,11 +2462,11 @@ const DEFAULT_DECK = {
      "rows": [
       {
        "act": "제품기획",
-       "goal": "[[최적 설계안]] 선정과 [[목표 스펙]] 결정"
+       "goal": "최적 설계안 선정과 [[목표 스펙]] 결정"
       },
       {
        "act": "기본설계",
-       "goal": "외관, 디자인을 포함한 시스템 수준의 [[일차적 기능 설계]]"
+       "goal": "외관, 디자인을 포함한 시스템 수준의 일차적 기능 설계"
       }
      ]
     }
@@ -2358,8 +2486,8 @@ const DEFAULT_DECK = {
    "id": "t5",
    "type": "stage2",
    "duration": 57,
-   "title": "③ 제품 엔지니어링 · ④ 공정 엔지니어링",
-   "lead": "③은 [[제품 자체]]를 다듬고, ④는 [[생산 공정]]을 준비한다",
+   "title": "01 6단계 · ③ 제품 엔지니어링 · ④ 공정 엔지니어링",
+   "lead": "③은 제품 자체를 다듬고, ④는 [[생산 공정]]을 준비한다",
    "stages": [
     {
      "n": "3",
@@ -2371,7 +2499,7 @@ const DEFAULT_DECK = {
       },
       {
        "act": "양산설계 Ⅱ",
-       "goal": "양산설계 Ⅰ에서 확보한 기능, 성능, 신뢰성 등의 개선 및 [[양산성의 향상]]"
+       "goal": "양산설계 Ⅰ에서 확보한 기능, 성능, 신뢰성 등의 개선 및 양산성의 향상"
       }
      ]
     },
@@ -2381,7 +2509,7 @@ const DEFAULT_DECK = {
      "rows": [
       {
        "act": "생산준비",
-       "goal": "양산 라인에의 [[시험생산]]을 통한 [[제조품질]] 확립"
+       "goal": "양산 라인에의 시험생산을 통한 [[제조품질]] 확립"
       }
      ]
     }
@@ -2402,8 +2530,8 @@ const DEFAULT_DECK = {
    "id": "t6",
    "type": "stage2",
    "duration": 53,
-   "title": "⑤ 시장진출 준비 · ⑥ 대량 생산",
-   "lead": "⑤는 [[출시를 준비]]하고, ⑥은 [[생산·영업을 안정]]시킨다",
+   "title": "01 6단계 · ⑤ 시장진출 준비 · ⑥ 대량 생산",
+   "lead": "⑤는 출시를 준비하고, ⑥은 [[생산·영업을 안정]]시킨다",
    "stages": [
     {
      "n": "5",
@@ -2411,7 +2539,7 @@ const DEFAULT_DECK = {
      "rows": [
       {
        "act": "영업준비",
-       "goal": "시장 도입 개시에 필요한 [[영업 준비]]"
+       "goal": "시장 도입 개시에 필요한 영업 준비"
       }
      ]
     },
@@ -2441,8 +2569,8 @@ const DEFAULT_DECK = {
   {
    "id": "t7",
    "type": "case10",
-   "duration": 75,
-   "title": "모델 3 적용 ① ~ ③",
+   "duration": 77,
+   "title": "02 테슬라 모델 3 사례 · ① ~ ③",
    "lead": "‘무엇을’ 정하고, [[제품 자체]]를 다듬었다",
    "sources": [
     {
@@ -2454,7 +2582,7 @@ const DEFAULT_DECK = {
      "url": "https://ir.tesla.com/_flysystem/s3/sec/000119312516670068/d234162d8k-gen_0.pdf"
     }
    ],
-   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 흰 칸은 테슬라 공시와 주주서한으로 확인한 사실이고, 주황 점선은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n[엔터 ⏎ ① 개념 정립] 테슬라는 2016년 1분기, 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n[엔터 ⏎ ② 제품 설계] 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n[엔터 ⏎ ③ 제품 엔지니어링] 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n[엔터 ⏎ 정리] 즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
+   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 각 줄의 위쪽은 테슬라 공시와 주주서한으로 확인한 사실이고, 노란색 ‘해석’ 칸은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n[엔터 ⏎ ① 개념 정립] 테슬라는 2016년 1분기, 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n[엔터 ⏎ ② 제품 설계] 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n[엔터 ⏎ ③ 제품 엔지니어링] 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n[엔터 ⏎ 정리] 즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 엔터마다 단계 한 줄씩 나타나고, 마지막 엔터에 아래 정리 줄.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· ‘대중형 전기 세단’의 ‘전기’는 모델 3가 전기차라는 사실을 덧붙인 것이다. 목표 스펙·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.",
    "img": {
     "src": "",
@@ -2486,14 +2614,14 @@ const DEFAULT_DECK = {
      "interp": "제품 자체의 성능·신뢰성을 다듬은 장면"
     }
    ],
-   "bottom": "①~③은 [[무엇을]] 만들지 정하고 [[제품 자체]]를 다듬는 단계와 맞닿아 있다 (발표자 해석)"
+   "bottom": "①~③은 무엇을 만들지 정하고 제품 자체를 다듬는 단계와 맞닿아 있다 (발표자 해석)"
   },
   {
    "id": "t8",
    "type": "case10",
    "duration": 94,
-   "title": "모델 3 적용 ④ ~ ⑥",
-   "lead": "[[공정·판매 체제]]를 갖추고, 생산 후 [[안정화]]까지 시간이 걸렸다",
+   "title": "02 테슬라 모델 3 사례 · ④ ~ ⑥",
+   "lead": "공정·판매 체제를 갖추고, 생산 후 [[안정화]]까지 시간이 걸렸다",
    "sources": [
     {
      "label": "Tesla 8-K 2016.08.03",
@@ -2544,14 +2672,14 @@ const DEFAULT_DECK = {
      "interp": "생산 시작과 안정화는 따로, 1년 넘게 걸림"
     }
    ],
-   "bottom": "④~⑥: [[공정]]과 [[판매 체제]]를 준비해도, ‘조기 확립과 [[안정화]]’는 별도의 과제였다 (발표자 해석)"
+   "bottom": "④~⑥: 공정과 판매 체제를 준비해도, ‘조기 확립과 안정화’는 별도의 과제였다 (발표자 해석)"
   },
   {
    "id": "t9",
    "type": "concl3",
    "duration": 67,
-   "title": "결론",
-   "lead": "[[개념 정립]]부터 [[대량 생산]]까지, 여섯 단계",
+   "title": "03 핵심 정리",
+   "lead": "개념 정립부터 [[대량 생산]]까지, 여섯 단계",
    "chain": [
     "개념 정립",
     "제품 설계",
@@ -2580,7 +2708,7 @@ const DEFAULT_DECK = {
    "final": "무엇을 만들지 정하고(①②), 제품과 공정을 준비해(③④), 시장에 내놓고 안정시키는(⑤⑥) 여섯 단계",
    "sources": [
     {
-     "label": "「제5강 경영프로젝트의 개발」 35장 · 아래 회색 줄은 테슬라 공개 자료를 발표자가 대응시킨 것",
+     "label": "「제5강 경영프로젝트의 개발」 35장 · 각 칸 아래 모델 3 줄은 테슬라 공개 자료를 발표자가 대응시킨 것",
      "url": ""
     }
    ],
@@ -2592,7 +2720,7 @@ const DEFAULT_DECK = {
    "type": "refs9",
    "duration": 18,
    "title": "출처",
-   "lead": "강의자료와 [[테슬라 공식 자료]]를 구분해 적었습니다",
+   "lead": "강의자료와 테슬라 공식 자료를 구분해 적었습니다",
    "groups": [
     {
      "kind": "lec",
@@ -3461,6 +3589,10 @@ R.case10 = (s, i) => {
   ${s.bottom ? `<div class="c10-bottom frag" data-f="${rows.length + 1}">${icon("arrow")}${ed(s, "bottom", "span")}</div>` : ""}
 </div>${foot(s, i)}`;
 };
+R.toc11 = (s, i) => `${head(s, i)}<div class="s-body t11"><ol class="t11-list">${(s.items || []).map((it, k) => `<li class="t11-i rise" style="--i:${k + 1}">
+  <span class="t11-n">${pad(k + 1)}</span><span class="t11-ic">${icon(it.icon || "list")}</span>
+  <div class="t11-tx">${ed(s, `items.${k}.t`, "b")}${ed(s, `items.${k}.d`, "span")}</div>
+  <span class="t11-pg" data-k="items.${k}.pages">${esc(it.pages || "")}</span><i class="t11-bar"></i></li>`).join("")}</ol></div>${foot(s, i)}`;
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
