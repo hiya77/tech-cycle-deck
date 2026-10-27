@@ -1951,6 +1951,59 @@ em.kw{background:none}
 .m9-facts span{font-size:23px}
 .m9{gap:14px}
 
+/* ===== v9.2: 색 · 어두운 표지 ===== */
+:root{--kw:#E5484D;--kw-soft:rgba(229,72,77,.12)}
+.f9-row li{border-top-color:var(--c)}
+.f9-n{background:var(--c)}
+.f9-arr{color:var(--ink-3)}
+.st2-n{background:var(--c)}
+.st2-t td:first-child{color:var(--c)}
+.st2-p{border-left-color:var(--c)}
+.m9-st{background:var(--c)}
+.m9-st .m9-n{color:var(--c)}
+.m9-st span{color:rgba(255,255,255,.85)}
+.m9-facts i{color:var(--c)}
+.m9-legend .lec::before{background:linear-gradient(90deg,#2F6BFF,#7B5CFA,#12A594,#F08A24)}
+.cn2-p{border-top-color:var(--c)!important}
+.cn2-p b{color:var(--c)!important}
+.t9-n{background:linear-gradient(135deg,#2F6BFF,#7B5CFA)}
+.t9-list li:nth-child(2) .t9-n{background:linear-gradient(135deg,#7B5CFA,#12A594)}
+.t9-list li:nth-child(4) .t9-n{background:linear-gradient(135deg,#F08A24,#E5484D)}
+.t9-q{border-left-color:#2F6BFF;background:linear-gradient(135deg,#EEF3FF,#F6F1FF)}
+.t9-ql{color:#2F6BFF}
+.lec-badge{background:#2F6BFF}
+.s-head::after{background:linear-gradient(90deg,#2F6BFF,#12A594)!important}
+/* 표지 */
+.c9d{position:absolute;inset:0;background:radial-gradient(120% 90% at 0% 0%,#18305A 0%,#0B1626 55%,#070E19 100%);color:#fff;overflow:hidden}
+.c9d-hero{position:absolute;right:0;top:0;bottom:0;width:58%}
+.c9d-ph{position:absolute;inset:0}.c9d-ph img{width:100%;height:100%;object-fit:cover}
+.c9d-shade{position:absolute;inset:0;background:linear-gradient(90deg,#0B1626 0%,rgba(11,22,38,.55) 22%,rgba(11,22,38,0) 50%);pointer-events:none}
+.c9d.has-ph .c9d-shade{background:linear-gradient(90deg,#0B1626 0%,rgba(11,22,38,.6) 25%,rgba(11,22,38,0) 55%)}
+.c9d-hero .img-edit{position:absolute;right:24px;top:24px;z-index:3}
+.c9d-grid{position:absolute;inset:70px 70px 70px 150px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:18px}
+.c9d-t{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px 26px;border-radius:24px;background:linear-gradient(150deg,color-mix(in srgb,var(--c) 92%,#fff) 0%,color-mix(in srgb,var(--c) 70%,#000) 100%);box-shadow:0 30px 60px -30px color-mix(in srgb,var(--c) 70%,#000);overflow:hidden}
+.c9d-t::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.12)}
+.c9d-n{position:absolute;left:24px;top:16px;font:800 54px/1 var(--font-display);color:rgba(255,255,255,.95)}
+.c9d-ic{position:absolute;right:24px;top:22px;color:rgba(255,255,255,.9)}.c9d-ic svg{width:40px;height:40px}
+.c9d-t b{font-size:32px;font-weight:800;letter-spacing:-.04em;color:#fff}
+.c9d-l{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:84px 0 70px 100px;max-width:760px}
+.c9d-eye{display:flex;gap:12px;align-items:center;font-size:22px;font-weight:700;color:rgba(255,255,255,.75)}
+.c9d-eye .no{font:700 15px var(--font-mono);border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 11px;color:#7FE0D2}
+.c9d-q{margin:52px 0 0;font:800 116px/1.02 var(--font-display);letter-spacing:-.06em;white-space:pre-line;color:#fff}
+.c9d-sub{margin-top:40px;padding-left:22px;border-left:6px solid #12A594;display:flex;flex-direction:column;gap:12px}
+.c9d-sub b{font-size:40px;font-weight:800;letter-spacing:-.04em;color:#fff}
+.c9d-sub span{font-size:24px;color:rgba(255,255,255,.7)}
+.c9d-case{margin-top:auto;display:inline-flex;align-self:flex-start;align-items:center;gap:14px;padding:12px 22px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+.c9d-cl{font-size:15px;font-weight:800;color:#0B1626;background:#7FE0D2;border-radius:999px;padding:4px 12px}
+.c9d-case b{font-size:24px;font-weight:700;color:#fff}
+.c9d-steps{list-style:none;margin:auto 0 0;padding:0;display:grid;grid-template-columns:repeat(3,auto);gap:12px 24px;justify-content:start}
+.c9d-steps li{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:#fff}
+.c9d-steps li span{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--c);font:800 16px var(--font-display)}
+.c9d-by{margin-top:28px;font-size:26px;font-weight:700;color:#fff}
+.c9d-cap{position:absolute;right:24px;bottom:22px;z-index:3;display:flex;gap:10px;align-items:center;padding:8px 16px;border-radius:999px;background:rgba(11,22,38,.7);color:#fff;font-size:15px}
+.c9d-cap b{color:#7FE0D2}
+.c9d:not(.has-ph) .c9d-shade{display:none}
+
 </style>
 </head><body>
 
@@ -3223,7 +3276,7 @@ R.concl = (s, i) => {
 
 /* ===== v6: 강의자료만으로 다시 짠 구성 ===== */
 const IC6 = ["bulb", "ruler", "gear", "factory", "store", "box"];
-const SC6 = ["var(--stg)", "var(--stg)", "var(--stg)", "var(--stg)", "var(--stg)", "var(--stg)"];
+const SC6 = ["#2F6BFF", "#0FA3D9", "#7B5CFA", "#12A594", "#F08A24", "#E5484D"];
 const srcTag = (s, k, cls = "src6") => getPath(s, k) ? `<span class="${cls}" data-k="${k}">${esc(getPath(s, k))}</span>` : "";
 
 R.cover3 = (s, i) => {
@@ -3347,18 +3400,16 @@ R.concl3 = (s, i) => {
 const CIRC = ["①", "②", "③", "④", "⑤", "⑥"];
 R.cover9 = (s, i) => {
   const st = s.stages || [], h = s.hero || {}, has = !!safeUrl(h.src);
-  return `<div class="c9${has ? " has-ph" : ""}">
-  <div class="c9-l">
-    <div class="c9-eye rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
-    ${ed(s, "question", "h1", "c9-q rise").replace("<h1", `<h1 style="--i:1"`)}
-    <div class="c9-sub rise"${rise(2)}>${ed(s, "deckTitle", "b")}${ed(s, "subtitle", "span")}</div>
-    ${has ? `<ol class="c9-steps rise"${rise(3)}>${st.map((x, k) => `<li><span class="c9-n">${k + 1}</span><span data-k="stages.${k}">${esc(x)}</span></li>`).join("")}</ol>` : ""}
-    ${ed(s, "presenter", "div", "c9-by rise").replace("<div", `<div style="--i:4"`)}
-  </div>
-  <div class="c9-r rise"${rise(1)}>
-    ${has ? photo(s, "hero", "c9-ph") + (h.caption ? `<span class="c9-cap" data-k="hero.caption">${esc(h.caption)}</span>` : "")
-      : `<div class="c9-track"><span class="c9-tl">강의자료 35장 · 신제품 개발 단계</span><ol>${st.map((x, k) => `<li style="--k:${k}"><span class="c9-n">${k + 1}</span><b data-k="stages.${k}">${esc(x)}</b></li>`).join("")}</ol><button class="img-edit edit-only" data-imgedit="hero">사진 넣기</button></div>`}
-    <span class="c9-tag"><b>사례</b>${ed(s, "caseLabel", "span")}</span>
+  return `<div class="c9d${has ? " has-ph" : ""}">
+  <div class="c9d-hero">${has ? photo(s, "hero", "c9d-ph") : `<div class="c9d-grid">${st.map((x, k) => `<div class="c9d-t rise" style="--i:${k + 1};--c:${SC6[k]}"><span class="c9d-n">${k + 1}</span><span class="c9d-ic">${icon(IC6[k])}</span><b data-k="stages.${k}">${esc(x)}</b></div>`).join("")}</div>`}<span class="c9d-shade"></span>
+    <button class="img-edit edit-only" data-imgedit="hero">사진 ${has ? "바꾸기" : "넣기"}</button>
+    ${has && h.caption ? `<span class="c9d-cap"><b>사례</b><span data-k="hero.caption">${esc(h.caption)}</span></span>` : ""}</div>
+  <div class="c9d-l">
+    <div class="c9d-eye rise"${rise(0)}><span class="no">${pad(i + 1)}</span>${ed(s, "title")}</div>
+    ${ed(s, "question", "h1", "c9d-q rise").replace("<h1", `<h1 style="--i:1"`)}
+    <div class="c9d-sub rise"${rise(2)}>${ed(s, "deckTitle", "b")}${ed(s, "subtitle", "span")}</div>
+    ${has ? `<ol class="c9d-steps rise"${rise(3)}>${st.map((x, k) => `<li style="--c:${SC6[k]}"><span>${k + 1}</span>${esc(x)}</li>`).join("")}</ol>` : `<div class="c9d-case rise"${rise(3)}><span class="c9d-cl">사례</span>${ed(s, "caseLabel", "b")}</div>`}
+    ${ed(s, "presenter", "div", "c9d-by rise").replace("<div", `<div style="--i:4"`)}
   </div>
 </div>`;
 };
@@ -3370,7 +3421,7 @@ R.flow9 = (s, i) => {
   const st = s.stages || [];
   return `${head(s, i)}<div class="s-body f9">
   <div class="f9-cap rise"${rise(1)}><span class="lec-badge">강의자료 35장</span>${ed(s, "tableTitle", "span")}</div>
-  <ol class="f9-row">${st.map((x, k) => `<li class="rise" style="--i:${k + 2}">
+  <ol class="f9-row">${st.map((x, k) => `<li class="rise" style="--i:${k + 2};--c:${SC6[k]}">
     <span class="f9-n">${k + 1}</span>${ed(s, `stages.${k}.name`, "b", "f9-name")}
     <span class="f9-act" data-k="stages.${k}.act">${esc(x.act)}</span>
     ${k < st.length - 1 ? `<i class="f9-arr">${icon("arrow")}</i>` : ""}</li>`).join("")}</ol>
@@ -3382,7 +3433,7 @@ R.map9 = (s, i) => {
   const C = s.cols || [];
   return `${head(s, i)}<div class="s-body m9">
   <div class="m9-legend rise"${rise(1)}><span class="lg lec">강의 단계</span><span class="lg fact">공개 자료로 확인한 사실</span><span class="lg int">발표자 해석</span></div>
-  <div class="m9-cols" style="--n:${C.length}">${C.map((c, k) => `<section class="m9-c rise" style="--i:${k + 2}">
+  <div class="m9-cols" style="--n:${C.length}">${C.map((c, k) => `<section class="m9-c rise" style="--i:${k + 2};--c:${SC6[(+c.n - 1) % 6]}">
     <div class="m9-st"><span class="m9-n">${esc(c.n)}</span><div>${ed(s, `cols.${k}.stage`, "b")}${ed(s, `cols.${k}.act`, "span")}</div></div>
     <ul class="m9-facts">${(c.facts || []).map((f, j) => `<li><i data-k="cols.${k}.facts.${j}.when">${esc(f.when)}</i><span data-k="cols.${k}.facts.${j}.t">${esc(f.t)}</span><small data-k="cols.${k}.facts.${j}.src">${esc(f.src)}</small></li>`).join("")}</ul>
     <p class="m9-int frag" data-f="1" style="transition-delay:${k * 140}ms"><em>해석</em><span data-k="cols.${k}.interp">${esc(c.interp)}</span></p>
