@@ -1,2 +1,0 @@
-img/w-flot.jpg https://commons.wikimedia.org/wiki/Special:FilePath/First_flotilla_of_Model_3_cars.jpg
-img/w-flot.json https://commons.wikimedia.org/w/api.php?action=query&titles=File:First_flotilla_of_Model_3_cars.jpg&prop=imageinfo&iiprop=url|size|extmetadata&format=json
