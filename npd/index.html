@@ -1817,6 +1817,24 @@ em.kw{background-repeat:no-repeat}
 /* v18.14: 2장 사진 40% */
 .t-toc18{padding-left:calc(40% + 80px)!important}
 .x-t3ph{width:40%}
+/* v18.16: 10장 출처 재배치 (왼쪽 강의자료 · 오른쪽 테슬라 · 아래 주석/사진 출처) */
+.x-refs2{display:flex;flex-direction:column;gap:22px;min-height:0}
+.x-r2g{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px}
+.x-r2c{background:#fff;border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:18px;padding:24px 30px;display:flex;flex-direction:column;gap:6px}
+.x-r2tsl{border-top-color:var(--c-blue)}
+.x-r2h{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.x-r2s{font-size:22px;font-weight:700;color:var(--navy)}
+.x-r2l{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column}
+.x-r2l li{display:flex;flex-direction:column;gap:4px;padding:13px 0;border-top:1px solid var(--line)}
+.x-r2t{font-size:22px;font-weight:700;color:var(--navy)}
+.x-r2t a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(15,30,60,.25)}
+.x-r2t a i{font-style:normal;font-size:16px;color:var(--c-blue)}
+.x-r2d{font-size:19px;color:#3d4757;line-height:1.45}
+.x-r2f{display:flex;flex-direction:column;gap:6px}
+.x-r2n{margin:0;display:flex;gap:10px;align-items:center;font-size:19px;font-weight:600;color:var(--navy)}
+.x-r2n svg{width:20px;height:20px;flex:none}
+.x-r2p{margin:0;font-size:16px;color:#5b6575}
+.x-r2c{padding:28px 34px}.x-r2h{font-size:28px}.x-r2s{font-size:24px}.x-r2l li{padding:16px 0;gap:6px}.x-r2t{font-size:25px}.x-r2d{font-size:21px}.x-r2n{font-size:20px}.x-r2p{font-size:17px}
 
 </style>
 </head><body>
@@ -2509,7 +2527,7 @@ const DEFAULT_DECK = {
    "type": "refs18",
    "duration": 10,
    "title": "출처",
-   "lead": "강의자료와 [[테슬라 공식 자료]]",
+   "lead": "교수님 강의자료와 [[테슬라 공식 자료]]",
    "groups": [
     {
      "kind": "lec",
@@ -2549,10 +2567,10 @@ const DEFAULT_DECK = {
      ]
     }
    ],
-   "note": "모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아닙니다.\n사진: 1장 Unsplash 사진 (unsplash.com/photos/ieEhVK-fvZs, Unsplash 라이선스) · 2·7·8장 Steve Jurvetson (Wikimedia Commons, CC BY 2.0)",
+   "note": "모델 3의 공개 사실을 강의자료의 6단계에 연결한 부분은 발표자의 해석입니다.",
    "sources": [],
-   "script": "출처입니다. 왼쪽은 교수님 강의자료, 오른쪽은 테슬라의 공시와 주주서한입니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 링크는 대본 PDF 끝의 출처 목록에도 있다.\n· 모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아니다.\n· 사진: 1장 Unsplash 사진 (unsplash.com/photos/ieEhVK-fvZs, Unsplash 라이선스) · 2·7·8장 Steve Jurvetson (Wikimedia Commons, CC BY 2.0)\n· 7·8장 각 단계의 원문 문장과 출처는 해당 장 발표자 메모에 있다.\n· 강의자료 출처는 원본 pptx(66장)와 대조했다: 1장 ‘제 5 강 경영프로젝트의 개발’, 35장 제목 ‘신제품 개발 절차’와 표 ‘신제품 개발 단계와 단계별 핵심 활동’, 65장 ‘토론’의 4번 ‘신제품 개발 절차를 간략하게 제시하여라’.",
+   "script": "출처입니다. 왼쪽은 교수님 강의자료이고, 오른쪽은 테슬라의 공식 자료입니다. 모델 3의 공개 사실을 6단계에 연결한 부분은 저희의 해석입니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 자료 제목을 누르면 공식 원문(ir.tesla.com)으로 이동한다.\n· 2016년 2분기 주주서한 = Form 8-K Exhibit 99.1 (2016.08.03) / 2017년 2분기 주주서한 = Form 8-K Exhibit 99.1 (2017.08.02) / 2018년 3분기 Update = Form 8-K Exhibit 99.1 (2018.10.24).\n· 강의자료 출처는 원본 pptx(66장)와 대조했다: 35장 제목 ‘신제품 개발 절차’, 표 제목 ‘신제품 개발 단계와 단계별 핵심 활동’, 65장 ‘토론’ 4번.\n· 사진: 1장 unsplash.com/photos/ieEhVK-fvZs (촬영자 이름 미확인) / 2장 ‘Tesla Robot Dance’ 2012.06.06 모델 S 초기 생산 / 7장 2016.03.31 모델 3 공개 행사 / 8장 2017.07.28 첫 인도 행사. 2·7·8장 모두 Steve Jurvetson, Wikimedia Commons, CC BY 2.0.",
    "cards": [
     {
      "h": "강의자료 · 「제5강 경영프로젝트의 개발」",
@@ -2603,7 +2621,47 @@ const DEFAULT_DECK = {
       }
      ]
     }
-   ]
+   ],
+   "lec": {
+    "h": "교수님 강의자료",
+    "sub": "「제5강 경영프로젝트의 개발」",
+    "items": [
+     {
+      "t": "슬라이드 35: 「신제품 개발 단계와 단계별 핵심 활동」",
+      "d": "6단계의 명칭·활동·목적"
+     },
+     {
+      "t": "슬라이드 65: 「토론」 4번",
+      "d": "“신제품 개발 절차를 간략하게 제시하여라.”"
+     }
+    ]
+   },
+   "tesla": {
+    "h": "테슬라 공식 자료",
+    "items": [
+     {
+      "t": "2016년 2분기 주주서한",
+      "d": "모델 3 디자인 단계 완료·생산 설비 준비",
+      "u": "https://ir.tesla.com/_flysystem/s3/sec/000119312516670068/d234162d8k-gen_0.pdf"
+     },
+     {
+      "t": "2017년 1분기 Form 10-Q",
+      "d": "출시 후보 차량 시험·생산 준비",
+      "u": "https://ir.tesla.com/_flysystem/s3/sec/000156459017009968/tsla-10q_20170331.html"
+     },
+     {
+      "t": "2017년 2분기 주주서한",
+      "d": "초기 생산·첫 인도·주문 절차",
+      "u": "https://ir.tesla.com/_flysystem/s3/sec/000156459017014920/tsla-8k_20170802-gen_0.pdf"
+     },
+     {
+      "t": "2018년 3분기 Update",
+      "d": "생산 시스템 안정화",
+      "u": "https://ir.tesla.com/_flysystem/s3/sec/000156459018024902/tsla-8k_20181024-gen_0.pdf"
+     }
+    ]
+   },
+   "photoCredit": "사진 출처: 1장 Unsplash (Unsplash 라이선스) · 2·7·8장 Steve Jurvetson (Wikimedia Commons, CC BY 2.0)"
   },
   {
    "id": "t11",
@@ -2611,8 +2669,8 @@ const DEFAULT_DECK = {
    "duration": 8,
    "title": "마무리",
    "big": "감사합니다",
-   "sub": "Q & A",
-   "credits": "내용 · 강의자료 「제5강 경영프로젝트의 개발」 35장·65장, 테슬라 공시·주주서한 (2016~2018)\n사진 · 1장 Unsplash 사진 (unsplash.com/photos/ieEhVK-fvZs, Unsplash 라이선스) · 2·7·8장 Steve Jurvetson (Wikimedia Commons, CC BY 2.0)",
+   "sub": "",
+   "credits": "",
    "sources": [],
    "script": "들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.\n[엔터 ⏎ 끝]",
    "notes": "[예상 질문]\nQ. 테슬라가 실제로 이 6단계를 거쳤나요?\nA. 테슬라가 이 6단계를 공식적으로 썼다는 자료는 없습니다. 공개 자료로 확인되는 활동을 저희가 6단계에 대응시켜 본 것입니다.\n\nQ. 4단계의 ‘시험생산’을 테슬라도 했나요?\nA. 공개 자료로 확인되는 것은 양산 예정 금형·공정으로 만든 출시 후보 차량을 시험하고, 생산 설비와 공급업체를 준비했다는 것까지입니다. 별도의 시험생산 라인을 운영했다고는 말할 수 없습니다.\n\nQ. 예약이 많았으니 판매가 확정된 것 아닌가요?\nA. 예약은 확정 판매가 아니어서 이번 발표에서는 주문·인도 절차 준비만 다뤘습니다.\n\nQ. 36장 세부 절차는 왜 빠졌나요?\nA. 36장 항목이 35장의 몇 단계에 해당하는지 강의자료에 적혀 있지 않아, 억지로 대응시키지 않으려고 이번에는 35장 6단계만 썼습니다."
@@ -3700,10 +3758,13 @@ R.concl18 = (s, i) => wrap18(s, i, "concl2 x-con x-con2", `
   </div>
   <p class="x-final2 rise" style="--i:7">${icon("check")}<span data-k="final">${esc(s.final)}</span></p>`);
 
-R.refs18 = (s, i) => { const card = (c, k) => `<div class="x-rc rise" style="--i:${1 + k};--c:${["var(--c-violet)", "var(--c-blue)", "var(--c-teal)"][k]}"><b class="x-rch">${esc(c.h)}</b>${c.items.map(it => `<div class="x-ri"><strong>${esc(it.t)}</strong><span>${esc(it.d)}</span>${it.u ? `<a href="${esc(it.u)}" target="_blank" rel="noopener">${esc(it.u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0])} ↗</a>` : ""}</div>`).join("")}</div>`;
-  return wrap18(s, i, "x-refs", `<div class="x-rg"><div class="x-rcol">${card(s.cards[0], 0)}<p class="cs-caveat x-note rise" style="--i:4">${icon("info")}<span data-k="note">${esc(s.note)}</span></p></div><div class="x-rcol">${card(s.cards[1], 1)}${card(s.cards[2], 2)}</div></div>`); };
+R.refs18 = (s, i) => { const col = (c, k, cls) => `<section class="x-r2c ${cls} rise" style="--i:${1 + k}">
+    <b class="x-r2h">${esc(c.h)}</b>${c.sub ? `<span class="x-r2s">${esc(c.sub)}</span>` : ""}
+    <ul class="x-r2l">${c.items.map(it => `<li><span class="x-r2t">${it.u ? `<a href="${esc(it.u)}" target="_blank" rel="noopener">${esc(it.t)} <i>↗</i></a>` : esc(it.t)}</span><span class="x-r2d">${esc(it.d)}</span></li>`).join("")}</ul></section>`;
+  return wrap18(s, i, "x-refs2", `<div class="x-r2g">${col(s.lec, 0, "x-r2lec")}${col(s.tesla, 1, "x-r2tsl")}</div>
+  <div class="x-r2f rise" style="--i:4"><p class="x-r2n">${icon("info")}<span data-k="note">${esc(s.note)}</span></p><p class="x-r2p" data-k="photoCredit">${esc(s.photoCredit)}</p></div>`); };
 
-R.closing = (s, i) => `<div class="closing"><span class="cl-line rise" style="--i:0"></span><h1 class="cl-big rise" style="--i:1" data-k="big">${esc(s.big)}</h1><p class="cl-sub rise" style="--i:2" data-k="sub">${esc(s.sub)}</p><p class="cl-cred" data-k="credits">${esc(s.credits)}</p></div>`;
+R.closing = (s, i) => `<div class="closing"><span class="cl-line rise" style="--i:0"></span><h1 class="cl-big rise" style="--i:1" data-k="big">${esc(s.big)}</h1><p class="cl-sub rise" style="--i:2" data-k="sub">${esc(s.sub)}</p>${s.credits ? `<p class="cl-cred" data-k="credits">${esc(s.credits)}</p>` : ""}</div>`;
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
