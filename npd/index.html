@@ -2127,7 +2127,7 @@ em.kw{color:var(--kw)!important;background:none!important;font-weight:800;paddin
 
 /* 표지 (B: 전면 사진 + 왼쪽 그늘) */
 .c9d{background:radial-gradient(120% 120% at 0 0,#172235 0,#0B0F17 60%)}
-.c9d.has-ph .c9d-hero{left:0;width:auto}
+
 .c9d.has-ph .c9d-shade{background:linear-gradient(90deg,#0B0F17 0%,rgba(11,15,23,.88) 34%,rgba(11,15,23,.25) 62%,rgba(11,15,23,0) 80%),linear-gradient(0deg,rgba(11,15,23,.7),rgba(11,15,23,0) 35%)}
 .c9d-eye .no{color:var(--accent);border-color:var(--line-2)}
 .c9d-sub{border-left-color:var(--accent)!important}
@@ -2177,6 +2177,22 @@ em.kw{color:var(--kw)!important;background:none!important;font-weight:800;paddin
 @keyframes grow11{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes popIn11{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
 .s-head .lead::after,.lead-bar,.s-head::after{background:var(--accent)!important}
+.c9d.has-ph .c9d-hero{width:56%}
+.c9d.has-ph .c9d-shade{background:linear-gradient(90deg,#0B0F17 0%,rgba(11,15,23,.6) 18%,rgba(11,15,23,0) 45%)!important}
+.c9d-ph img{object-position:center 60%}
+/* 사진 있는 사례 장: 글이 넘치지 않게 */
+.c10:not(.noph){grid-template-columns:.62fr 1.38fr;gap:16px 24px}
+.c10:not(.noph) .c10-row{padding:12px 16px;gap:14px;flex:none}
+.c10:not(.noph) .c10-r{gap:10px}
+.c10:not(.noph) .c10-st{width:118px}
+.c10:not(.noph) .c10-st b{font-size:32px}
+.c10:not(.noph) .c10-st span{font-size:16px}
+.c10:not(.noph) .c10-f span{font-size:20px;line-height:1.35}
+.c10:not(.noph) .c10-f i{font-size:15px}
+.c10:not(.noph) .c10-body{gap:4px}
+.c10:not(.noph) .c10-body small{font-size:13px}
+.c10:not(.noph) .c10-int{font-size:16px;padding:5px 10px}
+.c10:not(.noph) .c10-ph{align-self:stretch}
 
 </style>
 </head><body>
@@ -2345,8 +2361,8 @@ const DEFAULT_DECK = {
    ],
    "caseLabel": "테슬라 모델 3 (2017년 출시)",
    "hero": {
-    "src": "",
-    "caption": ""
+    "src": "https://hiya77.github.io/tech-cycle-deck/npd/img/tesla-m3.jpg",
+    "caption": "테슬라 모델 3 (2024년 부분변경 모델)"
    },
    "sources": [],
    "script": "안녕하세요. 저희 조는 5강 「경영프로젝트의 개발」 토론문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 발표하겠습니다. 강의자료의 신제품 개발 6단계를 중심으로 설명하고, 이해를 돕기 위해 테슬라 모델 3를 짧은 사례로 적용해 보겠습니다.\n[엔터 ⏎ 다음 장]",
@@ -2641,10 +2657,10 @@ const DEFAULT_DECK = {
     }
    ],
    "script": "4단계부터 6단계입니다.\n[엔터 ⏎ ④ 공정 엔지니어링] 테슬라는 2016년 8월 프레스와 도장 공정에 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 양산 예정 금형과 공정으로 만든 출시 후보 차량을 시험하면서 생산 시설과 공급업체를 준비했습니다. 생산 공정을 준비한 장면입니다. 다만 별도의 시험생산 라인을 운영했는지는 공개 자료로 확인되지 않습니다.\n[엔터 ⏎ ⑤ 시장진출 준비] 2017년 7월에는 예약한 직원부터 주문을 받고, 이후 예약 순서대로 소그룹씩 주문을 안내했습니다. 사양 조합을 단순화하고 새 인도 거점도 열었습니다. 주문과 인도 체제를 준비한 장면이고, 예약은 확정 판매가 아니라는 점은 구분해 두겠습니다.\n[엔터 ⏎ ⑥ 대량 생산] 생산은 2017년 7월에 시작해 7월 28일 첫 인도를 했지만, 테슬라가 생산 시스템이 안정화됐다고 밝힌 것은 2018년 3분기였고, 이때 주 평균 약 4,300대를 생산했습니다.\n[엔터 ⏎ 정리] 즉 공정과 판매 체제를 준비해도, 6단계의 ‘조기 확립과 안정화’는 1년 넘게 걸린 별도의 과제였습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 엔터마다 단계 한 줄씩 나타나고, 마지막 엔터에 아래 정리 줄.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘Early Model 3 builds will have fewer than 100 permutations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’, ‘our production ramp will follow an S-Curve, meaning that it will begin slowly…’. 서비스 확대 문장(‘continuing to expand our service capability…’)은 모델 3에 한정된 문장이 아니어서 화면에 넣지 않았다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 2018년 3분기 10-Q(사용자 제공 링크)는 이 환경에서 본문을 끝까지 열지 못해, 같은 분기의 테슬라 공식 Update 서한으로 확인했다.",
+   "notes": "· 엔터마다 단계 한 줄씩 나타나고, 마지막 엔터에 아래 정리 줄.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘Early Model 3 builds will have fewer than 100 permutations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’, ‘our production ramp will follow an S-Curve, meaning that it will begin slowly…’. 서비스 확대 문장(‘continuing to expand our service capability…’)은 모델 3에 한정된 문장이 아니어서 화면에 넣지 않았다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 2018년 3분기 10-Q(사용자 제공 링크)는 이 환경에서 본문을 끝까지 열지 못해, 같은 분기의 테슬라 공식 Update 서한으로 확인했다.\n· 왼쪽 사진은 생산 라인을 보여 주는 참고 사진이다. 사진 속 차량은 모델 3가 아니라 모델 Y이므로, 모델 3 생산 장면이라고 말하지 않는다.",
    "img": {
-    "src": "",
-    "caption": ""
+    "src": "https://hiya77.github.io/tech-cycle-deck/npd/img/tesla-line.jpg",
+    "caption": "테슬라 공장 조립 라인 · 사진 속 차량은 모델 Y (참고 사진)"
    },
    "rows": [
     {
@@ -2910,7 +2926,7 @@ function foot(s, i) {
   return `<footer class="s-foot"><div class="src">${src}</div><span class="pg">${pad(i + 1)} / ${pad(deck.slides.length)}</span></footer>`;
 }
 /* photos are served from the deck's own img/ folder first, original URL as fallback */
-const LOCAL_IMG = {
+const LOCAL_IMG = {"https://hiya77.github.io/tech-cycle-deck/npd/img/tesla-m3.jpg": "img/tesla-m3.jpg", "https://hiya77.github.io/tech-cycle-deck/npd/img/tesla-line.jpg": "img/tesla-line.jpg", 
   [P_BULDAK]: "img/buldak.jpg", [P_BULDAK2]: "img/buldak-line.jpg", [P_FACTORY]: "img/buldak-factory.jpg",
   [P_FOLD]: "img/fold.jpg", [P_FOLD2]: "img/fold-hero.jpg",
   [P_GLASS]: "img/glass.jpg", [P_PRINTER]: "img/printer.jpg", [P_SLIDE]: "img/sliderule.jpg", [P_LAB]: "img/lab.jpg",
