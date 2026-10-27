@@ -1708,23 +1708,10 @@ body.editing .t-cover3 .cover-q{color:#fff;background:none}
 .ctx-r2 em.kw{color:var(--kw-dark);background:none}
 
 /* ===== v9: 흰 배경 · 검정/진회색 · 절제된 빨강 ===== */
-:root{
-  --ink:#16181D;--ink-2:#4A4F59;--ink-3:#8A8F98;
-  --line:#E6E7EA;--line-2:#CFD2D8;--surface:#F6F6F7;--raise:#EFEFF1;--void:#E9E9EC;
-  --accent:#B3261E;--accent-ink:#B3261E;--accent-soft:#FBEDEC;
-  --navy:#16181D;--mint:#F2A39C;
-  --teal:#4A4F59;--teal-soft:#F1F2F4;
-  --c-blue:#16181D;--c-sky:#16181D;--c-violet:#16181D;--c-teal:#16181D;--c-orange:#16181D;--c-coral:#B3261E;
-  --kw:#B3261E;--kw-soft:rgba(179,38,30,.09);--kw-dark:#F2A39C;
-  --stg:#16181D;--red:#B3261E;--fact:#F4F5F7;--fact-line:#D9DCE1;
-}
 .slide{background:#fff}
 .slide::before,.slide::after{display:none!important}
 .lead{letter-spacing:-.03em}
-.lead em.kw{background:none;box-shadow:inset 0 -.16em 0 var(--kw-soft)}
 .s-head .lead+*{}
-.s-head::after{background:var(--red)!important}
-em.kw{background:none}
 .s-foot .src{color:var(--ink-3)}
 
 /* 표지 */
@@ -1952,7 +1939,6 @@ em.kw{background:none}
 .m9{gap:14px}
 
 /* ===== v9.2: 색 · 어두운 표지 ===== */
-:root{--kw:#E5484D;--kw-soft:rgba(229,72,77,.12)}
 .f9-row li{border-top-color:var(--c)}
 .f9-n{background:var(--c)}
 .f9-arr{color:var(--ink-3)}
@@ -1972,7 +1958,6 @@ em.kw{background:none}
 .t9-q{border-left-color:#2F6BFF;background:linear-gradient(135deg,#EEF3FF,#F6F1FF)}
 .t9-ql{color:#2F6BFF}
 .lec-badge{background:#2F6BFF}
-.s-head::after{background:linear-gradient(90deg,#2F6BFF,#12A594)!important}
 /* 표지 */
 .c9d{position:absolute;inset:0;background:radial-gradient(120% 90% at 0% 0%,#18305A 0%,#0B1626 55%,#070E19 100%);color:#fff;overflow:hidden}
 .c9d-hero{position:absolute;right:0;top:0;bottom:0;width:58%}
@@ -2003,6 +1988,68 @@ em.kw{background:none}
 .c9d-cap{position:absolute;right:24px;bottom:22px;z-index:3;display:flex;gap:10px;align-items:center;padding:8px 16px;border-radius:999px;background:rgba(11,22,38,.7);color:#fff;font-size:15px}
 .c9d-cap b{color:#7FE0D2}
 .c9d:not(.has-ph) .c9d-shade{display:none}
+
+/* ===== v10: 06판 톤 (파랑 + 주황 키워드) ===== */
+:root{--stg:var(--accent);--red:#E2530A;--fact:#F5F7FB;--fact-line:#D9E0EC}
+.t9-n,.t9-list li:nth-child(2) .t9-n,.t9-list li:nth-child(4) .t9-n{background:var(--accent)}
+.lec-badge{background:var(--accent)}
+/* 06판 톤: 강조 바는 남색 */
+.st2-bottom{background:var(--navy);color:#fff;border:0}
+.st2-bottom>svg{color:var(--mint)}
+.st2-bottom small{color:rgba(255,255,255,.6)}
+.st2-bottom em.kw{color:var(--kw-dark)}
+.cn3-final{background:var(--navy)!important;color:#fff!important;border:0}
+.cn3-final svg{color:var(--mint)!important}
+.cn3-final em.kw{color:var(--kw-dark)}
+.f9-arr{color:var(--accent)}
+.f9-note svg{color:var(--accent)}
+.c9d-t{background:linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.16);box-shadow:none;backdrop-filter:blur(6px)}
+.c9d-n{color:#7FB0FF}
+.c9d-ic{color:#7FE0D2}
+.c9d-t:nth-child(6){background:linear-gradient(150deg,#2453D6,#1A3A99);border-color:transparent}
+.c9d-t:nth-child(6) .c9d-n{color:#fff}
+.c9d-sub{border-left-color:#7FE0D2}
+/* 목차 */
+.t10{justify-content:center}
+.t10-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.t10-row li{position:relative;display:flex;flex-direction:column;gap:18px;padding:36px 30px 40px;border-radius:24px;background:#fff;border:1px solid var(--line);box-shadow:0 22px 50px -32px rgba(15,26,44,.45);overflow:hidden;min-height:330px}
+.t10-n{font:800 64px/1 var(--font-display);color:var(--accent);letter-spacing:-.04em}
+.t10-ic{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}.t10-ic svg{width:34px;height:34px}
+.t10-row b{margin-top:auto;font-size:34px;font-weight:800;letter-spacing:-.04em;line-height:1.25;color:var(--ink)}
+.t10-row li>span:not([class]){font-size:20px;color:var(--ink-2)}
+.t10-bar{position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--accent);transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.2,.7,.2,1) calc(.3s + var(--i) * .15s)}
+.slide.play .t10-bar,.slide.show-all .t10-bar{transform:scaleX(1)}
+.t10-row li.cs{background:linear-gradient(160deg,#FFF6EE,#fff)}
+.t10-row li.cs .t10-n{color:var(--kw)}
+.t10-row li.cs .t10-ic{background:var(--kw-soft);color:var(--kw)}
+.t10-row li.cs .t10-bar{background:var(--kw)}
+/* 사례 장 */
+.c10{display:grid;grid-template-columns:.95fr 1.25fr;grid-template-rows:1fr auto;gap:18px 28px}
+.c10.noph{grid-template-columns:1fr}
+.c10-ph{position:relative;border-radius:22px;overflow:hidden;background:var(--surface);min-height:0}
+.c10-phi{position:absolute;inset:0}.c10-phi img{width:100%;height:100%;object-fit:cover}
+.c10-cap{position:absolute;left:14px;bottom:12px;padding:5px 12px;border-radius:8px;background:rgba(11,22,38,.72);color:#fff;font-size:14px}
+.c10-r{display:flex;flex-direction:column;gap:12px;min-height:0}
+.c10-legend{display:flex;gap:20px;font-size:16px;color:var(--ink-2)}
+.c10-legend .lg{display:flex;align-items:center;gap:8px}
+.c10-legend .lg::before{content:"";width:22px;height:14px;border-radius:4px}
+.c10-legend .fact::before{background:#fff;border:1.5px solid var(--line-2)}
+.c10-legend .int::before{border:1.5px dashed var(--kw);background:var(--kw-soft)}
+.c10-row{display:flex;gap:18px;align-items:stretch;padding:16px 20px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 14px 34px -26px rgba(15,26,44,.45);flex:1;min-height:0}
+.slide:not(.show-all) .c10-row.frag:not(.on){transform:translateX(34px)}
+.c10-st{flex:none;width:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;border-radius:14px;background:var(--accent);color:#fff;text-align:center}
+.c10-st b{font:800 40px/1 var(--font-display)}
+.c10-st span{font-size:19px;font-weight:800;letter-spacing:-.03em}
+.c10-body{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.c10-f{display:flex;gap:14px;align-items:baseline}
+.c10-f i{flex:none;font-style:normal;font:700 17px var(--font-mono);color:var(--accent)}
+.c10-f span{font-size:23px;line-height:1.38;color:var(--ink);letter-spacing:-.015em}
+.c10-body small{font-size:14px;color:var(--ink-3)}
+.c10-int{margin:2px 0 0;display:flex;gap:10px;align-items:baseline;padding:7px 12px;border-radius:10px;border:1.5px dashed var(--kw);background:var(--kw-soft);font-size:18px;color:var(--ink)}
+.c10-int em{flex:none;font-style:normal;font-size:13px;font-weight:800;color:var(--kw)}
+.c10-bottom{grid-column:1/-1;display:flex;gap:14px;align-items:center;padding:16px 24px;border-radius:16px;background:var(--navy);color:#fff;font-size:23px;font-weight:700}
+.c10-bottom svg{flex:none;width:24px;height:24px;color:var(--mint)}
+.c10-bottom em.kw{color:var(--kw-dark)}
 
 </style>
 </head><body>
@@ -2061,7 +2108,7 @@ em.kw{background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "npd-deck.v9";
+const STORE_KEY = "npd-deck.v10";
 /* 사진: 언론·기업 보도사진과 위키미디어 공용 사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
 const P_BULDAK = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975724_web.jpg";
 const P_BULDAK2 = "https://image.fnnews.com/resource/media/image/2025/06/11/202506111003480912_l.jpg";
@@ -2146,7 +2193,7 @@ const SOURCES = [
 ];
 const STAGE_NAMES = ["개념 정립","제품 설계","제품 엔지니어링","공정 엔지니어링","시장진출 준비","대량 생산"];
 const DEFAULT_DECK = {
- "version": 9,
+ "version": 10,
  "meta": {
   "deckTitle": "신제품 개발 절차 · 6단계와 테슬라 모델 3",
   "presenter": "고채현, 박민준"
@@ -2180,43 +2227,32 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t2",
-   "type": "toc9",
-   "duration": 28,
-   "title": "발표 질문과 순서",
-   "lead": "강의의 [[6단계]]를 먼저 정리하고, 모델 3에 적용해 본다",
-   "qLabel": "토론문제 4",
-   "q": "신제품 개발 절차를\n간략하게 제시하여라",
-   "qSrc": "「제5강 경영프로젝트의 개발」 65장",
+   "type": "toc10",
+   "duration": 16,
+   "title": "목차",
+   "lead": "오늘 발표 [[순서]]",
    "items": [
     {
      "t": "교수님 자료의 6단계",
-     "d": "35장 ‘신제품 개발 단계와 단계별 핵심 활동’",
-     "kind": "lec"
+     "icon": "list"
     },
     {
      "t": "단계별 핵심",
-     "d": "두 단계씩 묶어 무엇이 다른지",
-     "kind": "lec"
+     "icon": "target"
     },
     {
      "t": "모델 3 적용",
-     "d": "공개 자료로 확인한 사실 → 6단계에 대응",
+     "icon": "gear",
      "kind": "case"
     },
     {
      "t": "정리",
-     "d": "6단계를 한 문장으로",
-     "kind": "lec"
+     "icon": "check"
     }
    ],
-   "sources": [
-    {
-     "label": "「제5강 경영프로젝트의 개발」 65장 토론문제 4",
-     "url": ""
-    }
-   ],
-   "script": "발표 순서입니다. 먼저 교수님 자료 35장의 6단계를 한눈에 보고, 두 단계씩 묶어 각 단계의 핵심을 설명하겠습니다. 그다음 테슬라 모델 3에 적용해 보고, 마지막으로 정리하겠습니다. 앞의 두 부분이 강의 내용이고, 세 번째는 사례입니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 회색 점선 칸(3번)은 사례, 나머지는 강의 내용이다. 이후 모든 장에서 강의는 검정 도형, 사례 사실은 회색 칸, 해석은 빨간 점선으로 구분한다."
+   "sources": [],
+   "script": "발표 순서입니다. 먼저 교수님 자료의 6단계를 보고, 단계별 핵심을 설명한 뒤, 테슬라 모델 3에 적용해 보고 정리하겠습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 주황색 3번 카드가 사례, 나머지는 강의 내용이다."
   },
   {
    "id": "t3",
@@ -2404,56 +2440,10 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t7",
-   "type": "map9",
-   "duration": 68,
+   "type": "case10",
+   "duration": 75,
    "title": "모델 3 적용 ① ~ ③",
-   "lead": "방향 설정 → [[설계 확정]] → [[출시 전 시험]]",
-   "cols": [
-    {
-     "n": "1",
-     "stage": "개념 정립",
-     "act": "상품기획",
-     "facts": [
-      {
-       "when": "2016 1분기",
-       "t": "대중 시장용, 더 낮은 가격의 세단으로 모델 3 공개",
-       "src": "Tesla 10-Q, 2017년 1분기"
-      }
-     ],
-     "interp": "‘대중형 전기 세단’이라는 방향 설정 → ① 개념 정립"
-    },
-    {
-     "n": "2",
-     "stage": "제품 설계",
-     "act": "제품기획 · 기본설계",
-     "facts": [
-      {
-       "when": "2016.08",
-       "t": "디자인 단계 완료 → 금형·생산 계획·검증 단계로",
-       "src": "Tesla 8-K, 2016년 2분기 주주서한"
-      }
-     ],
-     "interp": "설계를 확정하고 다음 단계로 → ② 제품 설계 (목표 스펙 수치는 미확인)"
-    },
-    {
-     "n": "3",
-     "stage": "제품 엔지니어링",
-     "act": "양산설계 I · II",
-     "facts": [
-      {
-       "when": "2017 1분기",
-       "t": "출시 후보 차량으로 조립 상태(fit and finish) 점검",
-       "src": "Tesla 10-Q, 2017년 1분기"
-      },
-      {
-       "when": "2017 1분기",
-       "t": "도로 시험으로 주행 특성·내구성 확인",
-       "src": "Tesla 10-Q, 2017년 1분기"
-      }
-     ],
-     "interp": "제품 자체의 기능·성능·신뢰성 다듬기 → ③ 제품 엔지니어링"
-    }
-   ],
+   "lead": "‘무엇을’ 정하고, [[제품 자체]]를 다듬었다",
    "sources": [
     {
      "label": "Tesla 10-Q 2017년 1분기 MD&A",
@@ -2464,71 +2454,46 @@ const DEFAULT_DECK = {
      "url": "https://ir.tesla.com/_flysystem/s3/sec/000119312516670068/d234162d8k-gen_0.pdf"
     }
    ],
-   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 회색 칸은 테슬라 공시와 주주서한으로 확인한 사실이고, 빨간 점선 칸은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n테슬라는 2016년 1분기 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인하고 있었습니다.\n[엔터 ⏎ 해석] 저희는 이것을 각각 제품의 개념을 정한 1단계, 설계를 확정한 2단계, 제품 자체를 다듬은 3단계에 대응시켜 보았습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 입장: 세 칸이 차례로 나타난다. 엔터 1: 아래 빨간 점선 해석 칸.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· ‘대중형 전기 세단’의 ‘전기’는 모델 3가 전기차라는 사실을 덧붙인 것이다. 목표 스펙·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다."
+   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 흰 칸은 테슬라 공시와 주주서한으로 확인한 사실이고, 주황 점선은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n[엔터 ⏎ ① 개념 정립] 테슬라는 2016년 1분기, 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n[엔터 ⏎ ② 제품 설계] 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n[엔터 ⏎ ③ 제품 엔지니어링] 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n[엔터 ⏎ 정리] 즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 엔터마다 단계 한 줄씩 나타나고, 마지막 엔터에 아래 정리 줄.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· ‘대중형 전기 세단’의 ‘전기’는 모델 3가 전기차라는 사실을 덧붙인 것이다. 목표 스펙·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.",
+   "img": {
+    "src": "",
+    "caption": ""
+   },
+   "rows": [
+    {
+     "n": 1,
+     "stage": "개념 정립",
+     "when": "2016 1분기",
+     "t": "대중 시장을 겨냥한, 더 낮은 가격의 세단으로 모델 3 공개",
+     "src": "Tesla 10-Q (2017년 1분기)",
+     "interp": "제품의 방향, 즉 개념을 정한 장면"
+    },
+    {
+     "n": 2,
+     "stage": "제품 설계",
+     "when": "2016.08",
+     "t": "디자인 단계 완료 → 금형·생산 계획·검증 단계로 넘김",
+     "src": "Tesla 8-K · 2016년 2분기 주주서한",
+     "interp": "설계를 확정한 장면 (목표 스펙 수치는 미확인)"
+    },
+    {
+     "n": 3,
+     "stage": "제품 엔지니어링",
+     "when": "2017 1분기",
+     "t": "출시 후보 차량으로 조립 상태 점검, 도로 시험으로 주행 특성·내구성 확인",
+     "src": "Tesla 10-Q (2017년 1분기)",
+     "interp": "제품 자체의 성능·신뢰성을 다듬은 장면"
+    }
+   ],
+   "bottom": "①~③은 [[무엇을]] 만들지 정하고 [[제품 자체]]를 다듬는 단계와 맞닿아 있다 (발표자 해석)"
   },
   {
    "id": "t8",
-   "type": "map9",
-   "duration": 105,
+   "type": "case10",
+   "duration": 94,
    "title": "모델 3 적용 ④ ~ ⑥",
-   "lead": "[[공정·판매 체제]] 준비 → 생산 시작 → [[안정화]]",
-   "cols": [
-    {
-     "n": "4",
-     "stage": "공정 엔지니어링",
-     "act": "생산준비",
-     "facts": [
-      {
-       "when": "2016.08",
-       "t": "프레스·도장 공정에 초기 생산 설비 가동",
-       "src": "Tesla 8-K, 2016년 2분기 주주서한"
-      },
-      {
-       "when": "2017 1분기",
-       "t": "양산 예정 금형·공정으로 만든 출시 후보 차량 시험, 생산 시설·공급업체 준비",
-       "src": "Tesla 10-Q, 2017년 1분기"
-      }
-     ],
-     "interp": "양산 공정으로 검증하고 설비를 준비 → ④ (별도 시험생산 라인은 미확인)"
-    },
-    {
-     "n": "5",
-     "stage": "시장진출 준비",
-     "act": "영업준비",
-     "facts": [
-      {
-       "when": "2017.07",
-       "t": "예약한 직원부터 주문 시작 → 예약 순서대로 소그룹 안내",
-       "src": "Tesla 8-K, 2017년 2분기 주주서한"
-      },
-      {
-       "when": "2017.07",
-       "t": "사양 조합 100가지 미만으로 단순화, 새 인도 거점 개설",
-       "src": "Tesla 8-K, 2017년 2분기 주주서한"
-      }
-     ],
-     "interp": "주문·인도 체제 준비 → ⑤ 영업준비 (예약 ≠ 확정 판매)"
-    },
-    {
-     "n": "6",
-     "stage": "대량 생산",
-     "act": "생산/영업",
-     "facts": [
-      {
-       "when": "2017.07",
-       "t": "생산 시작, 7월 28일 첫 인도 (회사: ‘처음엔 느린 S곡선’)",
-       "src": "Tesla 8-K, 2017년 2분기 주주서한"
-      },
-      {
-       "when": "2018 3분기",
-       "t": "“생산 시스템 안정화” · 주 평균 약 4,300대",
-       "src": "Tesla 2018년 3분기 Update"
-      }
-     ],
-     "interp": "생산 시작과 안정화 사이 1년 이상 → ⑥ ‘조기 확립과 안정화’는 별도 과제"
-    }
-   ],
+   "lead": "[[공정·판매 체제]]를 갖추고, 생산 후 [[안정화]]까지 시간이 걸렸다",
    "sources": [
     {
      "label": "Tesla 8-K 2016.08.03",
@@ -2547,8 +2512,39 @@ const DEFAULT_DECK = {
      "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA_Update_Letter_2018-3Q"
     }
    ],
-   "script": "4단계부터 6단계입니다. 테슬라는 2016년 8월 프레스와 도장 공정에 모델 3 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 출시 후보 차량을 양산 예정 금형과 공정으로 만들어 시험하면서 생산 시설과 공급업체를 준비하고 있었습니다.\n2017년 7월에는 예약한 직원부터 주문을 받기 시작했고, 이후 예약 순서대로 소그룹씩 주문을 안내했습니다. 초기 사양 조합을 100가지 미만으로 줄여 구매 절차를 단순화했고, 새 인도 거점도 열었습니다.\n생산은 2017년 7월에 시작해 7월 28일 첫 인도를 했지만, 회사는 생산 증가가 처음에는 느린 S곡선을 따를 것이라고 설명했습니다. 테슬라가 ‘생산 시스템이 안정화됐다’고 밝힌 것은 2018년 3분기로, 이때 주 평균 약 4,300대를 생산했습니다.\n[엔터 ⏎ 해석] 저희는 이것을 공정을 준비한 4단계, 주문과 인도 체제를 준비한 5단계, 생산을 시작하고 안정화한 6단계에 대응시켰습니다. 특히 생산 시작과 안정화 사이에 1년 넘는 시간이 있었다는 점은, 6단계의 ‘조기 확립과 안정화’가 쉽지 않은 별도 과제라는 것을 보여 줍니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 입장: 세 칸이 차례로 나타난다. 엔터 1: 아래 해석 칸.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘Early Model 3 builds will have fewer than 100 permutations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’, ‘our production ramp will follow an S-Curve, meaning that it will begin slowly…’. 서비스 확대 문장(‘continuing to expand our service capability…’)은 모델 3에 한정된 문장이 아니어서 화면에 넣지 않았다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 2018년 3분기 10-Q(사용자 제공 링크)는 이 환경에서 본문을 끝까지 열지 못해, 같은 분기의 테슬라 공식 Update 서한으로 확인했다."
+   "script": "4단계부터 6단계입니다.\n[엔터 ⏎ ④ 공정 엔지니어링] 테슬라는 2016년 8월 프레스와 도장 공정에 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 양산 예정 금형과 공정으로 만든 출시 후보 차량을 시험하면서 생산 시설과 공급업체를 준비했습니다. 생산 공정을 준비한 장면입니다. 다만 별도의 시험생산 라인을 운영했는지는 공개 자료로 확인되지 않습니다.\n[엔터 ⏎ ⑤ 시장진출 준비] 2017년 7월에는 예약한 직원부터 주문을 받고, 이후 예약 순서대로 소그룹씩 주문을 안내했습니다. 사양 조합을 단순화하고 새 인도 거점도 열었습니다. 주문과 인도 체제를 준비한 장면이고, 예약은 확정 판매가 아니라는 점은 구분해 두겠습니다.\n[엔터 ⏎ ⑥ 대량 생산] 생산은 2017년 7월에 시작해 7월 28일 첫 인도를 했지만, 테슬라가 생산 시스템이 안정화됐다고 밝힌 것은 2018년 3분기였고, 이때 주 평균 약 4,300대를 생산했습니다.\n[엔터 ⏎ 정리] 즉 공정과 판매 체제를 준비해도, 6단계의 ‘조기 확립과 안정화’는 1년 넘게 걸린 별도의 과제였습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 엔터마다 단계 한 줄씩 나타나고, 마지막 엔터에 아래 정리 줄.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘Early Model 3 builds will have fewer than 100 permutations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’, ‘our production ramp will follow an S-Curve, meaning that it will begin slowly…’. 서비스 확대 문장(‘continuing to expand our service capability…’)은 모델 3에 한정된 문장이 아니어서 화면에 넣지 않았다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 2018년 3분기 10-Q(사용자 제공 링크)는 이 환경에서 본문을 끝까지 열지 못해, 같은 분기의 테슬라 공식 Update 서한으로 확인했다.",
+   "img": {
+    "src": "",
+    "caption": ""
+   },
+   "rows": [
+    {
+     "n": 4,
+     "stage": "공정 엔지니어링",
+     "when": "2016.08~2017",
+     "t": "프레스·도장 초기 설비 가동, 양산 예정 금형·공정으로 만든 차량 시험, 설비·공급업체 준비",
+     "src": "Tesla 8-K (2016.08) · 10-Q (2017년 1분기)",
+     "interp": "생산 공정을 준비한 장면 (별도 시험생산 라인은 미확인)"
+    },
+    {
+     "n": 5,
+     "stage": "시장진출 준비",
+     "when": "2017.07",
+     "t": "예약한 직원부터 주문 → 예약 순서대로 소그룹 안내, 사양 조합 단순화, 새 인도 거점",
+     "src": "Tesla 8-K · 2017년 2분기 주주서한",
+     "interp": "주문·인도 체제를 준비한 장면 (예약 ≠ 확정 판매)"
+    },
+    {
+     "n": 6,
+     "stage": "대량 생산",
+     "when": "2017.07 → 2018 3분기",
+     "t": "7월 생산 시작·28일 첫 인도 → 2018년 3분기 ‘생산 시스템 안정화’, 주 평균 약 4,300대",
+     "src": "Tesla 8-K (2017.08) · Q3 2018 Update",
+     "interp": "생산 시작과 안정화는 따로, 1년 넘게 걸림"
+    }
+   ],
+   "bottom": "④~⑥: [[공정]]과 [[판매 체제]]를 준비해도, ‘조기 확립과 [[안정화]]’는 별도의 과제였다 (발표자 해석)"
   },
   {
    "id": "t9",
@@ -2770,6 +2766,7 @@ function steps(s) {
     case "concl3": return 2;
     case "flow9": return 1;
     case "map9": return 1;
+    case "case10": return (s.rows || []).length + (s.bottom ? 1 : 0);
     case "foldgen": return (s.fixes || []).length + 1;
     default: return 0;
   }
@@ -3276,7 +3273,7 @@ R.concl = (s, i) => {
 
 /* ===== v6: 강의자료만으로 다시 짠 구성 ===== */
 const IC6 = ["bulb", "ruler", "gear", "factory", "store", "box"];
-const SC6 = ["#2F6BFF", "#0FA3D9", "#7B5CFA", "#12A594", "#F08A24", "#E5484D"];
+const SC6 = ["var(--accent)", "var(--accent)", "var(--accent)", "var(--accent)", "var(--accent)", "var(--accent)"];
 const srcTag = (s, k, cls = "src6") => getPath(s, k) ? `<span class="${cls}" data-k="${k}">${esc(getPath(s, k))}</span>` : "";
 
 R.cover3 = (s, i) => {
@@ -3446,6 +3443,24 @@ R.refs9 = (s, i) => `${head(s, i)}<div class="s-body r9">${(s.groups || []).map(
 </section>`).join("")}
   ${s.note ? `<p class="r9-note rise"${rise(4)}>${icon("info")}<span data-k="note">${esc(s.note)}</span></p>` : ""}
 </div>${foot(s, i)}`;
+R.toc10 = (s, i) => `${head(s, i)}<div class="s-body t10"><ol class="t10-row">${(s.items || []).map((it, k) => `<li class="rise${it.kind === "case" ? " cs" : ""}" style="--i:${k + 1}">
+  <span class="t10-n">${pad(k + 1)}</span><span class="t10-ic">${icon(it.icon || "list")}</span>${ed(s, `items.${k}.t`, "b")}${it.d ? ed(s, `items.${k}.d`, "span") : ""}<i class="t10-bar"></i></li>`).join("")}</ol></div>${foot(s, i)}`;
+R.case10 = (s, i) => {
+  const rows = s.rows || [], has = !!safeUrl((s.img || {}).src);
+  return `${head(s, i)}<div class="s-body c10${has ? "" : " noph"}">
+  ${has ? `<div class="c10-ph rise"${rise(1)}>${photo(s, "img", "c10-phi")}<span class="c10-cap" data-k="img.caption">${esc(s.img.caption || "")}</span></div>` : ""}
+  <div class="c10-r">
+    <div class="c10-legend rise"${rise(1)}><span class="lg fact">공개 자료로 확인한 사실</span><span class="lg int">발표자 해석</span></div>
+    ${rows.map((r, k) => `<div class="c10-row frag" data-f="${k + 1}">
+      <span class="c10-st"><b>${esc(CIRC[(+r.n - 1) % 6])}</b><span data-k="rows.${k}.stage">${esc(r.stage)}</span></span>
+      <div class="c10-body"><div class="c10-f"><i data-k="rows.${k}.when">${esc(r.when)}</i><span data-k="rows.${k}.t">${esc(r.t)}</span></div>
+      <small data-k="rows.${k}.src">${esc(r.src)}</small>
+      <p class="c10-int"><em>해석</em><span data-k="rows.${k}.interp">${esc(r.interp)}</span></p></div>
+    </div>`).join("")}
+  </div>
+  ${s.bottom ? `<div class="c10-bottom frag" data-f="${rows.length + 1}">${icon("arrow")}${ed(s, "bottom", "span")}</div>` : ""}
+</div>${foot(s, i)}`;
+};
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
