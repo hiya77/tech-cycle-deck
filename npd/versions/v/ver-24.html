@@ -1778,6 +1778,13 @@ em.kw{background-repeat:no-repeat}
 .x-tc{padding:16px 24px;gap:20px}
 .x-tcb b{font-size:30px}
 @media print{.t-cover .cover-q{background:none!important;color:#fff!important;-webkit-text-fill-color:#fff}.t-closing .cl-big{background:none!important;color:#fff!important;-webkit-text-fill-color:#fff}}
+/* v18.9: 표지 단순화 (큰 제목 · 바로 아래 부제 · 하단 작은 이름) */
+.t-cover .x-cv3 .cv-l{padding:56px 96px 40px}
+.t-cover .x-cv3 .cover-q{margin:0}
+.t-cover .x-cv3 .cv-meta{position:static;margin:14px 0 0;text-align:left}
+.t-cover .x-cv3 .cover-title{font-size:36px;font-weight:600;color:rgba(255,255,255,.88)}
+.t-cover .x-cv3 .x-cvfoot{justify-content:flex-start}
+.t-cover .x-cv3 .x-by3{font-size:22px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.02em}
 
 </style>
 </head><body>
@@ -1919,7 +1926,7 @@ const DEFAULT_DECK = {
  "version": 18,
  "meta": {
   "deckTitle": "신제품 개발 절차 · 6단계와 테슬라 모델 3",
-  "presenter": "고채현, 박민준"
+  "presenter": "고채현 · 박민준"
  },
  "slides": [
   {
@@ -1929,8 +1936,8 @@ const DEFAULT_DECK = {
    "title": "5강 「경영프로젝트의 개발」",
    "question": "신제품 개발 6단계",
    "deckTitle": "6단계와 테슬라 모델 3 사례",
-   "subtitle": "테슬라 모델 3 사례로 살펴보기",
-   "presenter": "고채현, 박민준",
+   "subtitle": "테슬라 모델 3 사례",
+   "presenter": "고채현 · 박민준",
    "stages": [
     "개념 정립",
     "제품 설계",
@@ -3605,13 +3612,12 @@ function head18(s, i) {
 const lesson18 = (s, k = 5) => s.lesson ? `<div class="cs-lesson x-lesson rise" style="--i:${k}">${icon("arrow")}<span data-k="lesson">${kwt(s.lesson)}</span></div>` : "";
 const wrap18 = (s, i, cls, body) => `${head18(s, i)}<div class="s-body ${cls}">${body}</div>${foot(s, i)}`;
 
-R.cover = (s, i) => `<div class="cv x-cv">
+R.cover = (s, i) => `<div class="cv x-cv x-cv3">
   <div class="cv-hero">${img18(s.photo.src, "cv-ph", s.photo.cap)}<span class="cv-shade"></span></div>
   <div class="cv-l">
-    <div class="cv-eye rise" style="--i:0"><span class="no">01</span><span data-k="title">${esc(s.title)}</span></div>
     <h1 class="cover-q rise" style="--i:1" data-k="question">${esc(s.question)}</h1>
     <div class="cv-meta rise" style="--i:2"><div class="cover-title" data-k="subtitle">${esc(s.subtitle)}</div></div>
-    <div class="x-cvfoot rise" style="--i:4"><div><span class="x-q4">토론 문제 4번</span><b data-k="ask">${esc(s.ask || "")}</b></div><div class="x-by"><b data-k="presenter">${esc(s.presenter || "")}</b>${s.photo.credit ? `<span>사진 ${esc(s.photo.credit.replace(/^사진 /, ""))}</span>` : ""}</div></div>
+    <div class="x-cvfoot rise" style="--i:4"><span class="x-by3" data-k="presenter">${esc(s.presenter || "")}</span></div>
   </div></div>`;
 
 R.toc18 = (s, i) => wrap18(s, i, "casew x-toc", `
