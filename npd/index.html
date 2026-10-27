@@ -1691,6 +1691,13 @@ em.kw{background-repeat:no-repeat}
 .x-stg .sg-act{font-size:16px}
 .x-stg .sg-goal{margin:auto 0 0}
 .x-rows{margin:auto 0}
+.t-cover .cv-ph img{object-position:50% 50%}
+.t-cover .cv-hero{width:100%}
+.t-cover .cv-ph img{object-position:50% 50%;transform-origin:65% 50%}
+.t-cover .cv-shade{background:linear-gradient(90deg,rgba(11,22,38,.96) 0%,rgba(11,22,38,.88) 26%,rgba(11,22,38,.35) 46%,rgba(11,22,38,0) 62%),linear-gradient(0deg,rgba(11,22,38,.55),rgba(11,22,38,0) 30%)}
+.t-cover .cv-hero{width:64%}
+.t-cover .cv-ph img{object-position:42% 50%}
+.t-cover .cv-shade{background:linear-gradient(90deg,var(--navy) 0%,rgba(11,22,38,.7) 10%,rgba(11,22,38,.15) 26%,rgba(11,22,38,0) 40%),linear-gradient(0deg,rgba(11,22,38,.5),rgba(11,22,38,0) 28%)}
 
 </style>
 </head><body>
@@ -1855,7 +1862,7 @@ const DEFAULT_DECK = {
    "caseLabel": "사례 · 테슬라 모델 3 (2016 공개 → 2017 생산 → 2018 안정화)",
    "sources": [],
    "script": "안녕하세요. 저희 조는 5강 「경영프로젝트의 개발」 토론문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 발표하겠습니다. 강의자료의 신제품 개발 6단계를 중심으로 설명하고, 이해를 돕기 위해 테슬라 모델 3를 짧은 사례로 적용해 보겠습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 여섯 단계는 두 단계씩 같은 색으로 표시한다(①② 청록, ③④ 파랑, ⑤⑥ 주황). 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 색으로 켜진다.\n· 표지 왼쪽 아래 사진 두 장은 7·8장에 다시 나오는 모델 3 공개 행사와 첫 인도 차량이다.\n· 사진은 모두 위키미디어 공용(Wikimedia Commons)의 자유 이용 사진이다. 표지: 1세대 모델 3 (Carlquinn, 2018, CC BY-SA 4.0). 7장: 2016.03.31 공개 행사 (Steve Jurvetson, CC BY 2.0). 8장: 2017.07.28 첫 인도 행사의 생산 차량 (Steve Jurvetson, CC BY 2.0).",
+   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 여섯 단계는 두 단계씩 같은 색으로 표시한다(①② 청록, ③④ 파랑, ⑤⑥ 주황). 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 색으로 켜진다.\n· 표지 사진은 발표자가 준비한 사진이다. 나머지 사진은 위키미디어 공용(Wikimedia Commons)의 자유 이용 사진이다. 2장: 1세대 모델 3 (Carlquinn, 2018, CC BY-SA 4.0). 7장: 2016.03.31 공개 행사 (Steve Jurvetson, CC BY 2.0). 8장: 2017.07.28 첫 인도 행사의 생산 차량 (Steve Jurvetson, CC BY 2.0).",
    "from": "아이디어",
    "to": "생산·판매되는 제품",
    "phases": [
@@ -1904,20 +1911,10 @@ const DEFAULT_DECK = {
     }
    ],
    "photo": {
-    "src": "img/m3-cover.jpg",
-    "cap": "사례 · 테슬라 모델 3 (1세대, 2018년 촬영)",
-    "credit": "사진 Carlquinn · CC BY-SA 4.0 · Wikimedia Commons"
-   },
-   "tiles": [
-    {
-     "src": "img/m3-unveil.jpg",
-     "t": "2016 · 모델 3 공개"
-    },
-    {
-     "src": "img/m3-delivery.jpg",
-     "t": "2017 · 첫 인도"
-    }
-   ]
+    "src": "img/m3-hero.jpg",
+    "cap": "테슬라 모델 3",
+    "credit": ""
+   }
   },
   {
    "id": "t2",
@@ -2026,13 +2023,8 @@ const DEFAULT_DECK = {
      "span": 2
     }
    ],
-   "note": "단계명과 핵심 활동은 35장 표 그대로이고, 아래 세 묶음의 이름은 발표자가 붙인 것입니다",
-   "sources": [
-    {
-     "label": "단계명·핵심 활동: 강의자료 35장 표 그대로 · 세 묶음 이름: 발표자 정리",
-     "url": ""
-    }
-   ],
+   "note": "",
+   "sources": [],
    "script": "강의자료 35장은 신제품 개발 절차를 여섯 단계로 제시합니다. 개념 정립, 제품 설계, 제품 엔지니어링, 공정 엔지니어링, 시장진출 준비, 대량 생산입니다. 각 단계의 핵심 활동은 순서대로 상품기획, 제품기획과 기본설계, 양산설계 1과 2, 생산준비, 영업준비, 그리고 생산과 영업입니다.\n저희는 이 흐름을 두 단계씩 묶어, 제품의 방향과 설계, 제품과 공정의 검증, 시장 도입과 안정화로 나눠 설명하겠습니다. 단계명과 핵심 활동은 35장 표 그대로이고, 세 묶음의 이름은 저희가 붙인 것입니다. 오른쪽 위의 여섯 칸은 지금 몇 단계를 설명하는지 표시합니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 한 번에 모두 나타난다. 엔터를 누르면 다음 장.\n· 35장 표 제목: ‘신제품 개발 단계와 단계별 핵심 활동’, 열: 활동 단계 / 핵심 활동 / 활동 목적.\n· 표의 ‘생산/영업’ 표기를 그대로 옮겼다.",
    "on": [
@@ -2102,12 +2094,7 @@ const DEFAULT_DECK = {
      ]
     }
    ],
-   "sources": [
-    {
-     "label": "강의자료 35장 (1·2단계 행) · 맨 위 문장과 굵은 요약은 발표자 정리",
-     "url": ""
-    }
-   ],
+   "sources": [],
    "script": "1단계는 개념 정립이고, 핵심 활동은 상품기획입니다. 목적은 ‘개발상품의 니즈에 적합한 신제품의 개념을 설정’하는 것으로, 고객의 필요에 맞춰 무엇을 만들지 정하는 단계입니다.\n2단계는 제품 설계입니다. 제품기획에서는 최적 설계안을 고르고 목표 스펙을 결정하고, 기본설계에서는 외관과 디자인을 포함해 시스템 수준의 일차적인 기능을 설계합니다.\n정리하면 1단계는 ‘무엇을’, 2단계는 ‘어떤 설계안과 목표 스펙으로’ 만들지를 정합니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다. 맨 위 문장과 각 단계의 굵은 요약은 저희 표현이다.\n· 36장 세부 절차(고객 니즈 파악 등)는 35장의 몇 단계에 해당하는지 강의자료에 없어서 이번 발표에서는 대응시키지 않았다.",
    "on": [
@@ -2152,12 +2139,7 @@ const DEFAULT_DECK = {
      ]
     }
    ],
-   "sources": [
-    {
-     "label": "강의자료 35장 (3·4단계 행) · 맨 위 문장과 굵은 요약은 발표자 정리",
-     "url": ""
-    }
-   ],
+   "sources": [],
    "script": "3단계는 제품 엔지니어링이고, 핵심 활동은 양산설계 1과 2입니다. 양산설계 1에서는 상세 설계를 하고 설계 품질을 확보합니다. 양산설계 2에서는 양산설계 1에서 확보한 기능, 성능, 신뢰성 등을 개선하고 양산성을 향상합니다. 즉 제품 자체를 다듬는 단계입니다.\n4단계는 공정 엔지니어링이고, 핵심 활동은 생산준비입니다. 양산 라인에서 시험생산을 해서 제조품질을 확립합니다. 제품이 아니라, 그 제품을 만드는 공정을 준비하는 단계입니다.\n표의 말로 구분하면, 3단계는 설계 품질, 4단계는 제조품질을 다룹니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다(양산설계 Ⅱ의 ‘양산성의 향상’ 포함). ‘양산성’의 정의는 강의자료에 따로 없다.\n· ‘제품 자체를 다듬는다 / 만드는 공정을 준비한다’는 저희 표현이다.",
    "on": [
@@ -2198,12 +2180,7 @@ const DEFAULT_DECK = {
      ]
     }
    ],
-   "sources": [
-    {
-     "label": "강의자료 35장 (5·6단계 행) · 맨 위 문장과 굵은 요약은 발표자 정리",
-     "url": ""
-    }
-   ],
+   "sources": [],
    "script": "5단계는 시장진출 준비이고, 핵심 활동은 영업준비입니다. 목적은 시장 도입을 시작하는 데 필요한 영업을 준비하는 것으로, 아직 본격적으로 팔기 전에 출시를 준비하는 단계입니다.\n6단계는 대량 생산이고, 핵심 활동은 생산과 영업입니다. 목적은 생산과 영업 체제를 조기에 확립하고 안정시키는 것입니다. 단계 이름은 대량 생산이지만 영업도 함께 들어 있습니다.\n즉 5단계는 시장 도입을 ‘시작’하기 위한 준비이고, 6단계는 실제로 만들고 팔면서 체제를 ‘안정’시키는 단계입니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다. 영업 준비의 구체적인 활동(가격, 유통 등)은 강의자료에 없으므로 덧붙이지 않는다.",
    "on": [
@@ -2411,12 +2388,7 @@ const DEFAULT_DECK = {
    "title": "핵심 정리",
    "lead": "설계와 공정, 시작과 안정화는 [[다르다]]",
    "final": "무엇을 만들지 정하고(①②), 제품과 공정을 검증해(③④), 시장에 내놓고 안정시킨다(⑤⑥)",
-   "sources": [
-    {
-     "label": "강의자료 35장 · 모델 3 내용은 7·8장의 테슬라 공식 자료",
-     "url": ""
-    }
-   ],
+   "sources": [],
    "script": "정리하겠습니다. 모델 3 사례로 보니 두 가지가 분명해졌습니다.\n첫째, 제품을 설계하고 다듬는 일과 그 제품을 만드는 공정을 준비하는 일은 다릅니다. 강의자료의 말로는 설계 품질과 제조품질이고, 모델 3에서도 디자인 완료와 도로 시험, 그리고 생산 설비와 공급업체 준비가 따로 진행됐습니다.\n둘째, 생산을 시작하는 것과 안정시키는 것도 다릅니다. 모델 3는 2017년 7월 생산을 시작했지만, 생산 시스템이 안정화된 것은 2018년 3분기로 1년 넘게 걸렸습니다.\n한 문장으로 말하면, 신제품 개발 절차는 무엇을 만들지 정하고, 제품과 공정을 검증해, 시장에 내놓고 안정시키는 여섯 단계입니다.\n[엔터 ⏎ 다음 장]",
    "notes": "· 한 번에 모두 나타난다.\n· 두 ‘다름’과 마지막 한 문장은 35장을 바탕으로 한 발표자 정리다. 모델 3 줄은 7·8장의 공개 자료 사실을 줄인 것이다.\n· 테슬라의 성공 요인을 분석하는 발표가 아니므로, 성공·실패 평가는 하지 않는다.",
    "on": [
@@ -2509,7 +2481,7 @@ const DEFAULT_DECK = {
    "note": "모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아닙니다.\n사진(Wikimedia Commons): 1장 Carlquinn (CC BY-SA 4.0), 7·8장 Steve Jurvetson (CC BY 2.0)",
    "sources": [],
    "script": "출처입니다. 왼쪽은 교수님 강의자료, 오른쪽은 테슬라의 공시와 주주서한입니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 링크는 대본 PDF 끝의 출처 목록에도 있다.\n· 모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아니다.\n· 사진(Wikimedia Commons): 1장 Carlquinn (CC BY-SA 4.0), 7·8장 Steve Jurvetson (CC BY 2.0)",
+   "notes": "· 링크는 대본 PDF 끝의 출처 목록에도 있다.\n· 모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아니다.\n· 사진(Wikimedia Commons): 2장 Carlquinn (CC BY-SA 4.0), 7·8장 Steve Jurvetson (CC BY 2.0)",
    "cards": [
     {
      "h": "강의자료 · 「제5강 경영프로젝트의 개발」",
@@ -2569,7 +2541,7 @@ const DEFAULT_DECK = {
    "title": "마무리",
    "big": "감사합니다",
    "sub": "Q & A",
-   "credits": "내용 · 강의자료 「제5강 경영프로젝트의 개발」 35장·65장, 테슬라 공시·주주서한 (2016~2018)\n사진 · Wikimedia Commons: Carlquinn (CC BY-SA 4.0), Steve Jurvetson (CC BY 2.0)",
+   "credits": "내용 · 강의자료 「제5강 경영프로젝트의 개발」 35장·65장, 테슬라 공시·주주서한 (2016~2018)\n사진 · 표지: 발표자 준비 · Wikimedia Commons: Carlquinn (CC BY-SA 4.0), Steve Jurvetson (CC BY 2.0)",
    "sources": [],
    "script": "들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.\n[엔터 ⏎ 끝]",
    "notes": "[예상 질문]\nQ. 테슬라가 실제로 이 6단계를 거쳤나요?\nA. 테슬라가 이 6단계를 공식적으로 썼다는 자료는 없습니다. 공개 자료로 확인되는 활동을 저희가 6단계에 대응시켜 본 것입니다.\n\nQ. 4단계의 ‘시험생산’을 테슬라도 했나요?\nA. 공개 자료로 확인되는 것은 양산 예정 금형·공정으로 만든 출시 후보 차량을 시험하고, 생산 설비와 공급업체를 준비했다는 것까지입니다. 별도의 시험생산 라인을 운영했다고는 말할 수 없습니다.\n\nQ. 예약이 많았으니 판매가 확정된 것 아닌가요?\nA. 예약은 확정 판매가 아니어서 이번 발표에서는 주문·인도 절차 준비만 다뤘습니다.\n\nQ. 36장 세부 절차는 왜 빠졌나요?\nA. 36장 항목이 35장의 몇 단계에 해당하는지 강의자료에 적혀 있지 않아, 억지로 대응시키지 않으려고 이번에는 35장 6단계만 썼습니다."
@@ -3599,11 +3571,11 @@ const wrap18 = (s, i, cls, body) => `${head18(s, i)}<div class="s-body ${cls}">$
 
 R.cover = (s, i) => `<div class="cv">
   <div class="cv-hero">${img18(s.photo.src, "cv-ph", s.photo.cap)}<span class="cv-shade"></span>
-    <span class="cv-cap rise" style="--i:3"><b>테슬라 모델 3</b><span>${esc(s.photo.credit.replace(/ · Wikimedia Commons$/, ""))}</span></span></div>
+    <span class="cv-cap rise" style="--i:3"><b>${esc(s.photo.cap)}</b>${s.photo.credit ? `<span>${esc(s.photo.credit)}</span>` : ""}</span></div>
   <div class="cv-l">
     <div class="cv-eye rise" style="--i:0"><span class="no">01</span><span data-k="title">${esc(s.title)}</span></div>
     <h1 class="cover-q rise" style="--i:1" data-k="question">${esc(s.question)}</h1>
-    <div class="cv-meta rise" style="--i:2"><div class="cover-title">‘<span data-k="subtitle">${esc(s.subtitle)}</span>’</div><div class="cover-sub">강의자료 35장 6단계 · 사례 테슬라 모델 3</div></div>
+    <div class="cv-meta rise" style="--i:2"><div class="cover-title">‘<span data-k="subtitle">${esc(s.subtitle)}</span>’</div></div>
     <div class="cv-tiles">${(s.tiles || []).map((t, k) => `<div class="cv-tile rise" style="--i:${3 + k}">${img18(t.src, "cv-tph", t.t)}<span>${esc(t.t)}</span></div>`).join("")}</div>
     <div class="cover-by rise" style="--i:5" data-k="presenter">${esc(s.presenter || "")}</div>
   </div></div>`;
@@ -3626,7 +3598,7 @@ R.stages18 = (s, i) => wrap18(s, i, "stagesb x-stg", `
     <span class="sg-act" data-k="stages.${k}.act">${esc(st.act)}</span>
     <p class="sg-goal" data-k="stages.${k}.goal">${kwt(st.goal)}</p>
     ${k < 5 ? `<i class="sg-arr">${icon("arrow")}</i>` : ""}</li>`).join("")}</ol>
-  <p class="sg-note rise" style="--i:8" data-k="note">${esc(s.note)}</p>
+  ${s.note ? `<p class="sg-note rise" style="--i:8" data-k="note">${esc(s.note)}</p>` : ""}
   ${lesson18(s, 9)}`);
 
 R.cmp18 = (s, i) => wrap18(s, i, "x-cmp", `
