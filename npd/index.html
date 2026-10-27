@@ -1835,6 +1835,48 @@ em.kw{background-repeat:no-repeat}
 .x-r2n svg{width:20px;height:20px;flex:none}
 .x-r2p{margin:0;font-size:16px;color:#5b6575}
 .x-r2c{padding:28px 34px}.x-r2h{font-size:28px}.x-r2s{font-size:24px}.x-r2l li{padding:16px 0;gap:6px}.x-r2t{font-size:25px}.x-r2d{font-size:21px}.x-r2n{font-size:20px}.x-r2p{font-size:17px}
+/* v18.18: 색 규칙 — 강조색은 단계색(①② 청록 ③④ 파랑 ⑤⑥ 주황), 여러 단계가 섞인 장은 남색 */
+.slide{--kw:var(--navy);--kw-soft:#e2e7ef}
+.slide:has(.x-acc1){--kw:var(--c-teal);--kw-soft:color-mix(in srgb,var(--c-teal) 18%,white)}
+.slide:has(.x-acc2){--kw:var(--c-blue);--kw-soft:color-mix(in srgb,var(--c-blue) 16%,white)}
+.slide:has(.x-acc3){--kw:var(--c-orange);--kw-soft:color-mix(in srgb,var(--c-orange) 18%,white)}
+.cs-lesson em.kw{color:#fff;background:none;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+/* 3장: 여섯 단계 흐름 */
+.x-s6{display:flex;flex-direction:column;justify-content:center;gap:16px;min-height:0}
+.x-s6g{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.x-s6gl{border-bottom:3px solid var(--c);padding-bottom:8px;text-align:center}
+.x-s6gl span{font-size:20px;font-weight:700;color:var(--c)}
+.x-s6r{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px}
+.x-s6c{position:relative;background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:16px;padding:26px 20px 28px;display:flex;flex-direction:column;gap:12px;min-height:236px}
+.x-s6c:not(:last-child)::after{content:"→";position:absolute;right:-24px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:700;color:#8a94a6}
+.x-s6n{width:52px;height:52px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:800 26px/1 var(--font-display)}
+.x-s6t{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1.2;word-break:keep-all}
+.x-s6a{font-size:21px;font-weight:700;color:var(--c)}
+.x-s6note{margin:0;font-size:16px;color:#5b6575}
+/* 4~6장: 두 단계 비교 */
+.x-c2{display:flex;flex-direction:column;justify-content:center;min-height:0}
+.x-c2p{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);align-items:stretch}
+.x-c2arr{align-self:center;justify-self:center;font-style:normal;font-size:30px;font-weight:700;color:#8a94a6}
+.x-c2c{background:#fff;border:1px solid var(--line);border-top:6px solid var(--c);border-radius:20px;padding:30px 36px 34px;display:flex;flex-direction:column;gap:20px}
+.x-c2h{display:flex;align-items:center;gap:18px}
+.x-c2n{width:64px;height:64px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font:800 32px/1 var(--font-display);flex:none}
+.x-c2h small{display:block;font-size:17px;font-weight:700;color:var(--c)}
+.x-c2h b{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-.03em}
+.x-c2k{margin:0;font-size:30px;font-weight:800;line-height:1.3;color:var(--c);background:color-mix(in srgb,var(--c) 9%,white);border-radius:12px;padding:16px 20px;letter-spacing:-.02em;min-height:2.6em;display:flex;align-items:center}
+.x-c2r{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.x-c2r li{display:flex;flex-direction:column;gap:8px}
+.x-c2r li+li{border-top:1px dashed var(--line);padding-top:16px}
+.x-c2a{align-self:flex-start;font-size:18px;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 11%,white);border-radius:999px;padding:4px 14px}
+.x-c2r p{margin:0;font-size:25px;line-height:1.45;color:var(--ink)}
+.x-c2r.one p{font-size:28px}
+.x-c2r p em.kw{color:var(--c);background:linear-gradient(transparent 60%,color-mix(in srgb,var(--c) 18%,white) 0)}
+.t-cmp18 .s-head .lead em.kw,.t-cmp18 .s-head em.kw{color:var(--kw)}
+/* v18.19: 7·8장 사진은 차량 중심, 글씨 크게 */
+.x-case2 .cs-img img{object-position:42% 60%}
+.x-case2 .x-fact span{font-size:25px}
+.x-case2 .x-int span{font-size:22px}
+.x-s6c{min-height:0;padding:28px 22px 30px;gap:14px}.x-s6t{font-size:30px}.x-s6a{font-size:22px}.x-s6{gap:20px}
+.x-case2 .cs-l{justify-content:center}.x-case2 .cs-ph{flex:none;aspect-ratio:4/3;width:100%}.x-case2 .cs-img img{object-position:50% 50%}
 
 </style>
 </head><body>
@@ -2130,22 +2172,22 @@ const DEFAULT_DECK = {
    ],
    "groups": [
     {
-     "h": "무엇을, 어떤 설계로 만들지",
+     "h": "방향과 설계 (①②)",
      "span": 2
     },
     {
-     "h": "제품과 생산 공정을 준비",
+     "h": "제품·공정 검증 (③④)",
      "span": 2
     },
     {
-     "h": "시장에 내놓고 안정화",
+     "h": "도입과 안정화 (⑤⑥)",
      "span": 2
     }
    ],
-   "note": "",
+   "note": "※ 세 구간의 이름은 강의자료의 단계명이 아니라, 이해를 돕기 위해 발표자가 붙인 묶음입니다. 단계명·핵심 활동은 강의자료 그대로입니다.",
    "sources": [],
    "script": "강의자료 35장은 신제품 개발 절차를 여섯 단계로 제시합니다. 개념 정립, 제품 설계, 제품 엔지니어링, 공정 엔지니어링, 시장진출 준비, 대량 생산입니다. 각 단계의 핵심 활동은 순서대로 상품기획, 제품기획과 기본설계, 양산설계 1과 2, 생산준비, 영업준비, 그리고 생산과 영업입니다.\n저희는 이 흐름을 두 단계씩 묶어, 제품의 방향과 설계, 제품과 공정의 검증, 시장 도입과 안정화로 나눠 설명하겠습니다. 단계명과 핵심 활동은 35장 표 그대로이고, 세 묶음의 이름은 저희가 붙인 것입니다. 오른쪽 위의 여섯 칸은 지금 몇 단계를 설명하는지 표시합니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다. 엔터를 누르면 다음 장.\n· 35장 표 제목: ‘신제품 개발 단계와 단계별 핵심 활동’, 열: 활동 단계 / 핵심 활동 / 활동 목적.\n· 표의 ‘생산/영업’ 표기를 그대로 옮겼다.",
+   "notes": "· 한 번에 모두 나타난다. 엔터를 누르면 다음 장.\n· 35장 표 제목: ‘신제품 개발 단계와 단계별 핵심 활동’, 열: 활동 단계 / 핵심 활동 / 활동 목적.\n· 표의 ‘생산/영업’ 표기를 그대로 옮겼다.\n· 각 단계의 활동 목적은 4~6장에서 설명하므로 3장에는 단계명과 핵심 활동만 둔다.",
    "on": [
     1,
     2,
@@ -2186,7 +2228,7 @@ const DEFAULT_DECK = {
    "type": "cmp18",
    "duration": 50,
    "title": "신제품 개발 절차 · 방향과 설계",
-   "lead": "①은 무엇을, ②는 [[어떤 설계로]] 만들지 정한다",
+   "lead": "①은 [[제품 개념]]을, ②는 [[설계안·목표 스펙]]을 정한다",
    "stages": [
     {
      "n": "1",
@@ -2215,23 +2257,23 @@ const DEFAULT_DECK = {
    ],
    "sources": [],
    "script": "1단계는 개념 정립이고, 핵심 활동은 상품기획입니다. 목적은 ‘개발상품의 니즈에 적합한 신제품의 개념을 설정’하는 것으로, 고객의 필요에 맞춰 무엇을 만들지 정하는 단계입니다.\n2단계는 제품 설계입니다. 제품기획에서는 최적 설계안을 고르고 목표 스펙을 결정하고, 기본설계에서는 외관과 디자인을 포함해 시스템 수준의 일차적인 기능을 설계합니다.\n정리하면 1단계는 ‘무엇을’, 2단계는 ‘어떤 설계안과 목표 스펙으로’ 만들지를 정합니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다. 맨 위 문장과 각 단계의 굵은 요약은 저희 표현이다.\n· 36장 세부 절차(고객 니즈 파악 등)는 35장의 몇 단계에 해당하는지 강의자료에 없어서 이번 발표에서는 대응시키지 않았다.",
+   "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다. 큰 제목과 각 카드의 색 상자 문장은 저희 요약이다.\n· 36장 세부 절차(고객 니즈 파악 등)는 35장의 몇 단계에 해당하는지 강의자료에 없어서 이번 발표에서는 대응시키지 않았다.",
    "on": [
     1,
     2
    ],
    "keys": [
-    "무엇을 만들지",
-    "어떤 설계안과 목표 스펙으로"
+    "고객 니즈에 맞는 제품 개념을 정한다",
+    "설계안·목표 스펙과 기본 기능을 정한다"
    ],
-   "lesson": "① [[무엇을]] 만들지 → ② [[어떤 설계안과 목표 스펙으로]] 만들지"
+   "lesson": ""
   },
   {
    "id": "t5",
    "type": "cmp18",
    "duration": 57,
    "title": "신제품 개발 절차 · 제품·공정 검증",
-   "lead": "③은 설계 품질, ④는 [[제조품질]]",
+   "lead": "③은 [[설계 품질]], ④는 [[제조품질]]",
    "stages": [
     {
      "n": "3",
@@ -2243,7 +2285,7 @@ const DEFAULT_DECK = {
       },
       {
        "act": "양산설계 Ⅱ",
-       "goal": "양산설계 Ⅰ에서 확보한 기능, 성능, 신뢰성 등의 개선 및 양산성의 향상"
+       "goal": "기능·성능·신뢰성 개선 및 양산성 향상"
       }
      ]
     },
@@ -2260,23 +2302,23 @@ const DEFAULT_DECK = {
    ],
    "sources": [],
    "script": "3단계는 제품 엔지니어링이고, 핵심 활동은 양산설계 1과 2입니다. 양산설계 1에서는 상세 설계를 하고 설계 품질을 확보합니다. 양산설계 2에서는 양산설계 1에서 확보한 기능, 성능, 신뢰성 등을 개선하고 양산성을 향상합니다. 즉 제품 자체를 다듬는 단계입니다.\n4단계는 공정 엔지니어링이고, 핵심 활동은 생산준비입니다. 양산 라인에서 시험생산을 해서 제조품질을 확립합니다. 제품이 아니라, 그 제품을 만드는 공정을 준비하는 단계입니다.\n표의 말로 구분하면, 3단계는 설계 품질, 4단계는 제조품질을 다룹니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다(양산설계 Ⅱ의 ‘양산성의 향상’ 포함). ‘양산성’의 정의는 강의자료에 따로 없다.\n· ‘제품 자체를 다듬는다 / 만드는 공정을 준비한다’는 저희 표현이다.",
+   "notes": "· 한 번에 모두 나타난다.\n· ‘핵심 활동’과 ‘활동 목적’은 35장 원문이다(양산설계 Ⅱ의 ‘양산성의 향상’ 포함). ‘양산성’의 정의는 강의자료에 따로 없다.\n· ‘제품 자체를 다듬는다 / 만드는 공정을 준비한다’는 저희 표현이다.\n· 양산설계 Ⅱ 원문: ‘양산설계 Ⅰ에서 확보한 기능, 성능, 신뢰성 등의 개선 및 양산성의 향상’. 화면에는 뜻을 유지한 채 줄여 적었다.",
    "on": [
     3,
     4
    ],
    "keys": [
-    "제품 자체를 다듬는다",
-    "만드는 공정을 준비한다"
+    "설계 품질을 확보한다",
+    "제조품질을 확립한다"
    ],
-   "lesson": "③ [[제품 자체]]를 다듬고 → ④ 그 제품을 [[만드는 공정]]을 준비한다"
+   "lesson": ""
   },
   {
    "id": "t6",
    "type": "cmp18",
    "duration": 53,
    "title": "신제품 개발 절차 · 시장 도입과 안정화",
-   "lead": "⑤는 출시를 준비하고, ⑥은 [[안정시킨다]]",
+   "lead": "⑤는 [[영업 준비]], ⑥은 [[생산·영업 체제 안정화]]",
    "stages": [
     {
      "n": "5",
@@ -2307,17 +2349,17 @@ const DEFAULT_DECK = {
     6
    ],
    "keys": [
-    "시장 도입을 ‘시작’하기 위한 준비",
-    "생산·영업 체제를 ‘안정’시킨다"
+    "시장 도입 개시에 앞서 영업을 준비한다",
+    "생산·영업 체제를 확립하고 안정화한다"
    ],
-   "lesson": "⑤ 시장 도입을 [[시작]]할 준비 → ⑥ 생산·영업 체제를 [[안정]]시킨다"
+   "lesson": ""
   },
   {
    "id": "t7",
    "type": "case18",
    "duration": 77,
    "title": "테슬라 모델 3 사례 · 앞의 세 단계",
-   "lead": "앞의 세 단계는 [[제품]]에 관한 활동",
+   "lead": "모델 3의 공개·설계·시험",
    "sources": [
     {
      "label": "Tesla 10-Q (2017년 1분기) · Tesla 2016년 2분기 주주서한 (8-K, 2016.08.03)",
@@ -2330,10 +2372,10 @@ const DEFAULT_DECK = {
     {
      "n": 1,
      "stage": "개념 정립",
-     "when": "2016년 1분기",
+     "when": "2016년 1분기 공개",
      "t": "대중 시장용, 더 낮은 가격의 세단으로 공개",
      "src": "",
-     "interp": "공개로 제품 개념을 확인할 수 있다 (개념을 정한 시점은 아님)"
+     "interp": "공개로 제품 개념을 확인 (개념 정립 시점은 아님)"
     },
     {
      "n": 2,
@@ -2341,7 +2383,7 @@ const DEFAULT_DECK = {
      "when": "2016년 2분기 서한",
      "t": "디자인 단계 완료, 금형·생산 계획·검증으로 이행",
      "src": "",
-     "interp": "제품 설계의 사례 (최적안 선정·목표 스펙 결정 과정은 자료에 없음)"
+     "interp": "제품 설계 사례 (설계안 선정·목표 스펙 결정은 미확인)"
     },
     {
      "n": 3,
@@ -2401,7 +2443,7 @@ const DEFAULT_DECK = {
     }
    ],
    "photo": {
-    "src": "img/m3-unveil.jpg",
+    "src": "img/m3-unveil-car.jpg",
     "cap": "2016.03.31 모델 3 공개 행사",
     "credit": "사진 Steve Jurvetson · CC BY 2.0"
    },
@@ -2412,31 +2454,31 @@ const DEFAULT_DECK = {
    "type": "case18",
    "duration": 94,
    "title": "테슬라 모델 3 사례 · 뒤의 세 단계",
-   "lead": "생산 시작부터 [[생산 안정화까지 1년 넘게]]",
+   "lead": "모델 3의 공정 준비·출시·생산 안정화",
    "sources": [
     {
      "label": "Tesla 2016년 2분기 주주서한 · 10-Q (2017년 1분기) · 2017년 2분기 주주서한 · Third Quarter 2018 Update",
      "url": ""
     }
    ],
-   "script": "4단계부터 6단계입니다.\n4단계, 테슬라는 2016년 2분기 주주서한에서 프레스와 도장 공정의 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 생산 시설과 공급업체를 준비하고 있었습니다. 공정을 준비한 활동은 확인됩니다. 하지만 강의자료가 말하는 양산 라인 시험생산을 통한 제조품질 확립까지는 이 자료만으로 확인하기 어렵습니다.\n5단계, 2017년 8월 주주서한에 따르면 테슬라는 예약한 직원부터 주문을 받기 시작했고, 일반 예약자는 예약 순서대로 소그룹씩 주문에 초대할 예정이었습니다. 예약, 주문 초대, 주문은 서로 다른 단계이고, 예약은 확정 주문이 아닙니다. 첫 인도는 7월 28일에 시작됐으니, 주문 절차를 준비하던 시기와 첫 인도 시기가 일부 겹친 셈입니다.\n6단계, 모델 3는 2017년 7월 초기 생산과 첫 인도를 시작한 뒤 생산량을 늘려, 테슬라는 2018년 3분기에 모델 3 생산 시스템이 안정화됐다고 밝혔습니다. 이것은 생산 체제 안정화의 근거이고, 영업과 인도 체제까지 안정화됐다는 뜻으로 보지는 않겠습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘During Q2, we opened 29 new store and service locations, bringing us to a total of 300 locations globally.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’. 매장·서비스 거점 숫자는 회사 전체 숫자이며 모델 3만의 숫자가 아니다. 일반 예약자 주문 초대는 서한 시점(2017.08.02)에 ‘앞으로 할 계획’으로 적혀 있다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 4단계: 공정 준비 활동(설비·시설·공급업체)만 확인된다. ‘4단계 완료’나 ‘제조품질 확립’이라고 말하지 않는다. 출시 후보 차량 시험(양산 예정 금형·공정 사용)은 화면에서 뺐고, 질문이 나오면 3단계 자료로 설명한다.\n· 5단계: 예약 → 주문 초대 → 주문을 구분한다. 서한 시점에 일반 예약자 주문 초대는 ‘예정’이었다.\n· 6단계: 2018년 3분기 자료는 생산 시스템 안정화의 근거일 뿐, 영업·인도 체제 안정화의 근거가 아니다. 같은 분기 주 평균 약 4,300대(계획된 가동 중단 제외)는 질문이 나오면 답한다.\n· 출처: ④ 2016년 2분기 주주서한, 10-Q (2017년 1분기) / ⑤⑥ 2017년 2분기 주주서한 (8-K, 2017.08.02) / ⑥ Form 8-K (2018.10.24) Exhibit 99.1 Third Quarter 2018 Update.\n· 5단계: 매장·서비스 거점 29곳은 2017년 2분기 테슬라 전체 실적이라 7~8월 주문 절차와 묶지 않고 화면·대본에서 뺐다. 인도 거점(delivery hubs) 개설도 시점이 분명하지 않아 뺐다.\n· ⑤와 ⑥은 2017년 7월부터 시기가 겹친다. 2018년 수치(주 평균 약 4,300대, 계획된 가동 중단 제외)는 생산 안정화를 뒷받침하는 데만 쓴다.",
+   "script": "4단계부터 6단계입니다.\n4단계입니다. 아래 시점은 근거 자료의 시점이고, 그 기간 전체가 공정 엔지니어링 단계였다는 뜻은 아닙니다. 테슬라는 2016년 2분기 주주서한에서 프레스와 도장 공정의 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 생산 시설과 공급업체를 준비하고 있었습니다. 공정을 준비한 활동은 확인됩니다. 하지만 강의자료가 말하는 양산 라인 시험생산을 통한 제조품질 확립까지는 이 자료만으로 확인하기 어렵습니다.\n5단계, 2017년 8월 주주서한에 따르면 테슬라는 예약한 직원부터 주문을 받기 시작했고, 일반 예약자는 예약 순서대로 소그룹씩 주문에 초대할 예정이었습니다. 예약, 주문 초대, 주문은 서로 다른 단계이고, 예약은 확정 주문이 아닙니다. 첫 인도는 7월 28일에 시작됐으니, 주문 절차를 준비하던 시기와 첫 인도 시기가 일부 겹친 셈입니다.\n6단계, 모델 3는 2017년 7월 초기 생산과 첫 인도를 시작한 뒤 생산량을 늘려, 테슬라는 2018년 3분기에 모델 3 생산 시스템이 안정화됐다고 밝혔습니다. 이것은 생산 체제 안정화의 근거이고, 영업과 인도 체제까지 안정화됐다는 뜻으로 보지는 않겠습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 한 번에 모두 나타난다.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘During Q2, we opened 29 new store and service locations, bringing us to a total of 300 locations globally.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’. 매장·서비스 거점 숫자는 회사 전체 숫자이며 모델 3만의 숫자가 아니다. 일반 예약자 주문 초대는 서한 시점(2017.08.02)에 ‘앞으로 할 계획’으로 적혀 있다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 4단계: 공정 준비 활동(설비·시설·공급업체)만 확인된다. ‘4단계 완료’나 ‘제조품질 확립’이라고 말하지 않는다. 출시 후보 차량 시험(양산 예정 금형·공정 사용)은 화면에서 뺐고, 질문이 나오면 3단계 자료로 설명한다.\n· 5단계: 예약 → 주문 초대 → 주문을 구분한다. 서한 시점에 일반 예약자 주문 초대는 ‘예정’이었다.\n· 6단계: 2018년 3분기 자료는 생산 시스템 안정화의 근거일 뿐, 영업·인도 체제 안정화의 근거가 아니다. 같은 분기 주 평균 약 4,300대(계획된 가동 중단 제외)는 질문이 나오면 답한다.\n· 출처: ④ 2016년 2분기 주주서한, 10-Q (2017년 1분기) / ⑤⑥ 2017년 2분기 주주서한 (8-K, 2017.08.02) / ⑥ Form 8-K (2018.10.24) Exhibit 99.1 Third Quarter 2018 Update.\n· 5단계: 매장·서비스 거점 29곳은 2017년 2분기 테슬라 전체 실적이라 7~8월 주문 절차와 묶지 않고 화면·대본에서 뺐다. 인도 거점(delivery hubs) 개설도 시점이 분명하지 않아 뺐다.\n· ⑤와 ⑥은 2017년 7월부터 시기가 겹친다. 2018년 수치(주 평균 약 4,300대, 계획된 가동 중단 제외)는 생산 안정화를 뒷받침하는 데만 쓴다.\n· 왼쪽 사진은 2017.07.28 첫 인도 행사 현장이다. 공정 엔지니어링이나 제조품질 확립을 보여주는 사진으로 설명하지 않는다.\n· ④의 ‘자료 확인’ 시점은 근거 자료의 시점이며, 그 기간 전체가 공정 엔지니어링 단계였다는 뜻이 아니다.",
    "rows": [
     {
      "n": 4,
      "stage": "공정 엔지니어링",
-     "when": "2016년 2분기 ~ 2017년 1분기",
+     "when": "자료 확인: 2016년 2분기·2017년 1분기",
      "t": "프레스·도장 초기 설비 가동, 생산 시설·공급업체 준비",
      "src": "",
-     "interp": "공정 준비는 확인 (시험생산을 통한 제조품질 확립은 제시 자료로 확인 어려움)"
+     "interp": "공정 준비는 확인 · 시험생산을 통한 제조품질 확립은 미확인"
     },
     {
      "n": 5,
      "stage": "시장진출 준비",
      "when": "2017년 7월 말 ~ 8월",
-     "t": "예약한 직원부터 주문 시작, 일반 예약자는 순서대로 주문 초대 예정",
+     "t": "예약한 직원부터 주문 시작, 일반 예약자는 차례로 주문 초대 예정",
      "src": "",
-     "interp": "주문 절차 준비 (첫 인도 7.28과 시기가 겹침, 예약 ≠ 확정 주문)"
+     "interp": "영업 준비 · ⑥ 초기 생산·첫 인도와 시기 겹침 (예약 ≠ 확정 주문)"
     },
     {
      "n": 6,
@@ -2444,7 +2486,7 @@ const DEFAULT_DECK = {
      "when": "2017년 7월 → 2018년 3분기",
      "t": "초기 생산·첫 인도 → 생산량 확대 → 2018년 3분기 생산 시스템 안정화",
      "src": "",
-     "interp": "생산 체제 안정화의 근거 (영업·인도 체제 안정화까지 단정하지 않음)"
+     "interp": "생산 체제 안정화의 근거 (영업·인도 체제 안정까지는 단정 안 함)"
     }
    ],
    "on": [
@@ -2497,7 +2539,7 @@ const DEFAULT_DECK = {
    ],
    "photo": {
     "src": "img/m3-delivery.jpg",
-    "cap": "2017.07.28 첫 인도를 앞둔 모델 3 생산 차량",
+    "cap": "2017.07.28 모델 3 첫 인도 행사 현장",
     "credit": "사진 Steve Jurvetson · CC BY 2.0"
    },
    "lesson": "⑤와 ⑥의 활동은 2017년 7월부터 [[시기가 겹친다]] (발표자 적용)"
@@ -3712,24 +3754,22 @@ R.toc18 = (s, i) => `<div class="x-t3ph rise" style="--i:0">${img18(s.photo.src,
     <div class="x-t3b"><small data-k="items.${k}.role">${esc(it.role || "")}</small><b data-k="items.${k}.t">${esc(it.t)}</b><span data-k="items.${k}.d">${esc(it.d)}</span></div>
     <span class="x-t3p" data-k="items.${k}.pages">${esc(it.pages)}</span></li>`).join("")}</ol></div>${foot(s, i)}`;
 
-R.stages18 = (s, i) => wrap18(s, i, "stagesb x-stg", `
-  <div class="sg-groups">${s.groups.map((g, k) => `<div class="sg-g rise" style="--i:${1 + k};--c:${GC18(k * 2 + 1)}"><span data-k="groups.${k}.h">${esc(g.h)}</span><i></i></div>`).join("")}</div>
-  <ol class="sg-row">${s.stages.map((st, k) => `<li class="sg rise" style="--i:${2 + k};--c:${GC18(k + 1)}">
-    <div class="sg-top"><span class="sg-n">${k + 1}</span><span class="sg-ic">${icon(SI18[k])}</span></div>
-    <b class="sg-name" data-k="stages.${k}.name">${esc(st.name)}</b>
-    <span class="sg-act" data-k="stages.${k}.act">${esc(st.act)}</span>
-    <p class="sg-goal" data-k="stages.${k}.goal">${kwt(st.goal)}</p>
-    ${k < 5 ? `<i class="sg-arr">${icon("arrow")}</i>` : ""}</li>`).join("")}</ol>
-  ${s.note ? `<p class="sg-note rise" style="--i:8" data-k="note">${esc(s.note)}</p>` : ""}
+R.stages18 = (s, i) => wrap18(s, i, "x-s6", `
+  <div class="x-s6g">${s.groups.map((g, k) => `<div class="x-s6gl rise" style="--i:${1 + k};--c:${GC18(k * 2 + 1)}"><span data-k="groups.${k}.h">${esc(g.h)}</span></div>`).join("")}</div>
+  <ol class="x-s6r">${s.stages.map((st, k) => `<li class="x-s6c rise" style="--i:${2 + k};--c:${GC18(k + 1)}">
+    <span class="x-s6n">${k + 1}</span>
+    <b class="x-s6t" data-k="stages.${k}.name">${esc(st.name)}</b>
+    <span class="x-s6a" data-k="stages.${k}.act">${esc(st.act)}</span></li>`).join("")}</ol>
+  ${s.note ? `<p class="x-s6note rise" style="--i:8" data-k="note">${esc(s.note)}</p>` : ""}
   ${lesson18(s, 9)}`);
 
-R.cmp18 = (s, i) => wrap18(s, i, "x-cmp", `
-  <div class="x-pair">${s.stages.map((st, k) => { const n = +st.n; return `${k ? `<i class="x-vs rise" style="--i:3">${icon("arrow")}</i>` : ""}<div class="x-sc rise" style="--i:${2 + k * 2};--c:${GC18(n)}">
-    <div class="x-sch"><span class="x-big">${n}</span><div><small>${n}단계</small><b data-k="stages.${k}.name">${esc(st.name)}</b></div><span class="x-scic">${icon(SI18[n - 1])}</span></div>
-    <p class="x-key" data-k="keys.${k}">${esc((s.keys || [])[k] || "")}</p>
-    <ul class="x-rows">${st.rows.map((r, j) => `<li><span class="sg-act" data-k="stages.${k}.rows.${j}.act">${esc(r.act)}</span><p data-k="stages.${k}.rows.${j}.goal">${kwt(r.goal)}</p></li>`).join("")}</ul>
-  </div>`; }).join("")}</div>
-  ${lesson18(s, 6)}`);
+R.cmp18 = (s, i) => { const g = Math.ceil(+s.stages[0].n / 2); return wrap18(s, i, `x-c2 x-acc${g}`, `
+  <div class="x-c2p">${s.stages.map((st, k) => { const n = +st.n; return `${k ? `<i class="x-c2arr rise" style="--i:3">→</i>` : ""}<section class="x-c2c rise" style="--i:${2 + k * 2};--c:${GC18(n)}">
+    <div class="x-c2h"><span class="x-c2n">${n}</span><div><small>${n}단계</small><b data-k="stages.${k}.name">${esc(st.name)}</b></div></div>
+    <p class="x-c2k" data-k="keys.${k}">${esc((s.keys || [])[k] || "")}</p>
+    <ul class="x-c2r${st.rows.length === 1 ? " one" : ""}">${st.rows.map((r, j) => `<li><span class="x-c2a" data-k="stages.${k}.rows.${j}.act">${esc(r.act)}</span><p data-k="stages.${k}.rows.${j}.goal">${kwt(r.goal)}</p></li>`).join("")}</ul>
+  </section>`; }).join("")}</div>
+  ${lesson18(s, 6)}`); };
 
 function gantt18(s) {
   const M = 42, X = m => (m / M * 100).toFixed(2) + "%";
