@@ -1,10 +1,2 @@
-img/p01.jpg https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/1.-Samsung-Electronics-Pyeongtaek-Line-1.jpg
-img/p02.jpg https://hanmi.co.kr/file/editor/1754970686072.jpg
-img/p03.jpg https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=1200&q=80&auto=format&fit=crop
-img/p04.jpg https://images.unsplash.com/photo-1618034100983-e1d78be0dc80?w=1200&q=80&auto=format&fit=crop
-img/p05.jpg https://images.unsplash.com/photo-1577639389657-e33f4c461e4e?w=1200&q=80&auto=format&fit=crop
-img/p06.jpg https://images.unsplash.com/photo-1563137391-0030ae24bc35?w=1200&q=80&auto=format&fit=crop
-img/p07.jpg https://image.semiconductor.samsung.com/image/samsung/p6/semiconductor-kr/newsroom/tech-blog/tech-blog-%EC%98%81%EB%AC%B8-%ED%83%80%EC%9D%B4%ED%8B%80-%EB%B3%80%EA%B2%BD/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about/all-there-is-to-know-about-flash-memory-how-no1-flash-memory-came-about_PC_2.jpg?$ORIGIN_JPG$
-img/p08.jpg https://img.global.news.samsung.com/global/wp-content/uploads/2017/07/4.-Samsung%E2%80%99s-fourth-generation-V-NAND_01.jpg
-img/p09.jpg https://img.global.news.samsung.com/global/wp-content/uploads/2024/04/9th-Generation-V-NAND_dl1.jpg
-img/p10.jpg https://www.hanmi.co.kr/file/editor/1791367079321.jpg
+img/m3-first-3000.jpg https://commons.wikimedia.org/wiki/Special:FilePath/First_Model_3_production_cars_ready_for_delivery.jpg?width=3000
+img/m3-first-orig.jpg https://commons.wikimedia.org/wiki/Special:FilePath/First_Model_3_production_cars_ready_for_delivery.jpg
