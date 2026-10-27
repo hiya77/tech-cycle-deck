@@ -1893,7 +1893,7 @@ em.kw{background-repeat:no-repeat}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "npd-deck.v18";
+const STORE_KEY = "npd-deck.v19";
 /* 사진: 언론·기업 보도사진과 위키미디어 공용 사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
 const P_BULDAK = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975724_web.jpg";
 const P_BULDAK2 = "https://image.fnnews.com/resource/media/image/2025/06/11/202506111003480912_l.jpg";
@@ -3758,7 +3758,7 @@ R.concl18 = (s, i) => wrap18(s, i, "concl2 x-con x-con2", `
   </div>
   <p class="x-final2 rise" style="--i:7">${icon("check")}<span data-k="final">${esc(s.final)}</span></p>`);
 
-R.refs18 = (s, i) => { const col = (c, k, cls) => `<section class="x-r2c ${cls} rise" style="--i:${1 + k}">
+R.refs18 = (s, i) => { if (!s.lec || !s.tesla) { s = Object.assign({}, s, DEFAULT_DECK.slides.find(x => x.id === s.id) || {}); } const col = (c, k, cls) => `<section class="x-r2c ${cls} rise" style="--i:${1 + k}">
     <b class="x-r2h">${esc(c.h)}</b>${c.sub ? `<span class="x-r2s">${esc(c.sub)}</span>` : ""}
     <ul class="x-r2l">${c.items.map(it => `<li><span class="x-r2t">${it.u ? `<a href="${esc(it.u)}" target="_blank" rel="noopener">${esc(it.t)} <i>↗</i></a>` : esc(it.t)}</span><span class="x-r2d">${esc(it.d)}</span></li>`).join("")}</ul></section>`;
   return wrap18(s, i, "x-refs2", `<div class="x-r2g">${col(s.lec, 0, "x-r2lec")}${col(s.tesla, 1, "x-r2tsl")}</div>
