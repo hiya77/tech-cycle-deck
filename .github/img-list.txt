@@ -1,5 +1,0 @@
-img/chk-q2-2016.pdf https://ir.tesla.com/_flysystem/s3/sec/000119312516670068/d234162d8k-gen_0.pdf
-img/chk-10q-2017q1.html https://ir.tesla.com/_flysystem/s3/sec/000156459017009968/tsla-10q_20170331.html
-img/chk-q2-2017.pdf https://ir.tesla.com/_flysystem/s3/sec/000156459017014920/tsla-8k_20170802-gen_0.pdf
-img/chk-q3-2018.pdf https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA_Update_Letter_2018-3Q
-img/chk-sec-q2-2016.html https://www.sec.gov/Archives/edgar/data/1318605/000119312516670068/0001193125-16-670068-index.htm

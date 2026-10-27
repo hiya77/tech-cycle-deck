@@ -1698,6 +1698,8 @@ em.kw{background-repeat:no-repeat}
 .t-cover .cv-hero{width:64%}
 .t-cover .cv-ph img{object-position:42% 50%}
 .t-cover .cv-shade{background:linear-gradient(90deg,var(--navy) 0%,rgba(11,22,38,.7) 10%,rgba(11,22,38,.15) 26%,rgba(11,22,38,0) 40%),linear-gradient(0deg,rgba(11,22,38,.5),rgba(11,22,38,0) 28%)}
+.x-gl.pre .x-gb{background:linear-gradient(90deg,transparent,var(--line-2) 70%)!important}
+.x-gl.pre.on .x-gb{background:linear-gradient(90deg,transparent,var(--c) 70%)!important}
 
 </style>
 </head><body>
@@ -1862,7 +1864,7 @@ const DEFAULT_DECK = {
    "caseLabel": "사례 · 테슬라 모델 3 (2016 공개 → 2017 생산 → 2018 안정화)",
    "sources": [],
    "script": "안녕하세요. 저희 조는 5강 「경영프로젝트의 개발」 토론문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 발표하겠습니다. 강의자료의 신제품 개발 6단계를 중심으로 설명하고, 이해를 돕기 위해 테슬라 모델 3를 짧은 사례로 적용해 보겠습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 여섯 단계는 두 단계씩 같은 색으로 표시한다(①② 청록, ③④ 파랑, ⑤⑥ 주황). 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 색으로 켜진다.\n· 표지 사진은 발표자가 준비한 사진이다. 나머지 사진은 위키미디어 공용(Wikimedia Commons)의 자유 이용 사진이다. 2장: 1세대 모델 3 (Carlquinn, 2018, CC BY-SA 4.0). 7장: 2016.03.31 공개 행사 (Steve Jurvetson, CC BY 2.0). 8장: 2017.07.28 첫 인도 행사의 생산 차량 (Steve Jurvetson, CC BY 2.0).",
+   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 여섯 단계는 두 단계씩 같은 색으로 표시한다(①② 청록, ③④ 파랑, ⑤⑥ 주황). 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 색으로 켜진다.\n· 사진은 모두 위키미디어 공용(Wikimedia Commons)의 자유 이용 사진이다. 1장: 2017.07.28 첫 인도 행사의 생산 차량 (Steve Jurvetson, CC BY 2.0, 8장과 같은 사진을 표지용으로 자름). 2장: 1세대 모델 3 (Carlquinn, 2018, CC BY-SA 4.0). 7장: 2016.03.31 공개 행사 (Steve Jurvetson, CC BY 2.0). 8장: 2017.07.28 첫 인도 행사의 생산 차량 (Steve Jurvetson, CC BY 2.0).",
    "from": "아이디어",
    "to": "생산·판매되는 제품",
    "phases": [
@@ -1912,8 +1914,8 @@ const DEFAULT_DECK = {
    ],
    "photo": {
     "src": "img/m3-hero.jpg",
-    "cap": "테슬라 모델 3",
-    "credit": ""
+    "cap": "테슬라 모델 3 · 2017.07.28 첫 인도 행사",
+    "credit": "사진 Steve Jurvetson · CC BY 2.0"
    }
   },
   {
@@ -2205,16 +2207,16 @@ const DEFAULT_DECK = {
      "url": ""
     }
    ],
-   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 왼쪽 아래 그래프는 강의의 여섯 단계를 실제 시점 위에 놓은 것입니다. 오른쪽 카드에서 회색 ‘공개 사실’은 테슬라 공시와 주주서한으로 확인한 사실이고, 색으로 표시한 ‘발표자 적용’은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n먼저 1단계, 테슬라는 2016년 1분기 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n2단계, 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n3단계, 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다. 그래프의 회색 줄(④⑤⑥)은 다음 장에서 단계 색으로 켜진다.\n· 그래프의 위치는 공개 자료에 적힌 분기·월을 기준으로 놓은 것이다.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· 목표 스펙 수치·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.",
+   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 왼쪽 아래 그래프는 강의의 여섯 단계를 실제 시점 위에 놓은 것입니다. 오른쪽 카드에서 회색 ‘공개 사실’은 테슬라 공시와 주주서한으로 확인한 사실이고, 색으로 표시한 ‘발표자 적용’은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n먼저 1단계, 테슬라는 2016년 1분기 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 공개 시점에는 이미 제품의 개념이 정해져 있었다고 볼 수 있지만, 개념을 정한 정확한 시점은 공개 자료에 나와 있지 않습니다.\n2단계, 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 디자인 단계를 마친 뒤 생산 계획과 검증으로 넘어간 장면입니다.\n3단계, 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 한 번에 모두 나타난다. 그래프의 회색 줄(④⑤⑥)은 다음 장에서 단계 색으로 켜진다.\n· 그래프의 위치는 공개 자료에 적힌 분기·월을 기준으로 놓은 것이다.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· 목표 스펙 수치·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.\n· 1단계: 2016년 1분기 공개는 개념이 이미 정해진 뒤의 일이다. 그래프의 ① 줄은 공개 이전부터 이어지는 것으로 그렸고, 개념을 정한 날짜로 단정하지 않는다.",
    "rows": [
     {
      "n": 1,
      "stage": "개념 정립",
-     "when": "2016 1분기",
+     "when": "2016 1분기 공개",
      "t": "대중 시장을 겨냥한, 더 낮은 가격의 세단으로 모델 3 공개",
      "src": "10-Q 2017 1분기",
-     "interp": "제품의 방향, 즉 개념을 정했다"
+     "interp": "공개 때는 이미 개념이 정해져 있었다 (정한 시점은 자료에 없음)"
     },
     {
      "n": 2,
@@ -2222,7 +2224,7 @@ const DEFAULT_DECK = {
      "when": "2016.08",
      "t": "디자인 단계를 마치고 금형·생산 계획·검증 단계로 넘김",
      "src": "2016 2분기 서한",
-     "interp": "설계를 확정했다"
+     "interp": "디자인 단계 완료 후 생산 계획·검증으로 이행했다"
     },
     {
      "n": 3,
@@ -2241,9 +2243,10 @@ const DEFAULT_DECK = {
    "lanes": [
     {
      "n": 1,
-     "a": 2.5,
+     "a": 0,
      "b": 2.5,
-     "d": "2016 1분기"
+     "d": "~ 2016 1분기 (공개 이전)",
+     "pre": true
     },
     {
      "n": 2,
@@ -2282,7 +2285,7 @@ const DEFAULT_DECK = {
    ],
    "photo": {
     "src": "img/m3-unveil.jpg",
-    "cap": "① 2016.03.31 모델 3 공개 행사",
+    "cap": "2016.03.31 모델 3 공개 행사",
     "credit": "사진 Steve Jurvetson · CC BY 2.0 · Wikimedia Commons"
    },
    "lesson": "①~③ 무엇을 만들지 정하고 [[제품 자체]]를 다듬었다 (발표자 적용)"
@@ -2299,8 +2302,8 @@ const DEFAULT_DECK = {
      "url": ""
     }
    ],
-   "script": "4단계부터 6단계입니다.\n4단계, 테슬라는 2016년 8월 프레스와 도장 공정에 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 양산 예정 금형과 공정으로 만든 출시 후보 차량을 시험하면서 생산 시설과 공급업체를 준비했습니다. 제품을 만들 공정을 준비한 장면입니다.\n5단계, 2017년 2분기 주주서한을 보면, 주문은 예약한 직원부터 받기 시작했고 일반 예약자는 예약한 시점 순서대로 소그룹씩 초대할 계획이라고 밝혔습니다. 새 인도 거점도 열었고, 회사 전체로는 2분기에 매장과 서비스 거점을 29곳 늘렸습니다. 주문 절차와 인도 거점, 서비스망을 준비한 장면입니다. 예약은 확정 판매가 아니라는 점은 구분해 두겠습니다.\n6단계, 생산은 2017년 7월에 시작해 7월 28일 첫 인도를 했지만, 테슬라가 생산 시스템이 안정화됐다고 밝힌 것은 2018년 3분기였고, 이때 주 평균 약 4,300대를 생산했습니다.\n그래프의 맨 아래 줄처럼, 생산을 시작한 뒤 안정화까지 1년 넘게 걸렸습니다. 6단계의 ‘조기 확립과 안정화’는 생산 시작과는 별도의 과제였습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘During Q2, we opened 29 new store and service locations, bringing us to a total of 300 locations globally.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’. 매장·서비스 거점 숫자는 회사 전체 숫자이며 모델 3만의 숫자가 아니다. 일반 예약자 주문 초대는 서한 시점(2017.08.02)에 ‘앞으로 할 계획’으로 적혀 있다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.",
+   "script": "4단계부터 6단계입니다.\n4단계, 테슬라는 2016년 8월 프레스와 도장 공정에 초기 생산 설비가 가동 중이라고 밝혔고, 2017년 1분기에는 양산 예정 금형과 공정으로 만든 출시 후보 차량을 시험하면서 생산 시설과 공급업체를 준비했습니다. 저희는 이것을 제품을 만들 공정을 준비한 4단계로 해석했습니다. 테슬라가 이것을 4단계라고 부른 것은 아닙니다.\n5단계, 2017년 2분기 주주서한을 보면, 주문은 예약한 직원부터 받기 시작했고 일반 예약자는 예약한 시점 순서대로 소그룹씩 초대할 계획이라고 밝혔습니다. 새 인도 거점도 열었고, 회사 전체로는 2분기에 매장과 서비스 거점을 29곳 늘렸습니다. 주문 절차와 인도 거점, 서비스망을 준비한 장면입니다. 예약은 확정 판매가 아니라는 점은 구분해 두겠습니다. 그리고 5단계와 6단계는 하나가 끝나고 다음이 시작된 것이 아니라, 2017년 7월부터 겹쳐서 진행됐습니다.\n6단계, 생산은 2017년 7월에 시작해 7월 28일 첫 인도를 했지만, 테슬라가 생산 시스템이 안정화됐다고 밝힌 것은 2018년 3분기였습니다. 같은 자료에 따르면 그 분기 모델 3 생산은 주 평균 약 4,300대였고, 이 수치가 안정화를 뒷받침합니다.\n그래프의 맨 아래 줄처럼, 생산을 시작한 뒤 안정화까지 1년 넘게 걸렸습니다. 6단계의 ‘조기 확립과 안정화’는 생산 시작과는 별도의 과제였습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 한 번에 모두 나타난다.\n· 원문(Q2 2016 주주서한): ‘Some Model 3 production equipment is already on line, including initial capacity in our stamping and paint centers.’\n· 원문(10-Q 2017 Q1): ‘Release candidate vehicles, built using production-intent tooling and processes…’, ‘preparations at our production facilities are progressing to support the ramp of Model 3 production…’, ‘We are working closely with all Model 3 suppliers to ensure their readiness ahead of the start of production.’ 별도의 시험생산 라인을 운영했다고는 말하지 않는다.\n· 원문(Q2 2017 주주서한, 8-K 2017.08.02): ‘We opened the Model 3 configurator to the thousands of our employees with reservations…’, ‘non-employee customers will begin receiving invitations to order their cars in small groups based on when they placed their reservations…’, ‘broadened our distribution capabilities with the launch of new delivery hubs.’, ‘During Q2, we opened 29 new store and service locations, bringing us to a total of 300 locations globally.’, ‘Having started production of Model 3 on schedule in July’, ‘On July 28, 2017, we started delivering…’. 매장·서비스 거점 숫자는 회사 전체 숫자이며 모델 3만의 숫자가 아니다. 일반 예약자 주문 초대는 서한 시점(2017.08.02)에 ‘앞으로 할 계획’으로 적혀 있다. 예약 대수는 판매가 아니므로 말하지 않는다.\n· 원문(Tesla Third Quarter 2018 Update): ‘The Model 3 production system stabilized in Q3.’, ‘average weekly Model 3 production through the quarter (excluding planned shutdowns) of roughly 4,300 units per week’.\n· 4단계 대응은 발표자 해석이다. ⑤와 ⑥은 2017년 7월부터 같은 시기에 진행됐으므로 그래프에서도 겹쳐 그렸다. 2018년 수치(주 평균 약 4,300대)는 생산 안정화의 근거로만 쓴다.",
    "rows": [
     {
      "n": 4,
@@ -2308,7 +2311,7 @@ const DEFAULT_DECK = {
      "when": "2016.08 ~ 2017 1분기",
      "t": "프레스·도장 공정에 초기 생산 설비 가동, 양산 예정 금형·공정으로 만든 차량 시험, 생산 시설·공급업체 준비",
      "src": "2016 2분기 서한 · 10-Q",
-     "interp": "제품을 만들 공정을 준비했다"
+     "interp": "저희 해석: 공정을 준비한 4단계로 본다"
     },
     {
      "n": 5,
@@ -2316,13 +2319,13 @@ const DEFAULT_DECK = {
      "when": "2017.07 ~ 08",
      "t": "예약한 직원부터 주문을 받고, 일반 예약자는 예약 순서대로 소그룹씩 초대할 계획 · 새 인도 거점 개설 · 매장·서비스 거점 29곳 추가(회사 전체)",
      "src": "2017 2분기 서한",
-     "interp": "주문 절차·인도 거점·서비스망을 준비했다 (예약 ≠ 확정 판매)"
+     "interp": "주문 절차·인도 거점·서비스망 준비 (예약 ≠ 확정 판매), ⑥과 같은 시기"
     },
     {
      "n": 6,
      "stage": "대량 생산",
      "when": "2017.07 → 2018 3분기",
-     "t": "2017년 7월 생산 시작, 7월 28일 첫 인도 → 2018년 3분기 ‘생산 시스템 안정화’, 주 평균 약 4,300대",
+     "t": "2017년 7월 생산 시작, 7월 28일 첫 인도 → 2018년 3분기 ‘생산 시스템 안정화’ (같은 분기 주 평균 약 4,300대 생산)",
      "src": "2017 2분기 서한 · 2018 3분기 Update",
      "interp": "생산 시작과 안정화는 다른 시기였다"
     }
@@ -2335,9 +2338,10 @@ const DEFAULT_DECK = {
    "lanes": [
     {
      "n": 1,
-     "a": 2.5,
+     "a": 0,
      "b": 2.5,
-     "d": "2016 1분기"
+     "d": "~ 2016 1분기 (공개 이전)",
+     "pre": true
     },
     {
      "n": 2,
@@ -2379,7 +2383,7 @@ const DEFAULT_DECK = {
     "cap": "⑥ 2017.07.28 첫 인도를 앞둔 모델 3 생산 차량",
     "credit": "사진 Steve Jurvetson · CC BY 2.0 · Wikimedia Commons"
    },
-   "lesson": "생산 시작(2017.07)과 [[안정화(2018 3분기)]]는 다른 시기였다 (발표자 적용)"
+   "lesson": "⑤·⑥은 2017.07부터 [[겹쳐 진행]], 생산 안정화는 2018 3분기 (발표자 적용)"
   },
   {
    "id": "t9",
@@ -2428,7 +2432,7 @@ const DEFAULT_DECK = {
       "b": "2018 3분기",
       "bh": "생산 시스템 안정화",
       "mid": "1년 넘게",
-      "m": "모델 3: 7월 28일 첫 인도 → 주 평균 약 4,300대에서 안정화"
+      "m": "모델 3: 2017.07.28 첫 인도 → 2018 3분기 안정화 (같은 분기 주 평균 약 4,300대 생산)"
      }
     }
    ]
@@ -2472,16 +2476,16 @@ const DEFAULT_DECK = {
       },
       {
        "t": "「Tesla Third Quarter 2018 Update」",
-       "d": "2018.10 · 생산 시스템 안정화, 주 평균 약 4,300대",
+       "d": "2018.10 · 생산 시스템 안정화, 같은 분기 주 평균 약 4,300대",
        "u": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA_Update_Letter_2018-3Q"
       }
      ]
     }
    ],
-   "note": "모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아닙니다.\n사진(Wikimedia Commons): 1장 Carlquinn (CC BY-SA 4.0), 7·8장 Steve Jurvetson (CC BY 2.0)",
+   "note": "모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아닙니다.\n사진(Wikimedia Commons): 1·7·8장 Steve Jurvetson (CC BY 2.0), 2장 Carlquinn (CC BY-SA 4.0)",
    "sources": [],
    "script": "출처입니다. 왼쪽은 교수님 강의자료, 오른쪽은 테슬라의 공시와 주주서한입니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 링크는 대본 PDF 끝의 출처 목록에도 있다.\n· 모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아니다.\n· 사진(Wikimedia Commons): 2장 Carlquinn (CC BY-SA 4.0), 7·8장 Steve Jurvetson (CC BY 2.0)",
+   "notes": "· 링크는 대본 PDF 끝의 출처 목록에도 있다.\n· 모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아니다.\n· 사진(Wikimedia Commons): 1·7·8장 Steve Jurvetson (CC BY 2.0), 2장 Carlquinn (CC BY-SA 4.0)",
    "cards": [
     {
      "h": "강의자료 · 「제5강 경영프로젝트의 개발」",
@@ -2527,7 +2531,7 @@ const DEFAULT_DECK = {
       },
       {
        "t": "Tesla Third Quarter 2018 Update",
-       "d": "2018.10 · 생산 시스템 안정화, 주 평균 약 4,300대 (8·9장)",
+       "d": "2018.10 · 생산 시스템 안정화, 같은 분기 주 평균 약 4,300대 (8·9장)",
        "u": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA_Update_Letter_2018-3Q"
       }
      ]
@@ -2541,7 +2545,7 @@ const DEFAULT_DECK = {
    "title": "마무리",
    "big": "감사합니다",
    "sub": "Q & A",
-   "credits": "내용 · 강의자료 「제5강 경영프로젝트의 개발」 35장·65장, 테슬라 공시·주주서한 (2016~2018)\n사진 · 표지: 발표자 준비 · Wikimedia Commons: Carlquinn (CC BY-SA 4.0), Steve Jurvetson (CC BY 2.0)",
+   "credits": "내용 · 강의자료 「제5강 경영프로젝트의 개발」 35장·65장, 테슬라 공시·주주서한 (2016~2018)\n사진 · Wikimedia Commons: 1·7·8장 Steve Jurvetson (CC BY 2.0), 2장 Carlquinn (CC BY-SA 4.0)",
    "sources": [],
    "script": "들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.\n[엔터 ⏎ 끝]",
    "notes": "[예상 질문]\nQ. 테슬라가 실제로 이 6단계를 거쳤나요?\nA. 테슬라가 이 6단계를 공식적으로 썼다는 자료는 없습니다. 공개 자료로 확인되는 활동을 저희가 6단계에 대응시켜 본 것입니다.\n\nQ. 4단계의 ‘시험생산’을 테슬라도 했나요?\nA. 공개 자료로 확인되는 것은 양산 예정 금형·공정으로 만든 출시 후보 차량을 시험하고, 생산 설비와 공급업체를 준비했다는 것까지입니다. 별도의 시험생산 라인을 운영했다고는 말할 수 없습니다.\n\nQ. 예약이 많았으니 판매가 확정된 것 아닌가요?\nA. 예약은 확정 판매가 아니어서 이번 발표에서는 주문·인도 절차 준비만 다뤘습니다.\n\nQ. 36장 세부 절차는 왜 빠졌나요?\nA. 36장 항목이 35장의 몇 단계에 해당하는지 강의자료에 적혀 있지 않아, 억지로 대응시키지 않으려고 이번에는 35장 6단계만 썼습니다."
@@ -3615,7 +3619,7 @@ function gantt18(s) {
   const lanes = s.lanes.map(l => {
     const on = s.on.includes(l.n), pt = l.a === l.b;
     const bar = pt ? `<i class="x-gd" style="left:${X(l.a)}"></i>` : `<i class="x-gb" style="left:${X(l.a)};width:${X(l.b - l.a)}"></i>${l.ends ? `<i class="x-gd" style="left:${X(l.a)}"></i><i class="x-gd" style="left:${X(l.b)}"></i><em style="left:${X(l.b)}">안정화</em>` : ""}`;
-    return `<div class="x-gl${on ? " on" : ""}" style="--c:${GC18(l.n)}"><span class="x-gn">${l.n}</span><div class="x-gt">${bar}</div></div>`;
+    return `<div class="x-gl${on ? " on" : ""}${l.pre ? " pre" : ""}" style="--c:${GC18(l.n)}"><span class="x-gn">${l.n}</span><div class="x-gt">${bar}</div></div>`;
   }).join("");
   return `<div class="x-gantt rise" style="--i:3"><span class="kicker">모델 3 시점 위의 6단계 <small>(발표자 적용)</small></span><div class="x-gax">${yrs}</div>${lanes}</div>`;
 }
