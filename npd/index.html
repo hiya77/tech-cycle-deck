@@ -2052,191 +2052,215 @@ body.editing .t-cover3 .cover-q{color:#fff;background:none}
 .c10-bottom svg{flex:none;width:24px;height:24px;color:var(--mint)}
 .c10-bottom em.kw{color:var(--kw-dark)}
 
-/* ================= v15: 화이트·차콜·블랙 + 레드 한 가지 ================= */
+/* ================= v16: 밝은 바탕 + 단계별 색 ================= */
 .stage{background:#fff}
-.stage .slide{--ink:#111111;--char:#3B3B3E;--mute:#6A6A6F;--rule:#D5D5D8;--soft:#F4F4F5;--red:#C4161C;
-  --f:"Pretendard Variable","Pretendard","Noto Sans KR","IBM Plex Sans KR",system-ui,sans-serif;
-  background:#fff!important;background-image:none!important;color:var(--ink);font-family:var(--f);
-  padding:52px 88px 34px!important;display:flex!important;flex-direction:column;box-sizing:border-box;word-break:keep-all}
-.stage .slide::before,.stage .slide::after{content:none!important;display:none!important}
-.stage .slide em.kw{color:var(--red);font-style:normal;background:none!important;text-decoration:none!important;animation:none!important;-webkit-text-fill-color:currentColor}
+.stage .slide{--ink:#0F1A2C;--ink-2:#47546A;--ink-3:#7A8599;--line:#E3E8F0;--line-2:#CBD3E0;--surface:#F5F7FB;--raise:#EDF1F7;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--f:"Pretendard Variable","Pretendard","Noto Sans KR","IBM Plex Sans KR",system-ui,sans-serif;
+  background:#fff!important;background-image:none!important;color:var(--ink);font-family:var(--f);padding:0!important;word-break:keep-all}
+.stage .slide::after{content:none!important;display:none!important}
+.stage .slide::before{content:""!important;display:block!important;position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:auto!important;width:auto!important;height:6px!important;border-radius:0!important;filter:none!important;opacity:1!important;z-index:3;
+  background:linear-gradient(90deg,#F2545B,#FF8A2B 22%,#7B5CFA 45%,#2F6BFF 65%,#1AA3E8 82%,#12A594)!important}
+.v16{position:absolute;inset:0;padding:52px 88px 30px;display:flex;flex-direction:column;box-sizing:border-box}
+.stage .slide em.kw{color:var(--kc,#E5484D);font-style:normal;background:none!important;text-decoration:none!important;-webkit-text-fill-color:currentColor;animation:none}
 
-/* 단계 번호: 모든 장에서 같은 원형 번호 */
-.sn{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;box-sizing:border-box;
-  border:2px solid #BEBEC2;color:#8A8A8F;background:#fff;font:800 18px/1 var(--f);font-variant-numeric:tabular-nums;letter-spacing:0}
-.sn.on{background:var(--red);border-color:var(--red);color:#fff}
-.sn.k{background:var(--ink);border-color:var(--ink);color:#fff}
-.sn.lg{width:50px;height:50px;font-size:25px}
-.sn.in{font-size:.56em;width:1.72em;height:1.72em;border-width:.11em;border-color:currentColor;color:inherit;background:transparent;vertical-align:.28em;margin:0 .06em 0 0}
+/* 단계 번호 배지: 모든 장 같은 모양, 단계마다 고유 색 */
+.sb{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;box-sizing:border-box;border:2px solid var(--line-2);color:var(--ink-3);background:#fff;
+  font:600 17px/1 var(--mono);letter-spacing:0}
+.sb.on{background:var(--c);border-color:var(--c);color:#fff}
+.sb.in{font-size:.5em;width:1.85em;height:1.85em;border-width:0;vertical-align:.3em;margin:0 .08em 0 0}
+.ic16{display:grid;place-items:center;width:54px;height:54px;border-radius:14px;background:#fff;color:var(--c);box-shadow:0 1px 2px rgba(15,26,44,.08);flex:none}
+.ic16 svg{width:30px;height:30px}
 
-/* 머리: 왼쪽 위 장 제목, 오른쪽 위 6단계 위치 */
-.h15-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;min-height:60px}
-.eb15{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:700;color:var(--char);letter-spacing:-.01em;padding-top:6px}
-.eb15::before{content:"";width:32px;height:2px;background:var(--ink);flex:none}
-.trk{display:flex;gap:20px}
-.trk-g{display:flex;flex-direction:column;align-items:center;gap:7px}
-.trk-ns{display:flex;gap:6px;position:relative}
-.trk-h{font-size:16px;font-weight:700;color:#8A8A8F;letter-spacing:-.01em;white-space:nowrap}
-.trk-g.on .trk-h{color:var(--ink)}
-.ld15{font-size:58px;font-weight:800;letter-spacing:-.045em;line-height:1.16;margin:22px 0 0;color:var(--ink)}
+/* 머리 */
+.h16-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;min-height:62px}
+.eb16{display:flex;align-items:center;gap:14px;font-size:21px;font-weight:600;color:var(--ink-2);padding-top:4px}
+.pn{font-family:var(--mono);font-weight:600;font-size:17px;color:#fff;background:var(--ink);border-radius:999px;padding:4px 12px;letter-spacing:.02em}
+.pn.c{background:var(--c)}
+.trk16{display:flex;gap:18px}
+.trk16 .tg{display:flex;flex-direction:column;align-items:center;gap:6px}
+.trk16 .tn{display:flex;gap:5px}
+.trk16 .tg>span{font-size:16px;font-weight:700;color:var(--ink-3);white-space:nowrap}
+.trk16 .tg.on>span{color:var(--ink)}
+.ld16{font-size:54px;font-weight:800;letter-spacing:-.04em;line-height:1.2;margin:18px 0 0;color:var(--ink)}
 .s-body{flex:1;min-height:0;position:relative}
 
-/* 바닥: 장 번호 + 짧은 출처 한 줄 */
-.f15{display:flex;align-items:baseline;gap:22px;margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);font-size:19px;color:var(--char)}
-.pg15{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.pg15 i{font-style:normal;color:var(--mute);font-weight:600;margin-left:6px}
-.src15{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* 아이디어 → 제품 가로축 */
-.ax15{display:grid;grid-template-columns:auto 1fr auto;column-gap:26px;align-items:start}
-.ax-end{font-size:21px;font-weight:700;color:var(--char);white-space:nowrap;padding-top:4px}
-.ax-end.b{color:var(--ink);font-weight:800}
-.ax-line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
-.ax-line::before{content:"";position:absolute;left:0;right:0;top:16px;height:2px;background:var(--ink)}
-.ax-line::after{content:"";position:absolute;right:-4px;top:11px;border:6px solid transparent;border-left:10px solid var(--ink);border-right:0}
-.ax-st{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-right:18px;margin:0}
-.ax-st .sn{box-shadow:0 0 0 8px #fff}
-.ax-st b{font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.25}
-.ax-st span{font-size:20px;color:var(--char);line-height:1.4}
-.ax-ph{grid-column:2;display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px}
-.ax-ph span{font-size:18px;font-weight:700;color:var(--char);border-top:2px solid var(--ink);padding-top:10px;margin-right:18px}
+/* 바닥 */
+.f16{display:flex;justify-content:space-between;align-items:baseline;gap:30px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:18px;color:var(--ink-3)}
+.src16{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg16{font-family:var(--mono);font-size:17px;white-space:nowrap}
 
 /* 1. 표지 */
-.cv15{position:absolute;inset:0;padding:56px 88px 52px;display:flex;flex-direction:column}
-.cv-top{display:flex;justify-content:space-between;align-items:center}
-.cv-top .eb15{padding:0}
-.cv-by{font-size:24px;font-weight:800}
-.cv-main{margin-top:auto}
-.cv-t{font-size:148px;font-weight:900;letter-spacing:-.065em;line-height:1;margin:0}
-.cv-t::after{content:".";color:var(--red)}
-.cv-s{font-size:44px;font-weight:700;letter-spacing:-.04em;color:var(--char);margin:26px 0 0}
-.cv-q{font-size:24px;color:var(--char);margin:18px 0 0}
-.cv-ax{margin-top:70px}
-.cv-ax .ax-st b{font-size:24px}
-.cv-ax .ax-ph span{font-size:20px}
-.cv-case{margin-top:26px;font-size:20px;font-weight:700;color:var(--char)}
+.cv16{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;padding:58px 88px 52px}
+.c16l{display:flex;flex-direction:column;min-width:0}
+.cv-t16{font-size:70px;line-height:1.18;font-weight:800;letter-spacing:-.045em;margin:40px 0 0;white-space:pre-line;
+  background:linear-gradient(100deg,var(--ink) 38%,#7B5CFA 66%,#12A594 88%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.c16chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.c16chips span{font-size:21px;font-weight:700;padding:8px 16px;border-radius:999px;color:var(--ct);background:color-mix(in srgb,var(--c) 11%,white)}
+.c16meta{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.c16q{margin:0;font-size:30px;font-weight:800;letter-spacing:-.03em;color:#E5484D}
+.c16by{margin:0;font-size:24px;font-weight:700;color:var(--ink-2)}
+.c16r{display:grid;grid-template-rows:1fr 1fr;gap:20px;min-height:0}
+.c16card{position:relative;margin:0;padding:24px 28px;border-radius:20px;background:color-mix(in srgb,var(--c) 7%,white);display:flex;flex-direction:column;gap:14px;min-height:0}
+.c16tag{align-self:flex-start;font-size:16px;font-weight:700;color:#fff;background:var(--c);padding:4px 12px;border-radius:999px}
+.c16card>b{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.mini6{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.mini6::before{content:"";position:absolute;left:17px;right:calc(100% / 6 - 17px);top:16px;height:3px;border-radius:2px;background:linear-gradient(90deg,#F2545B,#FF8A2B,#7B5CFA,#2F6BFF,#1AA3E8,#12A594)}
+.mini6 li{position:relative;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.mini6 li span{font-size:18px;font-weight:700;line-height:1.3;color:var(--ink-2);padding-right:6px}
+.mini-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
+.mini-ph span{font-size:18px;font-weight:700;color:var(--ct);border-top:3px solid var(--c);padding-top:6px}
+.mini-tl{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.mini-tl::before{content:"";position:absolute;left:8px;right:24px;top:8px;height:3px;border-radius:2px;background:linear-gradient(90deg,#F2545B,#FF8A2B 30%,#12A594 70%)}
+.mini-tl li{position:relative;display:flex;flex-direction:column;gap:6px}
+.mini-tl i{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--c);box-sizing:border-box;position:relative}
+.mini-tl em{font-style:normal;font-family:var(--mono);font-weight:600;font-size:17px;color:var(--ct)}
+.mini-tl span{font-size:20px;font-weight:700;line-height:1.3;padding-right:8px}
+.c16src{margin:auto 0 0;font-size:16px;color:var(--ink-3)}
 
 /* 2. 목차 */
-.tc15 ol{list-style:none;margin:46px 0 0;padding:0;border-top:2px solid var(--ink)}
-.tc15 li{display:grid;grid-template-columns:130px 1fr auto;align-items:center;padding:36px 0;border-bottom:1px solid var(--rule);margin:0}
-.tc-n{font-size:46px;font-weight:800;letter-spacing:-.04em;color:var(--ink);font-variant-numeric:tabular-nums}
-.tc-tx b{display:block;font-size:40px;font-weight:800;letter-spacing:-.04em}
-.tc-tx span{display:block;font-size:24px;color:var(--char);margin-top:8px}
-.tc-pg{font-size:26px;font-weight:700;color:var(--char)}
+.tc16{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;align-content:start}
+.tc-card{display:flex;flex-direction:column;gap:14px;padding:34px 32px 30px;border-radius:20px;background:color-mix(in srgb,var(--c) 8%,white);border-top:6px solid var(--c);min-height:470px;box-sizing:border-box}
+.tc-card .pn{align-self:flex-start}
+.tc-card>b{font-size:40px;font-weight:800;letter-spacing:-.035em;line-height:1.25;color:var(--ct);margin-top:10px}
+.tc-card>p{margin:0;font-size:25px;line-height:1.5;color:var(--ink-2)}
+.tc-dots{display:flex;gap:6px;margin-top:auto}
+.tc-pg{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ct)}
 
 /* 3. 6단계 흐름 */
-.fl15{display:flex;flex-direction:column;justify-content:center;padding-bottom:20px}
-.ax15.big .ax-st{gap:16px}
-.ax15.big .ax-st b{font-size:36px;min-height:90px}
-.ax15.big .ax-st span{font-size:25px}
-.ax15.big .ax-ph span{font-size:24px;color:var(--ink);padding-top:12px}
-.ax15.big .ax-end{font-size:24px}
-.ax15.big .sn{width:44px;height:44px;font-size:22px}
-.ax15.big .ax-line::before{top:21px}.ax15.big .ax-line::after{top:16px}
-.ax15.big .ax-ph{margin-top:34px}
+.fl16{display:flex;flex-direction:column;margin-top:40px}
+.fl-axis{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;margin-bottom:20px;font-size:21px;font-weight:700;color:var(--ink-2)}
+.fl-axis .b{color:var(--ink);font-weight:800}
+.fl-axis i{height:4px;border-radius:2px;background:linear-gradient(90deg,#F2545B,#FF8A2B,#7B5CFA,#2F6BFF,#1AA3E8,#12A594);position:relative}
+.fl-axis i::after{content:"";position:absolute;right:-2px;top:-6px;border:8px solid transparent;border-left:12px solid #12A594;border-right:0}
+.fl-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.fl-node{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px 20px 24px;border-radius:20px;background:color-mix(in srgb,var(--c) 9%,white);border:1px solid color-mix(in srgb,var(--c) 24%,white);min-height:340px;box-sizing:border-box}
+.fl-node::after{content:"";position:absolute;right:-14px;top:50%;width:10px;height:10px;border-top:3px solid var(--line-2);border-right:3px solid var(--line-2);transform:translateY(-50%) rotate(45deg)}
+.fl-node:last-child::after{display:none}
+.fl-k{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ct)}
+.fl-node b{font-size:31px;font-weight:800;letter-spacing:-.035em;line-height:1.22}
+.fl-a{font-size:23px;line-height:1.45;color:var(--ink-2);margin-top:auto}
+.fl-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.fl-ph>div{display:flex;flex-direction:column;gap:6px;padding:16px 22px;border-radius:16px;background:var(--surface);border-left:5px solid var(--c)}
+.fl-ph b{display:flex;align-items:center;gap:6px;font-size:23px;font-weight:800}
+.fl-ph b .sb{width:28px;height:28px;font-size:14px}
+.fl-ph b .sb:last-of-type{margin-right:8px}
+.fl-ph span{font-size:20px;color:var(--ink-2)}
 
 /* 4~6. 두 단계 비교 */
-.cp15{display:grid;grid-template-columns:1fr 92px 1fr;margin-top:70px;align-items:start}
-.cp-h{display:flex;align-items:center;gap:16px}
-.cp-h b{font-size:44px;font-weight:800;letter-spacing:-.04em}
-.cp-key{font-size:38px;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:22px 0 30px;line-height:1.3}
-.cp-rows{margin:0}
-.cp-lab,.cp-row{display:grid;grid-template-columns:180px 1fr;column-gap:12px}
-.cp-lab{padding-bottom:10px;border-bottom:2px solid var(--ink)}
-.cp-lab dt,.cp-lab dd{font-size:20px;font-weight:700;color:var(--mute);margin:0}
-.cp-lab i{font-style:normal;font-weight:500;margin-left:8px}
-.cp-row{padding:26px 0;border-bottom:1px solid var(--rule)}
-.cp-row dt{font-size:29px;font-weight:800;margin:0}
-.cp-row dd{font-size:28px;line-height:1.5;color:var(--char);margin:0}
-.stage .slide .cp-row em.kw{color:var(--ink);font-weight:800}
-.cp-arrow{align-self:stretch;position:relative}
-.cp-arrow::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule)}
-.cp-arrow span{position:absolute;left:50%;top:12px;width:30px;height:30px;transform:translateX(-50%);background:#fff}
-.cp-arrow span::after{content:"";position:absolute;left:8px;top:7px;border:8px solid transparent;border-left:13px solid var(--ink);border-right:0}
+.cp16{display:flex;flex-direction:column;margin-top:42px}
+.cp-cards{display:grid;grid-template-columns:1fr 56px 1fr;align-items:stretch}
+.cp-card{display:flex;flex-direction:column;gap:20px;padding:30px 32px 26px;border-radius:20px;background:color-mix(in srgb,var(--c) 8%,white);border-top:6px solid var(--c)}
+.cp-hd{display:flex;align-items:center;gap:16px}
+.cp-hd>div{display:flex;flex-direction:column;gap:2px}
+.cp-hd b{font-size:38px;font-weight:800;letter-spacing:-.04em}
+.cp-card dl{margin:0}
+.cp-lb,.cp-r{display:grid;grid-template-columns:160px 1fr;column-gap:14px}
+.cp-lb{padding-bottom:8px;border-bottom:2px solid color-mix(in srgb,var(--c) 45%,white)}
+.cp-lb dt,.cp-lb dd{margin:0;font-size:18px;font-weight:700;color:var(--ink-3)}
+.cp-r{padding:20px 0;border-bottom:1px solid color-mix(in srgb,var(--c) 18%,white)}
+.cp-r:last-child{border-bottom:0}
+.cp-r dt{margin:0;font-size:28px;font-weight:800;color:var(--ct)}
+.cp-r dd{margin:0;font-size:27px;line-height:1.5;color:var(--ink)}
+.stage .slide .cp-r em.kw{color:var(--ct);font-weight:800}
+.cp-ar{align-self:center;justify-self:center;font-size:34px;font-weight:700;color:var(--ink-3)}
+.versus16{display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;margin-top:26px;padding:28px 34px;border-radius:20px;background:var(--surface)}
+.vs{display:flex;align-items:center;gap:14px;font-size:32px;font-weight:800;letter-spacing:-.03em;color:var(--ct)}
+.vs-ne{font-size:60px;font-weight:300;color:#E5484D;text-align:center;line-height:1}
 
-/* 7~8. 모델 3 시간축 */
-.tl15{display:flex;flex-direction:column;margin-top:24px}
-.tl-chart{display:flex;flex-direction:column}
-.tl-lane,.tl-axis{display:grid;grid-template-columns:262px 1fr;align-items:center}
-.tl-lane{height:34px}
+/* 7~8. 시간축 */
+.tl16{display:flex;flex-direction:column;margin-top:20px}
+.tl-chart{padding:14px 24px 8px;border-radius:18px;background:var(--surface)}
+.tl-lane,.tl-axis{display:grid;grid-template-columns:250px 1fr;align-items:center}
+.tl-lane{height:31px}
 .tl-ln{display:flex;align-items:center;gap:10px}
-.tl-ln .sn{width:28px;height:28px;font-size:15px}
-.tl-ln b{font-size:20px;font-weight:700;color:#8A8A8F;letter-spacing:-.02em}
+.tl-ln .sb{width:26px;height:26px;font-size:13px}
+.tl-ln b{font-size:19px;font-weight:700;color:var(--ink-3)}
 .tl-lane.on .tl-ln b{color:var(--ink);font-weight:800}
 .tl-track{position:relative;height:100%}
-.tl-lane .tl-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#E6E6E8}
-.tl-bar{position:absolute;top:50%;height:10px;transform:translateY(-50%);background:#CDCDD1}
-.tl-dot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);background:#CDCDD1}
-.tl-lane.on .tl-bar,.tl-lane.on .tl-dot{background:var(--red)}
-.tl-lab{position:absolute;top:50%;transform:translate(14px,-50%);font-size:19px;font-weight:700;white-space:nowrap}
-.tl-end{position:absolute;top:50%;font-size:19px;font-weight:800;white-space:nowrap}
+.tl-lane .tl-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line-2);opacity:.6}
+.tl-bar{position:absolute;top:50%;height:12px;margin-top:-6px;border-radius:6px;background:var(--line-2)}
+.tl-dot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);background:var(--line-2)}
+.tl-lane.on .tl-bar,.tl-lane.on .tl-dot{background:var(--c)}
+.tl-lab,.tl-end{position:absolute;top:50%;font-family:var(--mono);font-size:17px;font-weight:600;white-space:nowrap;color:var(--ct)}
+.tl-lab{transform:translate(14px,-50%)}
 .tl-end.a{transform:translate(calc(-100% - 12px),-50%)}
 .tl-end.b{transform:translate(12px,-50%)}
 .tl-axis{height:30px}
-.tl-axis .tl-track{border-top:2px solid var(--ink)}
-.tl-q{position:absolute;top:-2px;width:1px;height:7px;background:var(--mute)}
-.tl-q.yr{height:12px;width:2px;background:var(--ink)}
-.tl-y{position:absolute;top:8px;font-size:19px;font-weight:800;transform:translateX(6px)}
-.tl-cols{display:grid;grid-template-columns:repeat(3,1fr);column-gap:48px;margin-top:22px}
-.tl-c{border-top:2px solid var(--ink);padding-top:14px}
-.tl-ch{display:flex;align-items:center;gap:14px}
-.tl-ch b{display:block;font-size:27px;font-weight:800;letter-spacing:-.03em}
-.tl-ch div span{display:block;font-size:20px;font-weight:700;color:var(--char);margin-top:2px}
-.tl-lb{font-size:18px;font-weight:800;margin:14px 0 4px;letter-spacing:.01em}
-.tl-lb.fact{color:var(--char)}
-.tl-lb.mine{color:var(--red)}
-.tl-lb i{font-style:normal;font-weight:600;color:var(--mute);margin-left:8px}
-.tl-f{font-size:23px;line-height:1.42;margin:0;color:var(--ink)}
-.tl-i{font-size:23px;line-height:1.4;margin:0;font-weight:700;color:var(--red)}
+.tl-axis .tl-track{border-top:2px solid var(--ink-3)}
+.tl-q{position:absolute;top:-2px;width:1px;height:6px;background:var(--ink-3)}
+.tl-q.yr{height:11px;width:2px;background:var(--ink-2)}
+.tl-y{position:absolute;top:6px;font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ink-2);transform:translateX(6px)}
+.tl-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px}
+.tl-card{display:flex;flex-direction:column;padding:16px 22px 18px;border-radius:18px;background:color-mix(in srgb,var(--c) 8%,white);border-top:5px solid var(--c)}
+.tl-hd{display:flex;align-items:center;gap:14px}
+.tl-hd .ic16{width:46px;height:46px;border-radius:12px}
+.tl-hd .ic16 svg{width:26px;height:26px}
+.tl-hd b{display:block;font-size:25px;font-weight:800;letter-spacing:-.03em}
+.tl-when{display:block;font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ct)}
+.tag16{align-self:flex-start;margin:12px 0 6px;font-size:16px;font-weight:700;padding:3px 10px;border-radius:8px}
+.tag16.fact{background:#fff;color:var(--ink-2)}
+.tag16.fact i{font-style:normal;font-weight:500;color:var(--ink-3);margin-left:6px}
+.tag16.mine{background:var(--c);color:#fff}
+.tl-f{margin:0;font-size:21px;line-height:1.45;color:var(--ink)}
+.tl-i{margin:0;font-size:22px;line-height:1.4;font-weight:800;color:var(--ct)}
 
 /* 9. 결론 */
-.cc15{display:flex;flex-direction:column;margin-top:40px}
-.cc-row{display:grid;grid-template-columns:130px 1fr;align-items:start;border-top:2px solid var(--ink);padding:28px 0 36px}
-.cc-tag{font-size:22px;font-weight:800;color:var(--red);padding-top:12px}
-.cc-pair{display:grid;grid-template-columns:1fr 100px 1fr;align-items:center}
-.cc-ns{display:flex;gap:8px;align-items:center}
-.cc-q{font-size:21px;font-weight:700;color:var(--char);margin-left:8px}
-.cc-side b{display:block;font-size:40px;font-weight:800;letter-spacing:-.04em;margin:12px 0 6px}
-.cc-m{display:block;font-size:23px;color:var(--char);line-height:1.4}
-.cc-ne{font-size:76px;font-weight:300;text-align:center;color:var(--red);line-height:1}
-.cc-span{display:grid;grid-template-columns:auto 1fr auto;column-gap:26px;align-items:center}
-.cc-pt{display:grid;grid-template-columns:auto auto;column-gap:14px;align-items:center}
-.cc-pt .sn{grid-row:1/3}
-.cc-pt b{font-size:38px;font-weight:800;letter-spacing:-.04em}
-.cc-pt > span:not(.sn){font-size:21px;font-weight:700;color:var(--char)}
-.cc-gap{position:relative;height:56px;display:grid;place-items:center}
-.cc-gap i{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:var(--red)}
-.cc-gap i::before,.cc-gap i::after{content:"";position:absolute;top:-5px;width:14px;height:14px;border-radius:50%;background:var(--red)}
-.cc-gap i::before{left:-4px}.cc-gap i::after{right:-4px}
-.cc-gap span{position:relative;background:#fff;padding:0 18px;font-size:30px;font-weight:800;color:var(--red)}
-.cc-m.wide{grid-column:1/-1;margin-top:12px}
-.cc-final{margin:6px 0 0;border-top:2px solid var(--ink);padding-top:22px;font-size:31px;font-weight:700;letter-spacing:-.03em}
-.cc-final::before{content:"한 문장으로";display:block;font-size:19px;font-weight:800;color:var(--mute);margin-bottom:8px;letter-spacing:0}
+.cc16{display:flex;flex-direction:column;margin-top:30px}
+.cc-cards{display:flex;flex-direction:column;gap:18px}
+.cc-card{padding:22px 32px 24px;border-radius:20px;background:color-mix(in srgb,var(--c) 7%,white);border-left:6px solid var(--c)}
+.cc-tag{display:block;font-size:20px;font-weight:800;color:var(--ct);margin-bottom:10px}
+.cc-pair{display:grid;grid-template-columns:1fr 90px 1fr;align-items:center}
+.cc-ns{display:flex;gap:6px;align-items:center}
+.cc-q{font-size:19px;font-weight:700;color:var(--ct);margin-left:8px}
+.cc-side b{display:block;font-size:34px;font-weight:800;letter-spacing:-.04em;margin:8px 0 4px}
+.cc-m{display:block;margin:0;font-size:21px;color:var(--ink-2);line-height:1.4}
+.cc-ne{font-size:70px;font-weight:300;color:#E5484D;text-align:center;line-height:1}
+.cc-span{display:grid;grid-template-columns:auto 1fr auto;column-gap:24px;align-items:center;margin-bottom:8px}
+.cc-pt{display:grid;grid-template-columns:auto auto;column-gap:12px;align-items:center}
+.cc-pt .sb{grid-row:1/3}
+.cc-pt b{font-size:32px;font-weight:800;letter-spacing:-.04em}
+.cc-pt>span:not(.sb){font-family:var(--mono);font-size:18px;font-weight:600;color:var(--ct)}
+.cc-gap{position:relative;height:52px;display:grid;place-items:center}
+.cc-gap i{position:absolute;left:0;right:0;top:50%;height:6px;margin-top:-3px;border-radius:3px;background:linear-gradient(90deg,#12A594,#1AA3E8 50%,#12A594)}
+.cc-gap span{position:relative;background:color-mix(in srgb,#12A594 7%,white);padding:0 16px;font-size:28px;font-weight:800;color:#E5484D}
+.cc-final{margin:22px 0 0;padding:18px 26px;border-radius:18px;background:var(--surface);font-size:27px;font-weight:700;letter-spacing:-.03em}
+.cc-fl{display:block;font-size:17px;font-weight:800;color:var(--ink-3);margin-bottom:6px;letter-spacing:0}
 
 /* 10. 출처 */
-.rf15{display:grid;grid-template-columns:1fr 1.55fr;column-gap:64px;margin-top:40px;align-items:start}
-.rfx h3{font-size:24px;font-weight:800;margin:0 0 4px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-.rfx ol{list-style:none;margin:0;padding:0;counter-reset:rf}
-.rfx li{counter-increment:rf;position:relative;padding:15px 0 15px 34px;border-bottom:1px solid var(--rule);margin:0}
-.rfx li::before{content:counter(rf);position:absolute;left:0;top:16px;font-size:20px;font-weight:800;color:var(--mute)}
-.rfx li b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.35}
-.rfx li span{display:block;font-size:20px;color:var(--char);margin-top:4px}
-.rfx li a{display:inline-block;font-size:19px;font-weight:700;color:var(--char);text-decoration:none;margin-top:4px}
-.rf-note{font-size:21px;color:var(--char);margin:24px 0 14px}
+.rf16{display:grid;grid-template-columns:1fr 1fr;gap:22px 30px;margin-top:30px;align-content:start}
+.rf-card{padding:20px 26px;border-radius:18px;background:color-mix(in srgb,var(--c) 6%,white);border-left:5px solid var(--c)}
+.rf-card h3{margin:0 0 10px;font-size:22px;font-weight:800;color:var(--ct)}
+.rf-card ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.rf-card li b{display:block;font-size:21px;font-weight:700;line-height:1.35}
+.rf-card li span{display:block;font-size:19px;line-height:1.45;color:var(--ink-2);margin-top:2px}
+.rf-card a{color:var(--ink-3);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;white-space:nowrap}
+.rf-note16{margin:0;align-self:stretch;display:flex;align-items:center;padding:20px 26px;border-radius:18px;background:var(--surface);font-size:21px;line-height:1.5;font-weight:600;color:var(--ink-2)}
 
-/* 움직임: 장에 들어올 때 한 번만, 짧게 */
+/* 움직임: 장에 들어오면 자동으로 (클릭 없음) */
 @media screen{
-  .slide.play .h15,.slide.play .in15{animation:in15 .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0) * 80ms + 60ms)}
-  .slide.play .trk .sn.on{animation:snOn .5s cubic-bezier(.2,.7,.2,1) .25s both}
-  .slide.play .tl-lane.on .tl-bar{animation:barIn .7s cubic-bezier(.2,.7,.2,1) .3s both;transform-origin:left}
-  .slide.play .cc-gap i{animation:barX .8s cubic-bezier(.2,.7,.2,1) .4s both;transform-origin:left}
+  .slide.play .rise{animation:rise16 .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 120ms)}
+  .slide.play .h16 .eb16{animation:rise16 .6s cubic-bezier(.2,.7,.2,1) both}
+  .slide.play::before{animation:bar16 1s cubic-bezier(.7,0,.2,1) both;transform-origin:left}
+  .slide.play .trk16 .sb.on{animation:pop16 .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:.35s}
+  .slide.play .cv-t16{animation:rise16 .8s cubic-bezier(.2,.7,.2,1) .1s both,shimmer16 6s ease-in-out 1.2s infinite alternate}
+  .slide.play .mini6::before,.slide.play .mini-tl::before,.slide.play .fl-axis i{animation:grow16 1.2s cubic-bezier(.45,.1,.25,1) .5s both;transform-origin:left}
+  .slide.play .mini6 li .sb,.slide.play .mini-tl i{animation:pop16 .45s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--k) * 140ms + .6s)}
+  .slide.play .fl-node .ic16,.slide.play .cp-hd .ic16,.slide.play .tl-hd .ic16{animation:pop16 .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i,0) * 110ms + .4s)}
+  .slide.play .tl-lane.on .tl-bar{animation:grow16 .9s cubic-bezier(.2,.7,.2,1) .5s both;transform-origin:left}
+  .slide.play .tl-lane.on .tl-dot{animation:pop16 .5s cubic-bezier(.2,1.4,.4,1) .5s both}
+  .slide.play .tl-lane.on .tl-lab,.slide.play .tl-lane.on .tl-end{animation:fade16 .5s ease 1.1s both}
+  .slide.play .cc-gap i{animation:grow16 1.1s cubic-bezier(.45,.1,.25,1) .6s both;transform-origin:left}
+  .slide.play .cc-gap span{animation:pop16 .5s cubic-bezier(.2,1.4,.4,1) 1.4s both}
+  .slide.play .vs-ne,.slide.play .cc-ne{animation:pop16 .6s cubic-bezier(.2,1.4,.4,1) .9s both}
 }
-@keyframes in15{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes snOn{from{background:#fff;color:#8A8A8F;border-color:#BEBEC2}}
-@keyframes barIn{from{transform:translateY(-50%) scaleX(0)}to{transform:translateY(-50%) scaleX(1)}}
-@keyframes barX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){.slide *{animation:none!important}}
-@media print{.slide .h15,.slide .in15,.slide .sn,.slide .tl-bar,.slide .cc-gap i{animation:none!important;opacity:1!important}.slide .in15,.slide .h15{transform:none!important}}
+@keyframes rise16{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes bar16{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pop16{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes grow16{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes fade16{from{opacity:0}to{opacity:1}}
+@keyframes shimmer16{from{background-position:0% 0}to{background-position:100% 0}}
+@media (prefers-reduced-motion:reduce){.slide *,.slide::before{animation:none!important}}
+@media print{.slide *,.slide::before{animation:none!important}.slide .rise{opacity:1!important;transform:none!important}}
 
 </style>
 </head><body>
@@ -2295,7 +2319,7 @@ body.editing .t-cover3 .cover-q{color:#fff;background:none}
 <script>
 (function(){
 "use strict";
-const STORE_KEY = "npd-deck.v15";
+const STORE_KEY = "npd-deck.v16";
 /* 사진: 언론·기업 보도사진과 위키미디어 공용 사진 (원본 주소는 대체 경로로만 쓰고, 덱의 img/ 폴더를 먼저 읽는다) */
 const P_BULDAK = "https://img1.newsis.com/2022/04/15/NISI20220415_0000975724_web.jpg";
 const P_BULDAK2 = "https://image.fnnews.com/resource/media/image/2025/06/11/202506111003480912_l.jpg";
@@ -2375,7 +2399,7 @@ const SOURCES = [
 ];
 const STAGE_NAMES = ["개념 정립","제품 설계","제품 엔지니어링","공정 엔지니어링","시장진출 준비","대량 생산"];
 const DEFAULT_DECK = {
- "version": 15,
+ "version": 16,
  "meta": {
   "deckTitle": "신제품 개발 절차 · 6단계와 테슬라 모델 3",
   "presenter": "고채현, 박민준"
@@ -2383,10 +2407,10 @@ const DEFAULT_DECK = {
  "slides": [
   {
    "id": "t1",
-   "type": "cover15",
+   "type": "cover16",
    "duration": 26,
-   "title": "5강 「경영프로젝트의 개발」 · 토론문제 4",
-   "question": "신제품 개발 절차",
+   "title": "토론 문제 4번 · 5강 「경영프로젝트의 개발」",
+   "question": "아이디어가 제품이 되기까지,\n신제품 개발 6단계",
    "deckTitle": "6단계와 테슬라 모델 3 사례",
    "subtitle": "신제품 개발 절차를 간략하게 제시하여라",
    "presenter": "고채현, 박민준",
@@ -2401,7 +2425,7 @@ const DEFAULT_DECK = {
    "caseLabel": "사례 · 테슬라 모델 3 (2016 공개 → 2017 생산 → 2018 안정화)",
    "sources": [],
    "script": "안녕하세요. 저희 조는 5강 「경영프로젝트의 개발」 토론문제 4번, ‘신제품 개발 절차를 간략하게 제시하여라’를 발표하겠습니다. 강의자료의 신제품 개발 6단계를 중심으로 설명하고, 이해를 돕기 위해 테슬라 모델 3를 짧은 사례로 적용해 보겠습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 표지 아래의 가로선은 ‘아이디어 → 생산·판매되는 제품’의 흐름이다. 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 빨간색으로 켜진다.\n· 2016~2017년 모델 3 사진을 출처와 함께 확보하지 못해, 다른 차종 사진을 쓰지 않고 글자 중심으로 구성했다.",
+   "notes": "· 토론문제 원문: 「제5강 경영프로젝트의 개발」 65장 ‘４．신제품 개발 절차를 간략하게 제시하여라.’\n· 발표의 중심은 강의자료 35장 6단계다. 모델 3는 테슬라 공시·주주서한으로 확인한 사실만 쓰고, 6단계와의 대응은 발표자 해석으로 표시했다.\n· 여섯 단계는 단계마다 고유한 색(①빨강 ②주황 ③보라 ④파랑 ⑤하늘 ⑥초록)으로 표시한다. 3~9장 오른쪽 위에 같은 여섯 칸이 나오고, 지금 설명하는 단계가 색으로 켜진다.\n· 표지 오른쪽 아래 모델 3 시점은 7·8장의 테슬라 공식 자료에서 가져온 것이다.\n· 2016~2017년 모델 3 사진을 출처와 함께 확보하지 못해, 다른 차종 사진을 쓰지 않고 글자 중심으로 구성했다.",
    "from": "아이디어",
    "to": "생산·판매되는 제품",
    "phases": [
@@ -2426,11 +2450,33 @@ const DEFAULT_DECK = {
       6
      ]
     }
+   ],
+   "caseTl": [
+    {
+     "n": 1,
+     "d": "2016 1분기",
+     "t": "모델 3 공개"
+    },
+    {
+     "n": 2,
+     "d": "2016.08",
+     "t": "디자인 단계 완료"
+    },
+    {
+     "n": 6,
+     "d": "2017.07",
+     "t": "생산 시작"
+    },
+    {
+     "n": 6,
+     "d": "2018 3분기",
+     "t": "생산 시스템 안정화"
+    }
    ]
   },
   {
    "id": "t2",
-   "type": "toc15",
+   "type": "toc16",
    "duration": 26,
    "title": "발표 구성",
    "lead": "배우고, 적용하고, [[정리한다]]",
@@ -2484,9 +2530,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t3",
-   "type": "flow15",
+   "type": "flow16",
    "duration": 57,
-   "title": "01 신제품 개발 절차 6단계",
+   "title": "신제품 개발 절차 6단계",
    "lead": "아이디어에서 제품까지, [[여섯 단계]]",
    "tableTitle": "신제품 개발 단계와 단계별 핵심 활동",
    "stages": [
@@ -2574,9 +2620,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t4",
-   "type": "cmp15",
+   "type": "cmp16",
    "duration": 50,
-   "title": "01 신제품 개발 절차 · 방향과 설계",
+   "title": "신제품 개발 절차 · 방향과 설계",
    "lead": "①은 무엇을, ②는 [[어떤 설계로]] 만들지 정한다",
    "stages": [
     {
@@ -2623,9 +2669,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t5",
-   "type": "cmp15",
+   "type": "cmp16",
    "duration": 57,
-   "title": "01 신제품 개발 절차 · 제품·공정 검증",
+   "title": "신제품 개발 절차 · 제품·공정 검증",
    "lead": "③은 설계 품질, ④는 [[제조품질]]",
    "stages": [
     {
@@ -2672,9 +2718,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t6",
-   "type": "cmp15",
+   "type": "cmp16",
    "duration": 53,
-   "title": "01 신제품 개발 절차 · 시장 도입과 안정화",
+   "title": "신제품 개발 절차 · 시장 도입과 안정화",
    "lead": "⑤는 출시를 준비하고, ⑥은 [[안정시킨다]]",
    "stages": [
     {
@@ -2717,9 +2763,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t7",
-   "type": "tl15",
+   "type": "tl16",
    "duration": 77,
-   "title": "02 테슬라 모델 3 사례 · 앞의 세 단계",
+   "title": "테슬라 모델 3 사례 · 앞의 세 단계",
    "lead": "모델 3는 먼저 [[제품]]을 정하고 다듬었다",
    "sources": [
     {
@@ -2727,8 +2773,8 @@ const DEFAULT_DECK = {
      "url": ""
     }
    ],
-   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 위쪽 그래프는 강의의 여섯 단계를 실제 시점 위에 놓은 것입니다. 아래에서 검은 글씨는 테슬라 공시와 주주서한으로 확인한 사실이고, 빨간 ‘발표자 적용’은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n먼저 1단계, 테슬라는 2016년 1분기 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n2단계, 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n3단계, 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
-   "notes": "· 한 번에 모두 나타난다. 그래프의 회색 줄(④~⑤⑥)은 다음 장에서 빨간색으로 켜진다.\n· 그래프의 위치는 공개 자료에 적힌 분기·월을 기준으로 놓은 것이다.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· 목표 스펙 수치·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.",
+   "script": "이제 테슬라 모델 3에 적용해 보겠습니다. 위쪽 그래프는 강의의 여섯 단계를 실제 시점 위에 놓은 것입니다. 아래 카드에서 회색 ‘공개 사실’은 테슬라 공시와 주주서한으로 확인한 사실이고, 색으로 표시한 ‘발표자 적용’은 저희의 해석입니다. 테슬라가 이 6단계를 공식적으로 썼다는 뜻은 아닙니다.\n먼저 1단계, 테슬라는 2016년 1분기 모델 3를 대중 시장을 겨냥한 더 낮은 가격의 세단으로 공개했습니다. 제품의 방향, 즉 개념을 정한 장면으로 볼 수 있습니다.\n2단계, 2016년 8월에는 디자인 단계를 마치고 금형, 생산 계획, 검증 단계로 넘어갔다고 밝혔습니다. 설계를 확정한 장면입니다.\n3단계, 2017년 1분기에는 출시 후보 차량으로 조립 상태를 점검하고, 도로 시험으로 주행 특성과 내구성을 확인했습니다. 제품 자체를 다듬은 장면입니다.\n즉 1~3단계는 무엇을 만들지 정하고 제품 자체를 다듬는 과정과 맞닿아 있습니다.\n[엔터 ⏎ 다음 장]",
+   "notes": "· 한 번에 모두 나타난다. 그래프의 회색 줄(④⑤⑥)은 다음 장에서 단계 색으로 켜진다.\n· 그래프의 위치는 공개 자료에 적힌 분기·월을 기준으로 놓은 것이다.\n· 원문(10-Q 2017 Q1 MD&A): ‘In the first quarter of 2016, we unveiled Model 3, a lower priced sedan designed for the mass market.’ / ‘Release candidate vehicles, built using production-intent tooling and processes, are being tested to assess fit and finish, …’ / ‘Road testing is also underway to refine driving dynamics and ensure vehicle durability.’\n· 원문(Q2 2016 주주서한, 8-K 2016.08.03): ‘We have completed the design phase of Model 3 and released Model 3 for tooling, production planning and validation.’\n· 목표 스펙 수치·컨셉 비교 과정은 공개 자료에 없어 말하지 않는다.",
    "rows": [
     {
      "n": 1,
@@ -2805,9 +2851,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t8",
-   "type": "tl15",
+   "type": "tl16",
    "duration": 94,
-   "title": "02 테슬라 모델 3 사례 · 뒤의 세 단계",
+   "title": "테슬라 모델 3 사례 · 뒤의 세 단계",
    "lead": "생산을 시작하고도 [[안정까지 1년 넘게]]",
    "sources": [
     {
@@ -2893,9 +2939,9 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t9",
-   "type": "concl15",
+   "type": "concl16",
    "duration": 67,
-   "title": "03 핵심 정리",
+   "title": "핵심 정리",
    "lead": "설계와 공정, 시작과 안정화는 [[다르다]]",
    "final": "무엇을 만들지 정하고(①②), 제품과 공정을 검증해(③④), 시장에 내놓고 안정시킨다(⑤⑥)",
    "sources": [
@@ -2950,7 +2996,7 @@ const DEFAULT_DECK = {
   },
   {
    "id": "t10",
-   "type": "refs15",
+   "type": "refs16",
    "duration": 18,
    "title": "출처",
    "lead": "강의자료와 [[테슬라 공식 자료]]",
@@ -2996,7 +3042,58 @@ const DEFAULT_DECK = {
    "note": "모델 3와 6단계의 대응은 발표자의 해석이며, 테슬라가 강의의 6단계를 공식적으로 사용했다는 뜻이 아닙니다.",
    "sources": [],
    "script": "출처입니다. 왼쪽은 교수님 강의자료, 오른쪽은 테슬라의 공시와 주주서한입니다. 들어 주셔서 감사합니다. 질문 있으시면 말씀해 주세요.\n[엔터 ⏎ 끝]",
-   "notes": "[예상 질문]\nQ. 테슬라가 실제로 이 6단계를 거쳤나요?\nA. 테슬라가 이 6단계를 공식적으로 썼다는 자료는 없습니다. 공개 자료로 확인되는 활동을 저희가 6단계에 대응시켜 본 것입니다.\n\nQ. 4단계의 ‘시험생산’을 테슬라도 했나요?\nA. 공개 자료로 확인되는 것은 양산 예정 금형·공정으로 만든 출시 후보 차량을 시험하고, 생산 설비와 공급업체를 준비했다는 것까지입니다. 별도의 시험생산 라인을 운영했다고는 말할 수 없습니다.\n\nQ. 예약이 많았으니 판매가 확정된 것 아닌가요?\nA. 예약은 확정 판매가 아니어서 이번 발표에서는 주문·인도 절차 준비만 다뤘습니다.\n\nQ. 36장 세부 절차는 왜 빠졌나요?\nA. 36장 항목이 35장의 몇 단계에 해당하는지 강의자료에 적혀 있지 않아, 억지로 대응시키지 않으려고 이번에는 35장 6단계만 썼습니다."
+   "notes": "[예상 질문]\nQ. 테슬라가 실제로 이 6단계를 거쳤나요?\nA. 테슬라가 이 6단계를 공식적으로 썼다는 자료는 없습니다. 공개 자료로 확인되는 활동을 저희가 6단계에 대응시켜 본 것입니다.\n\nQ. 4단계의 ‘시험생산’을 테슬라도 했나요?\nA. 공개 자료로 확인되는 것은 양산 예정 금형·공정으로 만든 출시 후보 차량을 시험하고, 생산 설비와 공급업체를 준비했다는 것까지입니다. 별도의 시험생산 라인을 운영했다고는 말할 수 없습니다.\n\nQ. 예약이 많았으니 판매가 확정된 것 아닌가요?\nA. 예약은 확정 판매가 아니어서 이번 발표에서는 주문·인도 절차 준비만 다뤘습니다.\n\nQ. 36장 세부 절차는 왜 빠졌나요?\nA. 36장 항목이 35장의 몇 단계에 해당하는지 강의자료에 적혀 있지 않아, 억지로 대응시키지 않으려고 이번에는 35장 6단계만 썼습니다.",
+   "cards": [
+    {
+     "h": "강의자료 · 「제5강 경영프로젝트의 개발」",
+     "c": "#7B5CFA",
+     "ct": "#6440E8",
+     "items": [
+      {
+       "t": "35장 · 신제품 개발 단계와 단계별 핵심 활동",
+       "d": "단계명·핵심 활동·활동 목적 (3~6장, 9장)"
+      },
+      {
+       "t": "65장 · 토론문제 4",
+       "d": "‘신제품 개발 절차를 간략하게 제시하여라’ (1장)"
+      }
+     ]
+    },
+    {
+     "h": "테슬라 공식 자료 · 개발 (2016~2017)",
+     "c": "#2F6BFF",
+     "ct": "#1F55E0",
+     "items": [
+      {
+       "t": "Form 8-K · Second Quarter 2016 Shareholder Letter",
+       "d": "2016.08.03 · 디자인 단계 완료, 초기 생산 설비 (7·8장)",
+       "u": "https://ir.tesla.com/_flysystem/s3/sec/000119312516670068/d234162d8k-gen_0.pdf"
+      },
+      {
+       "t": "Form 10-Q · 2017년 1분기",
+       "d": "출시 후보 차량 시험, 생산 시설·공급업체 준비 (7·8장)",
+       "u": "https://ir.tesla.com/_flysystem/s3/sec/000156459017009968/tsla-10q_20170331.html"
+      }
+     ]
+    },
+    {
+     "h": "테슬라 공식 자료 · 출시와 안정화 (2017~2018)",
+     "c": "#12A594",
+     "ct": "#0B8778",
+     "items": [
+      {
+       "t": "Form 8-K · Second Quarter 2017 Shareholder Letter",
+       "d": "2017.08.02 · 생산 시작, 첫 인도, 주문 절차, 인도 거점, 매장·서비스 거점 (8장)",
+       "u": "https://ir.tesla.com/_flysystem/s3/sec/000156459017014920/tsla-8k_20170802-gen_0.pdf"
+      },
+      {
+       "t": "Tesla Third Quarter 2018 Update",
+       "d": "2018.10 · 생산 시스템 안정화, 주 평균 약 4,300대 (8·9장)",
+       "u": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA_Update_Letter_2018-3Q"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
@@ -3904,6 +4001,106 @@ R.refs15 = (s, i) => `${head15(s, i)}<div class="s-body rf15">${(s.groups || [])
   const u = safeUrl(it.u);
   return `<li><b data-k="groups.${gi}.items.${k}.t">${esc(it.t)}</b><span data-k="groups.${gi}.items.${k}.d">${esc(it.d)}</span>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0])} ↗</a>` : ""}</li>`;
 }).join("")}</ol></section>`).join("")}</div><p class="rf-note in15" style="--d:3" data-k="note">${esc(s.note || "")}</p>${foot15(s, i)}`;
+
+/* ================= v16: 밝은 바탕 + 단계별 색 (참고 덱 느낌) ================= */
+const C16 = ["#F2545B", "#FF8A2B", "#7B5CFA", "#2F6BFF", "#1AA3E8", "#12A594"];
+const T16 = ["#D93A42", "#C95F0A", "#6440E8", "#1F55E0", "#0A7DB8", "#0B8778"];
+const PH16 = [{ h: "방향과 설계", d: "무엇을, 어떤 설계로 만들지", ns: [1, 2] }, { h: "제품·공정 검증", d: "제품을 다듬고 공정을 준비", ns: [3, 4] }, { h: "시장 도입과 안정화", d: "시장에 내놓고 안정시킨다", ns: [5, 6] }];
+const NM16 = ["개념 정립", "제품 설계", "제품 엔지니어링", "공정 엔지니어링", "시장진출 준비", "대량 생산"];
+const IC16 = [
+  '<path d="M12 23h8M13 27h6"/><path d="M16 4a8 8 0 0 0-5 14.2c1 1 1.5 2.2 1.5 3.8h7c0-1.6.5-2.8 1.5-3.8A8 8 0 0 0 16 4z"/>',
+  '<rect x="4" y="6" width="24" height="20" rx="2"/><path d="M4 12h24M10 12v14M14 18h10M14 22h6"/>',
+  '<circle cx="16" cy="16" r="4.5"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8"/>',
+  '<path d="M4 27V14l7 4v-4l7 4v-4l7 4V6h3v21z"/><path d="M9 22h3M15 22h3M21 22h3"/>',
+  '<path d="M5 12l2-6h18l2 6"/><path d="M5 12h22v2a3 3 0 0 1-5.5 1.7A3 3 0 0 1 16 15.7a3 3 0 0 1-5.5 0A3 3 0 0 1 5 14z"/><path d="M7 19v8h18v-8"/>',
+  '<path d="M4 27h24"/><rect x="6" y="17" width="5" height="10"/><rect x="13.5" y="12" width="5" height="15"/><rect x="21" y="7" width="5" height="20"/>'];
+const cv = n => `--c:${C16[n - 1]};--ct:${T16[n - 1]}`;
+const ic16 = n => `<span class="ic16" style="${cv(n)}"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC16[n - 1]}</svg></span>`;
+const sb = (n, on = true, cls = "") => `<span class="sb${on ? " on" : ""}${cls ? " " + cls : ""}" style="${cv(n)}">${n}</span>`;
+const sbText = t => esc(t).replace(/[①-⑥]/g, c => sb(CIRC.indexOf(c) + 1, true, "in"));
+const ex16 = (s, k, tag = "span", cls = "") => `<${tag}${cls ? ` class="${cls}"` : ""} data-k="${k}">${sbText(getPath(s, k))}</${tag}>`;
+function trk16(on) {
+  return `<div class="trk16" aria-label="여섯 단계 중 ${on.join("·")}단계">${PH16.map(p => `<div class="tg${p.ns.some(n => on.includes(n)) ? " on" : ""}"><div class="tn">${p.ns.map(n => sb(n, on.includes(n))).join("")}</div><span>${p.h}</span></div>`).join("")}</div>`;
+}
+const kc = s => { const n = (s.on || [])[0]; return s.on && s.on.length < 6 ? `--kc:${T16[n - 1]}` : "--kc:#E5484D"; };
+function head16(s, i) {
+  return `<header class="h16"><div class="h16-top"><div class="eb16"><span class="pn">${pad(i + 1)}</span>${ed(s, "title")}</div>${s.on ? trk16(s.on) : ""}</div>${s.lead != null ? ex16(s, "lead", "h2", "ld16 rise") : ""}</header>`;
+}
+function foot16(s, i) {
+  const src = (s.sources || []).filter(x => x && x.label).map(x => esc(x.label)).join(" · ");
+  return `<footer class="f16"><span class="src16">${src}</span><span class="pg16">${pad(i + 1)} / ${pad(deck.slides.length)}</span></footer>`;
+}
+const wrap16 = (s, i, body) => `<div class="v16" style="${kc(s)}">${head16(s, i)}${body}${foot16(s, i)}</div>`;
+
+R.cover16 = (s, i) => `<div class="v16 cv16" style="--kc:#E5484D">
+ <div class="c16l">
+  <div class="eb16 rise" style="--i:0"><span class="pn">01</span><span data-k="title">${esc(s.title)}</span></div>
+  <h1 class="cv-t16 rise" style="--i:1" data-k="question">${esc(s.question)}</h1>
+  <div class="c16chips rise" style="--i:2"><span style="--c:#7B5CFA;--ct:#6440E8">강의 · 35장 신제품 개발 6단계</span><span style="--c:#12A594;--ct:#0B8778">사례 · 테슬라 모델 3</span></div>
+  <div class="c16meta rise" style="--i:3"><p class="c16q">‘${ed(s, "subtitle")}’</p><p class="c16by">발표 · <span data-k="presenter">${esc(s.presenter || "")}</span></p></div>
+ </div>
+ <div class="c16r">
+  <figure class="c16card rise" style="--i:2;--c:#7B5CFA"><span class="c16tag">강의</span><b>아이디어에서 생산·판매되는 제품까지</b>
+   <ol class="mini6">${NM16.map((nm, k) => `<li style="${cv(k + 1)};--k:${k}">${sb(k + 1)}<span>${nm}</span></li>`).join("")}</ol>
+   <div class="mini-ph">${PH16.map((p, k) => `<span style="${cv(p.ns[0])}">${p.h}</span>`).join("")}</div></figure>
+  <figure class="c16card rise" style="--i:3;--c:#12A594"><span class="c16tag">사례</span><b>테슬라 모델 3 · 공개부터 안정화까지</b>
+   <ol class="mini-tl">${(s.caseTl || []).map((e, k) => `<li style="${cv(e.n)};--k:${k}"><i></i><em>${esc(e.d)}</em><span>${esc(e.t)}</span></li>`).join("")}</ol>
+   <p class="c16src">테슬라 공시·주주서한 기준</p></figure>
+ </div></div>`;
+
+R.toc16 = (s, i) => wrap16(s, i, `<div class="s-body tc16">${(s.items || []).map((it, k) => {
+  const c = [["#7B5CFA", "#6440E8"], ["#12A594", "#0B8778"], ["#F2545B", "#D93A42"]][k];
+  return `<section class="tc-card rise" style="--i:${k + 1};--c:${c[0]};--ct:${c[1]}"><span class="pn c">${pad(k + 1)}</span>
+  ${ed(s, `items.${k}.t`, "b")}${ed(s, `items.${k}.d`, "p")}<div class="tc-dots">${(it.on || []).map(n => sb(n)).join("")}</div>
+  <span class="tc-pg" data-k="items.${k}.pages">${esc(it.pages || "")}</span></section>`;
+}).join("")}</div>`);
+
+R.flow16 = (s, i) => wrap16(s, i, `<div class="s-body fl16">
+ <div class="fl-axis rise" style="--i:1"><span>${esc(s.from)}</span><i></i><span class="b">${esc(s.to)}</span></div>
+ <ol class="fl-row">${s.stages.map((st, k) => `<li class="fl-node rise" style="${cv(k + 1)};--i:${k + 2}">${ic16(k + 1)}<span class="fl-k">STEP ${pad(k + 1)}</span>
+   <b data-k="stages.${k}.name">${esc(st.name)}</b><span class="fl-a" data-k="stages.${k}.act">${esc(st.act)}</span></li>`).join("")}</ol>
+ <div class="fl-ph">${PH16.map((p, k) => `<div class="rise" style="${cv(p.ns[0])};--i:${k + 8}"><b>${p.ns.map(n => sb(n)).join("")}${p.h}</b><span>${p.d}</span></div>`).join("")}</div></div>`);
+
+R.cmp16 = (s, i) => wrap16(s, i, `<div class="s-body cp16"><div class="cp-cards">${(s.stages || []).map((st, k) => `<section class="cp-card rise" style="${cv(+st.n)};--i:${k + 1}">
+  <div class="cp-hd">${ic16(+st.n)}<div><span class="fl-k">STEP ${pad(st.n)}</span><b data-k="stages.${k}.name">${esc(st.name)}</b></div></div>
+  <dl><div class="cp-lb"><dt>핵심 활동</dt><dd>활동 목적 · 강의자료 35장</dd></div>${(st.rows || []).map((r, j) => `<div class="cp-r"><dt data-k="stages.${k}.rows.${j}.act">${esc(r.act)}</dt><dd data-k="stages.${k}.rows.${j}.goal">${esc(r.goal)}</dd></div>`).join("")}</dl>
+ </section>${k === 0 ? `<span class="cp-ar rise" style="--i:2" aria-hidden="true">→</span>` : ""}`).join("")}</div>
+ <div class="versus16 rise" style="--i:4">${(s.stages || []).map((st, k) => `<div class="vs" style="${cv(+st.n)}">${sb(+st.n)}<span data-k="keys.${k}">${esc((s.keys || [])[k] || "")}</span></div>${k === 0 ? `<span class="vs-ne">≠</span>` : ""}`).join("")}</div></div>`);
+
+R.tl16 = (s, i) => {
+  const on = s.on || [], M = 42, x = m => (m / M * 100).toFixed(2) + "%";
+  const lanes = (s.lanes || []).map(l => {
+    const act = on.includes(l.n), w = Math.max(l.b - l.a, 0);
+    return `<div class="tl-lane${act ? " on" : ""}" style="${cv(l.n)}"><span class="tl-ln">${sb(l.n, act)}<b>${NM16[l.n - 1]}</b></span><div class="tl-track">
+      ${w ? `<i class="tl-bar" style="left:${x(l.a)};width:${x(w)}"></i>` : `<i class="tl-dot" style="left:${x(l.a)}"></i>`}
+      ${l.ends && act ? `<span class="tl-end a" style="left:${x(l.a)}">${l.ends[0]}</span><span class="tl-end b" style="left:${x(l.b)}">${l.ends[1]}</span>` : ""}
+      ${act && !l.ends ? `<span class="tl-lab" style="left:${x(l.a + w)}">${esc(l.d)}</span>` : ""}</div></div>`;
+  }).join("");
+  const axis = `<div class="tl-axis"><span class="tl-ln"></span><div class="tl-track">${[2016, 2017, 2018, 2019].map(y => `<span class="tl-y" style="left:${x((y - 2016) * 12)}">${y}</span>`).join("")}${Array.from({ length: 15 }, (_, q) => `<i class="tl-q${q % 4 ? "" : " yr"}" style="left:${x(q * 3)}"></i>`).join("")}</div></div>`;
+  const rows = (s.rows || []).map((r, k) => `<section class="tl-card rise" style="${cv(r.n)};--i:${k + 3}">
+    <div class="tl-hd">${ic16(r.n)}<div><b data-k="rows.${k}.stage">${esc(r.stage)}</b><span class="tl-when" data-k="rows.${k}.when">${esc(r.when)}</span></div></div>
+    <p class="tag16 fact">공개 사실 <i data-k="rows.${k}.src">${esc(r.src)}</i></p><p class="tl-f" data-k="rows.${k}.t">${esc(r.t)}</p>
+    <p class="tag16 mine">발표자 적용</p><p class="tl-i" data-k="rows.${k}.interp">${esc(r.interp)}</p></section>`).join("");
+  return wrap16(s, i, `<div class="s-body tl16"><div class="tl-chart rise" style="--i:1">${lanes}${axis}</div><div class="tl-cols">${rows}</div></div>`);
+};
+
+R.concl16 = (s, i) => {
+  const [a, b] = s.pairs || [];
+  const side = o => `<div class="cc-side" style="${cv(o.ns[o.ns.length - 1])}"><div class="cc-ns">${o.ns.map(n => sb(n)).join("")}<span class="cc-q">${esc(o.q)}</span></div><b>${esc(o.h)}</b><span class="cc-m">${esc(o.m)}</span></div>`;
+  return wrap16(s, i, `<div class="s-body cc16"><div class="cc-cards">
+  <section class="cc-card rise" style="--i:1;--c:#7B5CFA;--ct:#6440E8"><span class="cc-tag">${esc(a.tag)} · 설계와 공정</span><div class="cc-pair">${side(a.l)}<span class="cc-ne">≠</span>${side(a.r)}</div></section>
+  <section class="cc-card rise" style="--i:2;--c:#12A594;--ct:#0B8778"><span class="cc-tag">${esc(b.tag)} · 시작과 안정화</span><div class="cc-span">
+    <div class="cc-pt">${sb(6)}<b>${esc(b.span.ah)}</b><span>${esc(b.span.a)}</span></div>
+    <div class="cc-gap"><i></i><span>${esc(b.span.mid)}</span></div>
+    <div class="cc-pt r">${sb(6)}<b>${esc(b.span.bh)}</b><span>${esc(b.span.b)}</span></div></div>
+    <p class="cc-m">${esc(b.span.m)}</p></section></div>
+  <p class="cc-final rise" style="--i:3"><span class="cc-fl">한 문장으로</span>${ex16(s, "final", "span")}</p></div>`);
+};
+
+R.refs16 = (s, i) => wrap16(s, i, `<div class="s-body rf16">${(s.cards || []).map((g, gi) => `<section class="rf-card rise" style="--i:${gi + 1};--c:${g.c};--ct:${g.ct}"><h3>${esc(g.h)}</h3><ol>${g.items.map(it => {
+  const u = safeUrl(it.u);
+  return `<li><b>${esc(it.t)}</b><span>${esc(it.d)}${u ? ` <a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/, "").split("/")[0])} ↗</a>` : ""}</span></li>`;
+}).join("")}</ol></section>`).join("")}<p class="rf-note16 rise" style="--i:5" data-k="note">${esc(s.note || "")}</p></div>`);
 
 function slideHTML(s, i) {
   const fn = R[s.type] || R.text;
