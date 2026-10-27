@@ -1,0 +1,2 @@
+img/w-bots.json https://commons.wikimedia.org/w/api.php?action=query&titles=File:Tesla_auto_bots.jpg&prop=imageinfo&iiprop=url|size|extmetadata&format=json
+img/w-bots.jpg https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_auto_bots.jpg
