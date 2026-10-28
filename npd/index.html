@@ -1877,6 +1877,12 @@ em.kw{background-repeat:no-repeat}
 .x-case2 .x-int span{font-size:22px}
 .x-s6c{min-height:0;padding:28px 22px 30px;gap:14px}.x-s6t{font-size:30px}.x-s6a{font-size:22px}.x-s6{gap:20px}
 .x-case2 .cs-l{justify-content:center}.x-case2 .cs-ph{flex:none;aspect-ratio:4/3;width:100%}.x-case2 .cs-img img{object-position:50% 50%}
+body.fs.presenting #viewport{padding:0!important;background:#000!important}
+body.fs.presenting #stageWrap{box-shadow:none!important;border-radius:0!important}
+body.fs.presenting .toast,body.fs.presenting #toast{display:none!important}
+body.fs.presenting{cursor:none}
+body.fs.presenting .viewport{position:fixed!important;inset:0!important;display:grid!important;place-items:center!important;padding:0!important;background:#000!important;z-index:10}
+body.fs.presenting .controls,body.fs.presenting .exit-present,body.fs.presenting .script-bar{display:none!important}
 
 </style>
 </head><body>
@@ -4375,10 +4381,10 @@ function setPresent(on) {
   mode.present = on;
   document.body.classList.toggle("presenting", on);
   syncDrawers();
-  if (on) { flashCtrl(); toast("발표 모드 · 방향키·스페이스·엔터로 넘기고, Esc로 끝냅니다.", 2600); }
+  if (on && !document.fullscreenElement) { flashCtrl(); toast("발표 모드 · 방향키·스페이스·엔터로 넘기고, Esc로 끝냅니다.", 2600); }
 }
 let ctrlTimer;
-function flashCtrl() { if (!mode.present) return; document.body.classList.add("show-ctrl"); clearTimeout(ctrlTimer); ctrlTimer = setTimeout(() => document.body.classList.remove("show-ctrl"), 2200); }
+function flashCtrl() { if (!mode.present || document.body.classList.contains("fs")) return; document.body.classList.add("show-ctrl"); clearTimeout(ctrlTimer); ctrlTimer = setTimeout(() => document.body.classList.remove("show-ctrl"), 2200); }
 function toggleFull() {
   try {
     if (!document.fullscreenElement) { const p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => toast("이 화면에서는 전체 화면을 열 수 없습니다. 브라우저에서 파일을 직접 열어 보세요.")); }
@@ -4395,7 +4401,7 @@ $("#btnEdit").addEventListener("click", () => setEdit(!mode.edit));
 $("#btnScript").addEventListener("click", () => { mode.script = !mode.script; syncDrawers(); });
 $("#btnNotes").addEventListener("click", () => { mode.notes = !mode.notes; if (mode.notes && mode.edit) setEdit(false); syncDrawers(); renderNotes(); });
 $("#btnPresent").addEventListener("click", () => setPresent(true));
-$("#exitPresent").addEventListener("click", () => setPresent(false));
+$("#exitPresent").addEventListener("click", () => { if (document.fullscreenElement) document.exitFullscreen(); else setPresent(false); });
 $("#btnFull").addEventListener("click", toggleFull);
 $("#btnPrint").addEventListener("click", doPrint);
 $$("[data-close]").forEach(b => b.addEventListener("click", () => { if (b.dataset.close === "edit") setEdit(false); else { mode.notes = false; syncDrawers(); } }));
@@ -4404,7 +4410,14 @@ $("#prev").addEventListener("click", prev);
 $("#next").addEventListener("click", next);
 $("#progress").addEventListener("click", e => { const s = e.target.closest("[data-go]"); if (s) show(+s.dataset.go, 0); });
 document.addEventListener("mousemove", flashCtrl);
-document.addEventListener("fullscreenchange", () => requestAnimationFrame(fit));
+document.addEventListener("fullscreenchange", () => {
+  const fs = !!document.fullscreenElement;
+  document.body.classList.toggle("fs", fs);
+  if (fs && !mode.present) setPresent(true);
+  else if (!fs && mode.present && document.body.dataset.fsPresent === "1") setPresent(false);
+  document.body.dataset.fsPresent = fs ? "1" : "";
+  requestAnimationFrame(fit); setTimeout(fit, 120); setTimeout(fit, 400);
+});
 
 document.addEventListener("keydown", e => {
   const t = e.target;
